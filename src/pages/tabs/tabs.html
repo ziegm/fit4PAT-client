@@ -1,5 +1,10 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<ion-header>
+  <ion-navbar>
+    <ion-title>fit4PAT</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-tabs tabsPlacement="top">
+  <ion-tab [root]="tab1Root" tabTitle="Assessment" tabIcon="clipboard"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Patient" tabIcon="man"></ion-tab>
 </ion-tabs>
