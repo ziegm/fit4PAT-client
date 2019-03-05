@@ -5,16 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-  <button ion-button (click)="navToNoTab()">No Tab Page</button>
+
+  <button ion-button (click)="navToGeriatrics()">Geriatrie</button>
+  <button ion-button (click)="navToNeurology()">Neurologie</button>
+  <button ion-button (click)="navToCardiology()">Kardiologie/Pneumologie</button>
+  <button ion-button (click)="navToMusculoskeletal()">Bewegungsapparat</button>
+  <button ion-button (click)="navToOthers()">Weitere</button>
+
+  <img src="./assets/imgs/Logo_fit4PAT_man.svg"/>
 
   <!--<ul class="chart-assessments">
     <li>
@@ -37,7 +35,7 @@
   <!--<div class="container">
     <div class="donut-chart-block block">
       <div class="donut-chart">
-        <div id="part1" class="portion-block" onclick="location.href='NoTabPage.html'"><div class="circle">Neurologie</div></div>
+        <div id="part1" class="portion-block" onclick="location.href='GeriatricsPage.html'"><div class="circle">Neurologie</div></div>
         <div id="part2" class="portion-block"><div class="circle">Kardiologie/Pneumologie</div></div>
         <div id="part3" class="portion-block"><div class="circle">Weitere</div></div>
         <div id="part4" class="portion-block"><div class="circle">Bewegungsapparat</div></div>

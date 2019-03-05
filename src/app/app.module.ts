@@ -9,7 +9,11 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {NoTabPage} from '../pages/no-tab/no-tab';
+import {GeriatricsPage} from '../pages/geriatrics/geriatrics';
+import {CardiologyPage} from "../pages/cardiology/cardiology";
+import {MusculoskeletalPage} from "../pages/musculoskeletal/musculoskeletal";
+import {NeurologyPage} from "../pages/neurology/neurology";
+import {OthersPage} from "../pages/others/others";
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import {NoTabPage} from '../pages/no-tab/no-tab';
     PatientPage,
     AssessmentPage,
     TabsPage,
-    NoTabPage
+    GeriatricsPage,
+    CardiologyPage,
+    MusculoskeletalPage,
+    NeurologyPage,
+    OthersPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,11 @@ import {NoTabPage} from '../pages/no-tab/no-tab';
     PatientPage,
     AssessmentPage,
     TabsPage,
-    NoTabPage
+    GeriatricsPage,
+    CardiologyPage,
+    MusculoskeletalPage,
+    NeurologyPage,
+    OthersPage
   ],
   providers: [
     StatusBar,
