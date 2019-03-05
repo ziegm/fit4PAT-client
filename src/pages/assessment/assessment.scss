@@ -1,3 +1,413 @@
 page-home {
+  ion-header{
+    color: deeppink;
+  }
+
+  h2{
+    color: aqua;
+  }
+
+  /*body {
+    font: normal 16px/1.5 'Roboto', sans-serif;
+    padding: 130px 0 0 0;
+    background: #f1f1f1;
+  }
+
+  .chart-assessments {
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .chart-assessments *,
+  .chart-assessments::before {
+    box-sizing: border-box;
+  }
+
+  .chart-assessments {
+    position: relative;
+    width: 350px;
+    height: 175px;
+  }
+  .chart-assessments::before,
+  .chart-skills::after {
+    position: absolute;
+  }
+
+  .chart-assessments::before {
+    content: '';
+    width: inherit;
+    height: inherit;
+    border: 45px solid rgba(100,11,111,.3);
+    border-bottom: none;
+    border-top-left-radius: 175px;
+    border-top-right-radius: 175px;
+  }
+
+  .chart-assessments::after {
+    content: 'Assessments';
+    margin-left: 50%;
+    margin-bottom: 10px;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: cadetblue;
+  }
+
+  .chart-skills li {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border: 45px solid;
+    border-top: none;
+    border-bottom-left-radius: 175px;
+    border-bottom-right-radius: 175px;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+    animation-fill-mode: forwards;
+    animation-duration: .4s;
+    animation-timing-function: linear;
+  }
+
+  .chart-skills li:nth-child(1) {
+    z-index: 5;
+    border-color: green;
+    animation-name: rotate-one;
+  }
+
+  .chart-skills li:nth-child(2) {
+    z-index: 4;
+    border-color: firebrick;
+    animation-name: rotate-two;
+    animation-delay: .4s;
+  }
+
+  .chart-skills li:nth-child(3) {
+    z-index: 3;
+    border-color: steelblue;
+    animation-name: rotate-three;
+    animation-delay: .8s;
+  }
+
+  .chart-skills li:nth-child(4) {
+    z-index: 2;
+    border-color: orange;
+    animation-name: rotate-four;
+    animation-delay: 1.2s;
+  }
+
+  .chart-skills li:nth-child(5) {
+    z-index: 1;
+    border-color: yellow;
+    animation-name: rotate-five;
+    animation-delay: 1.6s;
+  }
+
+  .chart-assessments span {
+    position: absolute;
+    font-size: .85rem;
+    animation: fade-in .4s linear forwards;
+  }
+
+  .chart-assessments li:nth-child(1) span {
+    top: 5px;
+    left: 10px;
+    transform: rotate(-21.6deg);
+  }
+
+  .chart-assessments li:nth-child(2) span {
+    top: 20px;
+    left: 10px;
+    transform: rotate(-79.2deg);
+    animation-delay: .4s;
+  }
+
+  .chart-assessments li:nth-child(3) span {
+    top: 18px;
+    left: 10px;
+    transform: rotate(-140.4deg);
+    animation-delay: .8s;
+  }
+
+  .chart-assessments li:nth-child(4) span {
+    top: 10px;
+    left: 10px;
+    transform: rotate(-180deg);
+    animation-delay: 1.2s;
+  }
+
+  @keyframes rotate-one {
+    100% {
+      transform: rotate(21.6deg);
+      !**
+       * 12% => 21.6deg
+       *!
+    }
+  }
+
+  @keyframes rotate-two {
+    0% {
+      transform: rotate(21.6deg);
+    }
+    100% {
+      transform: rotate(79.2deg);
+      !**
+       * 32% => 57.6deg
+       * 57.6 + 21.6 => 79.2deg
+       *!
+    }
+  }
+
+  @keyframes rotate-three {
+    0% {
+      transform: rotate(79.2deg);
+    }
+    100% {
+      transform: rotate(140.4deg);
+      !**
+       * 34% => 61.2deg
+       * 61.2 + 79.2 => 140.4deg
+       *!
+    }
+  }
+
+  @keyframes rotate-four {
+    0% {
+      transform: rotate(140.4deg);
+    }
+    100% {
+      transform: rotate(180deg);
+      !**
+       * 22% => 39.6deg
+       * 140.4 + 39.6 => 180deg
+       *!
+    }
+  }
+
+  @keyframes fade-in {
+    0%,
+    90% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }*/
+
+  /** {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  #doughnutContainer, #pieContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  #doughnutContainer {
+    width:800px;
+    height:800px;
+  }
+
+  .donut-chart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    border-radius: 100%
+  }
+  p.center {
+    background: #F8F8FF;
+    position: absolute;
+    text-align: center;
+    font-size: 28px;
+    top:0;left:0;bottom:0;right:0;
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border-radius: 50%;
+    line-height: 35px;
+    padding: 15% 0 0;
+  }
+
+
+  .portion-block {
+    border-radius: 50%;
+    clip: rect(0px, 200px, 200px, 100px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  .circle {
+    border-radius: 50%;
+    clip: rect(0px, 100px, 200px, 0px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    font-family: monospace;
+    font-size: 1.5rem;
+  }
+
+
+  #part1 {
+    transform: rotate(0deg);
+  }
+
+  #part1 .circle {
+    background-color: #E64C65;
+    !*transform: rotate(76deg);*!
+    animation: first 0s 1 forwards;
+  }
+
+
+  #part2 {
+    transform: rotate(72deg);
+  }
+  #part2 .circle {
+    background-color: #11A8AB;
+    animation: second 0s 1 forwards;
+  }
+  #part3 {
+    transform: rotate(144deg);
+  }
+  #part3 .circle {
+    background-color: #4FC4F6;
+    animation: third 0s 1 forwards;
+  }
+  #part4 {
+    transform: rotate(216deg);
+  }
+  #part4 .circle {
+    background-color: #11A8AB;
+    animation: second 0s 1 forwards;
+  }
+  #part5 {
+    transform: rotate(288deg);
+  }
+  #part5 .circle {
+    background-color: #4FC4F6;
+    animation: second 0s 1 forwards;
+  }
+
+
+  !* Animation *!
+  @keyframes first {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(72deg);}
+  }
+
+  @keyframes second {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(72deg);}
+  }
+
+  @keyframes third {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(72deg);}
+  }
+
+  @keyframes fourth {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(72deg);}
+  }
+
+  @keyframes fifth {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(72deg);}
+  }*/
+
+  @import url(//fonts.googleapis.com/css?family=Indie+Flower);
+
+  $base: #A5E2F3;
+
+  .menu {
+    padding: 0;
+    list-style: none;
+    position: relative;
+    margin: 30px auto;
+    width: 70%;
+    height: 0;
+    padding-top: 70%;
+  }
+  @media all and (max-width: 320px) {
+    .menu {
+      width: 230px;
+      height: 230px;
+      padding: 0;
+    }
+  }
+  @media all and (min-width: 700px) {
+    .menu {
+      width: 500px;
+      height: 500px;
+      padding: 0;
+    }
+  }
+  .menu li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    clip-path: url(#sector);
+    /* try this one in Chrome/Opera/Safari */
+    /* clip-path: polygon(50% 50%, 100% 50%, 75% 6.6%); */
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      background-color: gold;
+    }
+  }
+  .one {
+    background-color: $base;
+    transform: rotate(0deg);
+  }
+  .two {
+    background-color: darken($base, 7%);
+    transform: rotate(-72deg);
+  }
+  .three {
+    background-color: darken($base, 14%);
+    transform: rotate(-144deg);
+  }
+  .four {
+    background-color: darken($base, 21%);
+    transform: rotate(-216deg);
+  }
+  .five {
+    background-color: darken($base, 28%);
+    transform: rotate(-288deg);
+  }
+
+  .icon {
+    position: absolute;
+    /* exact values here depend on what you are placing inside the items (icon, image, text, etc.) */
+    right: 15%;
+    top: 30%;
+    /* make sure it it rotated enough; angle of rotation = angle of the sector itself */
+    transform: rotate(72deg);
+
+    /* style further as needed */
+    color: darken($base, 60%);
+    font-family: Indie Flower;
+    font-size: 25px;
+  }
+
+  p {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
 
 }
