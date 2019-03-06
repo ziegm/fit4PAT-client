@@ -7,8 +7,8 @@ page-home {
   img {
     max-width: 70%;
     border: 0;
-    margin-left: 30px;
-    margin-top: 20px;
+    margin-left: 15%;
+    margin-top: 10%;
   }
   /**
  * Circular menu v2
@@ -20,7 +20,7 @@ page-home {
   .circle, .circle:before, .circle:after { border-radius: 50%; }
   nav {
     margin: 5em auto;
-    min-width: 16em; width: 72%; max-width: 40em;
+    min-width: 16em; width: 72%; max-width: 60em;
   }
   nav ul {
     position: relative;
@@ -106,8 +106,7 @@ page-home {
   .ovanilla:checked ~ nav .vanilla label,
   .oorange:checked ~ nav .orange label,
   .oalmond:checked ~ nav .almond label,
-  .ogrape:checked ~ nav .grape label,
-  .ostrawberry:checked ~ nav .strawberry label {
+  .ogrape:checked ~ nav .grape label {
     box-shadow: 0 0 .45em rgba(0,0,0,.5);
     opacity: 1; color: white;
   }
