@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {App, NavController} from 'ionic-angular';
+import {GeriatricsPage} from "../geriatrics/geriatrics";
 
 @Component({
   selector: 'page-patient',
@@ -7,8 +8,11 @@ import {NavController} from 'ionic-angular';
 })
 export class PatientPage {
 
-  constructor(public navCtrl: NavController) {
+  private rootNav:any;
 
+  constructor(public navCtrl: NavController, public app: App) {
+    this.rootNav = app.getRootNav();
   }
+
 
 }

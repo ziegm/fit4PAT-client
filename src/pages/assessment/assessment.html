@@ -6,107 +6,31 @@
 
 <ion-content padding>
 
-  <button ion-button (click)="navToGeriatrics()">Geriatrie</button>
-  <button ion-button (click)="navToNeurology()">Neurologie</button>
-  <button ion-button (click)="navToCardiology()">Kardiologie/Pneumologie</button>
-  <button ion-button (click)="navToMusculoskeletal()">Bewegungsapparat</button>
-  <button ion-button (click)="navToOthers()">Weitere</button>
-
-  <img src="./assets/imgs/Logo_fit4PAT_man.svg"/>
-
-  <!--<ul class="chart-assessments">
-    <li>
-      <span>Neurologie</span>
-    </li>
-    <li>
-      <span>Kardiologie/Pneumologie</span>
-    </li>
-    <li>
-      <span>Weitere</span>
-    </li>
-    <li>
-      <span>Bewegungsapparat</span>
-    </li>
-    <li>
-      <span>Geriatrie</span>
-    </li>
-  </ul>-->
-
-  <!--<div class="container">
-    <div class="donut-chart-block block">
-      <div class="donut-chart">
-        <div id="part1" class="portion-block" onclick="location.href='GeriatricsPage.html'"><div class="circle">Neurologie</div></div>
-        <div id="part2" class="portion-block"><div class="circle">Kardiologie/Pneumologie</div></div>
-        <div id="part3" class="portion-block"><div class="circle">Weitere</div></div>
-        <div id="part4" class="portion-block"><div class="circle">Bewegungsapparat</div></div>
-        <div id="part5" class="portion-block"><div class="circle">Geriatrie</div></div>
-        <p class="center"></p>
-      </div>
-    </div>
-  </div>-->
-
-  <ul class="menu">
-    <li class="one">
-      <a href="#">
-        <span class="icon">Neurologie</span>
-      </a>
-    </li>
-    <li class="two">
-      <a href="#">
-        <span class="icon">Geriatrie</span>
-      </a>
-    </li>
-    <li class="three">
-      <a href="#">
-        <span class="icon">Bewegungsapparat</span>
-      </a>
-    </li>
-    <li class="four">
-      <a href="#">
-        <span class="icon">Weitere</span>
-      </a>
-    </li>
-    <li class="five">
-      <a href="#">
-        <span class="icon">Kardiologie/Pneumologie</span>
-      </a>
-    </li>
-  </ul>
-
-  <svg width="500" height="500">
-    <defs>
-      <mask id="bigmask">
-        <rect width="100%" height="100%" fill="white"/>
-        <circle cx="250" cy="250" r="50"/>
-      </mask>
-      <mask id="smallmask">
-        <circle cx="250" cy="250" r="150" fill="white"/>
-        <circle cx="250" cy="250" r="100"/>
-      </mask>
-    </defs>
-    <circle id="donut" cx="250" cy="250" r="200" mask="url(#bigmask)"/>
-  </svg>
-
-  <svg height="0" width="0">
-    <defs>
-      <clipPath clipPathUnits="objectBoundingBox" id="sector">
-        <path fill="none" stroke="#111" stroke-width="1" class="sector" d="M0.5,0.5 l0.5,0 A0.5,0.5 0 0,0 0.65,.022997298 z"></path>
-      </clipPath>
-    </defs>
-  </svg>
-
-  <svg width="100%" height="100%" viewBox="0 0 42 42" class="donut">
-    <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
-
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="25"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="85"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#377bbc" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="65"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="85"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#377bbc" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="65"></circle>
-    <!-- unused 10% -->
-  </svg>
-
-
+  <input type='radio' name='opt' id='ococonut' class='menuopt ococonut'>
+  <input type='radio' name='opt' id='ovanilla' class='menuopt ovanilla'>
+  <input type='radio' name='opt' id='oorange' class='menuopt oorange'>
+  <input type='radio' name='opt' id='oalmond' class='menuopt oalmond'>
+  <input type='radio' name='opt' id='ogrape' class='menuopt ogrape'>
+  <input type='radio' name='opt' id='unsel' class='menuopt' checked>
+  <nav>
+    <ul class='circle'>
+      <li class='coconut light slice'>
+        <label for='ococonut' class='circle'><button type="button" (click)="navToGeriatrics()">Geriatrie</button></label>
+      </li>
+      <li class='vanilla light slice'>
+        <label for='ovanilla' class='circle'><button type="button" (click)="navToNeurology()">Neurologie</button></label>
+      </li>
+      <li class='orange light slice'>
+        <label for='oorange' class='circle'><button type="button" (click)="navToCardiology()">Kardiologie/Pneumologie</button></label>
+      </li>
+      <li class='almond light slice'>
+        <label for='oalmond' class='circle'><button type="button" (click)="navToOthers()">Weitere</button></label>
+      </li>
+      <li class='grape light slice'>
+        <label for='ogrape' class='circle'><button type="button" (click)="navToMusculoskeletal()">Bewegungsapparat</button></label>
+      </li>
+      <li class='unsel circle'><label for='unsel'><img src="./assets/imgs/Logo_fit4PAT_man.svg"/></label></li>
+    </ul>
+  </nav>
 
 </ion-content>
