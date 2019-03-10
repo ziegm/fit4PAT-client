@@ -15,12 +15,24 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+// Kommentar ziegm1: im variables.scss definiert
+/*
 .toolbar-background{
   background-color: #9ECF66;
   color: #888888;
 }
+*/
 
+// Kommentar ziegm1: das überdeckt die Beschriftung des Tabs, hast du das so gewollt? darum mal rausgenommen...
+/*
 .tabs-md .tab-button{
   background-color: #9ECF66;
   color: #888888;
+}
+*/
+
+//Border of the selected Tab
+.tabbar a[aria-selected=true] {
+  border-bottom: 4px;
+  border-style: solid;
 }
