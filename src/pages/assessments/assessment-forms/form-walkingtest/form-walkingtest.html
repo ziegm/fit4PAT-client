@@ -11,5 +11,69 @@
 </ion-header>
 
 <ion-content padding>
+  <!--[scrollEvents]="true"
+  (ionScrollStart)="logScrollStart()"
+  (ionScroll)="logScrolling($event)"
+  (ionScrollEnd)="logScrollEnd()"-->
+  <button ion-button (click)="navToEvaluationWalkingtest()">Patient hinzufügen</button>
+  <ion-item>
+    <ion-label>
+      Patient
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>1. Versuch</ion-label>
+    <ion-input type="text" placeholder="Input" name="inputOne" [(ngModel)]="inputOne"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>2. Versuch</ion-label>
+    <ion-input type="time" id="twt2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>3. Versuch</ion-label>
+    <ion-input type="time" id="twt3"></ion-input>
+  </ion-item>
+
+  <div class="stopwatch pt-3">
+    <h1 text-center class="color-white font-lg">
+      {{time}}
+    </h1>
+    <button ion-button (click)="timeInText()">Übernehmen</button>
+    <ion-grid>
+      <ion-row text-center class="mt-5">
+        <ion-col class="col-12" *ngIf="!running && time == blankTime">
+          <button class="circle-button circle-button-bg font-md" ion-button (click)="start()">start</button>
+        </ion-col>
+        <ion-col class="col-12" *ngIf="running">
+          <button class="circle-button circle-button-bg circle-button-red font-md" ion-button (click)="stop()">stop</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Hilfsmittel</ion-label>
+      <ion-select value="none" okText="Okay" cancelText="Dismiss">
+        <ion-option value="none" selected="true">keine</ion-option>
+        <ion-option value="brown">Gehbock</ion-option>
+        <ion-option value="blonde">Stock</ion-option>
+        <ion-option value="black">Rollator</ion-option>
+        <ion-option value="red" (select)="$extend">andere</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item name="extensionOthers" visile="false">
+      <ion-label>Welche?</ion-label>
+      <ion-input type="text" id="twt4"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Bemerkungen</ion-label>
+    <ion-input type="text" id="twt5"></ion-input>
+  </ion-item>
+
   <button ion-button (click)="navToEvaluationWalkingtest()">Auswerten</button>
 </ion-content>

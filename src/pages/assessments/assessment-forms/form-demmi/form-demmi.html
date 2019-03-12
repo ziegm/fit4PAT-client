@@ -11,5 +11,160 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button (click)="navToEvaluationDemmi()">Patient hinzufügen</button>
+  <ion-item>
+    <ion-label>
+      Patient
+    </ion-label>
+  </ion-item>
+
+    <div class="row header">
+      <div class="col transparent"></div>
+      <div class="col darkGrey">0</div>
+      <div class="col darkGrey">1</div>
+      <div class="col darkGrey">2</div>
+    </div>
+
+  <ion-item><ion-label class="category">Bett</ion-label></ion-item>
+  <ion-list radio-group [(ngModel)]="Bridge">
+  <div class="row" ng-repeat="data in ctrl.data">
+    <div class="col transparent">1. Brücke <img src="./assets/icon/md-information-circle-outline.svg" (click)="navToEvaluationDemmi()"/></div>
+    <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+    <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+    <div class="col middleGrey"></div>
+  </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="rolOnSide">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">2. Auf die Seite rollen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="toSit">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">3. Vom Liegen zum Sitzen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>geringe Unterstützung</ion-label><ion-radio slot="start" value="withAid"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>Supervision</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"><ion-item class="transparent"><ion-label>selbstständig</ion-label><ion-radio slot="start" value="self"></ion-radio></ion-item></div>
+    </div>
+  </ion-list>
+
+  <ion-item><ion-label class="category">Stuhl</ion-label></ion-item>
+  <ion-list radio-group [(ngModel)]="sitInChair">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">4. Sitzen im Stuhl ohne Unterstützung</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 Sek.</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="standUp">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">5. Aus dem Stuhl aufstehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>geringe Unterstützung</ion-label><ion-radio slot="start" value="withAid"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>Supervision</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"><ion-item class="transparent"><ion-label>selbstständig</ion-label><ion-radio slot="start" value="self"></ion-radio></ion-item></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="standUpWithoutArms">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">6. Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+
+  <ion-item><ion-label class="category">Statisches Gleichgewicht (ohne Gehhilfe)</ion-label></ion-item>
+  <ion-list radio-group [(ngModel)]="standWithoutAid">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">7. Ohne Unterstützung stehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 Sek.</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="standWithClosedFeet">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">8. Stehen mit geschlossenen Füssen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 Sek.</ion-label><ion-radio slot="start" value="withAid"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="standOnToe">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">9. Auf den Fussspitzen stehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 Sek.</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="tandemWithClosedEyes">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">10. Im Tandemstand mit geschlossenen Augen stehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 Sek.</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+
+  <ion-item><ion-label class="category">Gehen</ion-label></ion-item>
+  <ion-list radio-group [(ngModel)]="walkway">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">11. Wegstrecke +/- Gehhilfe</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>5 m</ion-label><ion-radio slot="start" value="five"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>10 m</ion-label><ion-radio slot="start" value="ten"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>20m</ion-label><ion-radio slot="start" value="twenty"></ion-radio></ion-item></div>
+      <div class="col middleGrey"><ion-item class="transparent"><ion-label>50 m</ion-label><ion-radio slot="start" value="fivty"></ion-radio></ion-item></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="walkAlone">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">12. Selbstständiges Gehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>geringe Unterstützung</ion-label><ion-radio slot="start" value="littleAid"></ion-radio></ion-item>
+        <ion-item class="transparent"><ion-label>Supervision</ion-label><ion-radio slot="start" value="supervision"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>selbstständig mit Gehhilfe</ion-label><ion-radio slot="start" value="withWalkAid"></ion-radio></ion-item></div>
+      <div class="col middleGrey"><ion-item class="transparent"><ion-label>selbstständig ohne Gehhilfe</ion-label><ion-radio slot="start" value="alone"></ion-radio></ion-item></div>
+    </div>
+  </ion-list>
+
+  <ion-item><ion-label class="category">Dynamisches Gleichgewicht (ohne Gehhilfe)</ion-label></ion-item>
+  <ion-list radio-group [(ngModel)]="penFromGround">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">13. Stift vom Boden aufheben</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="fourStepsBackward">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">14. Vier Schritte rückwärts gehen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="jump">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col transparent">15. Springen</div>
+      <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
+      <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
+      <div class="col middleGrey"></div>
+    </div>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Bemerkungen</ion-label>
+    <ion-input type="text" id="twt5"></ion-input>
+  </ion-item>
+
  <button ion-button (click)="navToEvaluationDemmi()">Auswerten</button>
 </ion-content>
