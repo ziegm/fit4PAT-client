@@ -32,6 +32,12 @@ import {WardB3Page} from "../pages/patients/wards/ward-b3/ward-b3";
 import {WardC1Page} from "../pages/patients/wards/ward-c1/ward-c1";
 import {WardIpsPage} from "../pages/patients/wards/ward-ips/ward-ips";
 
+import { ChartsModule } from 'ng2-charts';
+import {from} from "rxjs/observable/from";
+//import Chart = require("chart.js");
+//@NgModule
+//import { Chart } from 'chart.js';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -63,7 +69,9 @@ import {WardIpsPage} from "../pages/patients/wards/ward-ips/ward-ips";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp)//,
+    //ChartsModule,
+    //Chart
   ],
   bootstrap: [IonicApp],
   entryComponents: [
