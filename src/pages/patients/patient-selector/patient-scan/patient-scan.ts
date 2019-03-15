@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner/ngx";
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 
 /**
  * Generated class for the PatientScanPage page.
@@ -16,22 +16,13 @@ import {QRScanner, QRScannerStatus} from "@ionic-native/qr-scanner/ngx";
 })
 export class PatientScanPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private barcode = "";
 
-  }
-
-  /*
-  scan() {
-    let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-      console.log(text);
-      this.qrScanner.hide();
-      scanSub.unsubscribe();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.barcode = barcodeData.text;
+    }).catch(err => {
+      console.log('Error', err);
     });
   }
-  */
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PatientScanPage');
-  }
-
 }

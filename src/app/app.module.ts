@@ -32,8 +32,9 @@ import {WardB3Page} from "../pages/patients/wards/ward-b3/ward-b3";
 import {WardC1Page} from "../pages/patients/wards/ward-c1/ward-c1";
 import {WardIpsPage} from "../pages/patients/wards/ward-ips/ward-ips";
 
-import { ChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';
 import {from} from "rxjs/observable/from";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 //import Chart = require("chart.js");
 //@NgModule
 //import { Chart } from 'chart.js';
@@ -105,7 +106,8 @@ import {from} from "rxjs/observable/from";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BarcodeScanner
   ]
 })
 export class AppModule {}
