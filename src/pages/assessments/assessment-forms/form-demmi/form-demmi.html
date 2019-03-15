@@ -18,17 +18,28 @@
     </ion-label>
   </ion-item>
 
+  <ion-item>
+    <ion-icon name="trending-up" (click)="navToEvaluationDemmi()"></ion-icon>
+    <ion-icon name="document"></ion-icon>
+    <ion-icon name="pie"></ion-icon>
+    <ion-icon name="briefcase"></ion-icon>
+  </ion-item>
+
+ <ion-item>
     <div class="row header">
       <div class="col transparent"></div>
       <div class="col darkGrey">0</div>
       <div class="col darkGrey">1</div>
       <div class="col darkGrey">2</div>
     </div>
+ </ion-item>
 
   <ion-item><ion-label class="category">Bett</ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="Bridge">
   <div class="row" ng-repeat="data in ctrl.data">
-    <div class="col transparent">1. Brücke <img src="./assets/icon/md-information-circle-outline.svg" (click)="navToEvaluationDemmi()"/></div>
+    <div class="col transparent">1. Brücke <ion-icon name="information-circle-outline"></ion-icon>
+      <!--<img src="./assets/icon/md-information-circle-outline.svg" (click)="navToEvaluationDemmi()"/>-->
+    </div>
     <div class="col lightGrey"><ion-item class="transparent"><ion-label>nicht möglich</ion-label><ion-radio slot="start" value="notPossible"></ion-radio></ion-item></div>
     <div class="col normalGrey"><ion-item class="transparent"><ion-label>möglich</ion-label><ion-radio slot="start" value="possible"></ion-radio></ion-item></div>
     <div class="col middleGrey"></div>

@@ -15,21 +15,65 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-// Kommentar ziegm1: im variables.scss definiert
-/*
-.toolbar-background{
+.imgTitle{
+  width: 5%;
+  height: 5%;
+}
+.labelTitle{
+  padding-left: 0;
   background-color: #9ECF66;
   color: #888888;
 }
-*/
+.header-md::after{
+  height: 0;
+}
+.ion-md-menu:before{
+  width: 20px;
+  height: 20px;
+  padding: 0px 12px;
+  zoom: 1.5;
+}
+.ion-md-search:before{
+  width: 20px;
+  height: 20px;
+  padding: 0px 12px;
+  zoom: 1.5;
+}
+.ion-md-more:before{
+  width: 20px;
+  height: 20px;
+  padding: 0px 12px 0px 0px;
+  zoom: 1.5;
+}
+.item-md.item-block .item-inner{
+  border-bottom: transparent;
+}
+.toolbar-md{
+  padding: 0;
+}
+.rightSide{
+  text-align: right;
+}
+.label-md{
+  margin: 0 0 0 0;
+}
+.col{
+  padding: 0;
+}
+.itemBar{
+  position: absolute;
+}
+ion-icon::before{
+  padding: 12px;
+  color: #888888;
+}
+.toolbar-title-md{
+  margin-left: 0;
+}
 
-// Kommentar ziegm1: das überdeckt die Beschriftung des Tabs, hast du das so gewollt? darum mal rausgenommen...
-/*
-.tabs-md .tab-button{
-  background-color: #9ECF66;
-  color: #888888;
+.ion-grid{
+  justify-content: left;
 }
-*/
 
 //Border of the selected Tab
 .tabbar a[aria-selected=true] {

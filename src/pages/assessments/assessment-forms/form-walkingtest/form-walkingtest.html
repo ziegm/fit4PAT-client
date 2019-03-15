@@ -23,6 +23,13 @@
   </ion-item>
 
   <ion-item>
+    <ion-icon name="trending-up" (click)="navToEvaluationDemmi()"></ion-icon>
+    <ion-icon name="document"></ion-icon>
+    <ion-icon name="pie"></ion-icon>
+    <ion-icon name="briefcase"></ion-icon>
+  </ion-item>
+
+  <ion-item>
     <ion-label>1. Versuch</ion-label>
     <ion-input type="text" placeholder="Input" name="inputOne" [(ngModel)]="inputOne"></ion-input>
   </ion-item>
@@ -61,7 +68,7 @@
         <ion-option value="brown">Gehbock</ion-option>
         <ion-option value="blonde">Stock</ion-option>
         <ion-option value="black">Rollator</ion-option>
-        <ion-option value="red" (select)="$extend">andere</ion-option>
+        <ion-option value="red" (select)="$event">andere</ion-option>
       </ion-select>
     </ion-item>
     <ion-item name="extensionOthers" visile="false">
