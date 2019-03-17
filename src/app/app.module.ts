@@ -32,12 +32,11 @@ import {WardB3Page} from "../pages/patients/wards/ward-b3/ward-b3";
 import {WardC1Page} from "../pages/patients/wards/ward-c1/ward-c1";
 import {WardIpsPage} from "../pages/patients/wards/ward-ips/ward-ips";
 
-// import { ChartsModule } from 'ng2-charts';
-import {from} from "rxjs/observable/from";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
-//import Chart = require("chart.js");
-//@NgModule
-//import { Chart } from 'chart.js';
+import {RestProvider} from "../providers/rest/rest";
+import {HttpClientModule} from "@angular/common/http";
+import {PatientStationaryListComponent} from "../components/patient-stationary-list/patient-stationary-list";
+
 
 @NgModule({
   declarations: [
@@ -66,13 +65,13 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     WardB2Page,
     WardB3Page,
     WardC1Page,
-    WardIpsPage
+    WardIpsPage,
+    PatientStationaryListComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)//,
-    //ChartsModule,
-    //Chart
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -107,7 +106,9 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarcodeScanner
+    BarcodeScanner,
+    RestProvider
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

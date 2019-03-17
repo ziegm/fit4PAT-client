@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the WardA2Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,6 +8,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ward-a2.html',
 })
 export class WardA2Page {
+
+  ward:string = "A2";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

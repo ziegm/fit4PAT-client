@@ -1,0 +1,4 @@
+<ion-list>
+  <ion-item *ngFor="let patient of patients">{{ viewPatientStationary(patient) }}</ion-item>
+  <ion-item *ngIf="patients.length === 0">Auf dieser Station sind momentan keine Patienten mit Physiotherapie-Verordnung.</ion-item>
+</ion-list>

@@ -8,6 +8,6 @@ import { WardA1Page } from './ward-a1';
   ],
   imports: [
     IonicPageModule.forChild(WardA1Page),
-  ],
+  ]
 })
 export class WardA1PageModule {}
