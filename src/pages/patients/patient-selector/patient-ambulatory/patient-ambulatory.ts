@@ -15,6 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PatientAmbulatoryPage {
 
+  ward:string = "ambulatory";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

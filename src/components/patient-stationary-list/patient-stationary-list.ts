@@ -3,12 +3,7 @@ import {RestProvider} from "../../providers/rest/rest";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 
-/**
- * Generated class for the PatientStationaryListComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+
 @Component({
   selector: 'patient-stationary-list',
   templateUrl: 'patient-stationary-list.html'

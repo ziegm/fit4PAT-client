@@ -23,7 +23,6 @@ import {EvaluationWalkingtestPage} from "../pages/assessments/assessment-evaluat
 import {PatientAmbulatoryPage} from "../pages/patients/patient-selector/patient-ambulatory/patient-ambulatory";
 import {PatientStationaryPage} from "../pages/patients/patient-selector/patient-stationary/patient-stationary";
 import {PatientScanPage} from "../pages/patients/patient-selector/patient-scan/patient-scan";
-import {WardOverviewPage} from "../pages/patients/wards/ward-overview/ward-overview";
 import {WardA1Page} from "../pages/patients/wards/ward-a1/ward-a1";
 import {WardA2Page} from "../pages/patients/wards/ward-a2/ward-a2";
 import {WardB1Page} from "../pages/patients/wards/ward-b1/ward-b1";
@@ -58,7 +57,6 @@ import {PatientStationaryListComponent} from "../components/patient-stationary-l
     PatientAmbulatoryPage,
     PatientStationaryPage,
     PatientScanPage,
-    WardOverviewPage,
     WardA1Page,
     WardA2Page,
     WardB1Page,
@@ -93,7 +91,6 @@ import {PatientStationaryListComponent} from "../components/patient-stationary-l
     PatientAmbulatoryPage,
     PatientStationaryPage,
     PatientScanPage,
-    WardOverviewPage,
     WardA1Page,
     WardA2Page,
     WardB1Page,
