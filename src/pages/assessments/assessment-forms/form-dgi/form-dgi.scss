@@ -8,10 +8,44 @@ page-form-dgi {
   }
   .option{
     max-width: 10%;
-    text-align: -webkit-center;
+    text-align: right;
   }
   .rad{
     position: center;
+  }
+  .ionTop{
+    text-align: right;
+  }
+  .brdr{
+    border-bottom: black;
+  }
+  row{
+    border-bottom: black;
+  }
+  .darkGrey{
+    color: white;
+    background-color: #9f9f9f;
+    text-align: -webkit-center;
+    font-size: medium;
+  }
+  .greyZero{
+    color: black;
+    background-color: #e7e7e7;
+  }
+  .greyOne{
+    color: black;
+    background-color: #cfcfcf;
+  }
+  .greyTwo{
+    color: black;
+    background-color: #b7b7b7;
+  }
+  .greyThree{
+    color: black;
+    background-color: #e7e7e7;
+  }
+  .ion-label{
+    background-color: transparent;
   }
 
 }

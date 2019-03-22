@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PatientStationaryListComponent } from './patient-stationary-list/patient-stationary-list';
-import { PatientAmbulatoryListComponent } from './patient-ambulatory-list/patient-ambulatory-list';
+
 @NgModule({
-	declarations: [PatientStationaryListComponent,
-    PatientAmbulatoryListComponent],
+	declarations: [PatientStationaryListComponent],
 	imports: [],
-	exports: [PatientStationaryListComponent,
-    PatientAmbulatoryListComponent]
+	exports: [PatientStationaryListComponent]
 })
 export class ComponentsModule {}
