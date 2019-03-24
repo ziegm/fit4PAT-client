@@ -12,6 +12,7 @@ export class PatientStationaryListComponent {
 
   private patients: Patient[] = [];
   @Input() ward: string;
+  private noPatientMessage = "";
 
   constructor(private restProvider: RestProvider) {
   }
@@ -29,6 +30,7 @@ export class PatientStationaryListComponent {
           });
         } else {
           this.patients = [];
+          this.noPatientMessage = "Es existieren momentan keine Patienten mit Physiotherapie-Verordnung.";
         }
         this.patients.sort((a: Patient, b: Patient) => {
           return this.viewPatientStationary(a) > this.viewPatientStationary(b) ? 1 : -1;
@@ -37,12 +39,16 @@ export class PatientStationaryListComponent {
   }
 
   viewPatientStationary(patient: Patient): string {
-    const room = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
+    const roomIdentifier = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
     const gender = patient.gender === "female" ? "w" : "m";
     const birthDate = new Date(patient.birthDate).toLocaleDateString("de-CH");
     const caseId = patient.identifier.filter(identifier => identifier.type.text === "case-id")[0];
-    return room.value + ": " + patient.name[0].family + " " + patient.name[0].given[0] + ", " +
+    return this.room(roomIdentifier) + patient.name[0].family + " " + patient.name[0].given[0] + ", " +
       gender + ", " + birthDate + ", " + caseId.value + " (Fall-ID)";
+  }
+
+  room(room: fhir.Identifier): string {
+    return room.value === undefined ? "" : room.value +": ";
   }
 }
 
