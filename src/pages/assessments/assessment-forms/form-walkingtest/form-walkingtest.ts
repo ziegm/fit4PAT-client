@@ -1,21 +1,15 @@
-import { Component } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
+import {AssessmentForm} from "../assessment-form";
 
-/**
- * Generated class for the FormWalkingtestPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-form-walkingtest',
   templateUrl: 'form-walkingtest.html',
 })
-export class FormWalkingtestPage {
+export class FormWalkingtestPage implements AssessmentForm {
   public timeBegan = null
   public timeStopped:any = null
   public stoppedDuration:any = 0
@@ -26,7 +20,7 @@ export class FormWalkingtestPage {
 
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(navParams: NavParams, private app: App) {
     this.rootNav = app.getRootNav();
   }
 

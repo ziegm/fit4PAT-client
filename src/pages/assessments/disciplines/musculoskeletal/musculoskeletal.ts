@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-walkingtest";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 /**
  * Generated class for the MusculoskeletalPage page.
@@ -14,11 +15,12 @@ import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-
   selector: 'page-musculoskeletal',
   templateUrl: 'musculoskeletal.html',
 })
-export class MusculoskeletalPage {
+export class MusculoskeletalPage extends WorkflowPage {
 
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public app: App) {
+    super(navParams);
     this.rootNav = app.getRootNav();
   }
 
@@ -27,7 +29,7 @@ export class MusculoskeletalPage {
   }
 
   navToWalkingtest() {
-    this.rootNav.push(FormWalkingtestPage);
+    this.rootNav.push(FormWalkingtestPage, this.workflowSelector);
   }
 
 }

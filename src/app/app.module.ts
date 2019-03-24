@@ -35,6 +35,7 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {RestProvider} from "../providers/rest/rest";
 import {HttpClientModule} from "@angular/common/http";
 import {PatientStationaryListComponent} from "../components/patient-stationary-list/patient-stationary-list";
+import {PatientSelectorComponent} from "../components/patient-selector/patient-selector";
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {PatientStationaryListComponent} from "../components/patient-stationary-l
     WardB3Page,
     WardC1Page,
     WardIpsPage,
-    PatientStationaryListComponent
+    PatientStationaryListComponent,
+    PatientSelectorComponent
   ],
   imports: [
     BrowserModule,

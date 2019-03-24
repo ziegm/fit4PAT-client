@@ -1,5 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {RestProvider} from "../../providers/rest/rest";
+import {WorkflowSelector} from "../../workflow/workflow-selector";
+import {NavController} from "ionic-angular";
+import {AssessmentForm} from "../../pages/assessments/assessment-forms/assessment-form";
+import {FormDgiPage} from "../../pages/assessments/assessment-forms/form-dgi/form-dgi";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 
@@ -13,9 +17,12 @@ export class PatientStationaryListComponent {
   private patients: Patient[] = [];
   @Input() ward: string;
   private noPatientMessage = "";
+  @Input() workflowSelector: WorkflowSelector;
 
-  constructor(private restProvider: RestProvider) {
+  constructor(private restProvider: RestProvider, private navCtrl: NavController) {
+
   }
+
 
   ngOnChanges() {
     this.getPatients();
@@ -49,6 +56,15 @@ export class PatientStationaryListComponent {
 
   room(room: fhir.Identifier): string {
     return room.value === undefined ? "" : room.value +": ";
+  }
+
+  takeOverPatient(patient:Patient) {
+    this.popUntilPageType('AssessmentForm');
+  }
+
+  popUntilPageType(type: string): void {
+    let viewController = this.navCtrl.getViews().find((view) => view.component.name === 'FormDgiPage');
+    this.navCtrl.popTo(viewController);
   }
 }
 

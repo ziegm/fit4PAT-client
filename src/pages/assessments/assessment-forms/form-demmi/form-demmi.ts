@@ -1,25 +1,19 @@
-import { Component } from '@angular/core';
-import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {FormWalkingtestPage} from "../form-walkingtest/form-walkingtest";
+import {Component} from '@angular/core';
+import {App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
+import {AssessmentForm} from "../assessment-form";
 
-/**
- * Generated class for the FormDemmiPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-form-demmi',
   templateUrl: 'form-demmi.html',
 })
-export class FormDemmiPage {
+export class FormDemmiPage implements AssessmentForm {
 
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(navParams: NavParams, private app: App) {
     this.rootNav = app.getRootNav();
   }
 

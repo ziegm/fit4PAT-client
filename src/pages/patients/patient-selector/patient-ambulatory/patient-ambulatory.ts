@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 /**
  * Generated class for the PatientAmbulatoryPage page.
@@ -13,11 +14,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-patient-ambulatory',
   templateUrl: 'patient-ambulatory.html',
 })
-export class PatientAmbulatoryPage {
+export class PatientAmbulatoryPage extends WorkflowPage {
 
   ward:string = "ambulatory";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, navParams: NavParams) {
+    super(navParams);
   }
 
   ionViewDidLoad() {

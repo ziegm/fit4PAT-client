@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 /**
  * Generated class for the PatientScanPage page.
@@ -14,11 +15,12 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
   selector: 'page-patient-scan',
   templateUrl: 'patient-scan.html',
 })
-export class PatientScanPage {
+export class PatientScanPage extends WorkflowPage {
 
   private barcode = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+  constructor(private navCtrl: NavController, navParams: NavParams, private barcodeScanner: BarcodeScanner) {
+    super(navParams);
     this.barcodeScanner.scan().then(barcodeData => {
       this.barcode = barcodeData.text;
     }).catch(err => {

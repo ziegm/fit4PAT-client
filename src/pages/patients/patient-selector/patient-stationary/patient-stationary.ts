@@ -8,24 +8,20 @@ import {WardB3Page} from "../../wards/ward-b3/ward-b3";
 import {WardC1Page} from "../../wards/ward-c1/ward-c1";
 import {WardIpsPage} from "../../wards/ward-ips/ward-ips";
 import {PatientAmbulatoryPage} from "../patient-ambulatory/patient-ambulatory";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
-/**
- * Generated class for the PatientStationaryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-patient-stationary',
   templateUrl: 'patient-stationary.html',
 })
-export class PatientStationaryPage {
+export class PatientStationaryPage extends WorkflowPage {
 
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(private navCtrl: NavController, navParams: NavParams, private app: App) {
+    super(navParams);
     this.rootNav = app.getRootNav();
   }
 
@@ -34,31 +30,31 @@ export class PatientStationaryPage {
   }
 
   navToWardA1() {
-    this.rootNav.push(WardA1Page);
+    this.rootNav.push(WardA1Page, this.workflowSelector);
   }
 
   navToWardA2() {
-    this.rootNav.push(WardA2Page);
+    this.rootNav.push(WardA2Page, this.workflowSelector);
   }
 
   navToWardB1() {
-    this.rootNav.push(WardB1Page);
+    this.rootNav.push(WardB1Page, this.workflowSelector);
   }
 
   navToWardB2() {
-    this.rootNav.push(WardB2Page);
+    this.rootNav.push(WardB2Page, this.workflowSelector);
   }
 
   navToWardB3() {
-    this.rootNav.push(WardB3Page);
+    this.rootNav.push(WardB3Page, this.workflowSelector);
   }
 
   navToWardC1() {
-    this.rootNav.push(WardC1Page);
+    this.rootNav.push(WardC1Page, this.workflowSelector);
   }
 
   navToWardIps() {
-    this.rootNav.push(WardIpsPage);
+    this.rootNav.push(WardIpsPage, this.workflowSelector);
   }
 
 }

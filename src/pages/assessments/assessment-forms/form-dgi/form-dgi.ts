@@ -1,28 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {FormWalkingtestPage} from "../form-walkingtest/form-walkingtest";
+import {Component} from '@angular/core';
+import {AlertController, App, IonicPage} from 'ionic-angular';
 import {EvaluationDgiPage} from "../../assessment-evaluations/evaluation-dgi/evaluation-dgi";
-import { AlertController } from 'ionic-angular';
+import {AssessmentForm} from "../assessment-form";
 
-/**
- * Generated class for the FormDgiPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-form-dgi',
   templateUrl: 'form-dgi.html',
 })
-export class FormDgiPage {
+export class FormDgiPage implements AssessmentForm {
   private show: boolean = false;
   public discount: number = 0;
 
   private rootNav: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, private alertCtrl: AlertController) {
+  constructor(private app: App, private alertCtrl: AlertController) {
     this.rootNav = app.getRootNav();
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 
 @IonicPage()
@@ -8,11 +9,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ward-ips.html',
 })
 
-export class WardIpsPage {
+export class WardIpsPage extends WorkflowPage {
 
   ward:string = "IPS";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, navParams: NavParams) {
+    super(navParams);
   }
 
   ionViewDidLoad() {
