@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {App, NavController, NavParams} from 'ionic-angular';
+import {App, NavParams} from 'ionic-angular';
 import {GeriatricsPage} from '../disciplines/geriatrics/geriatrics';
 import {NeurologyPage} from "../disciplines/neurology/neurology";
 import {CardiologyPage} from "../disciplines/cardiology/cardiology";
@@ -12,31 +12,35 @@ import {WorkflowPage} from "../../../workflow/workflow-page";
   templateUrl: 'assessment-tab.html'
 })
 export class AssessmentTabPage extends WorkflowPage {
-
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, public app: App, navParams: NavParams) {
-    super(navParams);
+  constructor(app: App, navParams: NavParams) {
+    super(navParams.data);
+
+    if (typeof navParams.data !== "number") {
+
+    }
+
     this.rootNav = app.getRootNav();
   }
 
   navToGeriatrics() {
-    this.rootNav.push(GeriatricsPage, this.workflowSelector);
+    this.rootNav.push(GeriatricsPage, this.workflowParameters);
   }
 
   navToNeurology() {
-    this.rootNav.push(NeurologyPage, this.workflowSelector);
+    this.rootNav.push(NeurologyPage, this.workflowParameters);
   }
 
   navToCardiology() {
-    this.rootNav.push(CardiologyPage, this.workflowSelector);
+    this.rootNav.push(CardiologyPage, this.workflowParameters);
   }
 
   navToMusculoskeletal() {
-    this.rootNav.push(MusculoskeletalPage, this.workflowSelector);
+    this.rootNav.push(MusculoskeletalPage, this.workflowParameters);
   }
 
   navToOthers() {
-    this.rootNav.push(OthersPage, this.workflowSelector);
+    this.rootNav.push(OthersPage, this.workflowParameters);
   }
 }

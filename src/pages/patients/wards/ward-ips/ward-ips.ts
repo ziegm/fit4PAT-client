@@ -13,7 +13,7 @@ export class WardIpsPage extends WorkflowPage {
   private readonly ward:string = "IPS";
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
-    super(navParams);
+    super(navParams.data);
   }
 
   ionViewDidLoad() {

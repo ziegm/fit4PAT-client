@@ -8,13 +8,8 @@ import {WorkflowSelector} from "../../workflow/workflow-selector";
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
-  tab1Root = AssessmentTabPage;
-  tab2Root = PatientTabPage;
-  fromAssessment = WorkflowSelector.FromAssessment;
-  fromPatient = WorkflowSelector.FromPatient;
-
-  constructor() {
-
-  }
+  private tab1Root = AssessmentTabPage;
+  private tab2Root = PatientTabPage;
+  private fromAssessment = { workflowSelector: WorkflowSelector.FromAssessment }
+  private fromPatient = { workflowSelector: WorkflowSelector.FromPatient }
 }

@@ -13,7 +13,7 @@ export class WardB2Page extends WorkflowPage {
   private readonly ward:string = "B2";
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
-    super(navParams);
+    super(navParams.data);
   }
 
   ionViewDidLoad() {

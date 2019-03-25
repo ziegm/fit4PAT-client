@@ -36,6 +36,7 @@ import {RestProvider} from "../providers/rest/rest";
 import {HttpClientModule} from "@angular/common/http";
 import {PatientListComponent} from "../components/patient/patient-list/patient-list";
 import {PatientSelectorComponent} from "../components/patient/patient-selector/patient-selector";
+import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail";
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import {PatientSelectorComponent} from "../components/patient/patient-selector/p
     WardC1Page,
     WardIpsPage,
     PatientListComponent,
-    PatientSelectorComponent
+    PatientSelectorComponent,
+    PatientDetailPage
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ import {PatientSelectorComponent} from "../components/patient/patient-selector/p
     WardB2Page,
     WardB3Page,
     WardC1Page,
-    WardIpsPage
+    WardIpsPage,
+    PatientDetailPage
   ],
   providers: [
     StatusBar,

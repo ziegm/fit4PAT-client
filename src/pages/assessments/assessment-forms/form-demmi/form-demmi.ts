@@ -15,9 +15,7 @@ export class FormDemmiPage {
 
   constructor(navParams: NavParams, app: App) {
     this.rootNav = app.getRootNav();
-    if(typeof navParams.data !== "number") {
-      this.patient = navParams.data;
-    }
+    this.patient = navParams.data.patient;
   }
 
   ionViewDidLoad() {

@@ -20,7 +20,7 @@ export class PatientScanPage extends WorkflowPage {
   private barcode = "";
 
   constructor(private navCtrl: NavController, navParams: NavParams, private barcodeScanner: BarcodeScanner) {
-    super(navParams);
+    super(navParams.data);
     this.barcodeScanner.scan().then(barcodeData => {
       this.barcode = barcodeData.text;
     }).catch(err => {

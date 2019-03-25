@@ -3,7 +3,6 @@ import {App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
 import Patient = fhir.Patient;
 
-
 @IonicPage()
 @Component({
   selector: 'page-form-walkingtest',
@@ -22,13 +21,7 @@ export class FormWalkingtestPage {
 
   constructor(navParams: NavParams, app: App) {
     this.rootNav = app.getRootNav();
-    if(typeof navParams.data !== "number") {
-      this.patient = navParams.data;
-    }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormWalkingtestPage');
+    this.patient = navParams.data.patient;
   }
 
   navToEvaluationWalkingtest(){
@@ -86,5 +79,4 @@ export class FormWalkingtestPage {
       this.zeroPrefix(sec, 2) + "." +
       this.zeroPrefix(ms, 3);
   };
-
 }

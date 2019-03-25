@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {App, IonicPage, NavParams} from 'ionic-angular';
 import {FormDemmiPage} from "../../assessment-forms/form-demmi/form-demmi";
 import {FormDgiPage} from "../../assessment-forms/form-dgi/form-dgi";
 import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-walkingtest";
@@ -21,25 +21,20 @@ export class NeurologyPage extends WorkflowPage {
 
   private rootNav:any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public app: App) {
-    super(navParams);
+  constructor(navParams: NavParams, app: App) {
+    super(navParams.data);
     this.rootNav = app.getRootNav();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NeurologyPage');
-  }
-
   navToDemmi() {
-    this.rootNav.push(FormDemmiPage, this.workflowSelector);
+    this.rootNav.push(FormDemmiPage, this.workflowParameters);
   }
 
   navToDgi() {
-    this.rootNav.push(FormDgiPage, this.workflowSelector);
+    this.rootNav.push(FormDgiPage, this.workflowParameters);
   }
 
   navToWalkingtest() {
-    this.rootNav.push(FormWalkingtestPage, this.workflowSelector);
+    this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
   }
-
 }

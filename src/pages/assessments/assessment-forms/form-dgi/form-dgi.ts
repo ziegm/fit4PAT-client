@@ -17,13 +17,7 @@ export class FormDgiPage {
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams) {
     this.rootNav = app.getRootNav();
-    if(typeof navParams.data !== "number") {
-      this.patient = navParams.data;
-    }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormDgiPage');
+    this.patient = navParams.data.patient;
   }
 
   navToEvaluationDgi() {

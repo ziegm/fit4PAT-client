@@ -14,15 +14,15 @@ export class PatientSelectorComponent extends WorkflowPage {
   @Input() private patient: Patient;
 
   constructor(private app: App, navParams: NavParams) {
-    super(navParams);
+    super(navParams.data);
     this.rootNav = app.getRootNav();
   }
 
-  private viewPatient(patient:Patient) {
-    return PatientHelper.viewPatient(patient);
+  private viewPatient(patient: Patient) {
+    return patient !== undefined ? PatientHelper.viewPatient(patient) : "";
   }
 
   navToPatientTab() {
-    this.rootNav.push(PatientTabPage, this.workflowSelector);
+    this.rootNav.push(PatientTabPage, this.workflowParameters);
   }
 }
