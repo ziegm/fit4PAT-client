@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {AlertController, App, IonicPage} from 'ionic-angular';
+import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationDgiPage} from "../../assessment-evaluations/evaluation-dgi/evaluation-dgi";
-import {AssessmentForm} from "../assessment-form";
+import Patient = fhir.Patient;
 
 
 @IonicPage()
@@ -9,14 +9,17 @@ import {AssessmentForm} from "../assessment-form";
   selector: 'page-form-dgi',
   templateUrl: 'form-dgi.html',
 })
-export class FormDgiPage implements AssessmentForm {
+export class FormDgiPage {
   private show: boolean = false;
   public discount: number = 0;
-
   private rootNav: any;
+  private patient: Patient;
 
-  constructor(private app: App, private alertCtrl: AlertController) {
+  constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams) {
     this.rootNav = app.getRootNav();
+    if(typeof navParams.data !== "number") {
+      this.patient = navParams.data;
+    }
   }
 
   ionViewDidLoad() {
@@ -159,5 +162,4 @@ export class FormDgiPage implements AssessmentForm {
   onChange() {
         document.getElementById("extension").style.visibility = "false";
   }
-
 }

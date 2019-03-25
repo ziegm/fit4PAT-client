@@ -1,0 +1,4 @@
+<ion-list>
+  <ion-item *ngFor="let patient of patients" (click)="takeOverPatient(patient)">{{ viewPatient(patient) }}</ion-item>
+  <ion-item *ngIf="patients.length === 0">{{noPatientMessage}}</ion-item>
+</ion-list>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 /**
@@ -15,8 +15,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   templateUrl: 'patient-ambulatory.html',
 })
 export class PatientAmbulatoryPage extends WorkflowPage {
-
-  ward:string = "ambulatory";
+  private readonly ward:string = "ambulatory";
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
     super(navParams);

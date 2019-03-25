@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { PatientStationaryListComponent } from './patient-stationary-list/patient-stationary-list';
-import { PatientSelectorComponent } from './patient-selector/patient-selector';
+import {NgModule} from '@angular/core';
+import {PatientListComponent} from './patient/patient-list/patient-list';
+import {PatientSelectorComponent} from './patient/patient-selector/patient-selector';
 
 @NgModule({
-	declarations: [PatientStationaryListComponent,
+	declarations: [PatientListComponent,
     PatientSelectorComponent],
 	imports: [],
-	exports: [PatientStationaryListComponent,
+	exports: [PatientListComponent,
     PatientSelectorComponent]
 })
 export class ComponentsModule {}

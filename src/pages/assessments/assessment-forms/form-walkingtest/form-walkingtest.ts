@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
-import {AssessmentForm} from "../assessment-form";
+import Patient = fhir.Patient;
 
 
 @IonicPage()
@@ -9,19 +9,22 @@ import {AssessmentForm} from "../assessment-form";
   selector: 'page-form-walkingtest',
   templateUrl: 'form-walkingtest.html',
 })
-export class FormWalkingtestPage implements AssessmentForm {
-  public timeBegan = null
-  public timeStopped:any = null
-  public stoppedDuration:any = 0
-  public started = null
-  public running = false
-  public blankTime = "00:00.000"
-  public time = "00:00.000"
-
+export class FormWalkingtestPage {
+  public timeBegan = null;
+  public timeStopped:any = null;
+  public stoppedDuration:any = 0;
+  public started = null;
+  public running = false;
+  public blankTime = "00:00.000";
+  public time = "00:00.000";
   private rootNav:any;
+  private patient: Patient;
 
-  constructor(navParams: NavParams, private app: App) {
+  constructor(navParams: NavParams, app: App) {
     this.rootNav = app.getRootNav();
+    if(typeof navParams.data !== "number") {
+      this.patient = navParams.data;
+    }
   }
 
   ionViewDidLoad() {
@@ -44,7 +47,7 @@ export class FormWalkingtestPage implements AssessmentForm {
       this.timeBegan = new Date();
     }
     if (this.timeStopped !== null) {
-      let newStoppedDuration:any = (+new Date() - this.timeStopped)
+      let newStoppedDuration:any = (+new Date() - this.timeStopped);
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
     this.started = setInterval(this.clockRunning.bind(this), 10);
@@ -71,11 +74,11 @@ export class FormWalkingtestPage implements AssessmentForm {
     return (zero + num).slice(-digit);
   }
   clockRunning(){
-    let currentTime:any = new Date()
-    let timeElapsed:any = new Date(currentTime - this.timeBegan - this.stoppedDuration)
-    let hour = timeElapsed.getUTCHours()
-    let min = timeElapsed.getUTCMinutes()
-    let sec = timeElapsed.getUTCSeconds()
+    let currentTime:any = new Date();
+    let timeElapsed:any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
+    let hour = timeElapsed.getUTCHours();
+    let min = timeElapsed.getUTCMinutes();
+    let sec = timeElapsed.getUTCSeconds();
     let ms = timeElapsed.getUTCMilliseconds();
     this.time =
       this.zeroPrefix(hour, 2) + ":" +

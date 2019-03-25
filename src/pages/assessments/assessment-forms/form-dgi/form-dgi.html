@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <patient-selector></patient-selector>
+  <patient-selector [patient]="patient"></patient-selector>
 
   <ion-item class="ionTop">
     <ion-icon name="trending-up" (click)="navToEvaluationDgi()">Verlauf</ion-icon>

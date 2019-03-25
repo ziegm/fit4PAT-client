@@ -34,8 +34,8 @@ import {WardIpsPage} from "../pages/patients/wards/ward-ips/ward-ips";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {RestProvider} from "../providers/rest/rest";
 import {HttpClientModule} from "@angular/common/http";
-import {PatientStationaryListComponent} from "../components/patient-stationary-list/patient-stationary-list";
-import {PatientSelectorComponent} from "../components/patient-selector/patient-selector";
+import {PatientListComponent} from "../components/patient/patient-list/patient-list";
+import {PatientSelectorComponent} from "../components/patient/patient-selector/patient-selector";
 
 
 @NgModule({
@@ -65,7 +65,7 @@ import {PatientSelectorComponent} from "../components/patient-selector/patient-s
     WardB3Page,
     WardC1Page,
     WardIpsPage,
-    PatientStationaryListComponent,
+    PatientListComponent,
     PatientSelectorComponent
   ],
   imports: [

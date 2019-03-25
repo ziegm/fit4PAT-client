@@ -8,18 +8,14 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   selector: 'page-ward-a1',
   templateUrl: 'ward-a1.html',
 })
-
 export class WardA1Page extends WorkflowPage {
-
-  ward:string = "A1";
+  private readonly ward:string = "A1";
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
     super(navParams);
   }
 
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad WardA1Page');
   }
-
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 
@@ -10,8 +10,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 })
 
 export class WardB3Page extends WorkflowPage {
-
-  ward:string = "B3";
+  private readonly ward:string = "B3";
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
     super(navParams);

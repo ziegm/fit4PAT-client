@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
-import {AssessmentForm} from "../assessment-form";
+import Patient = fhir.Patient;
 
 
 @IonicPage()
@@ -9,12 +9,15 @@ import {AssessmentForm} from "../assessment-form";
   selector: 'page-form-demmi',
   templateUrl: 'form-demmi.html',
 })
-export class FormDemmiPage implements AssessmentForm {
-
+export class FormDemmiPage {
   private rootNav:any;
+  private patient: Patient;
 
-  constructor(navParams: NavParams, private app: App) {
+  constructor(navParams: NavParams, app: App) {
     this.rootNav = app.getRootNav();
+    if(typeof navParams.data !== "number") {
+      this.patient = navParams.data;
+    }
   }
 
   ionViewDidLoad() {
