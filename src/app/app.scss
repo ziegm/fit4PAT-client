@@ -15,9 +15,15 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.ion-md-man:before {
+  padding: 0;
+}
+.ion-md-clipboard:before{
+  padding: 0;
+}
 .imgTitle{
-  width: 5%;
-  height: 5%;
+  width: 23px;
+  height: 23px;
 }
 .labelTitle{
   padding-left: 0;

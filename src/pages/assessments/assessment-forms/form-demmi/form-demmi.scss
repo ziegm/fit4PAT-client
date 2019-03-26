@@ -24,21 +24,29 @@ page-form-demmi {
   }
   .lightGrey{
   color: black;
-  background-color: #e7e7e7;
+  background-color: #f3f3f3;
   }
   .normalGrey{
   color: black;
-  background-color: #cfcfcf;
+  background-color: #e7e7e7;
   }
   .middleGrey{
   color: black;
-  background-color: #b7b7b7;
+  background-color: #dbdbdb;
   }
   .ion-label{
   background-color: transparent;
   }
   .button-inner{
   background-color: transparent;
+  }
+  .number{
+    max-width: 3%;
+    padding-top: 12px
+  }
+  .option{
+    max-width: 22%;
+    text-align: right;
   }
 
 }

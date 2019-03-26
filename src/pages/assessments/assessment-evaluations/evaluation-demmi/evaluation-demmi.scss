@@ -1,6 +1,55 @@
 page-evaluation-demmi {
 
   .item-md{
-    padding-left: 0%;
+    padding-left: 0;
   }
+  .item-md.item-block .item-inner{
+    padding-right: 0;
+  }
+  .score{
+    max-width: 50%;
+  }
+  .rohwert{
+    border-top: solid black;
+    border-left: solid black;
+  }
+  .demmi{
+    border-top: solid black;
+    border-left: solid black;
+    border-bottom: solid black;
+  }
+  .red{
+    background-color: red;
+    border-top: solid black;
+    border-left: solid black;
+    text-align: center;
+  }
+  .orange{
+    background-color: orange;
+    border-top: solid black;
+    border-left: solid black;
+    text-align: center;
+  }
+  .yellow{
+    background-color: yellow;
+    border-top: solid black;
+    border-left: solid black;
+    text-align: center;
+  }
+  .green{
+    background-color: green;
+    border-top: solid black;
+    border-left: solid black;
+    text-align: center;
+  }
+  .down{
+    border-bottom: solid black;
+  }
+  .last{
+    border-right: solid black;
+  }
+  .bar-stable{
+    padding-bottom: 10px;
+  }
+
 }

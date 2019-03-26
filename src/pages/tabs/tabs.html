@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
       <ion-grid>
         <ion-row>
           <ion-col><ion-item class="labelTitle">
@@ -23,3 +26,5 @@
   <ion-tab [root]="tab2Root" [rootParams]="fromPatient"
            tabTitle="Patient" tabIcon="man"></ion-tab>
 </ion-tabs>
+
+

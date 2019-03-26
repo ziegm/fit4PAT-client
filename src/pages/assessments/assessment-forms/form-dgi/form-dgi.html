@@ -24,103 +24,115 @@
     </div>
   </ion-item>
 
-  <ion-list radio-group [(ngModel)]="nrOne" class="brdr">
+  <ion-list radio-group [(ngModel)]="nrOne">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
-      <div class="col transparent text">Gehen auf ebener Strecke 20 Meter <ion-icon name="information-circle-outline"></ion-icon>
-        <!--<img src="./assets/icon/md-information-circle-outline.svg" (click)="navToEvaluationDemmi()"/>-->
+      <div class="col transparent text">Gehen auf ebener Strecke 20 Meter
+        <ion-icon name="information-circle" (click)="showInfoOne()"></ion-icon>
       </div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrTwo">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
-      <div class="col transparent text">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent text">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
+        <ion-icon name="information-circle" (click)="showInfoTwo()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrThree">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
-      <div class="col transparent text">Gehen mit Kopfdrehung rechts und links</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent text">Gehen mit Kopfdrehung rechts und links
+        <ion-icon name="information-circle" (click)="showInfoThree()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrFour">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
-      <div class="col transparent">Gehen und nach oben und nach unten schauen</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent">Gehen und nach oben und nach unten schauen
+        <ion-icon name="information-circle" (click)="showInfoFour()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrFive">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
-      <div class="col transparent">Gehen und Drehung um 180°</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent">Gehen und Drehung um 180°
+        <ion-icon name="information-circle" (click)="showInfoFive()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrSix">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
-      <div class="col transparent">Gehen über Hindernisse</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent">Gehen über Hindernisse
+        <ion-icon name="information-circle" (click)="showInfoSix()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrSeven">
     <div class="row">
       <div class="col transparent number">7.</div>
-      <div class="col transparent">Gehen um Hindernisse links und rechts herum</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent">Gehen um Hindernisse links und rechts herum
+        <ion-icon name="information-circle" (click)="showInfoSeven()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
   <ion-list radio-group [(ngModel)]="nrEight">
     <div class="row">
       <div class="col transparent number">8.</div>
-      <div class="col transparent">Treppensteigen</div>
-      <div class="col greyZero option"><ion-item class="transparent"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
-      <div class="col greyOne option"><ion-item class="transparent"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
-      <div class="col greyTwo option"><ion-item class="transparent"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
-      <div class="col greyThree option"><ion-item class="transparent"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
+      <div class="col transparent">Treppensteigen
+        <ion-icon name="information-circle" (click)="showInfoEight()"></ion-icon>
+      </div>
+      <div class="col greyZero option"><ion-item class="greyZero"><ion-radio slot="start" value="zero"></ion-radio></ion-item></div>
+      <div class="col greyOne option"><ion-item class="greyOne"><ion-radio slot="start" value="one"></ion-radio></ion-item></div>
+      <div class="col greyTwo option"><ion-item class="greyTwo"><ion-radio slot="start" value="two"></ion-radio></ion-item></div>
+      <div class="col greyThree option"><ion-item class="greyThree"><ion-radio slot="start" value="three"></ion-radio></ion-item></div>
     </div>
   </ion-list>
 
   <ion-list>
   <ion-item>
     <ion-label>Hilfsmittel</ion-label>
-    <ion-select value="none" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="onChange()">
+    <ion-select value="aid" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="showExtension($event)" [(ngModel)]="aid">
       <ion-option value="none" selected="true">keine</ion-option>
       <ion-option value="walker">Gehbock</ion-option>
       <ion-option value="stick">Stock</ion-option>
       <ion-option value="rollator">Rollator</ion-option>
-      <ion-option value="other" (select)="showExtension()">andere</ion-option>
+      <ion-option value="other">andere</ion-option>
     </ion-select>
   </ion-item>
-  <ion-item id="extension">
-            <!--*ngIf="visability"-->
-
+  <ion-item id="extension" *ngIf="aid=='other'">
     <ion-label>Welche?</ion-label>
     <ion-input type="text" id="twt4"></ion-input>
   </ion-item>
