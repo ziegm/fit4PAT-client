@@ -14,7 +14,7 @@ export class FormDgiPage {
   public discount: number = 0;
   private rootNav: any;
   private patient: Patient;
-  public aid = false;
+  public aid = "none";
   public selectedIndex: number;
 
 

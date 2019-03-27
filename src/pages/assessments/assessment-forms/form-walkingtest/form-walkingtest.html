@@ -5,17 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <!--[scrollEvents]="true"
-  (ionScrollStart)="logScrollStart()"
-  (ionScroll)="logScrolling($event)"
-  (ionScrollEnd)="logScrollEnd()"-->
   <patient-selector [patient]="patient"></patient-selector>
 
   <ion-item>
-    <ion-icon name="trending-up" (click)="navToEvaluationDemmi()"></ion-icon>
-    <ion-icon name="document"></ion-icon>
-    <ion-icon name="pie"></ion-icon>
-    <ion-icon name="briefcase"></ion-icon>
+    <ion-icon name="trending-up" (click)="navToEvaluationWalkingtest()">Verlauf</ion-icon>
+    <ion-icon name="document" (click)="popupInstruction()">Instruktion</ion-icon>
+    <ion-icon name="pie" (click)="popupNormwerte()">Normwerte</ion-icon>
+    <ion-icon name="briefcase" (click)="popupMaterial()">Material</ion-icon>
   </ion-item>
 
   <ion-item>

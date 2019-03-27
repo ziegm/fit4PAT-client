@@ -125,7 +125,7 @@
   <ion-item>
     <ion-label>Hilfsmittel</ion-label>
     <ion-select value="aid" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="showExtension($event)" [(ngModel)]="aid">
-      <ion-option value="none" selected="true">keine</ion-option>
+      <ion-option value="none" [selected]="true">keine</ion-option>
       <ion-option value="walker">Gehbock</ion-option>
       <ion-option value="stick">Stock</ion-option>
       <ion-option value="rollator">Rollator</ion-option>
