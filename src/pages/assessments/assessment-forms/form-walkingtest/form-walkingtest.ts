@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {App, IonicPage, NavParams} from 'ionic-angular';
+import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
 import Patient = fhir.Patient;
 
@@ -19,7 +19,7 @@ export class FormWalkingtestPage {
   private rootNav:any;
   private patient: Patient;
 
-  constructor(navParams: NavParams, app: App) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App) {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
   }
@@ -79,4 +79,91 @@ export class FormWalkingtestPage {
       this.zeroPrefix(sec, 2) + "." +
       this.zeroPrefix(ms, 3);
   };
+
+  popupInstruction() {
+    let alert = this.alertCtrl.create({
+      title: 'Instruktion',
+      subTitle: 'Timed Walking Test',
+      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
+        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
+        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
+        'müssen wir während des Gehens nach links und rechts\n' +
+        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
+        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
+        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
+        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
+        'anhalten und uns umdrehen können, ohne das Gleichgewicht zu\n' +
+        'verlieren. Schließlich müssen wir fähig sein, sicher um Hindernisse\n' +
+        'herumzugehen, ohne zu zögern. Wir passen unser Gehen\n' +
+        'den verschiedenen Anforderungen also stets an und halten dabei\n' +
+        'immer das Gleichgewicht.\n' +
+        'Ein Maß für Gang und mehr s Diese Fähigkeit, das Gehen an verschiedene\n' +
+        'Erfordernisse anzupassen, misst der Dynamic Gait\n' +
+        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
+  popupNormwerte() {
+    let alert = this.alertCtrl.create({
+      title: 'Normwerte',
+      subTitle: 'Timed Walking Test',
+      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
+        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
+        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
+        'müssen wir während des Gehens nach links und rechts\n' +
+        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
+        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
+        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
+        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
+        'anhalten und uns umdrehen können, ohne das Gleichgewicht zu\n' +
+        'verlieren. Schließlich müssen wir fähig sein, sicher um Hindernisse\n' +
+        'herumzugehen, ohne zu zögern. Wir passen unser Gehen\n' +
+        'normal meistert. Können die Patienten die Aufgabe nicht bewältigen,\n' +
+        'erhalten sie null Punkte (a Kasten 2). Für eine eingeschränkte\n' +
+        'Ausführung gibt es einen oder zwei Punkte. Die maximale\n' +
+        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
+  popupMaterial() {
+    let alert = this.alertCtrl.create({
+      title: 'Material',
+      subTitle: 'Timed Walking Test',
+      message: '1. Freie Gehstrecke von min. 20 m<br/>' +
+        '2. Drei Schuhschachteln<br/>' +
+        '3. Drei Keulen<br/>' +
+        '4. Eine Treppe',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
 }
