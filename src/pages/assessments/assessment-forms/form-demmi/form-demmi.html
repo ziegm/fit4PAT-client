@@ -23,7 +23,9 @@
     </div>
  </ion-item>
 
-  <ion-item><ion-label class="category">Bett</ion-label></ion-item>
+  <ion-item><ion-label class="category">Bett
+    <ion-icon name="information-circle" (click)="showInfoBed()"></ion-icon>
+  </ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="Bridge">
   <div class="row" ng-repeat="data in ctrl.data">
     <div class="col transparent number">1.</div>
@@ -59,7 +61,9 @@
     </div>
   </ion-list>
 
-  <ion-item><ion-label class="category">Stuhl</ion-label></ion-item>
+  <ion-item><ion-label class="category">Stuhl (ohne Gehhilfe, wenn möglich ohne Schuhe und Socken)
+    <ion-icon name="information-circle" (click)="showInfoChair()"></ion-icon>
+  </ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="sitInChair">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
@@ -95,7 +99,9 @@
     </div>
   </ion-list>
 
-  <ion-item><ion-label class="category">Statisches Gleichgewicht (ohne Gehhilfe)</ion-label></ion-item>
+  <ion-item><ion-label class="category">Statisches Gleichgewicht (ohne Gehhilfe, wenn möglich ohne Schuhe und Socken)
+    <ion-icon name="information-circle" (click)="showInfoStatic()"></ion-icon>
+  </ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="standWithoutAid">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">7.</div>
@@ -141,7 +147,9 @@
     </div>
   </ion-list>
 
-  <ion-item><ion-label class="category">Gehen</ion-label></ion-item>
+  <ion-item><ion-label class="category">Gehen
+    <ion-icon name="information-circle" (click)="showInfoWalk()"></ion-icon>
+  </ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="walkway">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">11.</div>
@@ -169,7 +177,9 @@
     </div>
   </ion-list>
 
-  <ion-item><ion-label class="category">Dynamisches Gleichgewicht (ohne Gehhilfe)</ion-label></ion-item>
+  <ion-item><ion-label class="category">Dynamisches Gleichgewicht (ohne Gehhilfe, wenn möglich ohne Schuhe und Socken)
+    <ion-icon name="information-circle" (click)="showInfoDynamic()"></ion-icon>
+  </ion-label></ion-item>
   <ion-list radio-group [(ngModel)]="penFromGround">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">13.</div>

@@ -30,15 +30,38 @@ export class FormDemmiPage {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       subTitle: 'de Morton Mobility Index',
-      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
-        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
-        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
-        'müssen wir während des Gehens nach links und rechts\n' +
-        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
-        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
-        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
-        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
-        'Sklerose [7].\n',
+      message: 'Hinweise zur Hilfestellung:<br/>' +
+      'Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, in erster Linie, um ' +
+      'Bewegungen zu führen.<br/>' +
+      'Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
+      'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.<br/>' +
+      'Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
+      'nicht erforderlich.<br/>' +
+      'Hinweise zur Durchführung<br/>' +
+      '1. Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
+        'seine Medikamente eingenommen hat, wie z.B. eine halbe Stunde nach ' +
+        'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
+        'Parkinson-Medikamenten.<br/>' +
+      '2. Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
+        'Bei sehr belastbarkeitsgeminderten Patienten, die im Stuhl angetroffen werden, ' +
+        'können die Tests aus dem Abschnitt „Stuhl“ vorgezogen werden.<br/>' +
+      '3. Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.<br/>' +
+      '4. Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
+        'bzgl. ihrer Leistung bekommen.<br/>' +
+      '5. Die Bewertung findet anhand des ersten Testversuchs statt.<br/>' +
+      '6. Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
+        'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.<br/>' +
+      '7. Der Untersucher kümmert sich um medizinischen Apparaturen (wie z.B. ' +
+        'mobile Sauerstoffversorgung, Drainagen). Benötigt der Patient ' +
+        'geringfügige Hilfestellung um die Aufgaben durchzuführen, ist eine weitere ' +
+        'Person erforderlich, um bei den Apparaturen behilflich zu sein.<br/>' +
+      '8. Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
+        'Aufgabenstellung benötigen, sollten nach der Hälfte der Aufgaben eine ' +
+        '10minütige Pause einlegen, d.h. nachdem sie den Transfer vom Stuhl ' +
+        'abgeschlossen haben.<br/>' +
+      '9. Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
+        'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
+        '„Stuhl“ vorgezogen werden.',
       buttons: [
         {
           text: 'Ok',
@@ -56,13 +79,18 @@ export class FormDemmiPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'de Morton Mobility Index',
-      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
-        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
-        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
-        'müssen wir während des Gehens nach links und rechts\n' +
-        'Dokumentation, zum Beispiel in der Geriatrie [2, 3], bei vestibulären\n' +
-        'Gleichgewichtsdysfunktionen [4, 5, 6] und bei Multipler\n' +
-        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      message: '<ion-list radio-group [(ngModel)]="scoreToDemmiScore">' +
+        '<ion-label class="bar-stable">' +
+      'DEMMI Rohwert Umrechnungstabelle' +
+        '</ion-label>' +
+        '<div class="row" ng-repeat="data in ctrl.data">' +
+      '<div class="col"><ion-item class="rohwert"><ion-label>Rohwert</ion-label></ion-item><ion-item class="demmi"><ion-label>DEMMI Score</ion-label></ion-item></div>' +
+        '<div class="col"><ion-item class="red"><ion-label>0</ion-label></ion-item><ion-item class="red down"><ion-label>0</ion-label></ion-item></div>' +
+        '<div class="col"><ion-item class="red"><ion-label>1</ion-label></ion-item><ion-item class="red down"><ion-label>8</ion-label></ion-item></div>' +
+        '<div class="col"><ion-item class="red"><ion-label>2</ion-label></ion-item><ion-item class="red down"><ion-label>15</ion-label></ion-item></div>' +
+        '<div class="col"><ion-item class="red"><ion-label>3</ion-label></ion-item><ion-item class="red down"><ion-label>20</ion-label></ion-item></div>' +
+        '</div>' +
+        '</ion-list>',
       buttons: [
         {
           text: 'Ok',
@@ -82,8 +110,31 @@ export class FormDemmiPage {
       subTitle: 'de Morton Mobility Index',
       message: '1. Spitalbett/Liege<br/>' +
       '2. Stuhl mit Armlehnen (Sitzhöhe 45cm)<br/>' +
-        '3. Stift<br/>' +
-        '4.  Abgemessene Gehstrecke bis 50m',
+        '3. Abgemessene Gehstecke (50m)<br/>' +
+        '4. Stift',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
+  showInfoBed(){
+    let alert = this.alertCtrl.create({
+      title: 'Transfer im Bett',
+      message: 'Die Höhe des Bettes sollte individuell auf den Patienten ' +
+      'abgestimmt sein. Ein normiertes Spitalbett oder eine Liege sollte ' +
+      'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel, wie ' +
+      'z.B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
+      'Aufstehhilfe benutzen. Zusätzliche Kissen können für Patienten ' +
+      'bereitgestellt werden, die nicht in der Lage sind, flach auf dem Rücken zu ' +
+      'liegen.',
       buttons: [
         {
           text: 'Ok',
@@ -151,11 +202,29 @@ export class FormDemmiPage {
     alert.present();
   }
 
+  showInfoChair() {
+    let alert = this.alertCtrl.create({
+      title: 'Transfer vom Stuhl',
+      message: 'Es sollte ein standardisierter, stabiler Stuhl mit einer ' +
+      'Sitzhöhe von 45 cm und Armlehnen zum Einsatz kommen.',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
   showInfoFour(){
     let alert = this.alertCtrl.create({
       title: '4. Sitzen im Stuhl ohne Unterstützung',
       message: 'Der Patient wird aufgefordert, auf einem Stuhl 10 Sekunden frei zu sitzen, '+
-      'ohne die Armlehnen zu berühren, zusammen zu sacken oder zu '+
+      'ohne die Armlehnen und die Rückenlehne zu berühren, zusammen zu sacken oder zu '+
       'schwanken. Füsse und Knie hält der Patient dabei geschlossen, die Füsse '+
       'berühren den Boden.',
       buttons: [
@@ -193,6 +262,28 @@ export class FormDemmiPage {
       title: '6. Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen',
       message: 'Der Patient wird aufgefordert, mit vor der Brust verschränkten Armen vom ' +
       'Stuhl aufzustehen.',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
+  showInfoStatic(){
+    let alert = this.alertCtrl.create({
+      title: 'Statisches Gleichgewicht',
+      message: 'Der Patient sollte, wenn möglich, keine Schuhe tragen und ' +
+      'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
+      'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
+      'Seite der Patienten das erhöhte Bett und an der anderen Seite der ' +
+      'Untersucher steht. Sollte ein Patient während der Aufgabe wanken oder ' +
+      'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
           text: 'Ok',
@@ -279,6 +370,25 @@ export class FormDemmiPage {
     alert.present();
   }
 
+  showInfoWalk(){
+    let alert = this.alertCtrl.create({
+      title: 'Gehen',
+      message: 'Zur Testung des Gangbildes dürfen geeignete Schuhe getragen ' +
+      'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird.' +
+      'Die Art des Schuhwerks kann in den Bemerkungen eingetragen werden.',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
   showInfoEleven(){
     let alert = this.alertCtrl.create({
       title: '11. Wegstrecke +/- Gehhilfe',
@@ -306,6 +416,28 @@ export class FormDemmiPage {
       title: '12. Selbstständiges Gehen',
       message: 'Die Selbstständigkeit des Patienten wird über die gesamte zurückgelegte ' +
       'Gehstrecke aus Aufgabe 11 bewertet.',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
+  showInfoDynamic(){
+    let alert = this.alertCtrl.create({
+      title: 'Dynamisches Gleichgewicht',
+      message: 'Der Patient sollte, wenn möglich, keine Schuhe tragen und ' +
+        'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
+        'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
+        'Seite der Patienten das erhöhte Bett und an der anderen Seite der ' +
+        'Untersucher steht. Sollte ein Patient während der Aufgabe wanken oder ' +
+        'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
           text: 'Ok',
