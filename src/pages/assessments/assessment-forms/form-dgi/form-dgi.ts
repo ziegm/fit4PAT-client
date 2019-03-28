@@ -32,22 +32,8 @@ export class FormDgiPage {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       subTitle: 'Dynamic Gait Index',
-      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
-        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
-        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
-        'müssen wir während des Gehens nach links und rechts\n' +
-        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
-        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
-        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
-        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
-        'anhalten und uns umdrehen können, ohne das Gleichgewicht zu\n' +
-        'verlieren. Schließlich müssen wir fähig sein, sicher um Hindernisse\n' +
-        'herumzugehen, ohne zu zögern. Wir passen unser Gehen\n' +
-        'den verschiedenen Anforderungen also stets an und halten dabei\n' +
-        'immer das Gleichgewicht.\n' +
-        'Ein Maß für Gang und mehr s Diese Fähigkeit, das Gehen an verschiedene\n' +
-        'Erfordernisse anzupassen, misst der Dynamic Gait\n' +
-        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      message: 'Bewertung:<br/>' +
+        'Die niedrigste zutreffende Kategorie ist auszuwählen.',
       buttons: [
         {
           text: 'Ok',
@@ -65,21 +51,7 @@ export class FormDgiPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'Dynamic Gait Index',
-      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
-        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
-        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
-        'müssen wir während des Gehens nach links und rechts\n' +
-        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
-        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
-        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
-        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
-        'anhalten und uns umdrehen können, ohne das Gleichgewicht zu\n' +
-        'verlieren. Schließlich müssen wir fähig sein, sicher um Hindernisse\n' +
-        'herumzugehen, ohne zu zögern. Wir passen unser Gehen\n' +
-        'normal meistert. Können die Patienten die Aufgabe nicht bewältigen,\n' +
-        'erhalten sie null Punkte (a Kasten 2). Für eine eingeschränkte\n' +
-        'Ausführung gibt es einen oder zwei Punkte. Die maximale\n' +
-        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      message: 'Cut-off Point des prädiktiven Werts für Stürze: 19 Punkte',
       buttons: [
         {
           text: 'Ok',
@@ -97,10 +69,10 @@ export class FormDgiPage {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'Dynamic Gait Index',
-      message: '1. Freie Gehstrecke von min. 20 m<br/>' +
-        '2. Drei Schuhschachteln<br/>' +
-        '3. Drei Keulen<br/>' +
-        '4. Eine Treppe',
+      message: '1. Freie Gehstrecke (20m)<br/>' +
+        '2. Schuhschachteln (3 Stk.)<br/>' +
+        '3. Keulen (3 Stk.)<br/>' +
+        '4. Treppe',
       buttons: [
         {
           text: 'Ok',
@@ -117,10 +89,11 @@ export class FormDgiPage {
   showInfoOne(){
     let alert = this.alertCtrl.create({
       title: '1. Gehen auf ebener Strecke 20 Meter',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Gehen Sie mit Ihrer normalen Geschwindigkeit von hier bis zur nächsten Markierung (20m).<br/>' +
+        '0. Kann nicht 20m ohne Hilfe gehen, ohne starke Gangabweichungen oder Ungleichgewicht.<br/>' +
+        '1. 20m Gehen, langsame Geschwindigkeit, abnormales Gangbild, Anzeichen für Ungleichgewicht.<br/>' +
+        '2. 20m Gehen, verwendet Hilfsmittel, langsamere Ganggeschwindigkeit, leichte Gangabweichungen.<br/>' +
+        '3. 20m Gehen, keine Hilfsmittel, gutes Tempo, keine Anzeichen für Ungleichgewicht, normales Gangbild.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -137,10 +110,20 @@ export class FormDgiPage {
   showInfoTwo(){
     let alert = this.alertCtrl.create({
       title: '2. Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie in Ihrem normalen Tempo zu gehen (5m), wenn ich "los" sage, gehen Sie ' +
+        'so schnell Sie können (5m). Wenn ich "langsam" sage, gehen Sie so langsam wie möglich (5m)' +
+        '0. Kann die Geschwindigkeit nicht ändern oder verliert das Gleichgewicht und muss nach der ' +
+        'Wand greifen oder gestützt werden.<br/>' +
+        '1. Nimmt nur geringfügige Anpassungen der Gehgeschwindigkeit vor oder führt eine Geschwindigkeitsänderung ' +
+        'mit erheblichen Gangabweichungen durch, oder ändert die Geschwindigkeit, hat aber erhebliche ' +
+        'Gangabweichungen, oder ändert die Geschwindigkeit, verliert aber das Gleichgewicht, ' +
+        'kann sich aber erholen und weitergehen.<br/>' +
+        '2. Kann die Geschwindigkeit ändern, weist aber leichte Gangabweichungen auf, oder keine ' +
+        'Gangabweichungen aber kann keine signifikante Änderung der Geschwindigkeit erreichen, ' +
+        'oder verwendet Hilfsmittel.<br/>' +
+        '3. Kann die Gehgeschwindigkeit stufenlos ändern, ohne Gleichgewichtsverlust oder ' +
+        'Gangabweichungen. Zeigt einen signifikanten Unterschied in der Gehgeschwindigkeit ' +
+        'zwischen normaler, schneller und langsamer Geschwindigkeit.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -157,10 +140,17 @@ export class FormDgiPage {
   showInfoThree(){
     let alert = this.alertCtrl.create({
       title: '3. Gehen mit Kopfdrehung rechts und links',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie im normalen Tempo zu gehen. Wenn ich sage "nach rechts schauen", gehen Sie geradeaus, ' +
+        'aber drehen den Kopf nach rechts. Schauen Sie weiter nach rechts, bis ich sage: "schauen Sie nach links", ' +
+        'dann gehen Sie weiter geradeaus und drehen Ihren Kopf nach links. Halten Sie den Kopf nach links, ' +
+        'bis ich sage: "geradeaus schauen", dann gehen Sie weiter geradeaus, aber bringen den Kopf in die Mitte.<br/>' +
+        '0. Führt die Aufgabe mit schwerer Gangstörung aus, d.h. schwankt ausserhalb der Spurbreite (15cm), ' +
+        'verliert das Gleichgewicht, hält an, greift nach der Wand.<br/>' +
+        '1. Führt Kopfdrehungen mit moderater Änderung der Ganggeschwindigkeit durch, verlangsamt sich, schwankt, ' +
+        'erholt sich aber, kann weiterlaufen.<br/>' +
+        '2. Führt eine sanfte Drehung des Kopfes mit leichter Änderung der Ganggeschwindigkeit durch, d.h. eine ' +
+        'geringfügige Unterbrechung des geraden Gehspur oder die Verwendung einer Gehhilfe.<br/>' +
+        '3. Führt sanfte Kopfdrehungen ohne Gangveränderung durch.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -177,10 +167,17 @@ export class FormDgiPage {
   showInfoFour(){
     let alert = this.alertCtrl.create({
       title: '4. Gehen und nach oben und nach unten schauen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie im normalen Tempo zu laufen. Wenn ich sage "nach oben schauen", gehen Sie geradeaus, ' +
+        'aber kippen den Kopf nach oben. Schauen Sie weiter nach oben, bis ich sage "nach unten schauen", ' +
+        'dann gehen Sie geradeaus und kippen den Kopf nach unten. Halten Sie Ihren Kopf unten, bis ich sage ' +
+        '"gerade schauen", dann gehen Sie geradeaus, aber bringen den Kopf in die Mitte zurück.<br/>' +
+        '0. Führt die Aufgabe mit schwerer Gangstörung aus, d.h. schwankt ausserhalb der Spurbreite (15cm), ' +
+        'verliert das Gleichgewicht, hält an, greift nach der Wand.<br/>' +
+        '1. Führt Kopfdrehungen mit moderater Änderung der Ganggeschwindigkeit durch, verlangsamt sich, schwankt, ' +
+        'erholt sich aber, kann weiterlaufen.<br/>' +
+        '2. Führt eine sanfte Drehung des Kopfes mit leichter Änderung der Ganggeschwindigkeit durch, d.h. ' +
+        'eine geringfügige Unterbrechung des geraden Gehspur oder die Verwendung einer Gehhilfe.<br/>' +
+        '3. Führt eine sanfte Kopfdrehung ohne Gangveränderung durch.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -197,10 +194,13 @@ export class FormDgiPage {
   showInfoFive(){
     let alert = this.alertCtrl.create({
       title: '5. Gehen und Drehung um 180°',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie im normalen Tempo zu laufen.  Wenn ich sage "drehen und anhalten", ' +
+        'drehen Sie sich so schnell wie möglich, um in die entgegengesetzte Richtung zu schauen und zu stoppen.<br/>' +
+        '0. Kann sich nicht sicher drehen, erfordert Hilfe beim Drehen und Stoppen.<br/>' +
+        '1. Dreht sich langsam, erfordert verbale Hinweise, erfordert mehrere kleine Schritte, um das ' +
+        'Gleichgewicht nach dem Drehen und Stoppen zu halten.<br/>' +
+        '2. Sichere Umdrehung in > 3 Sekunden und Stoppen ohne Gleichgewichtsverlust.<br/>' +
+        '3. Sichere Umdrehung innerhalb von 3 Sekunden und schnelles Stoppen ohne Gleichgewichtsverlust.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -217,10 +217,14 @@ export class FormDgiPage {
   showInfoSix(){
     let alert = this.alertCtrl.create({
       title: '6. Gehen über Hindernisse',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie mit Ihrer normalen Geschwindigkeit zu gehen.  Wenn Sie zum Schuhkarton kommen, ' +
+        'steigen Sie über ihn, nicht um ihn herum, und gehen weiter.<br/>' +
+        '0. Kann nicht ohne Hilfe ausgeführt werden.<br/>' +
+        '1. Kann über die Box gehen, muss aber anhalten und dann wieder zurücktreten. Benötigt allenfalls ' +
+        'verbale Hinweise.<br/>' +
+        '2. Kann über die Box gehen, muss aber langsamer werden und die Schritte anpassen, ' +
+        'um die Box sicher zu überschreiten.<br/>' +
+        '3. Kann über die Box treten, ohne die Gangart zu ändern, ohne Anzeichen von Ungleichgewicht.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -237,10 +241,17 @@ export class FormDgiPage {
   showInfoSeven(){
     let alert = this.alertCtrl.create({
       title: '7. Gehen um Hindernisse links und rechts herum',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Beginnen Sie mit normaler Geschwindigkeit zu gehen. Wenn Sie zur ersten Keule kommen ' +
+        '(etwa 6m entfernt), gehen Sie rechts herum. Wenn Sie zur zweiten Keule kommen (6m nach der ' +
+        'ersten Keule), gehen Sie links herum.<br/>' +
+        '0. Es ist nicht möglich die Keule zu umgehen, hineingehen in eine oder beide Keulen oder ' +
+        'benötigen physische Hilfestellung.<br/>' +
+        '1. Ist in der Lage, Keulen zu umgehen, muss aber die Geschwindigkeit deutlich verlangsamen, ' +
+        'um die Aufgabe zu erfüllen, oder erfordert verbale Hinweise.<br/>' +
+        '2. Kann um beide Keulen herum gehen, muss aber langsamer werden und die Schritte ' +
+        'anpassen, um die Keulen zu umgehen.<br/>' +
+        '3. Ist in der Lage, sicher um die Keulen herum zu gehen, ohne die Gangart zu ändern; keine ' +
+        'Anzeichen von Ungleichgewicht.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -257,10 +268,12 @@ export class FormDgiPage {
   showInfoEight(){
     let alert = this.alertCtrl.create({
       title: '8. Treppensteigen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Gehen Sie die Treppe hinauf, wie zu Hause, d.h. benutzen Sie bei Bedarf das Geländer. ' +
+        'Oben angekommen, drehen Sie sich um und gehen nach unten.<br/>' +
+        '0. Kann nicht sicher durchgeführt werden.<br/>' +
+        '1. Zwei Füsse auf einer Stufe, muss ein Geländer benutzen.<br/>' +
+        '2. Alterniernde Schirtte, muss ein Geländer benutzen.<br/>' +
+        '3. Alternierende Schritte, kein Geländer.<br/>',
       buttons: [
         {
           text: 'Ok',
@@ -274,16 +287,4 @@ export class FormDgiPage {
     alert.present();
   }
 
-  /*showExtension(selectedValue: any){
-    console.log('Selected', selectedValue);
-    if (selectedValue=="other"){
-      this.aid = true;
-    } else {
-      this.aid = false;
-    }
-  }*/
-
-  /*onChange() {
-        document.getElementById("extension").style.visibility = "false";
-  }*/
 }
