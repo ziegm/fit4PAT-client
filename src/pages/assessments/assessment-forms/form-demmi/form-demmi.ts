@@ -80,9 +80,9 @@ export class FormDemmiPage {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'de Morton Mobility Index',
-      message: '1. Ein Stuhl mit Armlehnen und 45cm Sitzhöhe<br/>' +
-        '2. Ein Krankenhausbett / Eine Liege<br/>' +
-        '3. Ein Stift<br/>' +
+      message: '1. Spitalbett/Liege<br/>' +
+      '2. Stuhl mit Armlehnen (Sitzhöhe 45cm)<br/>' +
+        '3. Stift<br/>' +
         '4.  Abgemessene Gehstrecke bis 50m',
       buttons: [
         {
@@ -100,10 +100,8 @@ export class FormDemmiPage {
   showInfoOne(){
     let alert = this.alertCtrl.create({
       title: '1. Brücke',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient liegt auf dem Rücken und wird '+
+      'aufgefordert, die Beine anzuwinkeln und das Gesäss vom Bett abzuheben.',
       buttons: [
         {
           text: 'Ok',
@@ -120,10 +118,8 @@ export class FormDemmiPage {
   showInfoTwo(){
     let alert = this.alertCtrl.create({
       title: '2. Auf die Seite rollen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich ohne '+
+      'Hilfestellung auf eine Seite zu rollen.',
       buttons: [
         {
           text: 'Ok',
@@ -140,10 +136,8 @@ export class FormDemmiPage {
   showInfoThree(){
     let alert = this.alertCtrl.create({
       title: '3. Vom Liegen zum Sitzen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich auf die '+
+      'Bett-/Liegekante zu setzen.',
       buttons: [
         {
           text: 'Ok',
@@ -160,10 +154,10 @@ export class FormDemmiPage {
   showInfoFour(){
     let alert = this.alertCtrl.create({
       title: '4. Sitzen im Stuhl ohne Unterstützung',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, auf einem Stuhl 10 Sekunden frei zu sitzen, '+
+      'ohne die Armlehnen zu berühren, zusammen zu sacken oder zu '+
+      'schwanken. Füsse und Knie hält der Patient dabei geschlossen, die Füsse '+
+      'berühren den Boden.',
       buttons: [
         {
           text: 'Ok',
@@ -180,10 +174,7 @@ export class FormDemmiPage {
   showInfoFive(){
     let alert = this.alertCtrl.create({
       title: '5. Aus dem Stuhl aufstehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, unter Gebrauch der Armlehnen vom Stuhl aufzustehen.',
       buttons: [
         {
           text: 'Ok',
@@ -200,10 +191,8 @@ export class FormDemmiPage {
   showInfoSix(){
     let alert = this.alertCtrl.create({
       title: '6. Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, mit vor der Brust verschränkten Armen vom ' +
+      'Stuhl aufzustehen.',
       buttons: [
         {
           text: 'Ok',
@@ -220,10 +209,8 @@ export class FormDemmiPage {
   showInfoSeven(){
     let alert = this.alertCtrl.create({
       title: '7. Ohne Unterstützung stehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      'frei zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -240,10 +227,8 @@ export class FormDemmiPage {
   showInfoEight(){
     let alert = this.alertCtrl.create({
       title: '8. Stehen mit geschlossenen Füssen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung '+
+      'und mit geschlossenen Füssen frei zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -260,10 +245,8 @@ export class FormDemmiPage {
   showInfoNine(){
     let alert = this.alertCtrl.create({
       title: '9. Auf den Fussspitzen stehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      'auf den Zehenspitzen zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -280,10 +263,9 @@ export class FormDemmiPage {
   showInfoTen(){
     let alert = this.alertCtrl.create({
       title: '10. Im Tandemstand mit geschlossenen Augen stehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, die Ferse eines Fusses direkt vor den anderen ' +
+      'Fuss zu stellen und mit geschlossenen Augen 10 Sekunden ohne jegliche ' +
+      'Hilfestellung stehen zu bleiben.',
       buttons: [
         {
           text: 'Ok',
@@ -300,10 +282,12 @@ export class FormDemmiPage {
   showInfoEleven(){
     let alert = this.alertCtrl.create({
       title: '11. Wegstrecke +/- Gehhilfe',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, wenn nötig mit der Gehhilfe, so weit wie ' +
+      'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
+      'sich auszuruhen. Der Patient soll die Gehhilfe benutzen, die für ihn am ' +
+      'besten geeignet ist. Stehen zwei Gehhilfen zur Verfügung, sollte die ' +
+      'Gehhilfe verwendet werden, die das höchste Mass an Selbstständigkeit ' +
+      'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 Meter zurückgelegt hat.',
       buttons: [
         {
           text: 'Ok',
@@ -320,10 +304,8 @@ export class FormDemmiPage {
   showInfoTwelve(){
     let alert = this.alertCtrl.create({
       title: '12. Selbstständiges Gehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Die Selbstständigkeit des Patienten wird über die gesamte zurückgelegte ' +
+      'Gehstrecke aus Aufgabe 11 bewertet.',
       buttons: [
         {
           text: 'Ok',
@@ -340,10 +322,8 @@ export class FormDemmiPage {
   showInfoThirteen(){
     let alert = this.alertCtrl.create({
       title: '13. Stift vom Boden aufheben',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Ein Stift wird 5 cm vor die Füsse des stehenden Patienten gelegt. Der Patient ' +
+      'wird aufgefordert, den Stift aufzuheben.',
       buttons: [
         {
           text: 'Ok',
@@ -360,10 +340,8 @@ export class FormDemmiPage {
   showInfoFourteen(){
     let alert = this.alertCtrl.create({
       title: '14. Vier Schritte rückwärts gehen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, 4 Schritte rückwärts gehen, ohne dabei das ' +
+      'Gleichgewicht zu verlieren.',
       buttons: [
         {
           text: 'Ok',
@@ -380,10 +358,8 @@ export class FormDemmiPage {
   showInfoFiveteen(){
     let alert = this.alertCtrl.create({
       title: '15. Springen',
-      message: '1. Freie Gehstrecke von min. 20 m\n' +
-        '2. Drei Schuhschachteln\n' +
-        '3. Drei Keulen\n' +
-        '4. Eine Treppe',
+      message: 'Der Patient wird aufgefordert, mit beiden Beinen hochzuspringen, wobei ' +
+      'beide Füsse deutlich vom Boden abheben, ohne dabei das Gleichgewicht zu verlieren.',
       buttons: [
         {
           text: 'Ok',
