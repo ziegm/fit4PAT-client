@@ -74,4 +74,36 @@
     </div>
   </ion-list>
 
+  <ion-list radio-group [(ngModel)]="normwerte">
+  <ion-label class="bar-stable">
+    Normwerte
+  </ion-label>
+  <div class="row" ng-repeat="data in ctrl.data">
+    <div class="col"><ion-item class="rohwert"><ion-label>Selbstständig oder betreutes Wohnen</ion-label></ion-item>
+      <ion-item class="demmi"><ion-label></ion-label></ion-item></div>
+    <div class="col"><ion-item class="bordr"><ion-label>Alter</ion-label></ion-item>
+      <ion-item class="bordr down"><ion-label>Score</ion-label></ion-item></div>
+    <div class="col"><ion-item class="bordr"><ion-label>60-69</ion-label></ion-item>
+      <ion-item class="bordr down"><ion-label>85</ion-label></ion-item></div>
+    <div class="col"><ion-item class="bordr"><ion-label>70-79</ion-label></ion-item>
+      <ion-item class="bordr down"><ion-label>85</ion-label></ion-item></div>
+    <div class="col"><ion-item class="bordr last"><ion-label>80-89</ion-label></ion-item>
+      <ion-item class="bordr down last"><ion-label>74</ion-label></ion-item></div>
+  </div>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="austritt">
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col"><ion-item class="rohwert"><ion-label>Austritt</ion-label></ion-item>
+        <ion-item class="demmi"><ion-label>Score</ion-label></ion-item></div>
+      <div class="col"><ion-item class="bordr"><ion-label>andere Institution</ion-label></ion-item>
+        <ion-item class="bordr down"><ion-label>40-50</ion-label></ion-item></div>
+      <div class="col"><ion-item class="bordr last"><ion-label>nach Hause</ion-label></ion-item>
+        <ion-item class="bordr down last"><ion-label>≥62</ion-label></ion-item></div>
+    </div>
+  </ion-list>
+
+
+  <ion-label>Beachte: Minimal Detectable Change (MDC) = 9/100 Punkten & Minimal Clinically
+    Important Difference (MCID) = 10/100 Punkte</ion-label>
 </ion-content>

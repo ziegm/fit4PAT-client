@@ -22,4 +22,8 @@ export class EvaluationDgiPage {
     console.log('ionViewDidLoad EvaluationDgiPage');
   }
 
+  openLink(){
+    window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
+  }
+
 }

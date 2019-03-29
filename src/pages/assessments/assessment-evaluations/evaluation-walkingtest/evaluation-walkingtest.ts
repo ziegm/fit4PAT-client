@@ -22,4 +22,8 @@ export class EvaluationWalkingtestPage {
     console.log('ionViewDidLoad EvaluationWalkingtestPage');
   }
 
+  openLink(){
+    window.open('https://www.sralab.org/rehabilitation-measures/10-meter-walk-test', '_system');
+  }
+
 }
