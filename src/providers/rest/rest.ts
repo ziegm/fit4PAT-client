@@ -1,6 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-//import {TimedWalkingTestResponse} from "../../pages/assessment/timed-walking-test-response";
+import {AssessmentResponse} from "../../responses/assessment-response";
+//import {AssessmentResponse} from "../../pages/assessment/timed-walking-test-response";
 import Practitioner = fhir.Practitioner;
 import Patient = fhir.Patient;
 
@@ -61,14 +62,13 @@ export class RestProvider {
   }
 
   /**
-   * Post a Timed Walking Test object to the hapi-fhir server.
+   * Post a assessment response object to the hapi-fhir server.
    *
-   * @param timedWalkingTestResponse    The TimedWalkingTestResponse object to transfer to the server
+   * @param assessmentResponse    The AssessmentResponse object to transfer to the server
    */
-  /*
-  postTimedWalkingTestResponse(timedWalkingTestResponse: TimedWalkingTestResponse) {
+  postAssessmentResponse(assessmentResponse: AssessmentResponse) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/QuestionnaireResponse', JSON.stringify(timedWalkingTestResponse),{
+      this.http.post(this.apiUrl+'/QuestionnaireResponse', JSON.stringify(assessmentResponse),{
         headers: new HttpHeaders().set('Content-Type', 'application/fhir+json;charset=UTF-8')
       })
         .subscribe(res => {
@@ -77,7 +77,7 @@ export class RestProvider {
           reject(err);
         });
     });
-  }*/
+  }
 
   /**
    * Post a practitioner object to the hapi-fhir server.

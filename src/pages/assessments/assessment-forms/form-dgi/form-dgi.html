@@ -126,8 +126,11 @@
     <ion-label>Hilfsmittel</ion-label>
     <ion-select value="aid" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="showExtension($event)" [(ngModel)]="aid">
       <ion-option value="none" [selected]="true">keine</ion-option>
+      <ion-option value="oneStick">1 Gehstock</ion-option>
+      <ion-option value="twoSticks">2 Gehstöcke</ion-option>
+      <ion-option value="oneForearmStick">1 Unterarm-Gehstock</ion-option>
+      <ion-option value="twoForearmSticks">2 Unterarm-Gehstöcke</ion-option>
       <ion-option value="walker">Gehbock</ion-option>
-      <ion-option value="stick">Stock</ion-option>
       <ion-option value="rollator">Rollator</ion-option>
       <ion-option value="other">andere</ion-option>
     </ion-select>

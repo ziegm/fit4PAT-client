@@ -1,7 +1,14 @@
 import {Component} from '@angular/core';
 import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {RestProvider} from "../../../../providers/rest/rest";
+import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
+import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
+import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
 import Patient = fhir.Patient;
+import Practitioner = fhir.Practitioner;
+import Bundle = fhir.Bundle;
 
 
 @IonicPage()
@@ -12,18 +19,57 @@ import Patient = fhir.Patient;
 export class FormDemmiPage {
   private rootNav:any;
   private patient: Patient;
+  private assessmentResponse: AssessmentResponse = new DemmiResponse();
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
+
+    // Add the patient to the DemmiResponse-Object.
+    if (this.patient !== undefined) {
+      this.assessmentResponse.addPatient(this.patient);
+
+      // The default-practitioner is added in here, because we create it asynchronously, when the app is
+      // being loaded for the first time. Since the practitioner might not be fully created, when this
+      // constructor is being loaded, we load it, when the patient is added.
+      if (this.assessmentResponse.author === undefined) {
+        restProvider.getPractitioners()
+          .then(data => {
+            this.assessmentResponse.author = new Fit4PATReference("Practitioner/"
+              + this.firstPractitioner(data as Bundle).id);
+          });
+      }
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FormDemmiPage');
+  /**
+   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * we always load the first one.
+   *
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   */
+  private firstPractitioner(bundle: Bundle): Practitioner {
+    if (bundle.entry !== undefined) {
+      return bundle.entry[0].resource as Practitioner;
+    }
   }
 
-  navToEvaluationDemmi() {
-    this.rootNav.push(EvaluationDemmiPage);
+  private navToEvaluationDemmi() {
+    this.rootNav.push(EvaluationDemmiPage, this.patient);
+  }
+
+  private saveAndNavToEvaluationDemmi() {
+    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+      this.assessmentResponse = (data as DemmiResponse);
+      this.navToEvaluationDemmi();
+    });
+  }
+
+  private addOrChangeAnswer(index: number, event: number) {
+    if(this.assessmentResponse.item[index] === undefined) {
+      this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
+    }
+    this.assessmentResponse.item[index].addAnswer(event);
   }
 
   popupInstruction() {

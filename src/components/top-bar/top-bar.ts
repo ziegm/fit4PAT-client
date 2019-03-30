@@ -1,7 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {App, NavParams} from "ionic-angular";
-
-import Patient = fhir.Patient;
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'top-bar',

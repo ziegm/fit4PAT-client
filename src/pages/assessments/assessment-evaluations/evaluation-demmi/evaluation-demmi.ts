@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavParams} from 'ionic-angular';
+import {PatientHelper} from "../../../../components/patient/patient-helper";
+import Patient = fhir.Patient;
 
-/**
- * Generated class for the EvaluationDemmiPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'evaluation-demmi.html',
 })
 export class EvaluationDemmiPage {
+  private patient: Patient;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(navParams: NavParams) {
+    this.patient = navParams.data;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EvaluationDemmiPage');
+  private viewPatient(patient: Patient) {
+    return PatientHelper.viewPatient(patient);
   }
 
 }

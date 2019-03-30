@@ -38,25 +38,30 @@
           <button class="circle-button circle-button-bg font-md" ion-button (click)="start()">start</button>
         </ion-col>
         <ion-col class="col-12" *ngIf="running">
-          <button class="circle-button circle-button-bg circle-button-red font-md" ion-button (click)="stop()">stop</button>
+          <button class="circle-button circle-button-bg circle-button-red font-md" ion-button (click)="stop()">stop
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <ion-list>
 
+  <ion-list>
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
-      <ion-select value="none" okText="Okay" cancelText="Dismiss">
-        <ion-option value="none" selected="true">keine</ion-option>
-        <ion-option value="brown">Gehbock</ion-option>
-        <ion-option value="blonde">Stock</ion-option>
-        <ion-option value="black">Rollator</ion-option>
-        <ion-option value="red" (select)="$event">andere</ion-option>
+      <ion-select value="aid" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="showExtension($event)"
+                  [(ngModel)]="aid">
+        <ion-option value="none" [selected]="true">keine</ion-option>
+        <ion-option value="oneStick">1 Gehstock</ion-option>
+        <ion-option value="twoSticks">2 Gehstöcke</ion-option>
+        <ion-option value="oneForearmStick">1 Unterarm-Gehstock</ion-option>
+        <ion-option value="twoForearmSticks">2 Unterarm-Gehstöcke</ion-option>
+        <ion-option value="walker">Gehbock</ion-option>
+        <ion-option value="rollator">Rollator</ion-option>
+        <ion-option value="other">andere</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item name="extensionOthers" visile="false">
+    <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
       <ion-input type="text" id="twt4"></ion-input>
     </ion-item>
