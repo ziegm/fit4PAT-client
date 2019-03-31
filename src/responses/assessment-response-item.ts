@@ -1,6 +1,7 @@
 import QuestionnaireResponseItem = fhir.QuestionnaireResponseItem;
 import QuestionnaireResponseItemAnswer = fhir.QuestionnaireResponseItemAnswer;
 import {NumberResponseItemAnswer} from "./number-response-item-answer";
+import {StringResponseItemAnswer} from "./string-response-item-answer";
 
 /**
  * Implementing the fhir type defnitition QuestionnaireResponseItem for usage as class in this project.
@@ -21,7 +22,15 @@ export class AssessmentResponseItem implements QuestionnaireResponseItem {
    * Add an answer to an AssessmentResponseItem
    * @param answer    The answer given to a AssessmentResponseItem
    */
-  addAnswer(answer: number) {
-    this.answer[0] = new NumberResponseItemAnswer(answer);
+  private addAnswer(answer: number): void;
+  private addAnswer(answer: string): void;
+  private addAnswer(answer: any): void {
+    if (answer !== undefined) {
+      if (typeof answer === "string") {
+        this.answer[0] = new StringResponseItemAnswer(answer);
+      } else if (typeof answer === "number") {
+        this.answer[0] = new NumberResponseItemAnswer(parseInt(answer.toString()));
+      }
+    }
   }
 }

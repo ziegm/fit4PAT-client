@@ -7,6 +7,7 @@
 <ion-content padding>
   <patient-selector [patient]="patient"></patient-selector>
 
+  <!-- Four icons for additional information -->
   <ion-item>
     <ion-icon name="trending-up" (click)="navToEvaluationWalkingtest()">Verlauf</ion-icon>
     <ion-icon name="document" (click)="popupInstruction()">Instruktion</ion-icon>
@@ -14,19 +15,25 @@
     <ion-icon name="briefcase" (click)="popupMaterial()">Material</ion-icon>
   </ion-item>
 
+  <!-- Question 1 -->
   <ion-item>
     <ion-label>1. Versuch</ion-label>
     <ion-input type="text" placeholder="Input" name="inputOne" [(ngModel)]="inputOne"></ion-input>
   </ion-item>
+
+  <!-- Question 2 -->
   <ion-item>
     <ion-label>2. Versuch</ion-label>
     <ion-input type="time" id="twt2"></ion-input>
   </ion-item>
+
+  <!-- Question 3 -->
   <ion-item>
     <ion-label>3. Versuch</ion-label>
     <ion-input type="time" id="twt3"></ion-input>
   </ion-item>
 
+  <!-- Stopwatch -->
   <div class="stopwatch pt-3">
     <h1 text-center class="color-white font-lg">
       {{time}}
@@ -45,11 +52,12 @@
     </ion-grid>
   </div>
 
-
+  <!-- Dropdown for aids with the extension of a textfield for other aids-->
   <ion-list>
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
-      <ion-select value="aid" okText="Okay" cancelText="Dismiss" (cancel)="onCancel()" (change)="showExtension($event)"
+      <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
+                  (change)="showExtension($event)"
                   [(ngModel)]="aid">
         <ion-option value="none" [selected]="true">keine</ion-option>
         <ion-option value="oneStick">1 Gehstock</ion-option>
@@ -67,10 +75,12 @@
     </ion-item>
   </ion-list>
 
+  <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
     <ion-input type="text" id="twt5"></ion-input>
   </ion-item>
 
+  <!-- Evaluation button -->
   <button ion-button (click)="navToEvaluationWalkingtest()">Auswerten</button>
 </ion-content>
