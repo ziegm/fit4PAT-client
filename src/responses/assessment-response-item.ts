@@ -22,9 +22,9 @@ export class AssessmentResponseItem implements QuestionnaireResponseItem {
    * Add an answer to an AssessmentResponseItem
    * @param answer    The answer given to a AssessmentResponseItem
    */
-  private addAnswer(answer: number): void;
-  private addAnswer(answer: string): void;
-  private addAnswer(answer: any): void {
+  addAnswer(answer: number): void;
+  addAnswer(answer: string): void;
+  addAnswer(answer: any): void {
     if (answer !== undefined) {
       if (typeof answer === "string") {
         this.answer[0] = new StringResponseItemAnswer(answer);

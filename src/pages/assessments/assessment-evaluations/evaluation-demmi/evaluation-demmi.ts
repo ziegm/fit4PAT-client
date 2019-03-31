@@ -19,5 +19,4 @@ export class EvaluationDemmiPage {
   private viewPatient(patient: Patient) {
     return PatientHelper.viewPatient(patient);
   }
-
 }
