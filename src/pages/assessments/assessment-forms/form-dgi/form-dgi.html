@@ -27,7 +27,7 @@
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="nrOne">
+  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="addOrChangeAnswer(0, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
       <div class="col transparent text">Gehen auf ebener Strecke 20 Meter
@@ -35,29 +35,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 2 -->
-  <ion-list radio-group [(ngModel)]="nrTwo">
+  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="addOrChangeAnswer(1, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
       <div class="col transparent text">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
@@ -65,29 +65,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 3 -->
-  <ion-list radio-group [(ngModel)]="nrThree">
+  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="addOrChangeAnswer(2, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
       <div class="col transparent text">Gehen mit Kopfdrehung rechts und links
@@ -95,29 +95,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 4 -->
-  <ion-list radio-group [(ngModel)]="nrFour">
+  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="addOrChangeAnswer(3, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
       <div class="col transparent">Gehen und nach oben und nach unten schauen
@@ -125,29 +125,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 5 -->
-  <ion-list radio-group [(ngModel)]="nrFive">
+  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="addOrChangeAnswer(4, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
       <div class="col transparent">Gehen und Drehung um 180°
@@ -155,29 +155,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 6 -->
-  <ion-list radio-group [(ngModel)]="nrSix">
+  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="addOrChangeAnswer(5, $event)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
       <div class="col transparent">Gehen über Hindernisse
@@ -185,29 +185,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 7 -->
-  <ion-list radio-group [(ngModel)]="nrSeven">
+  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="addOrChangeAnswer(6, $event)">
     <div class="row">
       <div class="col transparent number">7.</div>
       <div class="col transparent">Gehen um Hindernisse links und rechts herum
@@ -215,29 +215,29 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 8 -->
-  <ion-list radio-group [(ngModel)]="nrEight">
+  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="addOrChangeAnswer(7, $event)">
     <div class="row">
       <div class="col transparent number">8.</div>
       <div class="col transparent">Treppensteigen
@@ -245,22 +245,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="zero"></ion-radio>
+          <ion-radio slot="start" value="0"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="one"></ion-radio>
+          <ion-radio slot="start" value="1"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="two"></ion-radio>
+          <ion-radio slot="start" value="2"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="three"></ion-radio>
+          <ion-radio slot="start" value="3"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -271,7 +271,7 @@
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (change)="showExtension($event)" [(ngModel)]="aid">
+                  (ionChange)="addOrChangeAnswer(8, $event)" [(ngModel)]="aid">
         <ion-option value="none" [selected]="true">keine</ion-option>
         <ion-option value="oneStick">1 Gehstock</ion-option>
         <ion-option value="twoSticks">2 Gehstöcke</ion-option>
@@ -284,16 +284,16 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
-      <ion-input type="text" id="twt4"></ion-input>
+      <ion-input type="text" (keyup)="addOrChangeAnswer(8, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" id="twt5"></ion-input>
+    <ion-input type="text" (keyup)="addOrChangeAnswer(9, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button (click)="navToEvaluationDgi()">Auswerten</button>
+  <button ion-button (click)="saveAndNavToEvaluationDgi()">Auswerten</button>
 </ion-content>

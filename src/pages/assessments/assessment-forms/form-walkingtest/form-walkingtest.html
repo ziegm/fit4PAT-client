@@ -15,50 +15,108 @@
     <ion-icon name="briefcase" (click)="popupMaterial()">Material</ion-icon>
   </ion-item>
 
-  <!-- Question 1 -->
-  <ion-item>
-    <ion-label>1. Versuch</ion-label>
-    <ion-input type="text" placeholder="Input" name="inputOne" [(ngModel)]="inputOne"></ion-input>
-  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-7>
+        <ion-grid>
+          <!-- Question 1 -->
+          <ion-row>
+            <ion-col col-5>
+              <ion-item>
+                <ion-label>1. Durchführung</ion-label>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(0, $event.value)" [value]="time1"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-2>
+              <ion-item>
+                <ion-label>Sekunden</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <button ion-button (click)="timeInInput1()">1. Messung übernehmen</button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
 
-  <!-- Question 2 -->
-  <ion-item>
-    <ion-label>2. Versuch</ion-label>
-    <ion-input type="time" id="twt2"></ion-input>
-  </ion-item>
+          <!-- Question 2 -->
+          <ion-row>
+            <ion-col col-5>
+              <ion-item>
+                <ion-label>2. Durchführung</ion-label>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(1, $event.value)" [value]="time2"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-2>
+              <ion-item>
+                <ion-label>Sekunden</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <button ion-button (click)="timeInInput2()">2. Messung übernehmen</button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
 
-  <!-- Question 3 -->
-  <ion-item>
-    <ion-label>3. Versuch</ion-label>
-    <ion-input type="time" id="twt3"></ion-input>
-  </ion-item>
+          <!-- Question 3 -->
+          <ion-row>
+            <ion-col col-5>
+              <ion-item>
+                <ion-label>3. Durchführung</ion-label>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(2, $event.value)" [value]="time3"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-2>
+              <ion-item>
+                <ion-label>Sekunden</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <button ion-button (click)="timeInInput3()">3. Messung übernehmen</button>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col>
+        <!-- Stopwatch -->
+        <div class="stopwatch pt-3">
+          <h1 text-center class="color-white font-lg">
+            {{time}}
+          </h1>
+          <ion-grid>
+            <ion-row text-center class="mt-5">
+              <ion-col class="col-12" *ngIf="!running && time == blankTime">
+                <button class="circle-button circle-button-bg font-md" ion-button (click)="start()">
+                  start
+                </button>
+              </ion-col>
+              <ion-col class="col-12" *ngIf="running">
+                <button class="circle-button circle-button-bg circle-button-red font-md" ion-button (click)="stop()">
+                  stop
+                </button>
+              </ion-col>
+              <ion-col class="col-12" *ngIf="!running && time !== blankTime">
+                <button class="circle-button circle-button-bg font-md" ion-button (click)="reset()">
+                  reset
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <!-- Stopwatch -->
-  <div class="stopwatch pt-3">
-    <h1 text-center class="color-white font-lg">
-      {{time}}
-    </h1>
-    <button ion-button (click)="timeInText()">Übernehmen</button>
-    <ion-grid>
-      <ion-row text-center class="mt-5">
-        <ion-col class="col-12" *ngIf="!running && time == blankTime">
-          <button class="circle-button circle-button-bg font-md" ion-button (click)="start()">start</button>
-        </ion-col>
-        <ion-col class="col-12" *ngIf="running">
-          <button class="circle-button circle-button-bg circle-button-red font-md" ion-button (click)="stop()">stop
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
 
   <!-- Dropdown for aids with the extension of a textfield for other aids-->
   <ion-list>
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (change)="showExtension($event)"
-                  [(ngModel)]="aid">
+                  (ionChange)="addOrChangeAnswer(3, $event)" [(ngModel)]="aid">
         <ion-option value="none" [selected]="true">keine</ion-option>
         <ion-option value="oneStick">1 Gehstock</ion-option>
         <ion-option value="twoSticks">2 Gehstöcke</ion-option>
@@ -71,16 +129,16 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
-      <ion-input type="text" id="twt4"></ion-input>
+      <ion-input type="text" (keyup)="addOrChangeAnswer(3, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" id="twt5"></ion-input>
+    <ion-input type="text" (keyup)="addOrChangeAnswer(4, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button (click)="navToEvaluationWalkingtest()">Auswerten</button>
+  <button ion-button (click)="saveAndNavToEvaluationWalkingtest()">Auswerten</button>
 </ion-content>

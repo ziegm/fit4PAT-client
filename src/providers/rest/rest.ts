@@ -1,7 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AssessmentResponse} from "../../responses/assessment-response";
-//import {AssessmentResponse} from "../../pages/assessment/timed-walking-test-response";
 import Practitioner = fhir.Practitioner;
 import Patient = fhir.Patient;
 

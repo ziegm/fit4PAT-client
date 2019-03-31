@@ -1,7 +1,14 @@
 import {Component} from '@angular/core';
 import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationDgiPage} from "../../assessment-evaluations/evaluation-dgi/evaluation-dgi";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
+import {RestProvider} from "../../../../providers/rest/rest";
+import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
+import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import Patient = fhir.Patient;
+import Practitioner = fhir.Practitioner;
+import Bundle = fhir.Bundle;
 
 
 @IonicPage()
@@ -10,22 +17,64 @@ import Patient = fhir.Patient;
   templateUrl: 'form-dgi.html',
 })
 export class FormDgiPage {
-  private show: boolean = false;
-  public discount: number = 0;
   private rootNav: any;
   private patient: Patient;
+  private assessmentResponse: AssessmentResponse = new DgiResponse();
+  private show: boolean = false;
+  public discount: number = 0;
   public aid = "none";
   public selectedIndex: number;
 
-
-  constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams) {
+  constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams, private restProvider: RestProvider) {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
     //this.selectedIndex = localStorage.getItem('1');
+
+    // Add the patient to the DgiResponse-Object.
+    if (this.patient !== undefined) {
+      this.assessmentResponse.addPatient(this.patient);
+
+      // The default-practitioner is added in here, because we create it asynchronously, when the app is
+      // being loaded for the first time. Since the practitioner might not be fully created, when this
+      // constructor is being loaded, we load it, when the patient is added.
+      if (this.assessmentResponse.author === undefined) {
+        restProvider.getPractitioners()
+          .then(data => {
+            this.assessmentResponse.author = new Fit4PATReference("Practitioner/"
+              + this.firstPractitioner(data as Bundle).id);
+          });
+      }
+    }
   }
 
-  navToEvaluationDgi() {
-    this.rootNav.push(EvaluationDgiPage);
+  /**
+   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * we always load the first one.
+   *
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   */
+  private firstPractitioner(bundle: Bundle): Practitioner {
+    if (bundle.entry !== undefined) {
+      return bundle.entry[0].resource as Practitioner;
+    }
+  }
+
+  private navToEvaluationDgi() {
+    this.rootNav.push(EvaluationDgiPage, this.patient);
+  }
+
+  private saveAndNavToEvaluationDgi() {
+    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+      this.assessmentResponse = (data as DgiResponse);
+      this.navToEvaluationDgi();
+    });
+  }
+
+  private addOrChangeAnswer(index: number, event: number) {
+    if(this.assessmentResponse.item[index] === undefined) {
+      this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
+    }
+    this.assessmentResponse.item[index].addAnswer(event);
   }
 
   popupInstruction() {

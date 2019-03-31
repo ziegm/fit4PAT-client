@@ -1,7 +1,14 @@
 import {Component} from '@angular/core';
 import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
+import {RestProvider} from "../../../../providers/rest/rest";
+import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
+import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import Patient = fhir.Patient;
+import Bundle = fhir.Bundle;
+import Practitioner = fhir.Practitioner;
 
 @IonicPage()
 @Component({
@@ -9,32 +16,107 @@ import Patient = fhir.Patient;
   templateUrl: 'form-walkingtest.html',
 })
 export class FormWalkingtestPage {
-  public timeBegan = null;
-  public timeStopped:any = null;
-  public stoppedDuration:any = 0;
-  public started = null;
-  public running = false;
-  public blankTime = "00:00.000";
-  public time = "00:00.000";
   private rootNav:any;
   private patient: Patient;
+  private assessmentResponse: AssessmentResponse = new WalkingtestResponse();
+  private timeBegan = null;
+  private timeStopped:any = null;
+  private stoppedDuration:any = 0;
+  private started = null;
+  private running = false;
+  private blankTime = "00.000 Sekunden";
+  private time = "00.000 Sekunden";
+  private time1: number;
+  private time2: number;
+  private time3: number;
+  private currentTime: Date;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
+
+    // Add the patient to the WalkingtestResponse-Object.
+    if (this.patient !== undefined) {
+      this.assessmentResponse.addPatient(this.patient);
+
+      // The default-practitioner is added in here, because we create it asynchronously, when the app is
+      // being loaded for the first time. Since the practitioner might not be fully created, when this
+      // constructor is being loaded, we load it, when the patient is added.
+      if (this.assessmentResponse.author === undefined) {
+        restProvider.getPractitioners()
+          .then(data => {
+            this.assessmentResponse.author = new Fit4PATReference("Practitioner/"
+              + this.firstPractitioner(data as Bundle).id);
+          });
+      }
+    }
+  }
+
+  /**
+   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * we always load the first one.
+   *
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   */
+  private firstPractitioner(bundle: Bundle): Practitioner {
+    if (bundle.entry !== undefined) {
+      return bundle.entry[0].resource as Practitioner;
+    }
   }
 
   navToEvaluationWalkingtest(){
-    this.rootNav.push(EvaluationWalkingtestPage);
+    this.rootNav.push(EvaluationWalkingtestPage, this.patient);
   }
 
-  timeInText(){
-    var inputOne;
-    inputOne = this.time + " ";
+  private saveAndNavToEvaluationWalkingtest() {
+    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+      this.assessmentResponse = (data as WalkingtestResponse);
+      this.navToEvaluationWalkingtest();
+    });
+  }
+
+  private addOrChangeAnswer(index: number, event: number) {
+    if(this.assessmentResponse.item[index] === undefined) {
+      this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
+    }
+    this.assessmentResponse.item[index].addAnswer(event);
+  }
+
+  timeInInput1() {
+    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    if (timeElapsed.getMilliseconds() >= 500) {
+      this.time1 = timeElapsed.getSeconds() + 1;
+    } else {
+      this.time1 = timeElapsed.getSeconds();
+    }
+    this.reset();
+    this.addOrChangeAnswer(0, this.time1);
+  }
+
+  timeInInput2() {
+    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    if (timeElapsed.getMilliseconds() >= 500) {
+      this.time2 = timeElapsed.getSeconds() + 1;
+    } else {
+      this.time2 = timeElapsed.getSeconds();
+    }
+    this.reset();
+    this.addOrChangeAnswer(1, this.time2);
+  }
+
+  timeInInput3() {
+    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    if (timeElapsed.getMilliseconds() >= 500) {
+      this.time3 = timeElapsed.getSeconds() + 1;
+    } else {
+      this.time3 = timeElapsed.getSeconds();
+    }
+    this.reset();
+    this.addOrChangeAnswer(2, this.time3);
   }
 
   start() {
-    if(this.running) return;
+    if (this.running) return;
     if (this.timeBegan === null) {
       this.reset();
       this.timeBegan = new Date();
@@ -46,11 +128,13 @@ export class FormWalkingtestPage {
     this.started = setInterval(this.clockRunning.bind(this), 10);
     this.running = true;
   }
+
   stop() {
     this.running = false;
     this.timeStopped = new Date();
     clearInterval(this.started);
   }
+
   reset() {
     this.running = false;
     clearInterval(this.started);
@@ -59,6 +143,7 @@ export class FormWalkingtestPage {
     this.timeStopped = null;
     this.time = this.blankTime;
   }
+
   zeroPrefix(num, digit) {
     let zero = '';
     for(let i = 0; i < digit; i++) {
@@ -66,18 +151,19 @@ export class FormWalkingtestPage {
     }
     return (zero + num).slice(-digit);
   }
-  clockRunning(){
-    let currentTime:any = new Date();
-    let timeElapsed:any = new Date(currentTime - this.timeBegan - this.stoppedDuration);
-    let hour = timeElapsed.getUTCHours();
-    let min = timeElapsed.getUTCMinutes();
-    let sec = timeElapsed.getUTCSeconds();
-    let ms = timeElapsed.getUTCMilliseconds();
+
+  clockRunning() {
+    this.currentTime = new Date();
+    let timeElapsed:any = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    //let hour = timeElapsed.getHours();
+    //let min = timeElapsed.getMinutes();
+    let sec = timeElapsed.getSeconds();
+    let ms = timeElapsed.getMilliseconds();
     this.time =
-      this.zeroPrefix(hour, 2) + ":" +
-      this.zeroPrefix(min, 2) + ":" +
+      //this.zeroPrefix(hour, 2) + ":" +
+      //this.zeroPrefix(min, 2) + ":" +
       this.zeroPrefix(sec, 2) + "." +
-      this.zeroPrefix(ms, 3);
+      this.zeroPrefix(ms, 3) + " Sekunden";
   };
 
   popupInstruction() {
