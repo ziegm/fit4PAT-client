@@ -6,19 +6,25 @@
       </button>
       <ion-grid>
         <ion-row>
-          <ion-col><ion-item class="labelTitle">
-        <ion-icon name="menu" (click)="navToWalkingtest()"></ion-icon>
-        fit4PAT
-          </ion-item></ion-col>
-            <ion-col class="iconBar"><ion-item class="labelTitle rightSide">
-        <ion-icon name="search" class="iconSize"></ion-icon>
-        <img class="imgTitle" src="./assets/imgs/Logo_fit4PAT_man-grey.svg"/>
-        <ion-icon name="more"></ion-icon>
-            </ion-item></ion-col></ion-row>
+          <ion-col>
+            <ion-item class="labelTitle">
+              <ion-icon name="menu" (click)="navToWalkingtest()"></ion-icon>
+              fit4PAT
+            </ion-item>
+          </ion-col>
+          <ion-col class="iconBar">
+            <ion-item class="labelTitle rightSide">
+              <ion-icon name="search" class="iconSize"></ion-icon>
+              <img class="imgTitle" src="./assets/imgs/Logo_fit4PAT_man-grey.svg"/>
+              <ion-icon name="more"></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
       </ion-grid>
     </ion-title>
   </ion-navbar>
 </ion-header>
+
 
 <ion-tabs tabsPlacement="top">
   <ion-tab [root]="tab1Root" [rootParams]="fromAssessment"
