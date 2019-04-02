@@ -37,8 +37,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {PatientListComponent} from "../components/patient/patient-list/patient-list";
 import {PatientSelectorComponent} from "../components/patient/patient-selector/patient-selector";
 import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail";
+import {DocumentViewer} from "@ionic-native/document-viewer";
 
 
+// @ts-ignore
 @NgModule({
   declarations: [
     MyApp,
@@ -109,8 +111,10 @@ import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
-    RestProvider
+    RestProvider,
+    DocumentViewer
   ]
 })
+
 export class AppModule {
 }

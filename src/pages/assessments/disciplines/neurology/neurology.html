@@ -11,9 +11,7 @@
     <ion-title>
       <ion-grid>
         <ion-row>
-          <ion-col><ion-item class="labelTitle">
-            Neurologie
-          </ion-item></ion-col>
+          <ion-col><ion-label class="labelTitle">Neurologie</ion-label></ion-col>
           <ion-col class="iconBar"><ion-item class="labelTitle rightSide">
             <ion-icon name="search" class="iconSize"></ion-icon>
             <img class="imgTitle" src="./assets/imgs/Logo_fit4PAT_man-grey.svg" (click)="navToAssessmentTab()"/>
@@ -26,8 +24,11 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item (click)="navToDemmi()">de Morton Mobility Index (DEMMI)</ion-item>
-    <ion-item (click)="navToDgi()">Dynamic Gait Index (DGI)</ion-item>
-    <ion-item (click)="navToWalkingtest()">Timed Walking Test (10-Meter-Gehtest)</ion-item>
+    <ion-row class="listAssessments"><ion-col>
+      <ion-item (click)="navToDemmi()">de Morton Mobility Index (DEMMI)</ion-item></ion-col>
+      <ion-col><ion-item class="rightSide"><ion-icon name="download" (click)="showPdfDemmi()"></ion-icon></ion-item>
+      </ion-col></ion-row>
+    <ion-item (click)="navToDgi()" class="listAssessments">Dynamic Gait Index (DGI)</ion-item>
+    <ion-item (click)="navToWalkingtest()" class="listAssessments">Timed Walking Test (10-Meter-Gehtest)</ion-item>
   </ion-list>
 </ion-content>

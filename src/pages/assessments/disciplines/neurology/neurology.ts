@@ -5,6 +5,7 @@ import {FormDgiPage} from "../../assessment-forms/form-dgi/form-dgi";
 import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-walkingtest";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
+import {DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
 
 /**
  * Generated class for the NeurologyPage page.
@@ -22,8 +23,10 @@ export class NeurologyPage extends WorkflowPage {
 
   private rootNav:any;
 
-  constructor(navParams: NavParams, app: App) {
+  // @ts-ignore
+  constructor(navParams: NavParams, app: App, private document: DocumentViewer) {
     super(navParams.data);
+    this.document = document;
     this.rootNav = app.getRootNav();
   }
 
@@ -33,6 +36,12 @@ export class NeurologyPage extends WorkflowPage {
 
   navToDemmi() {
     this.rootNav.push(FormDemmiPage, this.workflowParameters);
+  }
+  showPdfDemmi(){
+    const options: DocumentViewerOptions = {
+      title: 'My PDF'
+    }
+    this.document.viewDocument('/assets/Assessment_DGI.pdf', 'application/pdf', options)
   }
 
   navToDgi() {

@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>evaluation-walkingtest</ion-title>
+    <ion-title>Verlauf 10-Meter-Gehtest</ion-title>
+    <ion-label class="subtitle">Timed Walking Test</ion-label>
   </ion-navbar>
 </ion-header>
 
@@ -8,6 +9,51 @@
   <ion-label>
     {{viewPatient(patient)}}
   </ion-label>
+
+  <div class="col score">
+    <div class="row">
+      <ion-item>
+        <ion-label>1. Versuch</ion-label>
+        <ion-label class="nr">??</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>2. Versuch</ion-label>
+        <ion-label class="nr">??</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>3. Versuch</ion-label>
+        <ion-label class="nr">??</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="col score">
+  <div class="row">
+    <ion-item>
+      <ion-label>Durchschnittswert</ion-label>
+      <ion-label class="nr">??</ion-label>
+    </ion-item>
+  </div>
+  </div>
+
+  <div class="col score">
+    <div class="row">
+      <ion-item>
+        <ion-label class="bold">Meter/Sekunde</ion-label>
+        <ion-label class="nr bold">??</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
 
   <ion-label>Beachte: Angaben zu Minimal Detectable Change (MDC) &
     Minimal Clinically Important Difference (MCID) unter </ion-label>

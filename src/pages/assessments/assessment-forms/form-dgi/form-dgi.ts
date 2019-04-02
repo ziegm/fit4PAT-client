@@ -9,6 +9,8 @@ import {AssessmentResponseItem} from "../../../../responses/assessment-response-
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
+import {MyApp} from "../../../../app/app.component";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 
 @IonicPage()
@@ -16,7 +18,7 @@ import Bundle = fhir.Bundle;
   selector: 'page-form-dgi',
   templateUrl: 'form-dgi.html',
 })
-export class FormDgiPage {
+export class FormDgiPage extends WorkflowPage {
   private rootNav: any;
   private patient: Patient;
   private assessmentResponse: AssessmentResponse = new DgiResponse();
@@ -26,6 +28,7 @@ export class FormDgiPage {
   public selectedIndex: number;
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams, private restProvider: RestProvider) {
+    super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
     //this.selectedIndex = localStorage.getItem('1');
@@ -57,6 +60,10 @@ export class FormDgiPage {
     if (bundle.entry !== undefined) {
       return bundle.entry[0].resource as Practitioner;
     }
+  }
+
+  navToAssessmentTab(){
+    this.rootNav.push(MyApp, this.workflowParameters);
   }
 
   private navToEvaluationDgi() {

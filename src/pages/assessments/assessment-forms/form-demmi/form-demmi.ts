@@ -9,6 +9,8 @@ import {DemmiResponse} from "../../../../responses/assessment-type/demmi-respons
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
+import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {MyApp} from "../../../../app/app.component";
 
 
 @IonicPage()
@@ -16,12 +18,13 @@ import Bundle = fhir.Bundle;
   selector: 'page-form-demmi',
   templateUrl: 'form-demmi.html',
 })
-export class FormDemmiPage {
+export class FormDemmiPage extends WorkflowPage {
   private rootNav:any;
   private patient: Patient;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
+    super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
 
@@ -54,6 +57,10 @@ export class FormDemmiPage {
     }
   }
 
+  private navToAssessmentTab(){
+    this.rootNav.push(MyApp, this.workflowParameters);
+  }
+
   private navToEvaluationDemmi() {
     this.rootNav.push(EvaluationDemmiPage, this.patient);
   }
@@ -76,38 +83,38 @@ export class FormDemmiPage {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       subTitle: 'de Morton Mobility Index',
-      message: 'Hinweise zur Hilfestellung:<br/>' +
-      'Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, in erster Linie, um ' +
-      'Bewegungen zu führen.<br/>' +
-      'Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
-      'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.<br/>' +
-      'Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
-      'nicht erforderlich.<br/>' +
-      'Hinweise zur Durchführung<br/>' +
-      '1. Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
+      message: '<b>Hinweise zur Hilfestellung:</b><br/>' +
+      '<ul class="withoutSpace"><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
+        'in erster Linie, um Bewegungen zu führen.</li><br/>' +
+      '<li>Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
+      'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.</li><br/>' +
+      '<li>Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
+      'nicht erforderlich.</li></ul><br/>' +
+      '<b>Hinweise zur Durchführung:</b><br/>' +
+      '<ol><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
         'seine Medikamente eingenommen hat, wie z.B. eine halbe Stunde nach ' +
         'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
-        'Parkinson-Medikamenten.<br/>' +
-      '2. Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
+        'Parkinson-Medikamenten.</li><br/>' +
+      '<li>Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
         'Bei sehr belastbarkeitsgeminderten Patienten, die im Stuhl angetroffen werden, ' +
-        'können die Tests aus dem Abschnitt „Stuhl“ vorgezogen werden.<br/>' +
-      '3. Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.<br/>' +
-      '4. Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
-        'bzgl. ihrer Leistung bekommen.<br/>' +
-      '5. Die Bewertung findet anhand des ersten Testversuchs statt.<br/>' +
-      '6. Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
-        'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.<br/>' +
-      '7. Der Untersucher kümmert sich um medizinischen Apparaturen (wie z.B. ' +
+        'können die Tests aus dem Abschnitt „Stuhl“ vorgezogen werden.</li><br/>' +
+      '<li>Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.</li><br/>' +
+      '<li>Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
+        'bzgl. ihrer Leistung bekommen.</li><br/>' +
+      '<li>Die Bewertung findet anhand des ersten Testversuchs statt.</li><br/>' +
+      '<li>Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
+        'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.</li><br/>' +
+      '<li>Der Untersucher kümmert sich um medizinischen Apparaturen (wie z.B. ' +
         'mobile Sauerstoffversorgung, Drainagen). Benötigt der Patient ' +
         'geringfügige Hilfestellung um die Aufgaben durchzuführen, ist eine weitere ' +
-        'Person erforderlich, um bei den Apparaturen behilflich zu sein.<br/>' +
-      '8. Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
+        'Person erforderlich, um bei den Apparaturen behilflich zu sein.</li><br/>' +
+      '<li>Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
         'Aufgabenstellung benötigen, sollten nach der Hälfte der Aufgaben eine ' +
         '10minütige Pause einlegen, d.h. nachdem sie den Transfer vom Stuhl ' +
-        'abgeschlossen haben.<br/>' +
-      '9. Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
+        'abgeschlossen haben.</li><br/>' +
+      '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
         'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
-        '„Stuhl“ vorgezogen werden.',
+        '„Stuhl“ vorgezogen werden.</li></ol>',
       buttons: [
         {
           text: 'Ok',

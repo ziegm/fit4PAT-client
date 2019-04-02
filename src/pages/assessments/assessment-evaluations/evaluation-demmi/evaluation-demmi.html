@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>de Morton Mobility Index (DEMMI)</ion-title>
+    <ion-title>Verlauf DEMMI</ion-title>
+    <ion-label class="subtitle">de Morton Mobility Index</ion-label>
   </ion-navbar>
 </ion-header>
 
@@ -12,35 +13,25 @@
   <div class="col score">
     <div class="row">
       <ion-item>
-        <ion-label>Rohwert</ion-label>
-        <ion-label>erreichte Punktzahl</ion-label>
-        <ion-label>/ 19</ion-label>
+        <ion-label class="bold">Rohwert</ion-label>
+        <ion-label class="nr">??</ion-label>
+        <ion-label class="nr">/ 19</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item>
-        <ion-label>DEMMI Score</ion-label>
-        <ion-label>erreichte Punktzahl</ion-label>
-        <ion-label>/ 100</ion-label>
+        <ion-label class="bold">DEMMI Score</ion-label>
+        <ion-label class="nr">??</ion-label>
+        <ion-label class="nr">/ 100</ion-label>
       </ion-item>
     </div>
   </div>
 
-  <!--<div class="row">
-    <div class="col-md-6">
-      <div style="display: block;">
-        <canvas baseChart width="300" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-  </div>-->
+  <ion-card>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
 
   <ion-list radio-group [(ngModel)]="scoreToDemmiScore">
     <ion-label class="bar-stable">
