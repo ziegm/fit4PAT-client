@@ -7,12 +7,6 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
 import {DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
 
-/**
- * Generated class for the NeurologyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,8 +14,8 @@ import {DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-view
   templateUrl: 'neurology.html',
 })
 export class NeurologyPage extends WorkflowPage {
-
   private rootNav:any;
+  private isSearchbarVisible = false;
 
   // @ts-ignore
   constructor(navParams: NavParams, app: App, private document: DocumentViewer) {
@@ -37,6 +31,7 @@ export class NeurologyPage extends WorkflowPage {
   navToDemmi() {
     this.rootNav.push(FormDemmiPage, this.workflowParameters);
   }
+
   showPdfDemmi(){
     const options: DocumentViewerOptions = {
       title: 'My PDF'
@@ -50,5 +45,9 @@ export class NeurologyPage extends WorkflowPage {
 
   navToWalkingtest() {
     this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 }

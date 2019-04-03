@@ -6,11 +6,11 @@ import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {MyApp} from "../../../../app/app.component";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
-import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {MyApp} from "../../../../app/app.component";
 
 
 @IonicPage()
@@ -21,6 +21,7 @@ import {MyApp} from "../../../../app/app.component";
 export class FormDemmiPage extends WorkflowPage {
   private rootNav:any;
   private patient: Patient;
+  private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
@@ -63,6 +64,10 @@ export class FormDemmiPage extends WorkflowPage {
 
   private navToEvaluationDemmi() {
     this.rootNav.push(EvaluationDemmiPage, this.patient);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 
   private saveAndNavToEvaluationDemmi() {

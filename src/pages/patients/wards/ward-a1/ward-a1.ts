@@ -9,8 +9,13 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 })
 export class WardA1Page extends WorkflowPage {
   private readonly ward:string = "A1";
+  private isSearchbarVisible = false;
 
   constructor(navParams: NavParams) {
     super(navParams.data);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 }

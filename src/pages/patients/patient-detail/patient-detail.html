@@ -1,7 +1,5 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{viewPatient(patient)}}</ion-title>
-  </ion-navbar>
+  <navbar [title]="viewPatient(patient)" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

@@ -18,6 +18,7 @@ import Practitioner = fhir.Practitioner;
 export class FormWalkingtestPage {
   private rootNav:any;
   private patient: Patient;
+  private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new WalkingtestResponse();
   private timeBegan = null;
   private timeStopped:any = null;
@@ -66,6 +67,10 @@ export class FormWalkingtestPage {
 
   navToEvaluationWalkingtest(){
     this.rootNav.push(EvaluationWalkingtestPage, this.patient);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 
   private saveAndNavToEvaluationWalkingtest() {

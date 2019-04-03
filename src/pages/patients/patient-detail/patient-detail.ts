@@ -12,6 +12,7 @@ import Patient = fhir.Patient;
 export class PatientDetailPage {
   private rootNav: any;
   private patient: Patient;
+  private isSearchbarVisible = false;
 
   constructor(navParams: NavParams, app: App) {
     this.patient = navParams.data;
@@ -24,5 +25,9 @@ export class PatientDetailPage {
 
   private navToAssessmentTab() {
     this.rootNav.push(AssessmentTabPage, {patient: this.patient});
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 }

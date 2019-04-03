@@ -10,13 +10,13 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 })
 export class WardB1Page extends WorkflowPage {
   private readonly ward:string = "B1";
+  private isSearchbarVisible = false;
 
   constructor(private navCtrl: NavController, navParams: NavParams) {
     super(navParams.data);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WardB1Page');
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
-
 }

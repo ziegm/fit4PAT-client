@@ -1,8 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavParams, NavController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
+import {Chart} from 'chart.js';
 import Patient = fhir.Patient;
-import { Chart } from 'chart.js';
 
 
 @IonicPage()
@@ -12,6 +12,7 @@ import { Chart } from 'chart.js';
 })
 export class EvaluationDemmiPage {
   private patient: Patient;
+  private isSearchbarVisible = false;
 
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
@@ -22,6 +23,10 @@ export class EvaluationDemmiPage {
 
   private viewPatient(patient: Patient) {
     return PatientHelper.viewPatient(patient);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 
   ionViewDidLoad() {

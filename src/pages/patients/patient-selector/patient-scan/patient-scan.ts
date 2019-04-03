@@ -3,12 +3,6 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 
-/**
- * Generated class for the PatientScanPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,8 +10,8 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   templateUrl: 'patient-scan.html',
 })
 export class PatientScanPage extends WorkflowPage {
-
   private barcode = "";
+  private isSearchbarVisible = false;
 
   constructor(private navCtrl: NavController, navParams: NavParams, private barcodeScanner: BarcodeScanner) {
     super(navParams.data);
@@ -26,5 +20,9 @@ export class PatientScanPage extends WorkflowPage {
     }).catch(err => {
       console.log('Error', err);
     });
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 }

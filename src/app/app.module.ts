@@ -38,6 +38,7 @@ import {PatientListComponent} from "../components/patient/patient-list/patient-l
 import {PatientSelectorComponent} from "../components/patient/patient-selector/patient-selector";
 import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail";
 import {DocumentViewer} from "@ionic-native/document-viewer";
+import {NavbarComponent} from "../components/navbar/navbar";
 
 
 // @ts-ignore
@@ -70,7 +71,8 @@ import {DocumentViewer} from "@ionic-native/document-viewer";
     WardIpsPage,
     PatientListComponent,
     PatientSelectorComponent,
-    PatientDetailPage
+    PatientDetailPage,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

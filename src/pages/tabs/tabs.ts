@@ -12,4 +12,9 @@ export class TabsPage {
   private tab2Root = PatientTabPage;
   private fromAssessment = { workflowSelector: WorkflowSelector.FromAssessment }
   private fromPatient = { workflowSelector: WorkflowSelector.FromPatient }
+  private isSearchbarVisible = false;
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
+  }
 }

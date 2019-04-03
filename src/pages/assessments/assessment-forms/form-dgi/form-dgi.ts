@@ -6,11 +6,11 @@ import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
+import {MyApp} from "../../../../app/app.component";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
-import {MyApp} from "../../../../app/app.component";
-import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 
 @IonicPage()
@@ -21,6 +21,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 export class FormDgiPage extends WorkflowPage {
   private rootNav: any;
   private patient: Patient;
+  private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DgiResponse();
   private show: boolean = false;
   public discount: number = 0;
@@ -68,6 +69,10 @@ export class FormDgiPage extends WorkflowPage {
 
   private navToEvaluationDgi() {
     this.rootNav.push(EvaluationDgiPage, this.patient);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
   }
 
   private saveAndNavToEvaluationDgi() {

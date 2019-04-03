@@ -1,0 +1,18 @@
+<ion-navbar>
+  <button *ngIf="isMenuVisible" ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>{{ title }}</ion-title>
+  <ion-label class="subtitle">{{ subTitle}}</ion-label>
+  <ion-buttons end>
+    <button ion-button icon-only (click)="toggleSearchbarVisibility()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+    <button ion-button icon-only (click)="navToHome()">
+      <img class="imgTitle" src="./assets/imgs/Logo_fit4PAT_man-grey.svg"/>
+    </button>
+    <button ion-button icon-only (click)="openModal()">
+      <ion-icon name="more"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-navbar>

@@ -1,16 +1,9 @@
 import {Component} from '@angular/core';
-import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {App, IonicPage, NavParams} from 'ionic-angular';
 import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-walkingtest";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {AssessmentTabPage} from "../../assessment-tab/assessment-tab";
 import {MyApp} from "../../../../app/app.component";
 
-/**
- * Generated class for the CardiologyPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -18,24 +11,37 @@ import {MyApp} from "../../../../app/app.component";
   templateUrl: 'cardiology.html',
 })
 export class CardiologyPage extends WorkflowPage {
+  private rootNav: any;
+  private isSearchbarVisible = false;
+  private assessments = ["Timed Walking Test (10-Meter-Gehtest)"];
 
-  private rootNav:any;
-
-  constructor(public navCtrl: NavController, navParams: NavParams, public app: App) {
+  constructor(navParams: NavParams, app: App) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardiologyPage');
-  }
-
-  navToAssessmentTab(){
+  private navToAssessmentTab(){
     this.rootNav.push(MyApp, this.workflowParameters);
   }
 
-  navToWalkingtest() {
+  private navToWalkingtest() {
     this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
+  }
+
+  private onSearchbarVisibilityChange(isVisible: boolean): void {
+    this.isSearchbarVisible = isVisible;
+  }
+
+
+  private getAssessments(searchInput: string): string[] {
+    /*if (!searchInput) {
+      return this.assessments;
+    }
+
+    return this.assessments.map((element: string) => {
+      return element.includes(this);
+    }, searchInput);*/
+    return [];
   }
 
 }
