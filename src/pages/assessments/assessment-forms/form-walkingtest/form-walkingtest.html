@@ -15,14 +15,14 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col col-7>
+      <ion-col col-8>
         <ion-grid>
           <!-- Question 1 -->
           <ion-row>
             <ion-col col-5>
               <ion-item>
                 <ion-label>1. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(0, $event.value)" [value]="time1"></ion-input>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(0, $event.value)" [value]="time1" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -42,7 +42,7 @@
             <ion-col col-5>
               <ion-item>
                 <ion-label>2. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(1, $event.value)" [value]="time2"></ion-input>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(1, $event.value)" [value]="time2" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -62,7 +62,7 @@
             <ion-col col-5>
               <ion-item>
                 <ion-label>3. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(2, $event.value)" [value]="time3"></ion-input>
+                <ion-input type="number" (ionChange)="addOrChangeAnswer(2, $event.value)" [value]="time3" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
