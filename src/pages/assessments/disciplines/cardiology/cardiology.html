@@ -6,7 +6,7 @@
   <ion-searchbar *ngIf="isSearchbarVisible" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-list>
     <ion-item>
-      <ion-item (click)="navToWalkingtest()" class="listAssessments"
+      <ion-item (click)="navToWalkingtest()" class="listAssessmentsPatients"
                 *ngFor="let assessment of assessments">{{assessment}}</ion-item>
     </ion-item>
   </ion-list>
