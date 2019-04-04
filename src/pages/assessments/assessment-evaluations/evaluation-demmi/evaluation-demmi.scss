@@ -52,6 +52,7 @@ page-evaluation-demmi {
   }
   .bar-stable{
     padding-bottom: 10px;
+    font-size: 16px;
   }
   .bordr{
     border-top: solid black;
@@ -80,6 +81,20 @@ page-evaluation-demmi {
 
   .demmiAmpel{
     max-width: 4%;
+  }
+
+  .normColor1{
+    background-color: #dbdbdb;
+  }
+  .normColor2{
+    background-color: #e7e7e7;
+  }
+  .normColor3{
+    background-color: #f3f3f3;
+  }
+
+  .textSize{
+    font-size: 16px;
   }
 
 }

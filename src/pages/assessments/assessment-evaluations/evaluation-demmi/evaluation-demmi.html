@@ -32,7 +32,7 @@
 
   <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart">
     <ion-label class="bar-stable bold">
-      DEMMI Rohwert Umrechnungstabelle
+      DEMMI Rohwert Umrechnungstabelle:
     </ion-label>
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col">
@@ -208,7 +208,7 @@
 
   <ion-list radio-group [(ngModel)]="normwerte" class="difference">
     <ion-label class="bar-stable bold">
-      Normwerte
+      Normwerte:
     </ion-label>
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col">
@@ -228,26 +228,26 @@
         </ion-item>
       </div>
       <div class="col normNr">
-        <ion-item class="bordr">
+        <ion-item class="bordr normColor1">
           <ion-label>60-69</ion-label>
         </ion-item>
-        <ion-item class="bordr down">
+        <ion-item class="bordr down normColor1">
           <ion-label>85</ion-label>
         </ion-item>
       </div>
       <div class="col normNr">
-        <ion-item class="bordr">
+        <ion-item class="bordr normColor2">
           <ion-label>70-79</ion-label>
         </ion-item>
-        <ion-item class="bordr down">
+        <ion-item class="bordr down normColor2">
           <ion-label>85</ion-label>
         </ion-item>
       </div>
       <div class="col normNr">
-        <ion-item class="bordr last">
+        <ion-item class="bordr last normColor3">
           <ion-label>80-89</ion-label>
         </ion-item>
-        <ion-item class="bordr down last">
+        <ion-item class="bordr down last normColor3">
           <ion-label>74</ion-label>
         </ion-item>
       </div>
@@ -265,25 +265,25 @@
         </ion-item>
       </div>
       <div class="col normNrV2">
-        <ion-item class="bordr">
+        <ion-item class="bordr normColor1">
           <ion-label class="bold">andere Institution</ion-label>
         </ion-item>
-        <ion-item class="bordr down">
+        <ion-item class="bordr down normColor1">
           <ion-label>40-50</ion-label>
         </ion-item>
       </div>
       <div class="col normNrV2">
-        <ion-item class="bordr last">
+        <ion-item class="bordr last normColor2">
           <ion-label class="bold">nach Hause</ion-label>
         </ion-item>
-        <ion-item class="bordr down last">
+        <ion-item class="bordr down last normColor2">
           <ion-label>≥62</ion-label>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
-  <ion-label class="difference"><b>Beachte:</b>
+  <ion-label class="difference textSize"><b>Beachte:</b>
     <ul><li>Minimal Detectable Change (MDC) = 9/100 Punkten</li>
       <li>Minimal Clinically Important Difference (MCID) = 10/100 Punkte</li></ul>
   </ion-label>
