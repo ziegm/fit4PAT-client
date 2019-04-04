@@ -94,7 +94,7 @@ export class FormDgiPage extends WorkflowPage {
       title: 'Instruktion',
       subTitle: 'Dynamic Gait Index',
       message: '<b>Bewertung:</b><br/>' +
-        'Die niedrigste zutreffende Kategorie ist auszuwählen.',
+        '<ul><li>Die niedrigste zutreffende Kategorie ist auszuwählen.</li></ul>',
       buttons: [
         {
           text: 'Ok',

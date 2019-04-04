@@ -176,22 +176,22 @@ export class FormWalkingtestPage {
       title: 'Instruktion',
       subTitle: 'Timed Walking Test',
       message: '<b>Ziel:</b></br>' +
-        'Ermittlung der Gehgeschwindigkeit in m/s bei selbst gewähltem Tempo und gegebenenfalls bei hoher Geschwindigkeit.</br></br>' +
+        '<ul><li>Ermittlung der Gehgeschwindigkeit in m/s bei selbst gewähltem Tempo und gegebenenfalls bei hoher Geschwindigkeit.</li></ul></br></br>' +
         '<b>Situation:</b></br>' +
-        '<ul><li>Auf ebenem Boden werden 4 Stellen markiert (0m, 2m, 8m, 10m).</li>' +
-        '<li>Die erste Markierung ist der Startpunkt (0 m).</li>' +
-        '<li>Die zweite Markierung erfolgt bei 2 m, diese dient ausschliesslich dem Physiotherapeuten als Zeitmessungs-Startpunkt.</li>' +
-        '<li>Die dritte Markierung erfolgt bei 8 m. Hier endet die Zeitmessung.</li>' +
-        '<li>Die vierte Markierung ist sichtbar und dient als Endpunkt für die Testperson (10 m).</li>' +
+        '<ul><li>Auf ebenem Boden werden 4 Stellen markiert (0m, 2m, 8m, 10m).</li></br>' +
+        '<li>Die erste Markierung ist der Startpunkt (0 m).</li></br>' +
+        '<li>Die zweite Markierung erfolgt bei 2 m, diese dient ausschliesslich dem Physiotherapeuten als Zeitmessungs-Startpunkt.</li></br>' +
+        '<li>Die dritte Markierung erfolgt bei 8 m. Hier endet die Zeitmessung.</li></br>' +
+        '<li>Die vierte Markierung ist sichtbar und dient als Endpunkt für die Testperson (10 m).</li></br>' +
         '<li>Es wird also eine Strecke von 10 m markiert, jedoch lediglich die Zeit auf einer Strecke von 6 m gemessen.</li></ul>' +
         '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/></br>' +
         '</br><b>Beschreibung:</b></br>' +
-        '<ul><li>Der Patient steht bei der 0 m-Markierung.</li>' +
-        '<li>„Gehen Sie so schnell wie Sie wollen, nach meinem Kommando. Stoppen Sie, wenn ich ‚Stopp‘ sage.“</li>' +
-        '<li>„Auf die Plätze, fertig, los!“ – bei der 10 m-Markierung „Stopp“.</li>' +
-        '<li>Sobald die Fussspitze die 2 m-Markierung überschreitet, startet die Zeitmessung, bei der 8 m-Markierung die Zeitmessung gestoppt.</li>' +
-        '<li>Der Patient führt den Test 3 x durch, aus den 3 gemessenen Werten wird der Mittelwert ermittelt.</li>' +
-        '<li>Der Patient kann seine üblichen Gehhilfsmittel verwenden. Wichtig ist, dass die Verwendung von Hilfsmitteln dokumentiert wird.</li>' +
+        '<ul><li>Der Patient steht bei der 0 m-Markierung.</li></br>' +
+        '<li>„Gehen Sie so schnell wie Sie wollen, nach meinem Kommando. Stoppen Sie, wenn ich ‚Stopp‘ sage.“</li></br>' +
+        '<li>„Auf die Plätze, fertig, los!“ – bei der 10 m-Markierung „Stopp“.</li></br>' +
+        '<li>Sobald die Fussspitze die 2 m-Markierung überschreitet, startet die Zeitmessung, bei der 8 m-Markierung die Zeitmessung gestoppt.</li></br>' +
+        '<li>Der Patient führt den Test 3 x durch, aus den 3 gemessenen Werten wird der Mittelwert ermittelt.</li></br>' +
+        '<li>Der Patient kann seine üblichen Gehhilfsmittel verwenden. Wichtig ist, dass die Verwendung von Hilfsmitteln dokumentiert wird.</li></br>' +
         '<li>Lässt der Zustand des Patienten es zu, kann der 10 m-Gehtest zusätzlich auch mit hoher Geschwindigkeit durchgeführt werden.</li></ul>',
       buttons: [
         {
@@ -210,21 +210,12 @@ export class FormWalkingtestPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'Timed Walking Test',
-      message: 'In einer Menschenmenge müssen wir das Tempo verändern\n' +
-        'können, ohne dabei das Gleichgewicht zu verlieren. Beim Gehen\n' +
-        'im Alltag, beim Flanieren oder beim Gehen in einem Einkaufszentrum\n' +
-        'müssen wir während des Gehens nach links und rechts\n' +
-        'schauen können, ohne innezuhalten. Diese Gleichgewichtsfähigkeiten\n' +
-        'benötigen wir auch beim Überqueren einer Straße. Wir\n' +
-        'müssen nach unten und wieder geradeaus schauen und womöglich\n' +
-        'eine Stufe bewältigen. Wenn uns jemand ruft, müssen wir\n' +
-        'anhalten und uns umdrehen können, ohne das Gleichgewicht zu\n' +
-        'verlieren. Schließlich müssen wir fähig sein, sicher um Hindernisse\n' +
-        'herumzugehen, ohne zu zögern. Wir passen unser Gehen\n' +
-        'normal meistert. Können die Patienten die Aufgabe nicht bewältigen,\n' +
-        'erhalten sie null Punkte (a Kasten 2). Für eine eingeschränkte\n' +
-        'Ausführung gibt es einen oder zwei Punkte. Die maximale\n' +
-        'Punktzahl beträgt 24 Punkte. Damit der DGI standardisiert',
+      message: '<ul><li>Durchschnittliche Ganggeschwindigkeit gesunder Erwachsener: 1,3 m/s<li></br>' +
+        '<ul><li>Durchschnittswerte Frauen: 1,23 m/s</li></br>' +
+        '<li>Durchschnittswerte Männer: 1,37 m/s</li></ul></br>' +
+        '<li>Hemiparese nach 6 Monaten: 0,25 m/s</li></br>' +
+        '<li>Erforderlich für selbständiges Gehen ausserhalb des Hauses: 0,8 m/s</li></br>' +
+        '<li>Mobilität in urbanen Umgebungen erfordert eine Geschwindigkeit > 0,79 m/s</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -242,7 +233,7 @@ export class FormWalkingtestPage {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'Timed Walking Test',
-      message: '<ul><li>Abgestreckte Strecke</li></ul></br></br>' +
+      message: '<ul><li>Abgestreckte Strecke</li></ul>' +
       '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/>',
       buttons: [
         {
