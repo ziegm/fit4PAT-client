@@ -33,8 +33,8 @@
   padding: 0;
 }
 .imgTitle{
-  width: 23px;
-  height: 23px;
+  width: 31px;
+  height: 31px;
 }
 .labelTitle{
   padding-left: 0;
@@ -100,7 +100,7 @@ ion-icon::before{
 
 //how the Assessments are listed in the five categories
 .listAssessments{
-  border-bottom: 1px solid grey !important;
+  border-bottom: 1px solid #888888 !important;
 }
 
 //size of the alert-message

@@ -137,18 +137,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'de Morton Mobility Index',
-      message: '<ion-list radio-group [(ngModel)]="scoreToDemmiScore">' +
-        '<ion-label class="bar-stable">' +
-      'DEMMI Rohwert Umrechnungstabelle' +
-        '</ion-label>' +
-        '<div class="row" ng-repeat="data in ctrl.data">' +
-      '<div class="col"><ion-item class="rohwert"><ion-label>Rohwert</ion-label></ion-item><ion-item class="demmi"><ion-label>DEMMI Score</ion-label></ion-item></div>' +
-        '<div class="col"><ion-item class="red"><ion-label>0</ion-label></ion-item><ion-item class="red down"><ion-label>0</ion-label></ion-item></div>' +
-        '<div class="col"><ion-item class="red"><ion-label>1</ion-label></ion-item><ion-item class="red down"><ion-label>8</ion-label></ion-item></div>' +
-        '<div class="col"><ion-item class="red"><ion-label>2</ion-label></ion-item><ion-item class="red down"><ion-label>15</ion-label></ion-item></div>' +
-        '<div class="col"><ion-item class="red"><ion-label>3</ion-label></ion-item><ion-item class="red down"><ion-label>20</ion-label></ion-item></div>' +
-        '</div>' +
-        '</ion-list>',
+      message:'<img src="./assets/imgs/demmi_normwerte_V2.png"/>',
       buttons: [
         {
           text: 'Ok',
