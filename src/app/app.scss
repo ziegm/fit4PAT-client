@@ -116,3 +116,6 @@ ion-icon::before{
 .bar-button-md[icon-only] {
   transform: rotate(0deg);
 }
+.bar-button::after{
+  transform: rotate(0deg);
+}

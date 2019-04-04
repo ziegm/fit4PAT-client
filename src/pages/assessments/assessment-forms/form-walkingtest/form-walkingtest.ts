@@ -176,7 +176,7 @@ export class FormWalkingtestPage {
       title: 'Instruktion',
       subTitle: 'Timed Walking Test',
       message: '<b>Ziel:</b></br>' +
-        '<ul><li>Ermittlung der Gehgeschwindigkeit in m/s bei selbst gewähltem Tempo und gegebenenfalls bei hoher Geschwindigkeit.</li></ul></br></br>' +
+        '<ul><li>Ermittlung der Gehgeschwindigkeit in m/s bei selbst gewähltem Tempo und gegebenenfalls bei hoher Geschwindigkeit.</li></ul></br>' +
         '<b>Situation:</b></br>' +
         '<ul><li>Auf ebenem Boden werden 4 Stellen markiert (0m, 2m, 8m, 10m).</li></br>' +
         '<li>Die erste Markierung ist der Startpunkt (0 m).</li></br>' +
@@ -210,9 +210,9 @@ export class FormWalkingtestPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'Timed Walking Test',
-      message: '<ul><li>Durchschnittliche Ganggeschwindigkeit gesunder Erwachsener: 1,3 m/s<li></br>' +
+      message: '<ul><li>Durchschnittliche Ganggeschwindigkeit gesunder Erwachsener: 1,3 m/s</br></br>' +
         '<ul><li>Durchschnittswerte Frauen: 1,23 m/s</li></br>' +
-        '<li>Durchschnittswerte Männer: 1,37 m/s</li></ul></br>' +
+        '<li>Durchschnittswerte Männer: 1,37 m/s</li></ul></li></br>' +
         '<li>Hemiparese nach 6 Monaten: 0,25 m/s</li></br>' +
         '<li>Erforderlich für selbständiges Gehen ausserhalb des Hauses: 0,8 m/s</li></br>' +
         '<li>Mobilität in urbanen Umgebungen erfordert eine Geschwindigkeit > 0,79 m/s</li></ul>',

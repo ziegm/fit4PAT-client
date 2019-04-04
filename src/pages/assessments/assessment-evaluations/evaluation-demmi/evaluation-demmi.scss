@@ -21,25 +21,25 @@ page-evaluation-demmi {
     border-bottom: solid black;
   }
   .red{
-    background-color: #ff9999;
+    background-color: #ffcccc;
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
   .orange{
-    background-color: #ffdb99;
+    background-color: #ffedcc;
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
   .yellow{
-    background-color: #ffff99;
+    background-color: #ffffcc;
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
   .green{
-    background-color: #99cc99;
+    background-color: #cce5cc;
     border-top: solid black;
     border-left: solid black;
     text-align: center;
@@ -57,6 +57,29 @@ page-evaluation-demmi {
     border-top: solid black;
     border-left: solid black;
     text-align: center;
+  }
+
+  .difference{
+    padding-top: 20px;
+  }
+  .differenceUnderChart{
+    padding-top: 50px;
+  }
+
+  .normNr{
+    max-width: 15%;
+  }
+
+  .normNrV2{
+    max-width: 30%;
+  }
+
+  .textLeft{
+  padding-left: 10px;
+  }
+
+  .demmiAmpel{
+    max-width: 4%;
   }
 
 }
