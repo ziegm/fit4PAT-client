@@ -3,5 +3,30 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="navToAssessmentTab()">+</button>
+  <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
+  <ion-list>
+    <ion-label>This is my list</ion-label>
+  </ion-list>
+
+  <ion-fab bottom right >
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="navToAssessmentTab()">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Neues Assessment</ion-label>
+      </button>
+      <button ion-fab (click)="navToWalkingtest()">
+        <ion-icon name="document"></ion-icon>
+        <ion-label>Timed Walking Test</ion-label>
+      </button>
+      <button ion-fab (click)="navToDgi()">
+        <ion-icon name="document"></ion-icon>
+        <ion-label>Dynamic Gait Index</ion-label>
+      </button>
+      <button ion-fab (click)="navToDemmi()">
+        <ion-icon name="document"></ion-icon>
+        <ion-label>de Morton Mobility Index</ion-label>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

@@ -3,6 +3,10 @@ import {App, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../components/patient/patient-helper";
 import {AssessmentTabPage} from "../../assessments/assessment-tab/assessment-tab";
 import Patient = fhir.Patient;
+import {FormDgiPage} from "../../assessments/assessment-forms/form-dgi/form-dgi";
+import {FormWalkingtestPage} from "../../assessments/assessment-forms/form-walkingtest/form-walkingtest";
+import {FormDemmiPage} from "../../assessments/assessment-forms/form-demmi/form-demmi";
+import {WorkflowPage} from "../../../workflow/workflow-page";
 
 
 @Component({
@@ -25,6 +29,18 @@ export class PatientDetailPage {
 
   private navToAssessmentTab() {
     this.rootNav.push(AssessmentTabPage, {patient: this.patient});
+  }
+
+  private navToDemmi() {
+    this.rootNav.push(FormDemmiPage, {patient: this.patient});
+  }
+
+  private navToDgi() {
+    this.rootNav.push(FormDgiPage, {patient: this.patient});
+  }
+
+  private navToWalkingtest() {
+    this.rootNav.push(FormWalkingtestPage, {patient: this.patient});
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {
