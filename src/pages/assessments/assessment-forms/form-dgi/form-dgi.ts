@@ -93,7 +93,7 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       subTitle: 'Dynamic Gait Index',
-      message: 'Bewertung:<br/>' +
+      message: '<b>Bewertung:</b><br/>' +
         'Die niedrigste zutreffende Kategorie ist auszuwählen.',
       buttons: [
         {
@@ -112,7 +112,7 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       subTitle: 'Dynamic Gait Index',
-      message: 'Cut-off Point des prädiktiven Werts für Stürze: 19 Punkte',
+      message: '<ul><li>Cut-off Point des prädiktiven Werts für Stürze: 19 Punkte</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -130,10 +130,10 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'Dynamic Gait Index',
-      message: '1. Freie Gehstrecke (20m)<br/>' +
-        '2. Schuhschachteln (3 Stk.)<br/>' +
-        '3. Keulen (3 Stk.)<br/>' +
-        '4. Treppe',
+      message: '<ul><li>Freie Gehstrecke (20m)</li><br/>' +
+        '<li>Schuhschachteln (3 Stk.)</li><br/>' +
+        '<li>Keulen (3 Stk.)</li><br/>' +
+        '<li>Treppe</li></ul>',
       buttons: [
         {
           text: 'Ok',

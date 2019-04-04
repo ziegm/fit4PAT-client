@@ -106,13 +106,13 @@ ion-icon::before{
 //size of the alert-message
 .alert-message{
   min-height: 450px;
-  white-space: normal !important;
 }
 .alert-wrapper{
   min-width: 900px;
   min-height: 80%;
   max-height: 100%;
 }
-ul, li{
-  white-space: normal !important;
+
+.bar-button-md[icon-only] {
+  transform: rotate(0deg);
 }

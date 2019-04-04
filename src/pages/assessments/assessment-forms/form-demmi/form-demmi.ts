@@ -89,14 +89,14 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Instruktion',
       subTitle: 'de Morton Mobility Index',
       message: '<b>Hinweise zur Hilfestellung:</b><br/>' +
-      '<ul class="withoutSpace"><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
+      '<ul><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
         'in erster Linie, um Bewegungen zu führen.</li><br/>' +
       '<li>Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
       'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.</li><br/>' +
       '<li>Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
       'nicht erforderlich.</li></ul><br/>' +
       '<b>Hinweise zur Durchführung:</b><br/>' +
-      '<ol><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
+      '<ul><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
         'seine Medikamente eingenommen hat, wie z.B. eine halbe Stunde nach ' +
         'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
         'Parkinson-Medikamenten.</li><br/>' +
@@ -119,7 +119,7 @@ export class FormDemmiPage extends WorkflowPage {
         'abgeschlossen haben.</li><br/>' +
       '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
         'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
-        '„Stuhl“ vorgezogen werden.</li></ol>',
+        '„Stuhl“ vorgezogen werden.</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -166,10 +166,10 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'de Morton Mobility Index',
-      message: '1. Spitalbett/Liege<br/>' +
-      '2. Stuhl mit Armlehnen (Sitzhöhe 45cm)<br/>' +
-        '3. Abgemessene Gehstecke (50m)<br/>' +
-        '4. Stift',
+      message: '<ul><li>Spitalbett/Liege</li><br/>' +
+      '<li>Stuhl mit Armlehnen (Sitzhöhe 45cm)</li><br/>' +
+        '<li>Abgemessene Gehstecke (50m)</li><br/>' +
+        '<li>Stift</li></ul>',
       buttons: [
         {
           text: 'Ok',
