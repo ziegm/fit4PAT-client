@@ -1,3 +1,7 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+
+
 <ion-header>
   <navbar title="Verlauf DEMMI" subTitle="de Morton Mobility Index" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
@@ -26,7 +30,7 @@
 
   <ion-card>
     <ion-card-content>
-      <canvas #lineCanvas></canvas>
+      <canvas id="lineChart" #lineCanvas></canvas>
     </ion-card-content>
   </ion-card>
 

@@ -59,8 +59,30 @@ export class EvaluationWalkingtestPage {
             spanGaps: false,
           }
         ]
-      }
+      },
+      options: {
+        legend: {
+          display: false,
+          labels: {
+            fontColor: "black",
+            fontSize: 18
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "black",
+              fontSize: 18,
+              beginAtZero: true,
+              stepSize: 0.5,
+              max: 3,
+              min: 0,
 
+            },
+
+          }],
+        },
+      }
     });
   }
 

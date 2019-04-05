@@ -63,8 +63,28 @@ export class EvaluationDgiPage {
             spanGaps: false,
           }
         ]
+      },
+      options: {
+        legend: {
+          display: false,
+          labels: {
+            fontColor: "black",
+            fontSize: 18
+          }
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "black",
+              fontSize: 18,
+              beginAtZero: true,
+              stepSize: 4,
+              max: 24,
+              min: 0,
+            },
+          }],
+        },
       }
-
     });
   }
 

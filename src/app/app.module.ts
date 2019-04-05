@@ -39,6 +39,8 @@ import {PatientSelectorComponent} from "../components/patient/patient-selector/p
 import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail";
 import {DocumentViewer} from "@ionic-native/document-viewer";
 import {NavbarComponent} from "../components/navbar/navbar";
+import { ChartModule } from 'angular2-chartjs';
+import 'chartjs-plugin-annotation';
 
 
 // @ts-ignore
@@ -77,7 +79,8 @@ import {NavbarComponent} from "../components/navbar/navbar";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    ChartModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
