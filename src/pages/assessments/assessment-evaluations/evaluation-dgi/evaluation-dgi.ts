@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
-import {Chart} from "chart.js";
+import {Chart, ChartOptions} from "chart.js";
 import Patient = fhir.Patient;
 
 
@@ -59,7 +59,7 @@ export class EvaluationDgiPage {
             pointHoverBorderWidth: 2,
             pointRadius: 7,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40], //gemäss DB
+            data: [15, 19, 20, 21, 16, 15, 20], //gemäss DB
             spanGaps: false,
           }
         ]
@@ -78,13 +78,29 @@ export class EvaluationDgiPage {
               fontColor: "black",
               fontSize: 18,
               beginAtZero: true,
-              stepSize: 4,
+              stepSize: 2,
               max: 24,
               min: 0,
             },
           }],
         },
-      }
+        annotation: {
+          annotations: [{
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '19',
+            borderColor: '#99cc99',
+            borderWidth: 2,
+          }],
+          // Defines when the annotations are drawn.
+          // This allows positioning of the annotation relative to the other
+          // elements of the graph.
+          // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
+          // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
+          drawTime: "beforeDatasetsDraw" // (default)
+        }
+      } as ChartOptions,
     });
   }
 

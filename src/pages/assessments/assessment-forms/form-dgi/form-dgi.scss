@@ -8,8 +8,9 @@ page-form-dgi {
     max-width: 70%;
   }
   .option{
-    max-width: 10%;
+    max-width: 12%;
     text-align: right;
+    padding-top: 3px;
   }
   .rad{
     position: center;
@@ -56,6 +57,27 @@ page-form-dgi {
   .ion-md-information-circle:before {
     zoom: 1.3;
     padding: 5px;
+  }
+//position of the top icons
+  .container-side-menu {
+    width: 10%;
+    top: 15%;
+    right: 15px;
+    position: absolute;
+    margin: auto;
+  }
+  .container-side-menu .button {
+    font-size: 10px;
+    line-height: 10px; // Add
+  }
+  .container-side-menu .button-icon .icon {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 3px !important;
+  }
+
+  .titleRow{
+    height: 70px;
   }
 
 }

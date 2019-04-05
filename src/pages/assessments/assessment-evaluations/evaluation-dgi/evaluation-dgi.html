@@ -23,8 +23,28 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-label>Beachte: Angaben zu Minimal Detectable Change (MDC) &
-    Minimal Clinically Important Difference (MCID) unter </ion-label>
-  <button (click)="openLink()">https://www.sralab.org/rehabilitation-measures/dynamic-gait-index</button>
+  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart">
+    <ion-label class="bar-stable bold">
+      Normwerte:
+    </ion-label>
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col">
+        <ion-item class="topLeft cellDown center green">
+          <ion-label class="textLeft bold">Cut-off Point des prädiktiven Werts für Stürze</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell lastCell cellDown green">
+          <ion-label>19</ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
 
+  <ion-label class="difference textSize"><b>Beachte:</b> Angaben zu
+    <ul><li>Minimal Detectable Change (MDC)</li>
+      <li>Minimal Clinically Important Difference (MCID)</li></ul>
+    unter
+    <button ion-button (click)="openLink()">https://www.sralab.org/rehabilitation-measures/dynamic-gait-index</button>
+  </ion-label>
 </ion-content>

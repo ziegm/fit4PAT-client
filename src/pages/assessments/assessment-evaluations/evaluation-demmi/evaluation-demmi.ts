@@ -80,7 +80,7 @@ options: {
               fontColor: "black",
               fontSize: 18,
               beginAtZero: true,
-              stepSize: 20,
+              stepSize: 5,
               max: 100,
               min: 0,
             }

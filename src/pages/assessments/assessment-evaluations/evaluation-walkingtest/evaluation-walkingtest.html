@@ -52,8 +52,74 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-label>Beachte: Angaben zu Minimal Detectable Change (MDC) &
-    Minimal Clinically Important Difference (MCID) unter </ion-label>
-  <button (click)="openLink()">https://www.sralab.org/rehabilitation-measures/10-meter-walk-test</button>
+  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart">
+    <ion-label class="bar-stable bold">
+      Durchschnittliche Ganggeschwindigkeit:
+    </ion-label>
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col">
+        <ion-item class="topLeft center">
+          <ion-label class="textLeft bold">Gesunder Erwachsener</ion-label>
+        </ion-item>
+        <ion-item class="downLeft center">
+          <ion-label class="textLeft">1.3</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell bold red">
+          <ion-label>Durchschnitt Frauen</ion-label>
+        </ion-item>
+        <ion-item class="cell cellDown red">
+          <ion-label>1.23</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell lastCell bold blue">
+          <ion-label> Durchschnitt Männer</ion-label>
+        </ion-item>
+        <ion-item class="cell lastCell cellDown blue">
+          <ion-label>1.37</ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
 
+  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="difference">
+    <ion-label class="bar-stable bold">
+      Normwerte:
+    </ion-label>
+    <div class="row" ng-repeat="data in ctrl.data">
+      <div class="col">
+        <ion-item class="topLeft center normColor1">
+          <ion-label class="textLeft bold">Heimparese nach 6 Monaten</ion-label>
+        </ion-item>
+        <ion-item class="downLeft center normColor1">
+          <ion-label class="textLeft">0.25</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell bold normColor2">
+          <ion-label>Erforderlich für selbstständiges Gehen</ion-label>
+        </ion-item>
+        <ion-item class="cell cellDown normColor2">
+          <ion-label>0.8</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell lastCell bold normColor3">
+          <ion-label>Mobilität in urbanen Umgebungen erfordert eine Geschwindigkeit</ion-label>
+        </ion-item>
+        <ion-item class="cell lastCell cellDown normColor3">
+          <ion-label>> 0.79</ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+
+  <ion-label class="difference textSize"><b>Beachte:</b> Angaben zu
+    <ul><li>Minimal Detectable Change (MDC)</li>
+      <li>Minimal Clinically Important Difference (MCID)</li></ul>
+    unter:
+  <button ion-button (click)="openLink()">https://www.sralab.org/rehabilitation-measures/10-meter-walk-test</button>
+  </ion-label>
 </ion-content>

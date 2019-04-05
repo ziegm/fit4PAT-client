@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
-import {Chart} from "chart.js";
+import {Chart, ChartOptions} from "chart.js";
 import Patient = fhir.Patient;
 
 
@@ -55,7 +55,7 @@ export class EvaluationWalkingtestPage {
             pointHoverBorderWidth: 2,
             pointRadius: 7,
             pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40], //gemäss DB
+            data: [1.3, 1.4, 1.5, 1.2, 1.4, 1.3, 1.5], //gemäss DB
             spanGaps: false,
           }
         ]
@@ -74,15 +74,36 @@ export class EvaluationWalkingtestPage {
               fontColor: "black",
               fontSize: 18,
               beginAtZero: true,
-              stepSize: 0.5,
+              stepSize: 0.2,
               max: 3,
               min: 0,
-
             },
-
           }],
         },
-      }
+        annotation: {
+          annotations: [{
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '1.37',
+            borderColor: '#9999ff',
+            borderWidth: 2,
+          },{
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '1.23',
+            borderColor: '#ff9999',
+            borderWidth: 2,
+          }],
+          // Defines when the annotations are drawn.
+          // This allows positioning of the annotation relative to the other
+          // elements of the graph.
+          // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
+          // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
+          drawTime: "beforeDatasetsDraw" // (default)
+        }
+      } as ChartOptions,
     });
   }
 

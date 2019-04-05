@@ -10,4 +10,23 @@ page-evaluation-walkingtest {
   .nr{
     max-width: 15%;
   }
+  .transparent{
+    background-color: transparent;
+    font-size: 16px;
+  }
+  .normColor1{
+    background-color: #dbdbdb;
+  }
+  .normColor2{
+    background-color: #e7e7e7;
+  }
+  .normColor3{
+    background-color: #f3f3f3;
+  }
+  .red{
+    background-color: #ff9999;
+  }
+  .blue{
+    background-color: #9999ff;
+  }
 }

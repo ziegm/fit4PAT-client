@@ -15,17 +15,17 @@
 
   <!-- Table header -->
   <ion-item>
-    <div class="row header">
+    <div class="row header titleRow">
       <div class="col transparent"></div>
-      <div class="col darkGrey option">0 (starke Einschränkung)</div>
-      <div class="col darkGrey option">1 (mittlere Einschränkung)</div>
-      <div class="col darkGrey option">2 (leichte Einschränkung)</div>
-      <div class="col darkGrey option">3 (normal)</div>
+      <div class="col darkGrey option"><b>0</b><br>(starke<br>Einschränkung)</div>
+      <div class="col darkGrey option"><b>1</b><br>(mittlere<br>Einschränkung)</div>
+      <div class="col darkGrey option"><b>2</b><br>(leichte<br>Einschränkung)</div>
+      <div class="col darkGrey option"><b>3</b><br>(normal)</div>
     </div>
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="addOrChangeAnswer(0, $event)">
+  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="addOrChangeAnswer(0, $event)" class="difference">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
       <div class="col transparent text">Gehen auf ebener Strecke 20 Meter
