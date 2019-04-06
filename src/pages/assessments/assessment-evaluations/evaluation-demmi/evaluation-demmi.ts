@@ -1,10 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from 'chart.js';
 import Patient = fhir.Patient;
 import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
+import {getEntryPointInfo} from "@angular/compiler-cli/src/ngcc/src/packages/entry_point";
+import {sample} from "rxjs/operator/sample";
+import {bind} from "@angular/core/src/render3/instructions";
+import {empty} from "rxjs/Observer";
 
 
 @IonicPage()
@@ -21,7 +25,7 @@ export class EvaluationDemmiPage {
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
-  constructor(navParams: NavParams, public navCtrl: NavController) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController) {
     this.patient = navParams.data;
   }
 
@@ -33,10 +37,25 @@ export class EvaluationDemmiPage {
     this.isSearchbarVisible = isVisible;
   }
 
+  public showDetails(item){
+    let alert = this.alertCtrl.create({
+      title: 'Normwerte',
+      subTitle: 'de Morton Mobility Index',
+      message: 'this is my item: ' + item.toString(),
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
   ionViewDidLoad() {
-    //Chart.pluginService.register(annotation);
-
-
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
 
@@ -66,7 +85,13 @@ export class EvaluationDemmiPage {
             spanGaps: false,
           }],
       },
-options: {
+      options: {
+        //events: ['click'],
+        'onClick': function (evt, item) {
+          //if (item==Object){
+          this.showDetails(item);
+      //}
+        }.bind(this),
         legend: {
           display: false,
           labels: {
@@ -86,16 +111,16 @@ options: {
             }
           }],
         },
-      annotation: {
-        annotations: [{
-          id: 'box1',
-          type: 'box',
-          yScaleID: 'y-axis-0',
-          yMin: 0,
-          yMax: 40,
-          backgroundColor: '#ffcccc',
-          //borderColor: 'rgba(100, 100, 100, 0.2)',
-        },{
+        annotation: {
+          annotations: [{
+            id: 'box1',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 0,
+            yMax: 40,
+            backgroundColor: '#ffcccc',
+            //borderColor: 'rgba(100, 100, 100, 0.2)',
+          }, {
             id: 'box2',
             type: 'box',
             yScaleID: 'y-axis-0',
@@ -103,32 +128,34 @@ options: {
             yMax: 60,
             backgroundColor: '#ffedcc',
             //borderColor: 'rgba(200, 100, 200, 0.2)',
-        },{
-          id: 'box3',
-          type: 'box',
-          yScaleID: 'y-axis-0',
-          yMin: 60,
-          yMax: 70,
-          backgroundColor: '#ffffcc',
-          //borderColor: 'rgba(200, 100, 200, 0.2)',
-        },{
-          id: 'box4',
-          type: 'box',
-          yScaleID: 'y-axis-0',
-          yMin: 70,
-          yMax: 100,
-          backgroundColor: '#cce5cc',
-          //borderColor: 'rgba(200, 100, 200, 0.2)',
-        }],
+          }, {
+            id: 'box3',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 60,
+            yMax: 70,
+            backgroundColor: '#ffffcc',
+            //borderColor: 'rgba(200, 100, 200, 0.2)',
+          }, {
+            id: 'box4',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 70,
+            yMax: 100,
+            backgroundColor: '#cce5cc',
+            //borderColor: 'rgba(200, 100, 200, 0.2)',
+          }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
           // elements of the graph.
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-      }
-  } as ChartOptions,
+        }
+      } as ChartOptions,
       //plugins: [ChartAnnotation]
-  });
+
+    });
   }
+
 }
