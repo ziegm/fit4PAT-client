@@ -2,6 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
+import {RestProvider} from "../../../../providers/rest/rest";
+import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import Patient = fhir.Patient;
 
 
@@ -12,13 +14,58 @@ import Patient = fhir.Patient;
 })
 export class EvaluationWalkingtestPage {
   private patient: Patient;
+  private responses: WalkingtestResponse[];
   private isSearchbarVisible = false;
-
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
-  constructor(navParams: NavParams) {
+  constructor(navParams: NavParams, restProvider: RestProvider) {
     this.patient = navParams.data;
+    restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data  => {
+      this.responses = (data as any).entry.map(entry => (entry.resource as WalkingtestResponse));
+    });
+  }
+
+  private executeDate(): string {
+    return this.responses ? this.actualDate(): "";
+  }
+
+  private actualDate(): string {
+    return this.responses[0].authored.substr(8, 2) + "." +
+      this.responses[0].authored.substr(5, 2) + "." +
+      this.responses[0].authored.substr(0, 4);
+  }
+
+  private firstTry(): string {
+    return this.responses ? this.responses[0].item[0].answer[0].valueString: "";
+  }
+
+  private secondTry(): string {
+    return this.responses ? this.responses[0].item[1].answer[0].valueString: "";
+  }
+
+  private thirdTry(): string {
+    return this.responses ? this.responses[0].item[2].answer[0].valueString: "";
+  }
+
+  private calcAverage(): string {
+    return ((+this.firstTry() + +this.secondTry() + +this.thirdTry()) / 3).toString();
+  }
+
+  private calcAverageRounded(): string {
+    return (+this.calcAverage()).toFixed(0);
+  }
+
+  private calcSpeed(): string {
+    return (1 / (+this.calcAverage() / 6)).toFixed(2);
+  }
+
+  private getAids(): string {
+    return this.responses && this.responses[0].item[3] ? this.responses[0].item[3].answer[0].valueString: "";
+  }
+
+  private getComments(): string {
+    return this.responses && this.responses[0].item[4] ? this.responses[0].item[4].answer[0].valueString: "";
   }
 
   private viewPatient(patient: Patient) {

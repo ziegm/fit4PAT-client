@@ -3,22 +3,50 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>David Scherzinger</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
       <button ion-item (click)="openPage(homePage)">
-        Home
+        <ion-icon slot="start" name="contact"></ion-icon>
+        Profil
       </button>
-      <button ion-item (click)="openPage(friendsPage)">
-        Friends
+      <button ion-item (click)="navToMusculoskeletal()">
+        <ion-icon slot="start" name="clipboard"></ion-icon>
+        Bewegungsapparat
       </button>
-      <button ion-item (click)="openPage(eventsPage)">
-        Events
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="clipboard"></ion-icon>
+        Geriatrie
       </button>
-      <button ion-item (click)="closeMenu()">
-        Close Menu
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="clipboard"></ion-icon>
+        Neurologie
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="clipboard"></ion-icon>
+        Kardiologie/Pneumologie
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="clipboard"></ion-icon>
+        Weitere
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="man"></ion-icon>
+        Patientenarmband scannen
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="man"></ion-icon>
+        Stationäre Patienten
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="man"></ion-icon>
+        Ambulante Patienten
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon slot="start" name="lock"></ion-icon>
+        Abmelden
       </button>
     </ion-list>
   </ion-content>

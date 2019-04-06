@@ -10,20 +10,26 @@
   <div class="col score">
     <div class="row">
       <ion-item>
-        <ion-label>1. Versuch</ion-label>
-        <ion-label class="nr">??</ion-label>
+        <ion-label>Datum der Durchführung:</ion-label>
+        <ion-label>{{ executeDate() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item>
-        <ion-label>2. Versuch</ion-label>
-        <ion-label class="nr">??</ion-label>
+        <ion-label>1. Durchführung:</ion-label>
+        <ion-label>{{ firstTry() }} Sekunden</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item>
-        <ion-label>3. Versuch</ion-label>
-        <ion-label class="nr">??</ion-label>
+        <ion-label>2. Durchführung:</ion-label>
+        <ion-label>{{ secondTry() }} Sekunden</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>3. Durchführung:</ion-label>
+        <ion-label>{{ thirdTry() }} Sekunden</ion-label>
       </ion-item>
     </div>
   </div>
@@ -31,8 +37,8 @@
   <div class="col score">
   <div class="row">
     <ion-item>
-      <ion-label>Durchschnittswert</ion-label>
-      <ion-label class="nr">??</ion-label>
+      <ion-label>Durchschnittswert: </ion-label>
+      <ion-label>{{ calcAverageRounded() }} Sekunden</ion-label>
     </ion-item>
   </div>
   </div>
@@ -40,8 +46,23 @@
   <div class="col score">
     <div class="row">
       <ion-item>
-        <ion-label class="bold">Meter/Sekunde</ion-label>
-        <ion-label class="nr bold">??</ion-label>
+        <ion-label class="bold">Ganggeschwindigkeit:</ion-label>
+        <ion-label class="bold">{{ calcSpeed() }} Meter/Sekunde</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="col score">
+    <div class="row">
+      <ion-item>
+        <ion-label>Hilfsmittel:</ion-label>
+        <ion-label>{{ getAids() }}</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>Bemerkungen:</ion-label>
+        <ion-label>{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>

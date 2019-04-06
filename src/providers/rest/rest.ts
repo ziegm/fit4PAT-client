@@ -14,7 +14,8 @@ export class RestProvider {
   // This instance variable is used to configure the base url of the hapi-fhir server.
   apiUrl = 'http://fit4pat.i4mi.bfh.ch:8080/fit4PAT-server/baseDstu3';
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) {
+  }
 
   /**
    * http.get() returns an Observable, which encapsulates the json response returned by the hapi-fhir server.
@@ -24,7 +25,7 @@ export class RestProvider {
    */
   getPatients(ward: string) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/Patient?identifier=' + ward).subscribe(data => {
+      this.http.get(this.apiUrl + '/Patient?identifier=' + ward).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -37,7 +38,7 @@ export class RestProvider {
    */
   getPractitioners() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/Practitioner').subscribe(data => {
+      this.http.get(this.apiUrl + '/Practitioner').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -46,13 +47,15 @@ export class RestProvider {
   }
 
   /**
-   * Get a list of questionnaire responses by patient.
+   * Get a list of the last ten (per default) questionnaire responses by patient.
    *
-   * @param patient   The patient the responses are from.
+   * @param patient         The patient the responses are from.
+   * @param assessmentName  The name of the assessment as in the identifier of questionnaire response.
    */
-  getQuestionnaireResponses(patient: Patient) {
+  getQuestionnaireResponses(patient: Patient, assessmentName: string) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/QuestionnaireResponse?source=' + patient.id).subscribe(data => {
+      this.http.get(this.apiUrl + '/QuestionnaireResponse?source=' + patient.id
+        + '&identifier:text=' + assessmentName + '&_sort=-authored').subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -67,7 +70,7 @@ export class RestProvider {
    */
   postAssessmentResponse(assessmentResponse: AssessmentResponse) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/QuestionnaireResponse', JSON.stringify(assessmentResponse),{
+      this.http.post(this.apiUrl + '/QuestionnaireResponse', JSON.stringify(assessmentResponse), {
         headers: new HttpHeaders().set('Content-Type', 'application/fhir+json;charset=UTF-8')
       })
         .subscribe(res => {
@@ -85,7 +88,7 @@ export class RestProvider {
    */
   postPractitioner(practitioner: Practitioner) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/Practitioner', JSON.stringify(practitioner),{
+      this.http.post(this.apiUrl + '/Practitioner', JSON.stringify(practitioner), {
         headers: new HttpHeaders().set('Content-Type', 'application/fhir+json;charset=UTF-8')
       })
         .subscribe(res => {
@@ -103,7 +106,7 @@ export class RestProvider {
    */
   postPatient(patient: Patient) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/Patient', JSON.stringify(patient),{
+      this.http.post(this.apiUrl + '/Patient', JSON.stringify(patient), {
         headers: new HttpHeaders().set('Content-Type', 'application/fhir+json;charset=UTF-8')
       })
         .subscribe(res => {

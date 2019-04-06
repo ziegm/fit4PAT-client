@@ -23,6 +23,7 @@ export class NavbarComponent {
   }
 
   private navToHome() {
-    this.navController.popTo(TabsPage);
+    let home = this.navController.getViews().find((view) => view.component.name === "TabsPage");
+    this.navController.popTo(home);
   }
 }

@@ -12,7 +12,7 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
   resourceType: code = "QuestionnaireResponse";
   author: fhir.Reference;
   identifier: fhir.Identifier;
-  authored: dateTime = this.actualDate();
+  authored: dateTime = this.actualDateTime();
   source: fhir.Reference;
   status: fhir.code = "completed";
   item: AssessmentResponseItem[] = [];
@@ -33,12 +33,13 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
   }
 
   /**
-   * Generate the actual date in the format YYYY-MM-DD that is required by the hapi-fhir REST API.
+   * Generate the actual date in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz that is required by the hapi-fhir REST API.
    */
-  private actualDate(): string {
+  private actualDateTime(): string {
     let date = new Date();
     return date.getFullYear() + "-" + this.zeroPadded(date.getMonth() + 1)
-      + "-" + this.zeroPadded(date.getDate());
+      + "-" + this.zeroPadded(date.getDate()) + "T"
+      + this.zeroPadded(date.getHours()) + ":" + this.zeroPadded(date.getMinutes()) + ":" + this.zeroPadded(date.getSeconds()) + "." + date.getMilliseconds() + "+02:00";
   }
 
   /**
