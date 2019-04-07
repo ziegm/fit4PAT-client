@@ -34,6 +34,7 @@
     "angular2-chartjs": "^0.5.1",
     "chart.js": "^2.8.0",
     "chartjs-plugin-annotation": "^0.5.7",
+    "chartjs-plugin-datalabels": "^0.6.0",
     "cordova-android": "7.1.4",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.2",

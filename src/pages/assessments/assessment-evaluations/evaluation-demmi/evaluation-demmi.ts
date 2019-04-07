@@ -5,10 +5,12 @@ import {Chart, ChartOptions} from 'chart.js';
 import Patient = fhir.Patient;
 import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {getEntryPointInfo} from "@angular/compiler-cli/src/ngcc/src/packages/entry_point";
 import {sample} from "rxjs/operator/sample";
 import {bind} from "@angular/core/src/render3/instructions";
 import {empty} from "rxjs/Observer";
+import {offset} from "ionic-angular/components/slides/swiper/swiper-utils";
 
 
 @IonicPage()
@@ -25,6 +27,7 @@ export class EvaluationDemmiPage {
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
+
   constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController) {
     this.patient = navParams.data;
   }
@@ -39,9 +42,27 @@ export class EvaluationDemmiPage {
 
   public showDetails(item){
     let alert = this.alertCtrl.create({
-      title: 'Normwerte',
+      title: 'Detailansicht + DATUM',
       subTitle: 'de Morton Mobility Index',
-      message: 'this is my item: ' + item.toString(),
+      message: '<ul><li><b>Rohwert:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>DEMMI Score:</b> ' + item.toLocaleString() + '</li></br>' +
+        '<li><b>Aufgabe 1:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 2:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 3:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 4:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 5:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 6:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 7:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 8:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 9:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 10:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 11:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 12:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 13:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 14:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 15:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + item.toLocaleString() + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -56,6 +77,7 @@ export class EvaluationDemmiPage {
   }
 
   ionViewDidLoad() {
+    Chart.plugins.unregister(ChartDataLabels);
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
 
@@ -85,19 +107,39 @@ export class EvaluationDemmiPage {
             spanGaps: false,
           }],
       },
+      plugins: [ChartDataLabels],
       options: {
-        //events: ['click'],
+        plugins: {
+          // Change options for ALL labels of THIS CHART
+          datalabels: {
+            color: '#888888',
+            align: 'top',
+          }
+        },
+        events: ['click'],
         'onClick': function (evt, item) {
-          //if (item==Object){
-          this.showDetails(item);
-      //}
+          var element = this.lineChart.getElementAtEvent(evt);
+          if(element.length > 0){
+            this.showDetails(item);
+          }
         }.bind(this),
+        //showTooltips: false,
+        tooltips: {
+          display: false,
+          enabled: false,
+          custom: (tooltipModel) => {
+            //if (tooltipModel.opacity === 0) {
+              //this.hide();
+              //return;
+          }
+        },
         legend: {
           display: false,
           labels: {
             fontColor: "black",
             fontSize: 18
-          }
+          },
+          usePointStyle: true,
         },
         scales: {
           yAxes: [{
@@ -105,7 +147,7 @@ export class EvaluationDemmiPage {
               fontColor: "black",
               fontSize: 18,
               beginAtZero: true,
-              stepSize: 5,
+              stepSize: 10,
               max: 100,
               min: 0,
             }
@@ -151,11 +193,27 @@ export class EvaluationDemmiPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        }
+        },
+        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
+        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
       } as ChartOptions,
       //plugins: [ChartAnnotation]
-
     });
   }
 
+  public drawDatasetPointsLabels() {
+    this.lineCanvas.nativeElement.font = '.9rem sans-serif';
+    this.lineCanvas.nativeElement.fillStyle = '#AAA';
+    //this.lineCanvas.nativeElement.textAlign="center";
+    this.lineCanvas.nativeElement.offset="top";
+    (this.lineChart.datasets).each(function(idx,dataset){
+      (dataset.points).each(function(pdx,pointinfo){
+        // First dataset is shifted off the scale line.
+        // Don't write to the canvas for the null placeholder.
+        if ( pointinfo.value !== null ) {
+          this.lineCanvas.nativeElement.fillText(pointinfo.value,pointinfo.x,pointinfo.y - 15);
+        }
+      });
+    });
+  }
 }
