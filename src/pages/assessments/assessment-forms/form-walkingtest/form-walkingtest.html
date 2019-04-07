@@ -1,5 +1,7 @@
 <ion-header>
-  <navbar title="Verlauf 10-Meter-Gehtest" subTitle="Timed Walking Test" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Verlauf 10-Meter-Gehtest" subTitle="Timed Walking Test"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

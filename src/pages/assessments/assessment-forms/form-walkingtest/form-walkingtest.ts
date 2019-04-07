@@ -6,6 +6,7 @@ import {WalkingtestResponse} from "../../../../responses/assessment-type/walking
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 import Practitioner = fhir.Practitioner;
@@ -15,7 +16,7 @@ import Practitioner = fhir.Practitioner;
   selector: 'page-form-walkingtest',
   templateUrl: 'form-walkingtest.html',
 })
-export class FormWalkingtestPage {
+export class FormWalkingtestPage extends WorkflowPage {
   private rootNav:any;
   private patient: Patient;
   private isSearchbarVisible = false;
@@ -33,6 +34,7 @@ export class FormWalkingtestPage {
   private currentTime: Date;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
+    super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
 

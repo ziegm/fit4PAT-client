@@ -1,5 +1,7 @@
 <ion-header>
-  <navbar title="Weitere" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Weitere"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

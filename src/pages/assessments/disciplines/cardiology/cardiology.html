@@ -1,5 +1,7 @@
 <ion-header>
-  <navbar title="Kardiologie/Pneumologie" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Kardiologie/Pneumologie"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

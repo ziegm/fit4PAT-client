@@ -4,7 +4,9 @@
 
 
 <ion-header>
-  <navbar title="Verlauf DEMMI" subTitle="de Morton Mobility Index" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Verlauf DEMMI" subTitle="de Morton Mobility Index"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

@@ -2,15 +2,11 @@ import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from 'chart.js';
-import Patient = fhir.Patient;
 import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import {getEntryPointInfo} from "@angular/compiler-cli/src/ngcc/src/packages/entry_point";
-import {sample} from "rxjs/operator/sample";
-import {bind} from "@angular/core/src/render3/instructions";
-import {empty} from "rxjs/Observer";
-import {offset} from "ionic-angular/components/slides/swiper/swiper-utils";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
+import Patient = fhir.Patient;
 
 
 @IonicPage()
@@ -18,7 +14,7 @@ import {offset} from "ionic-angular/components/slides/swiper/swiper-utils";
   selector: 'page-evaluation-demmi',
   templateUrl: 'evaluation-demmi.html',
 })
-export class EvaluationDemmiPage {
+export class EvaluationDemmiPage extends WorkflowPage {
   private patient: Patient;
   private isSearchbarVisible = false;
 
@@ -29,6 +25,7 @@ export class EvaluationDemmiPage {
 
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController) {
+    super(navParams.data);
     this.patient = navParams.data;
   }
 

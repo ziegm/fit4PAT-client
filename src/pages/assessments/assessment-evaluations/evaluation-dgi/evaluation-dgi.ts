@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
 
 
@@ -10,7 +11,7 @@ import Patient = fhir.Patient;
   selector: 'page-evaluation-dgi',
   templateUrl: 'evaluation-dgi.html',
 })
-export class EvaluationDgiPage {
+export class EvaluationDgiPage extends WorkflowPage {
   private patient: Patient;
   private isSearchbarVisible = false;
 
@@ -18,6 +19,7 @@ export class EvaluationDgiPage {
   lineChart: any;
 
   constructor(navParams: NavParams) {
+    super(navParams.data);
     this.patient = navParams.data;
   }
 

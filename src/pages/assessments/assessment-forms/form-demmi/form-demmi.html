@@ -1,5 +1,7 @@
 <ion-header>
-  <navbar title="Formular DEMMI" subTitle="de Morton Mobility Index" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Formular DEMMI" subTitle="de Morton Mobility Index"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>
@@ -453,14 +455,14 @@
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
                   (ionChange)="addOrChangeAnswer(15, $event)" [(ngModel)]="aid">
-        <ion-option value="none" [selected]="true">keine</ion-option>
-        <ion-option value="oneStick">1 Gehstock</ion-option>
-        <ion-option value="twoSticks">2 Gehstöcke</ion-option>
-        <ion-option value="oneForearmStick">1 Unterarm-Gehstock</ion-option>
-        <ion-option value="twoForearmSticks">2 Unterarm-Gehstöcke</ion-option>
-        <ion-option value="walker">Gehbock</ion-option>
-        <ion-option value="rollator">Rollator</ion-option>
-        <ion-option value="other">andere</ion-option>
+        <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
+        <ion-option value="1 Gehstock">1 Gehstock</ion-option>
+        <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
+        <ion-option value="1 Unterarm-Gehstock">1 Unterarm-Gehstock</ion-option>
+        <ion-option value="2 Unterarm-Gehstöcke">2 Unterarm-Gehstöcke</ion-option>
+        <ion-option value="Gehbock">Gehbock</ion-option>
+        <ion-option value="Rollator">Rollator</ion-option>
+        <ion-option value="andere Hilfsmittel">andere</ion-option>
       </ion-select>
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">

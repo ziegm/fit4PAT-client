@@ -1,5 +1,7 @@
 <ion-header>
-  <navbar title="Verlauf DGI" subTitle="Dynamic Gait Index" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Verlauf DGI" subTitle="Dynamic Gait Index"
+          [workflowParameters]="workflowParameters"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>

@@ -1,6 +1,7 @@
 import Patient = fhir.Patient;
+import {WorkflowSelector} from "./workflow-selector";
 
 export type WorkflowParameters = {
-  workflowSelector?: WorkflowParameters;
+  workflowSelector?: WorkflowSelector;
   patient?: Patient;
 }

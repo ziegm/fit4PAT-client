@@ -4,6 +4,7 @@ import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
 
 
@@ -12,7 +13,7 @@ import Patient = fhir.Patient;
   selector: 'page-evaluation-walkingtest',
   templateUrl: 'evaluation-walkingtest.html',
 })
-export class EvaluationWalkingtestPage {
+export class EvaluationWalkingtestPage extends WorkflowPage {
   private patient: Patient;
   private responses: WalkingtestResponse[];
   private isSearchbarVisible = false;
@@ -20,6 +21,7 @@ export class EvaluationWalkingtestPage {
   lineChart: any;
 
   constructor(navParams: NavParams, restProvider: RestProvider) {
+    super(navParams.data);
     this.patient = navParams.data;
     restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data  => {
       this.responses = (data as any).entry.map(entry => (entry.resource as WalkingtestResponse));
