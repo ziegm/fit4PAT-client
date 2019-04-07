@@ -57,12 +57,8 @@ export class EvaluationDemmiPage extends WorkflowPage {
 
   private answers(): number[] {
     return this.responses[0].item.map((item, index) => {
-      if (index < 15) {
-        if (item.answer[0].valueString !== undefined) {
-          return +(+item.answer[0].valueString).toFixed(0);
-        } else  {
-          return 0;
-        }
+      if (index < 15 && item.answer[0].valueInteger !== undefined) {
+        return +item.answer[0].valueInteger.toFixed(0);
       } else {
         return 0;
       }

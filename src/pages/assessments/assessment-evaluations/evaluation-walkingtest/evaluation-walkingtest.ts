@@ -38,28 +38,28 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
       this.responses[0].authored.substr(0, 4);
   }
 
-  private firstTry(): string {
-    return this.responses ? this.responses[0].item[0].answer[0].valueString: "";
+  private firstTry(): number {
+    return this.responses ? this.responses[0].item[0].answer[0].valueInteger: 0;
   }
 
-  private secondTry(): string {
-    return this.responses ? this.responses[0].item[1].answer[0].valueString: "";
+  private secondTry(): number {
+    return this.responses ? this.responses[0].item[1].answer[0].valueInteger: 0;
   }
 
-  private thirdTry(): string {
-    return this.responses ? this.responses[0].item[2].answer[0].valueString: "";
+  private thirdTry(): number {
+    return this.responses ? this.responses[0].item[2].answer[0].valueInteger: 0;
   }
 
-  private calcAverage(): string {
-    return ((+this.firstTry() + +this.secondTry() + +this.thirdTry()) / 3).toString();
+  private calcAverage(): number {
+    return (this.firstTry() + this.secondTry() + this.thirdTry()) / 3;
   }
 
   private calcAverageRounded(): string {
-    return (+this.calcAverage()).toFixed(0);
+    return this.calcAverage().toFixed(0);
   }
 
   private calcSpeed(): string {
-    return (1 / (+this.calcAverage() / 6)).toFixed(2);
+    return (1 / (this.calcAverage() / 6)).toFixed(2);
   }
 
   private getAids(): string {

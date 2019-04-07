@@ -5,7 +5,6 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
-import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import {MyApp} from "../../../../app/app.component";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
@@ -80,13 +79,6 @@ export class FormDgiPage extends WorkflowPage {
       this.assessmentResponse = (data as DgiResponse);
       this.navToEvaluationDgi();
     });
-  }
-
-  private addOrChangeAnswer(index: number, event: number) {
-    if(this.assessmentResponse.item[index] === undefined) {
-      this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
-    }
-    this.assessmentResponse.item[index].addAnswer(event);
   }
 
   popupInstruction() {

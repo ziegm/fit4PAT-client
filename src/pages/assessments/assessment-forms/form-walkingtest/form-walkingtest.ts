@@ -5,7 +5,6 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
-import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
@@ -82,13 +81,6 @@ export class FormWalkingtestPage extends WorkflowPage {
     });
   }
 
-  private addOrChangeAnswer(index: number, event: number) {
-    if(this.assessmentResponse.item[index] === undefined) {
-      this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
-    }
-    this.assessmentResponse.item[index].addAnswer(event);
-  }
-
   timeInInput1() {
     let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
@@ -97,7 +89,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       this.time1 = timeElapsed.getSeconds();
     }
     this.reset();
-    this.addOrChangeAnswer(0, this.time1);
+    this.assessmentResponse.addOrChangeAnswer(0, this.time1, true);
   }
 
   timeInInput2() {
@@ -108,7 +100,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       this.time2 = timeElapsed.getSeconds();
     }
     this.reset();
-    this.addOrChangeAnswer(1, this.time2);
+    this.assessmentResponse.addOrChangeAnswer(1, this.time2, true);
   }
 
   timeInInput3() {
@@ -119,7 +111,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       this.time3 = timeElapsed.getSeconds();
     }
     this.reset();
-    this.addOrChangeAnswer(2, this.time3);
+    this.assessmentResponse.addOrChangeAnswer(2, this.time3, true);
   }
 
   start() {

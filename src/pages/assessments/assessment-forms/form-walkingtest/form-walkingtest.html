@@ -24,7 +24,7 @@
             <ion-col col-5>
               <ion-item>
                 <ion-label>1. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(0, $event.value)" [value]="time1" class="secRight"></ion-input>
+                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event.value, true)" [value]="time1" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -44,7 +44,7 @@
             <ion-col col-5>
               <ion-item>
                 <ion-label>2. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(1, $event.value)" [value]="time2" class="secRight"></ion-input>
+                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event.value, true)" [value]="time2" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -64,7 +64,7 @@
             <ion-col col-5>
               <ion-item>
                 <ion-label>3. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="addOrChangeAnswer(2, $event.value)" [value]="time3" class="secRight"></ion-input>
+                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event.value, true)" [value]="time3" class="secRight"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -116,7 +116,7 @@
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (ionChange)="addOrChangeAnswer(3, $event)" [(ngModel)]="aid">
+                  (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event)" [(ngModel)]="aid">
         <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
@@ -129,14 +129,14 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
-      <ion-input type="text" (keyup)="addOrChangeAnswer(3, $event.target.value)"></ion-input>
+      <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(3, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" (keyup)="addOrChangeAnswer(4, $event.target.value)"></ion-input>
+    <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(4, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->

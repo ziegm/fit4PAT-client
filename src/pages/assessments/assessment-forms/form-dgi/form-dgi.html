@@ -27,7 +27,7 @@
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="addOrChangeAnswer(0, $event)" class="difference">
+  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)" class="difference">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
       <div class="col transparent text">Gehen auf ebener Strecke 20 Meter
@@ -57,7 +57,7 @@
   </ion-list>
 
   <!-- Question 2 -->
-  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="addOrChangeAnswer(1, $event)">
+  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
       <div class="col transparent text">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
@@ -87,7 +87,7 @@
   </ion-list>
 
   <!-- Question 3 -->
-  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="addOrChangeAnswer(2, $event)">
+  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
       <div class="col transparent text">Gehen mit Kopfdrehung rechts und links
@@ -117,7 +117,7 @@
   </ion-list>
 
   <!-- Question 4 -->
-  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="addOrChangeAnswer(3, $event)">
+  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
       <div class="col transparent">Gehen und nach oben und nach unten schauen
@@ -147,7 +147,7 @@
   </ion-list>
 
   <!-- Question 5 -->
-  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="addOrChangeAnswer(4, $event)">
+  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
       <div class="col transparent">Gehen und Drehung um 180°
@@ -177,7 +177,7 @@
   </ion-list>
 
   <!-- Question 6 -->
-  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="addOrChangeAnswer(5, $event)">
+  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
       <div class="col transparent">Gehen über Hindernisse
@@ -207,7 +207,7 @@
   </ion-list>
 
   <!-- Question 7 -->
-  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="addOrChangeAnswer(6, $event)">
+  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)">
     <div class="row">
       <div class="col transparent number">7.</div>
       <div class="col transparent">Gehen um Hindernisse links und rechts herum
@@ -237,7 +237,7 @@
   </ion-list>
 
   <!-- Question 8 -->
-  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="addOrChangeAnswer(7, $event)">
+  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)">
     <div class="row">
       <div class="col transparent number">8.</div>
       <div class="col transparent">Treppensteigen
@@ -271,7 +271,7 @@
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (ionChange)="addOrChangeAnswer(8, $event)" [(ngModel)]="aid">
+                  (ionChange)="assessmentResponse.addOrChangeAnswer(8, $event)" [(ngModel)]="aid">
         <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
@@ -284,14 +284,14 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
-      <ion-input type="text" (keyup)="addOrChangeAnswer(8, $event.target.value)"></ion-input>
+      <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(8, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" (keyup)="addOrChangeAnswer(9, $event.target.value)"></ion-input>
+    <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(9, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->

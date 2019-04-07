@@ -77,11 +77,23 @@ export class FormDemmiPage extends WorkflowPage {
     });
   }
 
-  private addOrChangeAnswer(index: number, event: number) {
+  /**
+   * Add an answer to the assessment response or change the existing one.
+   *
+   * @param index   The index of the answer on the assessment response
+   * @param event   The event that delivers the answer of a question.
+   * @param radio   True if the underlying control delivers numeric values.
+   */
+  private addOrChangeAnswer(index: number, event: any, numeric: boolean = false) {
     if(this.assessmentResponse.item[index] === undefined) {
       this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
     }
-    this.assessmentResponse.item[index].addAnswer(event);
+
+    if (numeric) {
+      this.assessmentResponse.item[index].addAnswer(+event);
+    } else {
+      this.assessmentResponse.item[index].addAnswer(event);
+    }
   }
 
   popupInstruction() {

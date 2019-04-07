@@ -53,4 +53,23 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
     }
     return String(datePart);
   }
+
+  /**
+   * Add an answer to the assessment response or change the existing one.
+   *
+   * @param index   The index of the answer on the assessment response
+   * @param event   The event that delivers the answer of a question.
+   * @param radio   True if the underlying control delivers numeric values.
+   */
+  public addOrChangeAnswer(index: number, event: any, numeric: boolean = false) {
+    if(this.item[index] === undefined) {
+      this.item[index] = new AssessmentResponseItem("item" + (+index + 1));
+    }
+
+    if (numeric) {
+      this.item[index].addAnswer(+event);
+    } else {
+      this.item[index].addAnswer(event);
+    }
+  }
 }

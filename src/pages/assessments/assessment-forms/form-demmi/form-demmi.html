@@ -33,7 +33,7 @@
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="Bridge" (ionChange)="addOrChangeAnswer(0, $event)">
+  <ion-list radio-group [(ngModel)]="Bridge" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
       <div class="col transparent">Brücke
@@ -56,7 +56,7 @@
   </ion-list>
 
   <!-- Question 2 -->
-  <ion-list radio-group [(ngModel)]="rolOnSide" (ionChange)="addOrChangeAnswer(1, $event)">
+  <ion-list radio-group [(ngModel)]="rolOnSide" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
       <div class="col transparent">Auf die Seite rollen
@@ -79,7 +79,7 @@
   </ion-list>
 
   <!-- Question 3 -->
-  <ion-list radio-group [(ngModel)]="toSit" (ionChange)="addOrChangeAnswer(2, $event)">
+  <ion-list radio-group [(ngModel)]="toSit" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
       <div class="col transparent">Vom Liegen zum Sitzen
@@ -118,7 +118,7 @@
   </ion-item>
 
   <!-- Question 4 -->
-  <ion-list radio-group [(ngModel)]="sitInChair" (ionChange)="addOrChangeAnswer(3, $event)">
+  <ion-list radio-group [(ngModel)]="sitInChair" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
       <div class="col transparent">Sitzen im Stuhl ohne Unterstützung
@@ -141,7 +141,7 @@
   </ion-list>
 
   <!-- Question 5 -->
-  <ion-list radio-group [(ngModel)]="standUp" (ionChange)="addOrChangeAnswer(4, $event)">
+  <ion-list radio-group [(ngModel)]="standUp" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
       <div class="col transparent">Aus dem Stuhl aufstehen
@@ -173,7 +173,7 @@
   </ion-list>
 
   <!-- Question 6 -->
-  <ion-list radio-group [(ngModel)]="standUpWithoutArms" (ionChange)="addOrChangeAnswer(5, $event)">
+  <ion-list radio-group [(ngModel)]="standUpWithoutArms" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
       <div class="col transparent">Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen
@@ -203,7 +203,7 @@
   </ion-item>
 
   <!-- Question 7 -->
-  <ion-list radio-group [(ngModel)]="standWithoutAid" (ionChange)="addOrChangeAnswer(6, $event)">
+  <ion-list radio-group [(ngModel)]="standWithoutAid" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">7.</div>
       <div class="col transparent">Ohne Unterstützung stehen
@@ -226,7 +226,7 @@
   </ion-list>
 
   <!-- Question 8 -->
-  <ion-list radio-group [(ngModel)]="standWithClosedFeet" (ionChange)="addOrChangeAnswer(7, $event)">
+  <ion-list radio-group [(ngModel)]="standWithClosedFeet" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">8.</div>
       <div class="col transparent">Stehen mit geschlossenen Füssen
@@ -249,7 +249,7 @@
   </ion-list>
 
   <!-- Question 9 -->
-  <ion-list radio-group [(ngModel)]="standOnToe" (ionChange)="addOrChangeAnswer(8, $event)">
+  <ion-list radio-group [(ngModel)]="standOnToe" (ionChange)="assessmentResponse.addOrChangeAnswer(8, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">9.</div>
       <div class="col transparent">Auf den Fussspitzen stehen
@@ -272,7 +272,7 @@
   </ion-list>
 
   <!-- Question 10 -->
-  <ion-list radio-group [(ngModel)]="tandemWithClosedEyes" (ionChange)="addOrChangeAnswer(9, $event)">
+  <ion-list radio-group [(ngModel)]="tandemWithClosedEyes" (ionChange)="assessmentResponse.addOrChangeAnswer(9, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">10.</div>
       <div class="col transparent">Im Tandemstand mit geschlossenen Augen stehen
@@ -302,7 +302,7 @@
   </ion-item>
 
   <!-- Question 11 -->
-  <ion-list radio-group [(ngModel)]="walkway" (ionChange)="addOrChangeAnswer(10, $event)">
+  <ion-list radio-group [(ngModel)]="walkway" (ionChange)="assessmentResponse.addOrChangeAnswer(10, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">11.</div>
       <div class="col transparent">Wegstrecke +/- Gehhilfe
@@ -338,7 +338,7 @@
   </ion-list>
 
   <!-- Question 12 -->
-  <ion-list radio-group [(ngModel)]="walkAlone" (ionChange)="addOrChangeAnswer(11, $event)">
+  <ion-list radio-group [(ngModel)]="walkAlone" (ionChange)="assessmentResponse.addOrChangeAnswer(11, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">12.</div>
       <div class="col transparent">Selbstständiges Gehen
@@ -381,7 +381,7 @@
   </ion-item>
 
   <!-- Question 13 -->
-  <ion-list radio-group [(ngModel)]="penFromGround" (ionChange)="addOrChangeAnswer(12, $event)">
+  <ion-list radio-group [(ngModel)]="penFromGround" (ionChange)="assessmentResponse.addOrChangeAnswer(12, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">13.</div>
       <div class="col transparent">Stift vom Boden aufheben
@@ -404,7 +404,7 @@
   </ion-list>
 
   <!-- Question 14 -->
-  <ion-list radio-group [(ngModel)]="fourStepsBackward" (ionChange)="addOrChangeAnswer(13, $event)">
+  <ion-list radio-group [(ngModel)]="fourStepsBackward" (ionChange)="assessmentResponse.addOrChangeAnswer(13, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">14.</div>
       <div class="col transparent">Vier Schritte rückwärts gehen
@@ -427,7 +427,7 @@
   </ion-list>
 
   <!-- Question 15 -->
-  <ion-list radio-group [(ngModel)]="jump" (ionChange)="addOrChangeAnswer(14, $event)">
+  <ion-list radio-group [(ngModel)]="jump" (ionChange)="assessmentResponse.addOrChangeAnswer(14, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">15.</div>
       <div class="col transparent">Springen
@@ -454,7 +454,7 @@
     <ion-item>
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (ionChange)="addOrChangeAnswer(15, $event)" [(ngModel)]="aid">
+                  (ionChange)="assessmentResponse.addOrChangeAnswer(15, $event)" [(ngModel)]="aid">
         <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
@@ -467,14 +467,14 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='other'">
       <ion-label>Welche?</ion-label>
-      <ion-input type="text" (keyup)="addOrChangeAnswer(15, $event.target.value)"></ion-input>
+      <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(15, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" (keyup)="addOrChangeAnswer(16, $event.target.value)"></ion-input>
+    <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(16, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->
