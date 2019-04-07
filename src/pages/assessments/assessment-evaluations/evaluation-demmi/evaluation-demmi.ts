@@ -6,11 +6,10 @@ import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
+import {DemmiResultTranslation} from "./demmi-result-translation";
 import Patient = fhir.Patient;
-
 
 @IonicPage()
 @Component({
@@ -19,14 +18,11 @@ import Patient = fhir.Patient;
 })
 export class EvaluationDemmiPage extends WorkflowPage {
   private patient: Patient;
-  private responses: WalkingtestResponse[];
+  private responses: DemmiResponse[];
   private isSearchbarVisible = false;
-
-
   @ViewChild(ChartComponent) chart: ChartComponent;
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
-
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController, restProvider: RestProvider) {
     super(navParams.data);
@@ -65,8 +61,8 @@ export class EvaluationDemmiPage extends WorkflowPage {
     });
   }
 
-  private calcDemmiScore(): string {
-    return this.responses ? this.responses[0].item[1].answer[0].valueString: ""
+  private translateDemmiScore(): number {
+    return new DemmiResultTranslation()[this.calcRawValue()];
   }
 
   private getAids(): string {
@@ -75,6 +71,48 @@ export class EvaluationDemmiPage extends WorkflowPage {
 
   private getComments(): string {
     return this.responses && this.responses[0].item[16] ? this.responses[0].item[16].answer[0].valueString: "";
+  }
+
+  private isIndependend(range: string): boolean {
+    let age = PatientHelper.patientAge(this.patient);
+    switch(range) {
+      case 'BETWEEN_60_AND_69':
+        if (60 <= age && age <= 69 && 85 <= this.translateDemmiScore()) {
+          return true;
+        }
+        break;
+      case 'BETWEEN_70_AND_79':
+        if (70 <= age && age <= 79 && 85 <= this.translateDemmiScore()) {
+          return true;
+        }
+        break;
+      case 'BETWEEN_80_AND_89':
+        if (80 <= age && age <= 89 && 75 <= this.translateDemmiScore()) {
+          return true;
+        }
+        break;
+      default:
+        return false;
+    }
+  }
+
+  private exitDestination(destination: string, defaultStyle: string): string {
+    switch (destination) {
+      case 'OTHER_INSTITUTION':
+        if (40 <= this.translateDemmiScore() && this.translateDemmiScore() <= 50) {
+          return 'orangeActive';
+        }
+        return defaultStyle;
+      case 'HOME':
+        if (this.translateDemmiScore() >= 62 && this.translateDemmiScore() <= 70) {
+          return 'yellowActive';
+        } else if (this.translateDemmiScore() > 70) {
+          return 'greenActive';
+        }
+        return defaultStyle;
+      default:
+        return defaultStyle;
+    }
   }
 
   private viewPatient(patient: Patient) {

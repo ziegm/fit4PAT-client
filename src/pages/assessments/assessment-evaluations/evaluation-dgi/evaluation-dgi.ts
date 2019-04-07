@@ -3,6 +3,8 @@ import {IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
+import {RestProvider} from "../../../../providers/rest/rest";
 import Patient = fhir.Patient;
 
 
@@ -13,14 +15,55 @@ import Patient = fhir.Patient;
 })
 export class EvaluationDgiPage extends WorkflowPage {
   private patient: Patient;
+  private responses: DgiResponse[];
   private isSearchbarVisible = false;
 
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
-  constructor(navParams: NavParams) {
+  constructor(navParams: NavParams, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = navParams.data;
+    restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data  => {
+      this.responses = (data as any).entry.map(entry => (entry.resource as DgiResponse));
+    });
+  }
+
+  private executeDate(): string {
+    return this.responses ? this.actualDate(): "";
+  }
+
+  private actualDate(): string {
+    return this.responses[0].authored.substr(8, 2) + "." +
+      this.responses[0].authored.substr(5, 2) + "." +
+      this.responses[0].authored.substr(0, 4);
+  }
+
+  private calcValue(): number {
+    if (this.responses) {
+      return this.answers().reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+      });
+    }
+    return 0;
+  }
+
+  private answers(): number[] {
+    return this.responses[0].item.map((item, index) => {
+      if (index < 8 && item.answer[0].valueInteger !== undefined) {
+        return +item.answer[0].valueInteger.toFixed(0);
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  private getAids(): string {
+    return this.responses && this.responses[0].item[8] ? this.responses[0].item[8].answer[0].valueString: "";
+  }
+
+  private getComments(): string {
+    return this.responses && this.responses[0].item[9] ? this.responses[0].item[9].answer[0].valueString: "";
   }
 
   private viewPatient(patient: Patient) {

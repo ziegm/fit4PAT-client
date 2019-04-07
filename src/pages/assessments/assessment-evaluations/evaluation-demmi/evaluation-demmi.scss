@@ -1,97 +1,118 @@
 page-evaluation-demmi {
-  .patient{
+  .patient {
     color: #888888;
     font-size: 24px;
   }
 
-  .item-md{
+  .item-md {
     padding-left: 0;
   }
   .item-md.item-block .item-inner{
     padding-right: 0;
   }
-  .score{
+  .score {
     max-width: 30%;
   }
   .nr{
     max-width: 15%;
   }
-  .rohwert{
+  .rohwert {
     border-top: solid black;
     border-left: solid black;
   }
-  .demmi{
+  .demmi {
     border-top: solid black;
     border-left: solid black;
     border-bottom: solid black;
   }
-  .red{
+
+  %score-element {
+    border-top: solid black;
+    border-left: solid black;
+    text-align: center;
+  }
+  .red {
     background-color: #ffcccc;
-    border-top: solid black;
-    border-left: solid black;
-    text-align: center;
+    @extend %score-element;
   }
-  .orange{
+  .redActive {
+    background-color: #ff4c4c;
+    @extend %score-element;
+  }
+
+  .orange {
     background-color: #ffedcc;
-    border-top: solid black;
-    border-left: solid black;
-    text-align: center;
+    @extend %score-element;
   }
-  .yellow{
+  .orangeActive {
+    background-color: #ffc04c;
+    @extend %score-element;
+  }
+
+  .yellow {
     background-color: #ffffcc;
-    border-top: solid black;
-    border-left: solid black;
-    text-align: center;
+    @extend %score-element;
   }
-  .green{
+  .yellowActive {
+    background-color: #ffff4c;
+    @extend %score-element;
+  }
+
+  .green {
     background-color: #cce5cc;
-    border-top: solid black;
-    border-left: solid black;
-    text-align: center;
+    @extend %score-element;
   }
-  .down{
+  .greenActive {
+    background-color: #4ca64c;
+    @extend %score-element;
+  }
+
+  .down {
     border-bottom: solid black;
   }
-  .last{
+  .last {
     border-right: solid black;
   }
-  .bar-stable{
+  .bar-stable {
     padding-bottom: 10px;
     font-size: 16px;
   }
-  .bordr{
+  .bordr {
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
 
-  .normNr{
+  .normNr {
     max-width: 15%;
   }
 
-  .normNrV2{
+  .normNrV2 {
     max-width: 30%;
   }
 
-  .textLeft{
+  .textLeft {
   padding-left: 10px;
   }
 
-  .demmiAmpel{
+  .demmiAmpel {
     max-width: 4%;
   }
 
-  .normColor1{
+  .normColor1 {
     background-color: #dbdbdb;
   }
-  .normColor2{
+  .normColor2 {
     background-color: #e7e7e7;
   }
-  .normColor3{
+  .normColor3 {
     background-color: #f3f3f3;
   }
+  .activeNormColor {
+    background-color: #4ca64c;
+  }
 
-  .textSize{
+  .textSize {
     font-size: 16px;
   }
 
@@ -100,7 +121,7 @@ page-evaluation-demmi {
     display: inline-block;
     margin: 1em 2em;
   }
-  canvas  {
+  canvas {
     height: 500px;
   }
 }

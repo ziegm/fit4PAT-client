@@ -12,9 +12,30 @@
   <div class="col score">
     <div class="row">
       <ion-item>
+        <ion-label>Datum der Durchführung:</ion-label>
+        <ion-label>{{ executeDate() }}</ion-label>
+      </ion-item>
+    </div>
+
+    <div class="row">
+      <ion-item>
         <ion-label class="bold">Punkte insgesamt</ion-label>
-        <ion-label class="nr">??</ion-label>
-        <ion-label class="nr">/ 24</ion-label>
+        <ion-label>{{ calcValue() }}/24 Punkten</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="col score">
+    <div class="row">
+      <ion-item>
+        <ion-label>Hilfsmittel:</ion-label>
+        <ion-label>{{ getAids() }}</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>Bemerkungen:</ion-label>
+        <ion-label>{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>
@@ -43,9 +64,12 @@
     </div>
   </ion-list>
 
+  <!-- reference to MDC and MCID -->
   <ion-label class="difference textSize"><b>Beachte:</b> Angaben zu
-    <ul><li>Minimal Detectable Change (MDC)</li>
-      <li>Minimal Clinically Important Difference (MCID)</li></ul>
+    <ul>
+      <li>Minimal Detectable Change (MDC)</li>
+      <li>Minimal Clinically Important Difference (MCID)</li>
+    </ul>
     unter
     <button ion-button (click)="openLink()">https://www.sralab.org/rehabilitation-measures/dynamic-gait-index</button>
   </ion-label>

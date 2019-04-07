@@ -1,5 +1,6 @@
 import Patient = fhir.Patient;
 import * as moment from 'moment';
+import {now} from 'moment';
 
 export class PatientHelper {
 
@@ -18,5 +19,9 @@ export class PatientHelper {
 
   private static calcAge(birthDate: string): string {
     return moment(new Date(birthDate)).locale('de-ch').fromNow(true);
+  }
+
+  public static patientAge(patient: Patient): number {
+    return moment(now()).diff(moment(new Date(patient.birthDate)), 'years');
   }
 }
