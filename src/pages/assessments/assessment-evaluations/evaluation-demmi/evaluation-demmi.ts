@@ -6,6 +6,9 @@ import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
+import {RestProvider} from "../../../../providers/rest/rest";
+import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
 import Patient = fhir.Patient;
 
 
@@ -16,6 +19,7 @@ import Patient = fhir.Patient;
 })
 export class EvaluationDemmiPage extends WorkflowPage {
   private patient: Patient;
+  private responses: WalkingtestResponse[];
   private isSearchbarVisible = false;
 
 
@@ -24,9 +28,57 @@ export class EvaluationDemmiPage extends WorkflowPage {
   lineChart: any;
 
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = navParams.data;
+    restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
+      this.responses = (data as any).entry.map(entry => (entry.resource as DemmiResponse));
+    });
+  }
+
+  private executeDate(): string {
+    return this.responses ? this.actualDate(): "";
+  }
+
+  private actualDate(): string {
+    return this.responses[0].authored.substr(8, 2) + "." +
+      this.responses[0].authored.substr(5, 2) + "." +
+      this.responses[0].authored.substr(0, 4);
+  }
+
+  private calcRawValue(): number {
+    if (this.responses) {
+      return this.answers().reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+      });
+    }
+    return 0;
+  }
+
+  private answers(): number[] {
+    return this.responses[0].item.map((item, index) => {
+      if (index < 15) {
+        if (item.answer[0].valueString !== undefined) {
+          return +(+item.answer[0].valueString).toFixed(0);
+        } else  {
+          return 0;
+        }
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  private calcDemmiScore(): string {
+    return this.responses ? this.responses[0].item[1].answer[0].valueString: ""
+  }
+
+  private getAids(): string {
+    return this.responses && this.responses[0].item[15] ? this.responses[0].item[15].answer[0].valueString: "";
+  }
+
+  private getComments(): string {
+    return this.responses && this.responses[0].item[16] ? this.responses[0].item[16].answer[0].valueString: "";
   }
 
   private viewPatient(patient: Patient) {

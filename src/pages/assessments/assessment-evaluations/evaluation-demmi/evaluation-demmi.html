@@ -17,16 +17,36 @@
   <div class="col score">
     <div class="row">
       <ion-item>
-        <ion-label class="bold">Rohwert</ion-label>
-        <ion-label class="nr">??</ion-label>
-        <ion-label class="nr">/ 19</ion-label>
+        <ion-label>Datum der Durchführung:</ion-label>
+        <ion-label>{{ executeDate() }}</ion-label>
+      </ion-item>
+    </div>
+
+    <div class="row">
+      <ion-item>
+        <ion-label class="bold">Rohwert:</ion-label>
+        <ion-label>{{ calcRawValue() }} /19 Punkten</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item>
-        <ion-label class="bold">DEMMI Score</ion-label>
-        <ion-label class="nr">??</ion-label>
-        <ion-label class="nr">/ 100</ion-label>
+        <ion-label class="bold">DEMMI Score:</ion-label>
+        <ion-label>{{ calcDemmiScore() }} /100 Punkten</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="col score">
+    <div class="row">
+      <ion-item>
+        <ion-label>Hilfsmittel:</ion-label>
+        <ion-label>{{ getAids() }}</ion-label>
+      </ion-item>
+    </div>
+    <div class="row">
+      <ion-item>
+        <ion-label>Bemerkungen:</ion-label>
+        <ion-label>{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>
