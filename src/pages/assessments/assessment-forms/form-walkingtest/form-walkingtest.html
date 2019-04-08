@@ -39,8 +39,9 @@
           <ion-row>
             <ion-col col-5>
               <ion-item>
-                <ion-label>1. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event.value, true)" [value]="time1" class="secRight"></ion-input>
+                <ion-label class="labelForInput">1. Durchführung</ion-label>
+                <ion-input type="number" placeholder="1. Durchführung" class="secRight"
+                           (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event.value, true)" [value]="time1"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -59,8 +60,9 @@
           <ion-row>
             <ion-col col-5>
               <ion-item>
-                <ion-label>2. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event.value, true)" [value]="time2" class="secRight"></ion-input>
+                <ion-label class="labelForInput">2. Durchführung</ion-label>
+                <ion-input type="number" placeholder="2. Durchführung" class="secRight"
+                           (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event.value, true)" [value]="time2"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -79,8 +81,9 @@
           <ion-row>
             <ion-col col-5>
               <ion-item>
-                <ion-label>3. Durchführung</ion-label>
-                <ion-input type="number" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event.value, true)" [value]="time3" class="secRight"></ion-input>
+                <ion-label class="labelForInput">3. Durchführung</ion-label>
+                <ion-input type="number" placeholder="3. Durchführung" class="secRight"
+                           (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event.value, true)" [value]="time3"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -130,7 +133,7 @@
   <!-- Dropdown for aids with the extension of a textfield for other aids-->
   <ion-list>
     <ion-item class="aid">
-      <ion-label>Hilfsmittel</ion-label>
+      <ion-label class="labelForInput">Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
                   (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event)" [(ngModel)]="aid">
         <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
@@ -144,17 +147,17 @@
       </ion-select>
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='andere Hilfsmittel'">
-      <ion-label>Welche?</ion-label>
-      <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(3, $event.target.value)"></ion-input>
+      <ion-label class="labelForInput">Welche?</ion-label>
+      <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(3, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
-    <ion-label>Bemerkungen</ion-label>
-    <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(4, $event.target.value)"></ion-input>
+    <ion-label class="labelForInput">Bemerkungen</ion-label>
+    <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(4, $event.target.value)"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button (click)="saveAndNavToEvaluationWalkingtest()">Auswerten</button>
+  <button ion-button class="buttonAuswerten" (click)="saveAndNavToEvaluationWalkingtest()">Auswerten</button>
 </ion-content>

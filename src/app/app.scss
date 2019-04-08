@@ -106,10 +106,14 @@ ion-icon::before{
   border-bottom: 1px solid #888888 !important;
 }
 
+//show buttons in top bar without rotation
 .bar-button-md[icon-only] {
   transform: rotate(0deg);
 }
 .bar-button::after{
+  transform: rotate(0deg);
+}
+.back-button.show-back-button{
   transform: rotate(0deg);
 }
 
@@ -174,7 +178,11 @@ ion-icon::before{
 }
 //size of the alert message for the material - demmi
 .materialDemmi .alert-wrapper{
+  min-height: 230px !important;
   min-width: 400px !important;
+}
+.materialDemmi .alert-message{
+  min-height: 130px !important;
 }
 //size of the alert message for the info icons - demmi
 .infoIconDemmi .alert-wrapper{
@@ -199,6 +207,7 @@ ion-icon::before{
  }
 //size of the alert message for the normwerte - dgi
 .normwerteDgi .alert-wrapper{
+  min-height: 250px !important;
   min-width: 500px !important;
 }
 //size of the alert message for the info icons - dgi
@@ -208,6 +217,7 @@ ion-icon::before{
 }
 .infoIconDgi .alert-message{
   min-height: 320px !important;
+  min-width: 250px !important;
 }
 //size of the alert message for the detail on evaluation page - demmi
 .detailsDgi .alert-wrapper{
@@ -216,6 +226,7 @@ ion-icon::before{
 }
 .detailsDgi .alert-message{
   min-height: 470px !important;
+  min-width: 250px !important;
 }
 //--Timed Walking Test--
 //size of the alert message for the instruction - timed walking test
@@ -225,6 +236,7 @@ ion-icon::before{
 }
 .instructionTWT .alert-message{
   min-height: 650px !important;
+  min-width: 250px !important;
 }
 //size of the alert message for the normwerte - timed walking test
 .normwerteTWT .alert-wrapper{
@@ -233,6 +245,7 @@ ion-icon::before{
 }
 .normwerteTWT .alert-message{
   min-height: 270px !important;
+  min-width: 250px !important;
 }
 //size of the alert message for the material - timed walking test
 .materialTWT .alert-wrapper{
@@ -241,6 +254,7 @@ ion-icon::before{
 }
 .materialTWT .alert-message{
   min-height: 300px !important;
+  min-width: 250px !important;
 }
 //size of the alert message for the detail on evaluation page - timed walking test
 .detailsTWT .alert-wrapper{
@@ -249,6 +263,24 @@ ion-icon::before{
 }
 .detailsTWT .alert-message{
   min-height: 320px !important;
+  min-width: 250px !important;
+}
+//--Hilfsmittel Dropdown
+.alert-radio-group{
+  min-height: 370px;
+  min-width: 400px;
+}
+
+//how a input is shown
+.labelForInput{
+  color: black !important;
+  padding-right: 30px;
+}
+
+//position of the 'Auswerten'-Button
+.buttonAuswerten{
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 //how a link is shown
