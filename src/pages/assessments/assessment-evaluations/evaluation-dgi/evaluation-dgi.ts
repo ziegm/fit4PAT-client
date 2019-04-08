@@ -82,8 +82,7 @@ export class EvaluationDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'DATUM',
       subTitle: 'Dynamic Gait Index',
-      message: '<ul><li><b>Rohwert:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>DEMMI Score:</b> ' + item.toLocaleString() + '</li></br>' +
+      message: '<ul><li><b>Punkte insgesamt:</b> ' + item.toString() + '</li></br>' +
         '<li><b>Aufgabe 1:</b> ' + item.toString() + '</li></br>' +
         '<li><b>Aufgabe 2:</b> ' + item.toString() + '</li></br>' +
         '<li><b>Aufgabe 3:</b> ' + item.toString() + '</li></br>' +

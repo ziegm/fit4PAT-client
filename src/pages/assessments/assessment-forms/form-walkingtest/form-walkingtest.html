@@ -8,11 +8,23 @@
   <patient-selector [patient]="patient"></patient-selector>
 
   <!-- Four icons for additional information -->
-  <ion-item>
-    <ion-icon name="trending-up" (click)="navToEvaluationWalkingtest()">Verlauf</ion-icon>
-    <ion-icon name="document" (click)="popupInstruction()">Instruktion</ion-icon>
-    <ion-icon name="pie" (click)="popupNormwerte()">Normwerte</ion-icon>
-    <ion-icon name="briefcase" (click)="popupMaterial()">Material</ion-icon>
+  <ion-item class="ionTop">
+    <button (click)="navToEvaluationWalkingtest()" class="additional-information">
+      <ion-icon name="trending-up"></ion-icon>
+      <span><br>Verlauf</span>
+    </button>
+    <button (click)="popupInstruction()" class="additional-information">
+      <ion-icon name="document"></ion-icon>
+      <span><br>Instruktion</span>
+    </button>
+    <button (click)="popupNormwerte()" class="additional-information">
+      <ion-icon name="pie"></ion-icon>
+      <span><br>Normwerte</span>
+    </button>
+    <button (click)="popupMaterial()" class="additional-information">
+      <ion-icon name="briefcase"></ion-icon>
+      <span><br>Material</span>
+    </button>
   </ion-item>
 
   <ion-grid>

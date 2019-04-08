@@ -1,4 +1,19 @@
 page-form-walkingtest {
+  //icons for additional information in the assessments-forms
+  .additional-information{
+    background-color: transparent;
+  }
+  .ion-md-trending-up:before,
+  .ion-md-document:before,
+  .ion-md-pie:before,
+  .ion-md-briefcase:before{
+    zoom: 2;
+    padding-bottom: 5px;
+  }
+  .ionTop{
+    text-align: right;
+    margin-bottom: 20px;
+  }
 
   h1{
     letter-spacing: 0.035em
