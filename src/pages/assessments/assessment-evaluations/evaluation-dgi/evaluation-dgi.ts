@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import Patient = fhir.Patient;
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 
 @IonicPage()
@@ -17,11 +18,10 @@ export class EvaluationDgiPage extends WorkflowPage {
   private patient: Patient;
   private responses: DgiResponse[];
   private isSearchbarVisible = false;
-
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
-  constructor(navParams: NavParams, restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = navParams.data;
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data  => {
@@ -78,9 +78,38 @@ export class EvaluationDgiPage extends WorkflowPage {
     window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
   }
 
-  ionViewDidLoad() {
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+  public showDetails(item){
+    let alert = this.alertCtrl.create({
+      title: 'DATUM',
+      subTitle: 'Dynamic Gait Index',
+      message: '<ul><li><b>Rohwert:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>DEMMI Score:</b> ' + item.toLocaleString() + '</li></br>' +
+        '<li><b>Aufgabe 1:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 2:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 3:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 4:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 5:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 6:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 7:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Aufgabe 8:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + item.toLocaleString() + '</li></ul>',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
 
+  ionViewDidLoad() {
+    Chart.plugins.unregister(ChartDataLabels);
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July"], //gemäss DB
@@ -109,7 +138,32 @@ export class EvaluationDgiPage extends WorkflowPage {
           }
         ]
       },
+      plugins: [ChartDataLabels],
       options: {
+        plugins: {
+          // Change options for ALL labels of THIS CHART
+          datalabels: {
+            color: '#888888',
+            align: 'top',
+          }
+        },
+        events: ['click'],
+        'onClick': function (evt, item) {
+          var element = this.lineChart.getElementAtEvent(evt);
+          if(element.length > 0){
+            this.showDetails(item);
+          }
+        }.bind(this),
+        //showTooltips: false,
+        tooltips: {
+          display: false,
+          enabled: false,
+          custom: (tooltipModel) => {
+            //if (tooltipModel.opacity === 0) {
+            //this.hide();
+            //return;
+          }
+        },
         legend: {
           display: false,
           labels: {
@@ -144,7 +198,9 @@ export class EvaluationDgiPage extends WorkflowPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        }
+        },
+        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
+        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
       } as ChartOptions,
     });
   }

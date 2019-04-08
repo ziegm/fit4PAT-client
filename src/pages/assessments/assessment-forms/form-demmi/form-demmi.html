@@ -17,11 +17,11 @@
 
   <!-- Table header -->
   <ion-item>
-    <div class="row header">
+    <div class="row header titleRow">
       <div class="col transparent"></div>
-      <div class="col darkGrey option">0</div>
-      <div class="col darkGrey option">1</div>
-      <div class="col darkGrey option">2</div>
+      <div class="col darkGrey option titleRow">0</div>
+      <div class="col darkGrey option titleRow">1</div>
+      <div class="col darkGrey option titleRow">2</div>
     </div>
   </ion-item>
 
@@ -451,7 +451,7 @@
 
   <!-- Dropdown for aids with the extension of a textfield for other aids-->
   <ion-list>
-    <ion-item>
+    <ion-item class="aid">
       <ion-label>Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
                   (ionChange)="assessmentResponse.addOrChangeAnswer(15, $event)" [(ngModel)]="aid">
@@ -465,7 +465,7 @@
         <ion-option value="andere Hilfsmittel">andere</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item id="extension" *ngIf="aid=='other'">
+    <ion-item id="extension" *ngIf="aid=='andere Hilfsmittel'">
       <ion-label>Welche?</ion-label>
       <ion-input type="text" (keyup)="assessmentResponse.addOrChangeAnswer(15, $event.target.value)"></ion-input>
     </ion-item>

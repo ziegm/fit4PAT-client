@@ -24,7 +24,7 @@ export class FormDgiPage extends WorkflowPage {
   private assessmentResponse: AssessmentResponse = new DgiResponse();
   private show: boolean = false;
   public discount: number = 0;
-  public aid = "none";
+  public aid = "keine Hilfsmittel";
   public selectedIndex: number;
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams, private restProvider: RestProvider) {

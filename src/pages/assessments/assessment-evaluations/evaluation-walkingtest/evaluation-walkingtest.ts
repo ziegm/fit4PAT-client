@@ -1,7 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from "chart.js";
+import {ChartAnnotation} from 'chartjs-plugin-annotation';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {RestProvider} from "../../../../providers/rest/rest";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
@@ -20,7 +22,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   @ViewChild('lineCanvas') lineCanvas;
   lineChart: any;
 
-  constructor(navParams: NavParams, restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = navParams.data;
     restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data  => {
@@ -78,6 +80,30 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     this.isSearchbarVisible = isVisible;
   }
 
+  public showDetails(item){
+    let alert = this.alertCtrl.create({
+      title: 'DATUM',
+      subTitle: 'Timed Walking Test',
+      message: '<ul><li><b>Ganggeschwindigkeit:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Durchschnittswert:</b> ' + item.toLocaleString() + '</li></br>' +
+        '<li><b>1. Durchführung:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>2. Durchführung:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>3. Durchführung:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + item.toString() + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + item.toLocaleString() + '</li></ul>',
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: data => {
+            console.log('Ok clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
+
   ionViewDidLoad() {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
 
@@ -109,7 +135,32 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           }
         ]
       },
+      plugins: [ChartDataLabels],
       options: {
+        plugins: {
+          // Change options for ALL labels of THIS CHART
+          datalabels: {
+            color: '#888888',
+            align: 'top',
+          }
+        },
+        events: ['click'],
+        'onClick': function (evt, item) {
+          var element = this.lineChart.getElementAtEvent(evt);
+          if(element.length > 0){
+            this.showDetails(item);
+          }
+        }.bind(this),
+        //showTooltips: false,
+        tooltips: {
+          display: false,
+          enabled: false,
+          custom: (tooltipModel) => {
+            //if (tooltipModel.opacity === 0) {
+            //this.hide();
+            //return;
+          }
+        },
         legend: {
           display: false,
           labels: {
@@ -151,7 +202,9 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        }
+        },
+        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
+        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
       } as ChartOptions,
     });
   }

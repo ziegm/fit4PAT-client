@@ -23,6 +23,7 @@ export class FormDemmiPage extends WorkflowPage {
   private patient: Patient;
   private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
+  public aid = "keine Hilfsmittel";
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
     super(navParams.data);

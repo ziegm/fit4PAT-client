@@ -31,6 +31,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   private time2: number;
   private time3: number;
   private currentTime: Date;
+  public aid = "keine Hilfsmittel";
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
     super(navParams.data);

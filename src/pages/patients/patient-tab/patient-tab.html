@@ -5,7 +5,14 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button (click)="navToPatientScan()">Patientenarmband scannen</button>
-  <button ion-button (click)="navToPatientStationary()">Stationäre Patienten</button>
-  <button ion-button (click)="navToPatientAmbulatory()">Ambulante Patienten</button>
+  <ion-item>
+    <div class="row">
+      <div class="col"><ion-item><img src="./assets/imgs/2dbarcode.jpg" (click)="navToPatientScan()"/></ion-item>
+        <ion-item><button ion-button (click)="navToPatientScan()">Patientenarmband scannen</button></ion-item></div>
+      <div class="col"><ion-item><img src="./assets/imgs/stationär.png" (click)="navToPatientStationary()"/></ion-item>
+        <ion-item><button ion-button (click)="navToPatientStationary()">Stationäre Patienten</button></ion-item></div>
+      <div class="col"><ion-item><img src="./assets/imgs/ambulant.png" (click)="navToPatientAmbulatory()"/></ion-item>
+        <ion-item><button ion-button (click)="navToPatientAmbulatory()">Ambulante Patienten</button></ion-item></div>
+    </div>
+  </ion-item>
 </ion-content>

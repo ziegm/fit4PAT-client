@@ -125,7 +125,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
 
   public showDetails(item){
     let alert = this.alertCtrl.create({
-      title: 'Detailansicht + DATUM',
+      title: 'DATUM',
       subTitle: 'de Morton Mobility Index',
       message: '<ul><li><b>Rohwert:</b> ' + item.toString() + '</li></br>' +
         '<li><b>DEMMI Score:</b> ' + item.toLocaleString() + '</li></br>' +
