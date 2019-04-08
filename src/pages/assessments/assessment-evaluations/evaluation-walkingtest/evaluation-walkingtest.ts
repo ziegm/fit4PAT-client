@@ -83,6 +83,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   public showDetails(item){
     let alert = this.alertCtrl.create({
       title: 'DATUM',
+      cssClass: 'detailsTWT',
       subTitle: 'Timed Walking Test',
       message: '<ul><li><b>Ganggeschwindigkeit:</b> ' + item.toString() + '</li></br>' +
         '<li><b>Durchschnittswert:</b> ' + item.toLocaleString() + '</li></br>' +

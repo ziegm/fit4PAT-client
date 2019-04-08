@@ -19,12 +19,12 @@ page-form-demmi {
   }
   .ionTop{
     text-align: right;
+    margin-bottom: 30px;
   }
   //title row of the table
   .titleRow{
-    height: 50px;
+    height: 30px;
     padding-top: 3px;
-    margin-top: 50px;
   }
   .category{
     font-weight: bold;
@@ -77,11 +77,6 @@ page-form-demmi {
   .aid{
     max-width: 30%;
   }
-  //size of the alert message for the instruction
-  .instruction{
-    min-height: 450px;
-    min-width: 900px;
-    max-height: 100%;
-  }
+
 
 }

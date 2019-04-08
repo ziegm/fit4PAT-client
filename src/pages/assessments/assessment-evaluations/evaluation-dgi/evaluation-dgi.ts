@@ -81,6 +81,7 @@ export class EvaluationDgiPage extends WorkflowPage {
   public showDetails(item){
     let alert = this.alertCtrl.create({
       title: 'DATUM',
+      cssClass: 'detailsDgi',
       subTitle: 'Dynamic Gait Index',
       message: '<ul><li><b>Punkte insgesamt:</b> ' + item.toString() + '</li></br>' +
         '<li><b>Aufgabe 1:</b> ' + item.toString() + '</li></br>' +
@@ -188,7 +189,7 @@ export class EvaluationDgiPage extends WorkflowPage {
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '19',
-            borderColor: '#99cc99',
+            borderColor: '#ff9999',
             borderWidth: 2,
           }],
           // Defines when the annotations are drawn.

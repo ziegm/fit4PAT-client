@@ -169,6 +169,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   popupInstruction() {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
+      cssClass: 'instructionTWT',
       subTitle: 'Timed Walking Test',
       message: '<b>Ziel:</b></br>' +
         '<ul><li>Ermittlung der Gehgeschwindigkeit in m/s bei selbst gewähltem Tempo und gegebenenfalls bei hoher Geschwindigkeit.</li></ul></br>' +
@@ -204,6 +205,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   popupNormwerte() {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
+      cssClass: 'normwerteTWT',
       subTitle: 'Timed Walking Test',
       message: '<ul><li>Durchschnittliche Ganggeschwindigkeit gesunder Erwachsener: 1,3 m/s</br></br>' +
         '<ul><li>Durchschnittswerte Frauen: 1,23 m/s</li></br>' +
@@ -227,6 +229,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   popupMaterial() {
     let alert = this.alertCtrl.create({
       title: 'Material',
+      cssClass: 'materialTWT',
       subTitle: 'Timed Walking Test',
       message: '<ul><li>Abgestreckte Strecke</li></ul>' +
       '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/>',

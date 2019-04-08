@@ -16,7 +16,7 @@
 // automatically applied to the <body> element in the app.
 
 //everything has the same text size
-ion-label, ion-item, span, button{
+ion-label, ion-item, span, button, ul, li{
   font-size: 16px;
 }
 //the text is written bold
@@ -152,6 +152,103 @@ ion-icon::before{
 }
 .center{
   text-align: center;
+}
+
+//--DEMMI--
+//size of the alert message for the instruction - demmi
+.instructionDemmi .alert-wrapper{
+  min-height:750px !important;
+  min-width: 1200px !important;
+  max-height: 100% !important;
+}
+.instructionDemmi .alert-message{
+  min-height: 550px !important;
+}
+//size of the alert message for the normwerte - demmi
+.normwerteDemmi .alert-wrapper{
+  min-height: 500px !important;
+  min-width: 800px !important;
+}
+.normwerteDemmi .alert-message{
+  min-height: 350px !important;
+}
+//size of the alert message for the material - demmi
+.materialDemmi .alert-wrapper{
+  min-width: 400px !important;
+}
+//size of the alert message for the info icons - demmi
+.infoIconDemmi .alert-wrapper{
+  min-height: 150px !important;
+  min-width: 500px !important;
+}
+.infoIconDemmi .alert-message{
+  min-height: 120px !important;
+}
+//size of the alert message for the detail on evaluation page - demmi
+.detailsDemmi .alert-wrapper{
+  min-height: 800px !important;
+  min-width: 400px !important;
+}
+.detailsDemmi .alert-message{
+  min-height: 650px !important;
+}
+//--DGI--
+   //size of the alert message for the instruction - dgi
+ .instructionDgi .alert-wrapper{
+   min-width: 450px !important;
+ }
+//size of the alert message for the normwerte - dgi
+.normwerteDgi .alert-wrapper{
+  min-width: 500px !important;
+}
+//size of the alert message for the info icons - dgi
+.infoIconDgi .alert-wrapper{
+  min-height: 470px !important;
+  min-width: 900px !important;
+}
+.infoIconDgi .alert-message{
+  min-height: 320px !important;
+}
+//size of the alert message for the detail on evaluation page - demmi
+.detailsDgi .alert-wrapper{
+  min-height: 600px !important;
+  min-width: 400px !important;
+}
+.detailsDgi .alert-message{
+  min-height: 470px !important;
+}
+//--Timed Walking Test--
+//size of the alert message for the instruction - timed walking test
+.instructionTWT .alert-wrapper{
+  min-height: 800px !important;
+  min-width: 950px !important;
+}
+.instructionTWT .alert-message{
+  min-height: 650px !important;
+}
+//size of the alert message for the normwerte - timed walking test
+.normwerteTWT .alert-wrapper{
+  min-height: 400px !important;
+  min-width: 700px !important;
+}
+.normwerteTWT .alert-message{
+  min-height: 270px !important;
+}
+//size of the alert message for the material - timed walking test
+.materialTWT .alert-wrapper{
+  min-height: 400px !important;
+  min-width: 950px !important;
+}
+.materialTWT .alert-message{
+  min-height: 300px !important;
+}
+//size of the alert message for the detail on evaluation page - timed walking test
+.detailsTWT .alert-wrapper{
+  min-height: 400px !important;
+  min-width: 500px !important;
+}
+.detailsTWT .alert-message{
+  min-height: 320px !important;
 }
 
 //how a link is shown
