@@ -1,4 +1,11 @@
 page-form-dgi {
+  //patient and icons for additional information in the same row
+  .patient{
+    max-width: 70%;
+  }
+  .information{
+    max-width: 30%;
+  }
   //icons for additional information in the assessments-forms
   .additional-information{
     background-color: transparent;
@@ -13,6 +20,11 @@ page-form-dgi {
   .ionTop{
     text-align: right;
   }
+  //title row of the table
+  .titleRow{
+    margin-top: 50px;
+    height: 70px;
+  }
 
   .number{
     max-width: 2%;
@@ -23,7 +35,7 @@ page-form-dgi {
   }
   .option{
     max-width: 12%;
-    text-align: right;
+    text-align: center;
     padding-top: 3px;
   }
   .rad{
@@ -42,18 +54,22 @@ page-form-dgi {
   .greyZero{
     //color: black;
     background-color: #f3f3f3;
+    padding-right: 30px;
   }
   .greyOne{
     color: black;
     background-color: #e7e7e7;
+    padding-right: 30px;
   }
   .greyTwo{
     color: black;
     background-color: #dbdbdb;
+    padding-right: 30px;
   }
   .greyThree{
     color: black;
     background-color: #cfcfcf;
+    padding-right: 30px;
   }
   .ion-label{
     background-color: transparent;
@@ -86,11 +102,6 @@ page-form-dgi {
     display: block;
     font-size: 30px;
     margin-bottom: 3px !important;
-  }
-
-  .titleRow{
-    margin-top: 20px;
-    height: 70px;
   }
 
   .aid{

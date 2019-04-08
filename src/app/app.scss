@@ -16,7 +16,7 @@
 // automatically applied to the <body> element in the app.
 
 //everything has the same text size
-ion-label, ion-item, span{
+ion-label, ion-item, span, button{
   font-size: 16px;
 }
 //the text is written bold
@@ -106,18 +106,6 @@ ion-icon::before{
   border-bottom: 1px solid #888888 !important;
 }
 
-//size of the alert-message
-/**
-.alert-message{
-  min-height: 450px;
-}
-.alert-wrapper{
-  min-width: 900px;
-  min-height: 80%;
-  max-height: 100%;
-}
-*/
-
 .bar-button-md[icon-only] {
   transform: rotate(0deg);
 }
@@ -164,4 +152,11 @@ ion-icon::before{
 }
 .center{
   text-align: center;
+}
+
+//how a link is shown
+.link{
+  color: blue;
+  text-decoration: underline;
+  background-color: transparent;
 }

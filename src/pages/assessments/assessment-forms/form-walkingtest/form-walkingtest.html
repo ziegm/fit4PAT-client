@@ -5,9 +5,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid><ion-row><ion-col class="patient">
   <patient-selector [patient]="patient"></patient-selector>
-
+  </ion-col>
   <!-- Four icons for additional information -->
+  <ion-col class="information">
   <ion-item class="ionTop">
     <button (click)="navToEvaluationWalkingtest()" class="additional-information">
       <ion-icon name="trending-up"></ion-icon>
@@ -26,6 +28,8 @@
       <span><br>Material</span>
     </button>
   </ion-item>
+  </ion-col>
+  </ion-row></ion-grid>
 
   <ion-grid>
     <ion-row>

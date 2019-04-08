@@ -97,9 +97,13 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * show the instruction for demmi
+   */
   popupInstruction() {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
+      cssClass: 'instruction',
       subTitle: 'de Morton Mobility Index',
       message: '<b>Hinweise zur Hilfestellung:</b><br/>' +
       '<ul><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +

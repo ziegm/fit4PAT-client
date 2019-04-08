@@ -1,4 +1,11 @@
 page-form-walkingtest {
+  //patient and icons for additional information in the same row
+  .patient{
+    max-width: 70%;
+  }
+  .information{
+    max-width: 30%;
+  }
   //icons for additional information in the assessments-forms
   .additional-information{
     background-color: transparent;
@@ -12,7 +19,8 @@ page-form-walkingtest {
   }
   .ionTop{
     text-align: right;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    margin-top: 0;
   }
 
   h1{
