@@ -18,20 +18,20 @@
 
   <div class="col score">
     <div class="row">
-      <ion-item class="infosTop">
+      <ion-item class="infosTopBottom">
         <ion-label>Datum der Durchführung:</ion-label>
         <ion-label>{{ executeDate() }}</ion-label>
       </ion-item>
     </div>
 
     <div class="row">
-      <ion-item class="infosTop">
+      <ion-item class="infosTopBottom">
         <ion-label class="bold">Rohwert:</ion-label>
         <ion-label>{{ calcRawValue() }}/19 Punkten</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTop">
+      <ion-item class="infosTopBottom">
         <ion-label class="bold">DEMMI Score:</ion-label>
         <ion-label>{{ translateDemmiScore() }}/100 Punkten</ion-label>
       </ion-item>
@@ -40,13 +40,13 @@
 
   <div class="col score">
     <div class="row">
-      <ion-item class="infosTop">
+      <ion-item class="infosTopBottom">
         <ion-label>Hilfsmittel:</ion-label>
         <ion-label>{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTop">
+      <ion-item class="infosTopBottom">
         <ion-label>Bemerkungen:</ion-label>
         <ion-label>{{ getComments() }}</ion-label>
       </ion-item>
@@ -60,7 +60,7 @@
   </ion-card>
 
   <!-- DEMMI raw value conversion table -->
-  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart">
+  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart infosTopBottom">
     <ion-label class="bar-stable bold">
       DEMMI Rohwert Umrechnungstabelle:
     </ion-label>
@@ -257,7 +257,7 @@
   </ion-list>
 
   <!-- table independent or assisted living -->
-  <ion-list radio-group [(ngModel)]="normwerte" class="difference">
+  <ion-list radio-group [(ngModel)]="normwerte" class="difference infosTopBottom">
     <ion-label class="bar-stable bold">
       Normwerte:
     </ion-label>
@@ -316,7 +316,7 @@
   </ion-list>
 
   <!-- table of exit to home or other institution -->
-  <ion-list radio-group [(ngModel)]="austritt" class="difference">
+  <ion-list radio-group [(ngModel)]="austritt" class="difference infosTopBottom">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col">
         <ion-item class="rohwert">
@@ -348,7 +348,7 @@
   </ion-list>
 
   <!-- reference to MDC and MCID -->
-  <ion-label class="difference textSize"><b>Beachte:</b>
+  <ion-label class="difference textSize infosTopBottom"><b>Beachte:</b>
     <ul>
       <li>Minimal Detectable Change (MDC) = 9/100 Punkten</li>
       <li>Minimal Clinically Important Difference (MCID) = 10/100 Punkte</li>

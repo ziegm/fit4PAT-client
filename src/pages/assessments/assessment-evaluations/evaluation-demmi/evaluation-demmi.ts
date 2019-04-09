@@ -167,11 +167,9 @@ export class EvaluationDemmiPage extends WorkflowPage {
     Chart.plugins.unregister(ChartDataLabels);
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
-
       data: {
         labels: ["January", "February", "March", "April", "May", "June", "July"], //gemäss DB
-        datasets: [
-          {
+        datasets: [{
             label: "DEMMI",
             fill: false,
             lineTension: 0,
@@ -208,8 +206,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
           var element = this.lineChart.getElementAtEvent(evt);
           if(element.length > 0){
             this.showDetails(item);
-          }
-        }.bind(this),
+          }}.bind(this),
         //showTooltips: false,
         tooltips: {
           display: false,
@@ -218,8 +215,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             //if (tooltipModel.opacity === 0) {
               //this.hide();
               //return;
-          }
-        },
+          }},
         legend: {
           display: false,
           labels: {
@@ -248,7 +244,28 @@ export class EvaluationDemmiPage extends WorkflowPage {
             yMin: 0,
             yMax: 40,
             backgroundColor: '#ffcccc',
-            //borderColor: 'rgba(100, 100, 100, 0.2)',
+            borderColor: '#ffb2b2',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '10',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '20',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '30',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
           }, {
             id: 'box2',
             type: 'box',
@@ -256,7 +273,14 @@ export class EvaluationDemmiPage extends WorkflowPage {
             yMin: 40,
             yMax: 60,
             backgroundColor: '#ffedcc',
-            //borderColor: 'rgba(200, 100, 200, 0.2)',
+            borderColor: '#ffe4b2',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '50',
+            borderColor: '#ffe4b2',
+            borderWidth: 2,
           }, {
             id: 'box3',
             type: 'box',
@@ -264,7 +288,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             yMin: 60,
             yMax: 70,
             backgroundColor: '#ffffcc',
-            //borderColor: 'rgba(200, 100, 200, 0.2)',
+            borderColor: '#ffffb2',
           }, {
             id: 'box4',
             type: 'box',
@@ -272,7 +296,28 @@ export class EvaluationDemmiPage extends WorkflowPage {
             yMin: 70,
             yMax: 100,
             backgroundColor: '#cce5cc',
-            //borderColor: 'rgba(200, 100, 200, 0.2)',
+            borderColor: '#bbdcbb',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '80',
+            borderColor: '#bbdcbb',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '90',
+            borderColor: '#bbdcbb',
+            borderWidth: 2,
+         /* }, {
+            type: 'line',
+            mode: 'vertical',
+            scaleID: 'x-axis-0',
+            value: 'February',
+            borderColor: '#b7b7b7',
+            borderWidth: 2,*/
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
