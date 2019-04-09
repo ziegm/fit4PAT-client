@@ -103,10 +103,10 @@ page-home {
   .others label, .ot:checked ~ nav .unsel { background: #5e7c3d; }
   .muscolosceletal label, .musco:checked ~ nav .unsel { background: #c4e2a3; }
   .geriatry label:before { background-image: url(../../../assets/imgs/Geriatrics.jpg);}
-  .neurology label:before { background-image: url(https://neurotracker.net/wp-content/uploads/2017/12/neuroscience-2017-7.jpg);}
-  .cardiology label:before { background-image: url(https://www.kardiologie-forst.de/images/kardiologie-forst-dr-wojcieski.jpg); }
-  .others label:before { background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5e/Tape_measure_colored.jpeg); }
-  .muscolosceletal label:before { background-image: url(https://bewegungsapparatyoeldominik.files.wordpress.com/2016/06/muskelmensch-laufend.jpg); }
+  .neurology label:before { background-image: url(../../../assets/imgs/Neurology.jpg);}
+  .cardiology label:before { background-image: url(../../../assets/imgs/Cardiology.jpg); }
+  .others label:before { background-image: url(../../../assets/imgs/Others.jpg); }
+  .muscolosceletal label:before { background-image: url(../../../assets/imgs/Muscolosceletal.jpg); }
   .slice label:hover:after { opacity: 0; }
   //.ococonut:checked ~ nav .geriatry { transform: skewX(20deg) scale(1.05); }
   //.ovanilla:checked ~ nav .neurology { transform: rotate(72deg) skewX(20deg) scale(1.05); }
