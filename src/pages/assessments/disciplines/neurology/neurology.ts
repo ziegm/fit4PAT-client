@@ -6,6 +6,7 @@ import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
 import {DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
+import {FileOpener} from "@ionic-native/file-opener/ngx";
 
 
 @IonicPage()
@@ -17,8 +18,8 @@ export class NeurologyPage extends WorkflowPage {
   private rootNav:any;
   private isSearchbarVisible = false;
 
-  // @ts-ignore
-  constructor(navParams: NavParams, app: App, private document: DocumentViewer) {
+
+  constructor(navParams: NavParams, app: App, private document: DocumentViewer/*, private fileOpener: FileOpener*/) {
     super(navParams.data);
     this.document = document;
     this.rootNav = app.getRootNav();
@@ -33,10 +34,13 @@ export class NeurologyPage extends WorkflowPage {
   }
 
   showPdfDemmi(){
-    const options: DocumentViewerOptions = {
+    /*this.fileOpener.open('/assets/Assessment_DGI.pdf', 'application/pdf')
+      .then(()=>console.log('File is opend'))
+      .catch(e=>console.log('Error opening file', e));*/
+    /*const options: DocumentViewerOptions = {
       title: 'My PDF'
     }
-    this.document.viewDocument('/assets/Assessment_DGI.pdf', 'application/pdf', options)
+    this.document.viewDocument('/assets/Assessment_DGI.pdf', 'application/pdf', options)*/
   }
 
   navToDgi() {

@@ -1,5 +1,4 @@
 page-home {
-
   //so it is not possible to scroll the page
   .scroll-content {
     overflow-y: hidden;
@@ -108,21 +107,7 @@ page-home {
   .others label:before { background-image: url(../../../assets/imgs/Others.jpg); }
   .muscolosceletal label:before { background-image: url(../../../assets/imgs/Muscolosceletal.jpg); }
   .slice label:hover:after { opacity: 0; }
-  //.ococonut:checked ~ nav .geriatry { transform: skewX(20deg) scale(1.05); }
-  //.ovanilla:checked ~ nav .neurology { transform: rotate(72deg) skewX(20deg) scale(1.05); }
-  //.oorange:checked ~ nav .orange { transform: rotate(144deg) skewX(20deg) scale(1.05); }
-  //.oalmond:checked ~ nav .almond { transform: rotate(216deg) skewX(20deg) scale(1.05); }
-  //.ogrape:checked ~ nav .grape { transform: rotate(288deg) skewX(20deg) scale(1.05); }
-  //.ococonut:checked ~ nav .geriatry label,
-  //.ovanilla:checked ~ nav .neurology label,
-  //.oorange:checked ~ nav .cardiology label,
-  //.oalmond:checked ~ nav .almond label,
-  //.ogrape:checked ~ nav .grape label {
-    //box-shadow: 0 0 .45em rgba(0,0,0,.5);
-    //opacity: 1; color: white;
-  //}
+
   @media (min-width: 25em) { .slice label { font-size: 1em; line-height: 2.3; } }
   @media (min-width: 35em) { .slice label { font-weight: 700; line-height: 2.7; } }
-
-
 }

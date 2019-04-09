@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-list>
     <ion-item>
       <ion-item (click)="navToWalkingtest()" class="listAssessmentsPatients"

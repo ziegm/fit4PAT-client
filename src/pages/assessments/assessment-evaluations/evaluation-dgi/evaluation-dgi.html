@@ -5,8 +5,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient/Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-label class="patient">
-    {{viewPatient(patient)}}
+    <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
 
   <div class="col score">

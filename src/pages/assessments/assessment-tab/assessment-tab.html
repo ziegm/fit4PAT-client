@@ -1,8 +1,10 @@
 <ion-header>
-  <navbar title="Assessmentauswahl" (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+  <navbar title="Assessmentauswahl"
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
 
   <input type='radio' name='opt' id='geri' class='menuopt geri'>
   <input type='radio' name='opt' id='neuro' class='menuopt neuro'>

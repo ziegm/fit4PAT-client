@@ -1,10 +1,11 @@
 <ion-header>
-  <navbar [title]="viewPatient(patient)"
+  <navbar [title]="viewPatientName(patient)"[subTitle]="viewPatientInfos(patient)"
           [workflowParameters]="workflowParameters"
           (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient/Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
   <ion-list>
     <ion-label>This is my list</ion-label>

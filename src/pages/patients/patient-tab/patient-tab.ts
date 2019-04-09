@@ -11,7 +11,7 @@ import {WorkflowPage} from "../../../workflow/workflow-page";
 })
 export class PatientTabPage extends WorkflowPage {
   private rootNav: any;
-  private isSearchbarVisible = false;
+  public isSearchbarVisible = false;
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
@@ -30,7 +30,7 @@ export class PatientTabPage extends WorkflowPage {
     this.rootNav.push(PatientAmbulatoryPage, this.workflowParameters);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
+  public onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }
 }

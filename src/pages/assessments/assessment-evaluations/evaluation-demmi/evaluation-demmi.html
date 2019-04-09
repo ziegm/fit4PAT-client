@@ -11,26 +11,27 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient/Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-label class="patient">
-    {{viewPatient(patient)}}
+    <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
 
   <div class="col score">
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTop">
         <ion-label>Datum der Durchführung:</ion-label>
         <ion-label>{{ executeDate() }}</ion-label>
       </ion-item>
     </div>
 
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTop">
         <ion-label class="bold">Rohwert:</ion-label>
         <ion-label>{{ calcRawValue() }}/19 Punkten</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTop">
         <ion-label class="bold">DEMMI Score:</ion-label>
         <ion-label>{{ translateDemmiScore() }}/100 Punkten</ion-label>
       </ion-item>
@@ -39,13 +40,13 @@
 
   <div class="col score">
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTop">
         <ion-label>Hilfsmittel:</ion-label>
         <ion-label>{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTop">
         <ion-label>Bemerkungen:</ion-label>
         <ion-label>{{ getComments() }}</ion-label>
       </ion-item>

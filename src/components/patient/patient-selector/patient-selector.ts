@@ -18,8 +18,11 @@ export class PatientSelectorComponent extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private viewPatient(patient: Patient) {
-    return patient !== undefined ? PatientHelper.viewPatient(patient) : "";
+  private viewPatientName(patient: Patient) {
+    return patient !== undefined ? PatientHelper.viewPatientName(patient) : "";
+  }
+  private viewPatientInfos(patient: Patient) {
+    return patient !== undefined ? PatientHelper.viewPatientInfos(patient) : "";
   }
 
   navToPatientTab() {

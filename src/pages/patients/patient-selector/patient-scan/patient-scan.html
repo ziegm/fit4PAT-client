@@ -5,5 +5,6 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-label>{{barcode}}</ion-label>
 </ion-content>

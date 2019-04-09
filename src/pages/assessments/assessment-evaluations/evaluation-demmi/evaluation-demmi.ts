@@ -115,8 +115,11 @@ export class EvaluationDemmiPage extends WorkflowPage {
     }
   }
 
-  private viewPatient(patient: Patient) {
-    return PatientHelper.viewPatient(patient);
+  private viewPatientName(patient: Patient) {
+    return PatientHelper.viewPatientName(patient);
+  }
+  private viewPatientInfos(patient: Patient) {
+    return PatientHelper.viewPatientInfos(patient);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {

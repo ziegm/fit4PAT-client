@@ -44,13 +44,16 @@ export class PatientListComponent {
           this.noPatientMessage = "Es existieren momentan keine Patienten mit Physiotherapie-Verordnung.";
         }
         this.patients.sort((a: Patient, b: Patient) => {
-          return this.viewPatient(a) > this.viewPatient(b) ? 1 : -1;
+          return this.viewPatientName(a) > this.viewPatientName(b) ? 1 : -1;
         })
       });
   }
 
-  private viewPatient(patient:Patient) {
-    return PatientHelper.viewPatient(patient);
+  private viewPatientName(patient:Patient) {
+    return PatientHelper.viewPatientName(patient);
+  }
+  private viewPatientInfos(patient:Patient) {
+    return PatientHelper.viewPatientInfos(patient);
   }
 
   private takeOverPatient(patient: Patient) {

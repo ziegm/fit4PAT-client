@@ -66,8 +66,11 @@ export class EvaluationDgiPage extends WorkflowPage {
     return this.responses && this.responses[0].item[9] ? this.responses[0].item[9].answer[0].valueString: "";
   }
 
-  private viewPatient(patient: Patient) {
-    return PatientHelper.viewPatient(patient);
+  private viewPatientName(patient: Patient) {
+    return PatientHelper.viewPatientName(patient);
+  }
+  private viewPatientInfos(patient: Patient) {
+    return PatientHelper.viewPatientInfos(patient);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {

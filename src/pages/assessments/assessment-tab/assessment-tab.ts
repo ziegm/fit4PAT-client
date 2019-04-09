@@ -13,7 +13,7 @@ import {WorkflowPage} from "../../../workflow/workflow-page";
 })
 export class AssessmentTabPage extends WorkflowPage {
   private rootNav:any;
-  private isSearchbarVisible = false;
+  public isSearchbarVisible = false;
 
   constructor(app: App, navParams: NavParams) {
     super(navParams.data);
@@ -45,7 +45,8 @@ export class AssessmentTabPage extends WorkflowPage {
     this.rootNav.push(OthersPage, this.workflowParameters);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
+  public onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }
+
 }

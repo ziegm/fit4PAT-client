@@ -4,6 +4,7 @@ import {AssessmentTabPage} from '../assessments/assessment-tab/assessment-tab';
 import {WorkflowSelector} from "../../workflow/workflow-selector";
 import {WorkflowParameters} from "../../workflow/workflow-parameters";
 import {Tabs} from "ionic-angular";
+import {fn} from "moment";
 
 @Component({
   templateUrl: 'tabs.html',
@@ -29,7 +30,13 @@ export class TabsPage {
     return this._fromPatient;
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
+  private onSearchbarVisibilityChangeAnother(isVisible: boolean): void {
+    if(this.tab1Root) {
+
+      //this.tab1Root.onSearchbarVisibilityChange(isVisible);
+    } else {
+      PatientTabPage.prototype.isSearchbarVisible = isVisible;
+    }
+    //this.isSearchbarVisible = isVisible;
   }
 }

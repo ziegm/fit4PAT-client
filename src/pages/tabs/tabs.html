@@ -1,8 +1,9 @@
 <ion-header>
   <navbar [isMenuVisible]="true" title="fit4PAT"
           [workflowParameters]="fromPatient"
-          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+          (searchbarVisibilityChange)="onSearchbarVisibilityChangeAnother($event)"></navbar>
 </ion-header>
+
 
 <ion-tabs tabsPlacement="top" #tabs>
   <ion-tab [root]="tab1Root" [rootParams]="fromAssessment"
@@ -10,4 +11,5 @@
   <ion-tab [root]="tab2Root" [rootParams]="fromPatient"
            tabTitle="Patient" tabIcon="man"></ion-tab>
 </ion-tabs>
+
 

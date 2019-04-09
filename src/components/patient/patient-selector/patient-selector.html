@@ -1,6 +1,6 @@
 <button ion-button (click)="navToPatientTab()" *ngIf="patient === undefined">Patient hinzufügen</button>
 <ion-item *ngIf="patient !== undefined">
   <ion-label>
-    {{viewPatient(patient)}}
+    <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
 </ion-item>
