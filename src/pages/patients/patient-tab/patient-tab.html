@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="workflowParameters.isSearchVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-item>
     <div class="row">
       <div class="col"><ion-item class="image"><img src="./assets/imgs/2dbarcode.jpg" (click)="navToPatientScan()"/></ion-item>

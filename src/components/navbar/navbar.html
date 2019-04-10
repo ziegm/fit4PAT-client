@@ -5,13 +5,13 @@
   <ion-title>{{ title }}</ion-title>
   <ion-label class="subtitle">{{ subTitle}}</ion-label>
   <ion-buttons end>
-    <button ion-button icon-only (click)="toggleSearchbarVisibility()">
+    <button ion-button icon-only (click)="toggleSearchbarVisibility()" *ngIf="isSearchVisible === true">
       <ion-icon name="search"></ion-icon>
     </button>
     <button ion-button icon-only (click)="navToHome()">
       <img class="imgTitle" src="./assets/imgs/Logo_fit4PAT_man-grey.svg"/>
     </button>
-    <button ion-button icon-only (click)="openModal()">
+    <button ion-button icon-only (click)="openModal($event)">
       <ion-icon name="more"></ion-icon>
     </button>
   </ion-buttons>

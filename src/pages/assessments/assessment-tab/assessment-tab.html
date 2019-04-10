@@ -4,7 +4,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <ion-searchbar #search *ngIf="workflowParameters.isSearchVisible"
+                 placeholder="Assessment suchen" (ionInput)="getAssessments($event)"
+                 (click)="showPopover($event)"></ion-searchbar>
 
   <input type='radio' name='opt' id='geri' class='menuopt geri'>
   <input type='radio' name='opt' id='neuro' class='menuopt neuro'>

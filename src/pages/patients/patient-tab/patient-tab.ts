@@ -29,8 +29,4 @@ export class PatientTabPage extends WorkflowPage {
   navToPatientAmbulatory() {
     this.rootNav.push(PatientAmbulatoryPage, this.workflowParameters);
   }
-
-  public onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
 }

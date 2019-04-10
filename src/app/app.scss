@@ -327,3 +327,8 @@ ion-icon::before {
   text-decoration: underline;
   background-color: transparent;
 }
+
+// distance from search input to popover
+.distanceToInput {
+  top: 45px;
+}

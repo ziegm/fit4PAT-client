@@ -13,7 +13,7 @@ import {MyApp} from "../../../../app/app.component";
 export class CardiologyPage extends WorkflowPage {
   private rootNav: any;
   private isSearchbarVisible = false;
-  private assessments = ["Timed Walking Test (10-Meter-Gehtest)"];
+
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
@@ -31,17 +31,4 @@ export class CardiologyPage extends WorkflowPage {
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }
-
-
-  private getAssessments(searchInput: string): string[] {
-    /*if (!searchInput) {
-      return this.assessments;
-    }
-
-    return this.assessments.map((element: string) => {
-      return element.includes(this);
-    }, searchInput);*/
-    return [];
-  }
-
 }

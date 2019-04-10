@@ -39,9 +39,12 @@ import {PatientSelectorComponent} from "../components/patient/patient-selector/p
 import {PatientDetailPage} from "../pages/patients/patient-detail/patient-detail";
 import {DocumentViewer} from "@ionic-native/document-viewer";
 import {NavbarComponent} from "../components/navbar/navbar";
-import { ChartModule } from 'angular2-chartjs';
+import {ChartModule} from 'angular2-chartjs';
 import 'chartjs-plugin-annotation';
-import { MenuNavigationProvider } from '../providers/menu-navigation/menu-navigation';
+import {MenuNavigationProvider} from '../providers/menu-navigation/menu-navigation';
+import {SearchPopoverPage} from "../pages/popover/search-popover/search-popover";
+import {AssessmentSearchProvider} from '../providers/assessment-search/assessment-search';
+import {MorePopoverPage} from "../pages/popover/more-popover/more-popover";
 
 
 // @ts-ignore
@@ -75,7 +78,9 @@ import { MenuNavigationProvider } from '../providers/menu-navigation/menu-naviga
     PatientListComponent,
     PatientSelectorComponent,
     PatientDetailPage,
-    NavbarComponent
+    NavbarComponent,
+    SearchPopoverPage,
+    MorePopoverPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +115,9 @@ import { MenuNavigationProvider } from '../providers/menu-navigation/menu-naviga
     WardB3Page,
     WardC1Page,
     WardIpsPage,
-    PatientDetailPage
+    PatientDetailPage,
+    SearchPopoverPage,
+    MorePopoverPage
   ],
   providers: [
     StatusBar,
@@ -119,7 +126,8 @@ import { MenuNavigationProvider } from '../providers/menu-navigation/menu-naviga
     BarcodeScanner,
     RestProvider,
     DocumentViewer,
-    MenuNavigationProvider
+    MenuNavigationProvider,
+    AssessmentSearchProvider
   ]
 })
 

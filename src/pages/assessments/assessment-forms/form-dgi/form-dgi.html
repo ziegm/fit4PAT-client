@@ -1,11 +1,12 @@
 <ion-header>
   <navbar title="Formular DGI" subTitle="Dynamic Gait Index"
           [workflowParameters]="workflowParameters"
-          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
+          [isSearchVisible]="false">
+  </navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient/Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-grid><ion-row><ion-col class="patient">
   <patient-selector [patient]="patient"></patient-selector>
   </ion-col>
