@@ -8,43 +8,43 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="showPopup()">
         <ion-icon slot="start" name="contact"></ion-icon>
         Profil
       </button>
-      <button ion-item (click)="navToMusculoskeletal()">
+      <button ion-item (click)="menuNav.navToMusculoskeletal()">
         <ion-icon slot="start" name="clipboard"></ion-icon>
         Bewegungsapparat
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToGeriatrics()">
         <ion-icon slot="start" name="clipboard"></ion-icon>
         Geriatrie
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToNeurology()">
         <ion-icon slot="start" name="clipboard"></ion-icon>
         Neurologie
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToCardiology()">
         <ion-icon slot="start" name="clipboard"></ion-icon>
         Kardiologie/Pneumologie
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToOthers()">
         <ion-icon slot="start" name="clipboard"></ion-icon>
         Weitere
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToPatientScan()">
         <ion-icon slot="start" name="man"></ion-icon>
         Patientenarmband scannen
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToPatientStationary()">
         <ion-icon slot="start" name="man"></ion-icon>
         Stationäre Patienten
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="menuNav.navToPatientAmbulatory()">
         <ion-icon slot="start" name="man"></ion-icon>
         Ambulante Patienten
       </button>
-      <button ion-item (click)="openPage(homePage)">
+      <button ion-item (click)="showPopup()">
         <ion-icon slot="start" name="lock"></ion-icon>
         Abmelden
       </button>

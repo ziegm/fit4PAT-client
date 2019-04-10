@@ -6,6 +6,7 @@ import {CardiologyPage} from "../disciplines/cardiology/cardiology";
 import {MusculoskeletalPage} from "../disciplines/musculoskeletal/musculoskeletal";
 import {OthersPage} from "../disciplines/others/others";
 import {WorkflowPage} from "../../../workflow/workflow-page";
+import {MenuNavigationProvider} from "../../../providers/menu-navigation/menu-navigation";
 
 @Component({
   selector: 'page-home',
@@ -15,14 +16,10 @@ export class AssessmentTabPage extends WorkflowPage {
   private rootNav:any;
   public isSearchbarVisible = false;
 
-  constructor(app: App, navParams: NavParams) {
+  constructor(app: App, navParams: NavParams, menuNav: MenuNavigationProvider) {
     super(navParams.data);
-
-    if (typeof navParams.data !== "number") {
-
-    }
-
     this.rootNav = app.getRootNav();
+    menuNav.navCtrl = this.rootNav;
   }
 
   navToGeriatrics() {

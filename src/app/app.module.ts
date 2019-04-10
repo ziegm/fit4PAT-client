@@ -41,6 +41,7 @@ import {DocumentViewer} from "@ionic-native/document-viewer";
 import {NavbarComponent} from "../components/navbar/navbar";
 import { ChartModule } from 'angular2-chartjs';
 import 'chartjs-plugin-annotation';
+import { MenuNavigationProvider } from '../providers/menu-navigation/menu-navigation';
 
 
 // @ts-ignore
@@ -117,7 +118,8 @@ import 'chartjs-plugin-annotation';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
     RestProvider,
-    DocumentViewer
+    DocumentViewer,
+    MenuNavigationProvider
   ]
 })
 

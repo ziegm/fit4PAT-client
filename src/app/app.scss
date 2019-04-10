@@ -1,98 +1,99 @@
-// http://ionicframework.com/docs/theming/
-
-
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
-
 //everything has the same text size
-ion-label, ion-item, span, button, ul, li, .item-md p{
+ion-label, ion-item, span, button, ul, li, .item-md p {
   font-size: 16px;
 }
+
 //the text is written bold
-.bold{
+.bold {
   font-weight: bold;
 }
+
 //in the top bar the label is written smaller than the title
-.subtitle{
+.subtitle {
   padding: 0 0;
   font-size: 1.5rem;
   font-weight: 500;
   color: #888888;
 }
+
 .ion-md-man:before {
   padding: 0;
 }
-.ion-md-clipboard:before{
+
+.ion-md-clipboard:before {
   padding: 0;
 }
-.imgTitle{
+
+.imgTitle {
   width: 31px;
   height: 31px;
 }
-.labelTitle{
+
+.labelTitle {
   padding-left: 0;
   background-color: #9ECF66;
   color: #888888;
 }
-.header-md::after{
+
+.header-md::after {
   height: 0;
 }
-.ion-md-menu:before{
+
+.ion-md-menu:before {
   width: 20px;
   height: 20px;
   padding: 0px 12px;
   zoom: 1.5;
 }
-.ion-md-search:before{
+
+.ion-md-search:before {
   width: 20px;
   height: 20px;
   padding: 0px 12px;
   zoom: 1.5;
 }
-.ion-md-more:before{
+
+.ion-md-more:before {
   width: 20px;
   height: 20px;
   padding: 0px 12px 0px 0px;
   zoom: 1.5;
 }
-.item-md.item-block .item-inner{
+
+.item-md.item-block .item-inner {
   border-bottom: transparent;
 }
-.toolbar-md{
+
+.toolbar-md {
   padding: 0;
 }
-.rightSide{
+
+.rightSide {
   text-align: right;
 }
-.label-md{
+
+.label-md {
   margin: 0 0 0 0;
 }
-.col{
+
+.col {
   padding: 0;
 }
-.itemBar{
+
+.itemBar {
   position: absolute;
 }
-ion-icon::before{
+
+ion-icon::before {
   padding: 12px;
   color: #888888;
 }
-.toolbar-title-md{
+
+.toolbar-title-md {
   margin-left: 0;
 }
 
-.ion-grid{
+.ion-grid {
   justify-content: left;
 }
 
@@ -101,8 +102,9 @@ ion-icon::before{
   border-bottom: 4px;
   border-style: solid;
 }
+
 //how the Assessments and Patients are listed
-.listAssessmentsPatients{
+.listAssessmentsPatients {
   border-bottom: 1px solid #888888 !important;
 }
 
@@ -110,181 +112,217 @@ ion-icon::before{
 .bar-button-md[icon-only] {
   transform: rotate(0deg);
 }
-.bar-button::after{
+
+.bar-button::after {
   transform: rotate(0deg);
 }
-.back-button.show-back-button{
+
+.back-button.show-back-button {
   transform: rotate(0deg);
 }
 
 //design for evaluation pages
-.textSize{
+.textSize {
   font-size: 16px;
 }
-.textLeft{
+
+.textLeft {
   padding-left: 10px;
 }
-.topLeft{
+
+.topLeft {
   border-top: solid black;
   border-left: solid black;
 }
-.downLeft{
+
+.downLeft {
   border-top: solid black;
   border-left: solid black;
   border-bottom: solid black;
 }
-.cell{
+
+.cell {
   border-top: solid black;
   border-left: solid black;
   text-align: center;
 }
-.cellDown{
+
+.cellDown {
   border-bottom: solid black;
 }
-.lastCell{
+
+.lastCell {
   border-right: solid black;
 }
-.difference{
+
+.difference {
   padding-top: 20px;
 }
-.differenceUnderChart{
+
+.differenceUnderChart {
   padding-top: 50px;
 }
-.bar-stable{
+
+.bar-stable {
   padding-bottom: 10px;
   font-size: 16px;
 }
-.center{
+
+.center {
   text-align: center;
 }
 
 //--DEMMI--
 //size of the alert message for the instruction - demmi
-.instructionDemmi .alert-wrapper{
-  min-height:750px !important;
+.instructionDemmi .alert-wrapper {
+  min-height: 750px !important;
   min-width: 1200px !important;
   max-height: 100% !important;
 }
-.instructionDemmi .alert-message{
+
+.instructionDemmi .alert-message {
   min-height: 550px !important;
 }
+
 //size of the alert message for the normwerte - demmi
-.normwerteDemmi .alert-wrapper{
+.normwerteDemmi .alert-wrapper {
   min-height: 500px !important;
   min-width: 800px !important;
 }
-.normwerteDemmi .alert-message{
+
+.normwerteDemmi .alert-message {
   min-height: 350px !important;
 }
+
 //size of the alert message for the material - demmi
-.materialDemmi .alert-wrapper{
+.materialDemmi .alert-wrapper {
   min-height: 230px !important;
   min-width: 400px !important;
 }
-.materialDemmi .alert-message{
+
+.materialDemmi .alert-message {
   min-height: 130px !important;
 }
+
 //size of the alert message for the info icons - demmi
-.infoIconDemmi .alert-wrapper{
+.infoIconDemmi .alert-wrapper {
   min-height: 150px !important;
   min-width: 500px !important;
 }
-.infoIconDemmi .alert-message{
+
+.infoIconDemmi .alert-message {
   min-height: 120px !important;
 }
+
 //size of the alert message for the detail on evaluation page - demmi
-.detailsDemmi .alert-wrapper{
+.detailsDemmi .alert-wrapper {
   min-height: 800px !important;
   min-width: 400px !important;
 }
-.detailsDemmi .alert-message{
+
+.detailsDemmi .alert-message {
   min-height: 650px !important;
 }
+
 //--DGI--
-   //size of the alert message for the instruction - dgi
- .instructionDgi .alert-wrapper{
-   min-width: 450px !important;
- }
+//size of the alert message for the instruction - dgi
+.instructionDgi .alert-wrapper {
+  min-width: 450px !important;
+}
+
 //size of the alert message for the normwerte - dgi
-.normwerteDgi .alert-wrapper{
+.normwerteDgi .alert-wrapper {
   min-height: 250px !important;
   min-width: 500px !important;
 }
+
 //size of the alert message for the info icons - dgi
-.infoIconDgi .alert-wrapper{
+.infoIconDgi .alert-wrapper {
   min-height: 470px !important;
   min-width: 900px !important;
 }
-.infoIconDgi .alert-message{
+
+.infoIconDgi .alert-message {
   min-height: 320px !important;
   min-width: 250px !important;
 }
+
 //size of the alert message for the detail on evaluation page - demmi
-.detailsDgi .alert-wrapper{
+.detailsDgi .alert-wrapper {
   min-height: 600px !important;
   min-width: 400px !important;
 }
-.detailsDgi .alert-message{
+
+.detailsDgi .alert-message {
   min-height: 470px !important;
   min-width: 250px !important;
 }
+
 //--Timed Walking Test--
 //size of the alert message for the instruction - timed walking test
-.instructionTWT .alert-wrapper{
+.instructionTWT .alert-wrapper {
   min-height: 800px !important;
   min-width: 950px !important;
 }
-.instructionTWT .alert-message{
+
+.instructionTWT .alert-message {
   min-height: 650px !important;
   min-width: 250px !important;
 }
+
 //size of the alert message for the normwerte - timed walking test
-.normwerteTWT .alert-wrapper{
+.normwerteTWT .alert-wrapper {
   min-height: 400px !important;
   min-width: 700px !important;
 }
-.normwerteTWT .alert-message{
+
+.normwerteTWT .alert-message {
   min-height: 270px !important;
   min-width: 250px !important;
 }
+
 //size of the alert message for the material - timed walking test
-.materialTWT .alert-wrapper{
+.materialTWT .alert-wrapper {
   min-height: 400px !important;
   min-width: 950px !important;
 }
-.materialTWT .alert-message{
+
+.materialTWT .alert-message {
   min-height: 300px !important;
   min-width: 250px !important;
 }
+
 //size of the alert message for the detail on evaluation page - timed walking test
-.detailsTWT .alert-wrapper{
+.detailsTWT .alert-wrapper {
   min-height: 400px !important;
   min-width: 500px !important;
 }
-.detailsTWT .alert-message{
+
+.detailsTWT .alert-message {
   min-height: 320px !important;
   min-width: 250px !important;
 }
+
 //--Hilfsmittel Dropdown
-.alert-radio-group{
+.alert-radio-group {
   min-height: 370px;
   min-width: 400px;
 }
 
-//how a input is shown
-.labelForInput{
+//how an input is shown
+.labelForInput {
   color: black !important;
   padding-right: 30px;
 }
 
 //position of the 'Auswerten'-Button
-.buttonAuswerten{
+.buttonAuswerten {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
 //how a link is shown
-.link{
+.link {
   color: blue;
   text-decoration: underline;
   background-color: transparent;
