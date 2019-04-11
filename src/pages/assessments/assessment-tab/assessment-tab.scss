@@ -96,11 +96,11 @@ page-home {
     display: block;
     height: 100%;
   }
-  .geriatry label, .geri:checked ~ nav .unsel { background: #b1d884; }
+  .geriatry label, .geri:checked ~ nav .unsel { background: #a7d375; }
   .neurology label, .neuro:checked ~ nav .unsel { background: #9ECF66; }
-  .cardiology label, .cardio:checked ~ nav .unsel { background: #7ea551; }
-  .others label, .ot:checked ~ nav .unsel { background: #5e7c3d; }
-  .muscolosceletal label, .musco:checked ~ nav .unsel { background: #c4e2a3; }
+  .cardiology label, .cardio:checked ~ nav .unsel { background: #b1d884; }
+  .others label, .ot:checked ~ nav .unsel { background: #a7d375; }
+  .muscolosceletal label, .musco:checked ~ nav .unsel { background: #b1d884; }
   .geriatry label:before { background-image: url(../../../assets/imgs/GeriatricsV2.jpg);}
   .neurology label:before { background-image: url(../../../assets/imgs/Neurology.jpg);}
   .cardiology label:before { background-image: url(../../../assets/imgs/Cardiology.jpg); }
@@ -112,18 +112,18 @@ page-home {
   @media (min-width: 35em) { .slice label { font-weight: 700; line-height: 2.7; } }
 
   .buttonGeriatry{
-   color: #5f5f5f;
+   color: #7a7a7a;
   }
   .buttonNeurology{
-    color: #888888;
+    color: #7a7a7a;
   }
   .buttonCardiology{
-    color: #ababab;
+    color: #7a7a7a;
   }
   .buttonOthers{
-    color: #cfcfcf;
+    color: #7a7a7a;
   }
   .buttonMuscolosceletal{
-    color: #363636;
+    color: #7a7a7a;
   }
 }
