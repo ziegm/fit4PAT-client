@@ -4,13 +4,15 @@ page-patient {
     text-align: center;
   }
   .image{
-    height: 300px;
+    //height: 250px;
+   // padding-top: 20px;
   }
   img{
     height: 250px;
     width: 250px;
+    margin-top: 20px;
   }
-  ion-icon{
+  .iconAandS{
     color: #888888;
     zoom: 15;
   }
