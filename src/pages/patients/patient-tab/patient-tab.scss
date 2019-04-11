@@ -8,7 +8,14 @@ page-patient {
   }
   img{
     height: 250px;
-    width: 250px
+    width: 250px;
+  }
+  ion-icon{
+    color: #888888;
+    zoom: 15;
+  }
+  ion-icon::before{
+    padding: 0;
   }
   button{
     background-color: transparent;
