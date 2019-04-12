@@ -45,6 +45,11 @@ import {MenuNavigationProvider} from '../providers/menu-navigation/menu-navigati
 import {SearchPopoverPage} from "../pages/popover/search-popover/search-popover";
 import {AssessmentSearchProvider} from '../providers/assessment-search/assessment-search';
 import {MorePopoverPage} from "../pages/popover/more-popover/more-popover";
+import {InstructionPage} from "../pages/popover/more-popover/instruction/instruction";
+import {SettingsPage} from "../pages/popover/more-popover/settings/settings";
+import {PrivacyPage} from "../pages/popover/more-popover/privacy/privacy";
+import {LicencesPage} from "../pages/popover/more-popover/licences/licences";
+import {ImpressumPage} from "../pages/popover/more-popover/impressum/impressum";
 
 
 // @ts-ignore
@@ -80,7 +85,12 @@ import {MorePopoverPage} from "../pages/popover/more-popover/more-popover";
     PatientDetailPage,
     NavbarComponent,
     SearchPopoverPage,
-    MorePopoverPage
+    MorePopoverPage,
+    InstructionPage,
+    SettingsPage,
+    PrivacyPage,
+    LicencesPage,
+    ImpressumPage
   ],
   imports: [
     BrowserModule,
@@ -117,7 +127,12 @@ import {MorePopoverPage} from "../pages/popover/more-popover/more-popover";
     WardIpsPage,
     PatientDetailPage,
     SearchPopoverPage,
-    MorePopoverPage
+    MorePopoverPage,
+    InstructionPage,
+    SettingsPage,
+    PrivacyPage,
+    LicencesPage,
+    ImpressumPage
   ],
   providers: [
     StatusBar,
