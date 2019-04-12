@@ -31,7 +31,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   private time2: number;
   private time3: number;
   private currentTime: Date;
-  public aid = "keine Hilfsmittel";
+  private aid = "keine";
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
     super(navParams.data);
@@ -68,7 +68,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   navToEvaluationWalkingtest(){
-    this.rootNav.push(EvaluationWalkingtestPage, this.patient);
+    this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {
@@ -155,13 +155,9 @@ export class FormWalkingtestPage extends WorkflowPage {
   clockRunning() {
     this.currentTime = new Date();
     let timeElapsed:any = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
-    //let hour = timeElapsed.getHours();
-    //let min = timeElapsed.getMinutes();
     let sec = timeElapsed.getSeconds();
     let ms = timeElapsed.getMilliseconds();
     this.time =
-      //this.zeroPrefix(hour, 2) + ":" +
-      //this.zeroPrefix(min, 2) + ":" +
       this.zeroPrefix(sec, 2) + "." +
       this.zeroPrefix(ms, 3) + " Sekunden";
   };

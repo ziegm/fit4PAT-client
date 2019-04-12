@@ -16,12 +16,24 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
   source: fhir.Reference;
   status: fhir.code = "completed";
   item: AssessmentResponseItem[] = [];
+  protected answerCount: number;
 
-  constructor() {
+  constructor(answerCount: number) {
+    this.answerCount = answerCount;
     this.setAssessmentType();
+    this.createResponseItems();
+    this.defaultAnswers();
   }
 
   protected abstract setAssessmentType();
+
+  protected createResponseItems(): void {
+    for (let i = 0; i < this.answerCount; i++) {
+      this.item[i] = new AssessmentResponseItem("item" + (i + 1))
+    }
+  };
+
+  protected defaultAnswers(): void {};
 
   /**
    * Add the patients id as a reference.
@@ -62,10 +74,6 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
    * @param radio   True if the underlying control delivers numeric values.
    */
   public addOrChangeAnswer(index: number, event: any, numeric: boolean = false) {
-    if(this.item[index] === undefined) {
-      this.item[index] = new AssessmentResponseItem("item" + (+index + 1));
-    }
-
     if (numeric) {
       this.item[index].addAnswer(+event);
     } else {

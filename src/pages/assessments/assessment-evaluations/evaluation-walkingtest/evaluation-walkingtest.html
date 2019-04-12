@@ -104,10 +104,10 @@
         <ion-item class="cell normColor1">
           <ion-label>1.3 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell normColor1">
+        <ion-item [ngClass]="highlightResult('female', '1.23', ['cell', 'normColor1'])">
           <ion-label>1.23 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell cellDown normColor1">
+        <ion-item [ngClass]="highlightResult('male', '1.37', ['cell', 'cellDown', 'normColor1'])">
           <ion-label>1.37 Meter/Sekunde</ion-label>
         </ion-item>
       </div>
@@ -118,10 +118,10 @@
         <ion-item class="cell normColor2">
           <ion-label>< 1.3 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell normColor2">
+        <ion-item [ngClass]="highlightSlowerResult('female', '1.23', ['cell', 'normColor2'])">
           <ion-label>< 1.23 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell cellDown normColor2">
+        <ion-item [ngClass]="highlightSlowerResult('male', '1.37', ['cell', 'cellDown', 'normColor2'])">
           <ion-label>< 1.37 Meter/Sekunde</ion-label>
         </ion-item>
       </div>
@@ -132,10 +132,10 @@
         <ion-item class="cell lastCell normColor3">
           <ion-label>> 1.3 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell lastCell normColor3">
+        <ion-item [ngClass]="highlightFasterResult('female', '1.23', ['cell', 'lastCell', 'normColor3'])">
           <ion-label>> 1.23 Meter/Sekunde</ion-label>
         </ion-item>
-        <ion-item class="cell lastCell cellDown normColor3">
+        <ion-item [ngClass]="highlightFasterResult('male', '1.37', ['cell', 'lastCell', 'cellDown', 'normColor3'])">
           <ion-label>> 1.37 Meter/Sekunde</ion-label>
         </ion-item>
       </div>

@@ -7,6 +7,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {RestProvider} from "../../../../providers/rest/rest";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import Patient = fhir.Patient;
 
 
@@ -24,14 +25,14 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
-    this.patient = navParams.data;
-    restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data  => {
+    this.patient = (navParams.data as WorkflowParameters).patient;
+    restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data => {
       this.responses = (data as any).entry.map(entry => (entry.resource as WalkingtestResponse));
     });
   }
 
   private executeDate(): string {
-    return this.responses ? this.actualDate(): "";
+    return this.responses ? this.actualDate() : "";
   }
 
   private actualDate(): string {
@@ -41,15 +42,15 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   }
 
   private firstTry(): number {
-    return this.responses ? this.responses[0].item[0].answer[0].valueInteger: 0;
+    return this.responses ? this.responses[0].item[0].answer[0].valueInteger : 0;
   }
 
   private secondTry(): number {
-    return this.responses ? this.responses[0].item[1].answer[0].valueInteger: 0;
+    return this.responses ? this.responses[0].item[1].answer[0].valueInteger : 0;
   }
 
   private thirdTry(): number {
-    return this.responses ? this.responses[0].item[2].answer[0].valueInteger: 0;
+    return this.responses ? this.responses[0].item[2].answer[0].valueInteger : 0;
   }
 
   private calcAverage(): number {
@@ -65,16 +66,17 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   }
 
   private getAids(): string {
-    return this.responses && this.responses[0].item[3] ? this.responses[0].item[3].answer[0].valueString: "";
+    return this.responses && this.responses[0].item[3] ? this.responses[0].item[3].answer[0].valueString : "";
   }
 
   private getComments(): string {
-    return this.responses && this.responses[0].item[4] ? this.responses[0].item[4].answer[0].valueString: "";
+    return this.responses && this.responses[0].item[4] ? this.responses[0].item[4].answer[0].valueString : "";
   }
 
   private viewPatientName(patient: Patient) {
     return PatientHelper.viewPatientName(patient);
   }
+
   private viewPatientInfos(patient: Patient) {
     return PatientHelper.viewPatientInfos(patient);
   }
@@ -83,7 +85,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     this.isSearchbarVisible = isVisible;
   }
 
-  public showDetails(item){
+  public showDetails(item) {
     let alert = this.alertCtrl.create({
       title: 'DATUM',
       cssClass: 'detailsTWT',
@@ -151,7 +153,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
         events: ['click'],
         'onClick': function (evt, item) {
           var element = this.lineChart.getElementAtEvent(evt);
-          if(element.length > 0){
+          if (element.length > 0) {
             this.showDetails(item);
           }
         }.bind(this),
@@ -192,7 +194,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
             value: '1.37',
             borderColor: '#9999ff',
             borderWidth: 2,
-          },{
+          }, {
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
@@ -207,13 +209,59 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
         },
-        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
-        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
+        onAnimationProgress: function () {
+          this.drawDatasetPointsLabels()
+        }.bind(this),
+        onAnimationComplete: function () {
+          this.drawDatasetPointsLabels()
+        }.bind(this)
       } as ChartOptions,
     });
   }
 
-  openLink(){
+  openLink() {
     window.open('https://www.sralab.org/rehabilitation-measures/10-meter-walk-test', '_system');
+  }
+
+  private highlightResult(gender: string, speed: string, css: string[]): string[] {
+    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
+
+    if (speed === this.calcSpeed() && this.patient.gender === gender) {
+      return highlightStyle;
+    }
+
+    return css;
+  }
+
+  private highlightFasterResult(gender: string, speed: string, css: string[]): string[] {
+    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
+
+    if (speed < this.calcSpeed() && this.patient.gender === gender) {
+      return highlightStyle;
+    }
+
+    return css;
+  }
+
+  private highlightSlowerResult(gender: string, speed: string, css: string[]): string[] {
+    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
+
+    if (speed > this.calcSpeed() && this.patient.gender === gender) {
+      return highlightStyle;
+    }
+
+    return css;
+  }
+
+  private takeOverStylesFromInputCss(highlightStyle: string[], css: string[]): string[] {
+    if (css.find(style => style === 'cellDown')) {
+      highlightStyle.push('cellDown');
+    }
+
+    if (css.find(style => style === 'lastCell')) {
+      highlightStyle.push('lastCell');
+    }
+
+    return highlightStyle;
   }
 }

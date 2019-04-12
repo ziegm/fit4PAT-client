@@ -6,6 +6,7 @@ import {FormDgiPage} from "../../assessments/assessment-forms/form-dgi/form-dgi"
 import {FormWalkingtestPage} from "../../assessments/assessment-forms/form-walkingtest/form-walkingtest";
 import {FormDemmiPage} from "../../assessments/assessment-forms/form-demmi/form-demmi";
 import {WorkflowPage} from "../../../workflow/workflow-page";
+import {WorkflowParameters} from "../../../workflow/workflow-parameters";
 import Patient = fhir.Patient;
 
 
@@ -20,7 +21,7 @@ export class PatientDetailPage extends WorkflowPage{
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
-    this.patient = navParams.data;
+    this.patient = (navParams.data as WorkflowParameters).patient;
     this.rootNav = app.getRootNav();
   }
 
@@ -32,19 +33,19 @@ export class PatientDetailPage extends WorkflowPage{
   }
 
   private navToAssessmentTab() {
-    this.rootNav.push(AssessmentTabPage, {patient: this.patient});
+    this.rootNav.push(AssessmentTabPage, this.workflowParameters);
   }
 
   private navToDemmi() {
-    this.rootNav.push(FormDemmiPage, {patient: this.patient});
+    this.rootNav.push(FormDemmiPage, this.workflowParameters);
   }
 
   private navToDgi() {
-    this.rootNav.push(FormDgiPage, {patient: this.patient});
+    this.rootNav.push(FormDgiPage, this.workflowParameters);
   }
 
   private navToWalkingtest() {
-    this.rootNav.push(FormWalkingtestPage, {patient: this.patient});
+    this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {

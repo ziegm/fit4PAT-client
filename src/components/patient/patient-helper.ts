@@ -14,16 +14,23 @@ export class PatientHelper {
   }*/
 
   public static viewPatientName(patient: Patient): string {
-    const roomIdentifier = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
-    return this.room(roomIdentifier) + patient.name[0].family + " " + patient.name[0].given[0];
+    if (patient !== undefined) {
+      const roomIdentifier = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
+      return this.room(roomIdentifier) + patient.name[0].family + " " + patient.name[0].given[0];
+    }
+    return "";
   }
 
   public static viewPatientInfos(patient: Patient): string {
-    const roomIdentifier = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
-    const gender = patient.gender === "female" ? "w" : "m";
-    const birthDate = new Date(patient.birthDate).toLocaleDateString("de-CH");
-    const caseId = patient.identifier.filter(identifier => identifier.type.text === "case-id")[0];
-    return gender + ", " + birthDate +" (" + this.calcAge(patient.birthDate) + "), " + caseId.value + " (Fall-ID)";
+    if (patient !== undefined) {
+      const roomIdentifier = patient.identifier.filter(identifier => identifier.type.text === "room")[0];
+      const gender = patient.gender === "female" ? "w" : "m";
+      const options = { day: "2-digit", month: "2-digit", year: "numeric"}
+      const birthDate = new Date(patient.birthDate).toLocaleDateString("de-CH", options);
+      const caseId = patient.identifier.filter(identifier => identifier.type.text === "case-id")[0];
+      return gender + ", " + birthDate + " (" + this.calcAge(patient.birthDate) + "), " + caseId.value + " (Fall-ID)";
+    }
+    return "";
   }
 
   private static room(room: fhir.Identifier): string {

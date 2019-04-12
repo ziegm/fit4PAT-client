@@ -290,7 +290,7 @@
       <ion-label class="labelForInput">Hilfsmittel</ion-label>
       <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
                   (ionChange)="assessmentResponse.addOrChangeAnswer(8, $event)" [(ngModel)]="aid">
-        <ion-option value="keine Hilfsmittel" [selected]="true">keine</ion-option>
+        <ion-option value="keine" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
         <ion-option value="1 Unterarm-Gehstock">1 Unterarm-Gehstock</ion-option>

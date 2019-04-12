@@ -5,8 +5,9 @@ import {Chart, ChartOptions} from "chart.js";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
-import Patient = fhir.Patient;
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
+import Patient = fhir.Patient;
 
 
 @IonicPage()
@@ -23,7 +24,7 @@ export class EvaluationDgiPage extends WorkflowPage {
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
-    this.patient = navParams.data;
+    this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data  => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DgiResponse));
     });

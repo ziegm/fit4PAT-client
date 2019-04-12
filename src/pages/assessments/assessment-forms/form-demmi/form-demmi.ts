@@ -23,7 +23,7 @@ export class FormDemmiPage extends WorkflowPage {
   private patient: Patient;
   private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
-  public aid = "keine Hilfsmittel";
+  private aid = "keine";
   public alertAid;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
@@ -66,7 +66,7 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private navToEvaluationDemmi() {
-    this.rootNav.push(EvaluationDemmiPage, this.patient);
+    this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {

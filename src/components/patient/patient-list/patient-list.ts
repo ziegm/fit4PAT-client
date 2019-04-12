@@ -62,7 +62,8 @@ export class PatientListComponent {
         this.patientToAssessment(patient);
       break;
       case WorkflowSelector.FromPatient:
-        this.rootNav.push(PatientDetailPage, patient)
+        this.workflowParameters.patient = patient;
+        this.rootNav.push(PatientDetailPage, this.workflowParameters);
       break;
     }
   }
@@ -71,10 +72,10 @@ export class PatientListComponent {
     this.workflowParameters.patient = patient;
     let viewController: ViewController = this.navCtrl.getViews().find((view) =>
       AssessmentFormList.isAssessmentForm(view));
-    this.navToAssessmentForm(viewController, patient);
+    this.navToAssessmentForm(viewController);
   }
 
-  private navToAssessmentForm(viewController: ViewController, patient: Patient) {
+  private navToAssessmentForm(viewController: ViewController) {
     if(viewController.component.name === "FormDgiPage") {
       this.rootNav.push(FormDgiPage, this.workflowParameters);
     } else if(viewController.component.name === "FormDemmiPage") {

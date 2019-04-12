@@ -9,6 +9,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
 import {DemmiResultTranslation} from "./demmi-result-translation";
+import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import Patient = fhir.Patient;
 
 @IonicPage()
@@ -26,7 +27,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController, restProvider: RestProvider) {
     super(navParams.data);
-    this.patient = navParams.data;
+    this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DemmiResponse));
     });

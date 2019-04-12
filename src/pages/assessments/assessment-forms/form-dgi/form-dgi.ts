@@ -24,7 +24,7 @@ export class FormDgiPage extends WorkflowPage {
   private assessmentResponse: AssessmentResponse = new DgiResponse();
   private show: boolean = false;
   public discount: number = 0;
-  public aid = "keine Hilfsmittel";
+  private aid = "keine";
   public selectedIndex: number;
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams, private restProvider: RestProvider) {
@@ -67,7 +67,7 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private navToEvaluationDgi() {
-    this.rootNav.push(EvaluationDgiPage, this.patient);
+    this.rootNav.push(EvaluationDgiPage, this.workflowParameters);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {
