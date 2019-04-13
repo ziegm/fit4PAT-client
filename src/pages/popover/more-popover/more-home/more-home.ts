@@ -1,29 +1,21 @@
 import {Component} from '@angular/core';
 import {PopoverController} from 'ionic-angular';
 import {InstructionPage} from "./instruction/instruction";
-import {SettingsPage} from "./settings/settings";
 import {PrivacyPage} from "./privacy/privacy";
 import {LicencesPage} from "./licences/licences";
 import {ImpressumPage} from "./impressum/impressum";
 
 @Component({
-  selector: 'page-more-popover',
-  templateUrl: 'more-popover.html',
+  selector: 'page-more-home',
+  templateUrl: 'more-home.html',
 })
-export class MorePopoverPage {
+export class MoreHomePage {
 
   constructor(private popoverCtrl: PopoverController) {
   }
 
   private openInstruction(event): void {
     let popover = this.popoverCtrl.create(InstructionPage, {});
-    popover.present({
-      ev: event
-    });
-  }
-
-  private openSettings(event): void {
-    let popover = this.popoverCtrl.create(SettingsPage, {});
     popover.present({
       ev: event
     });

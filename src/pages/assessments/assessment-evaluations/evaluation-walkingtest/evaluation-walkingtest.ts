@@ -8,6 +8,7 @@ import {RestProvider} from "../../../../providers/rest/rest";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
+import {AssessmentHelper} from "../../assessment-helper";
 import Patient = fhir.Patient;
 
 
@@ -32,13 +33,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   }
 
   private executeDate(): string {
-    return this.responses ? this.actualDate() : "";
-  }
-
-  private actualDate(): string {
-    return this.responses[0].authored.substr(8, 2) + "." +
-      this.responses[0].authored.substr(5, 2) + "." +
-      this.responses[0].authored.substr(0, 4);
+    return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
   }
 
   private firstTry(): number {

@@ -8,7 +8,9 @@
   <navbar title="Verlauf DEMMI" subTitle="de Morton Mobility Index"
           [workflowParameters]="workflowParameters"
           (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
-          [isSearchVisible]="false">
+          [isSearchVisible]="false"
+          [hideBackbutton]="true"
+          popoverType="MoreNavToPatientDetailPage">
   </navbar>
 </ion-header>
 

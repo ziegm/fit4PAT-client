@@ -2,14 +2,19 @@
   <navbar [title]="viewPatientName(patient)"[subTitle]="viewPatientInfos(patient)"
           [workflowParameters]="workflowParameters"
           (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
-          [isSearchVisible]="false">
+          [isSearchVisible]="false"
+          popoverType="MorePatientDetailPage">
   </navbar>
 </ion-header>
 
 <ion-content padding>
  <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
   <ion-list>
-    <ion-label>This is my list</ion-label>
+    <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients" (click)="navToEvaluation(assessment)">
+      <p class="bold">{{viewAssessmentName(assessment)}}</p>
+      <p>{{viewAssessmentInfos(assessment)}}</p>
+    </ion-item>
+    <ion-item *ngIf="responses.length === 0">{{noAssessmentMessage}}</ion-item>
   </ion-list>
 
   <ion-fab bottom right >

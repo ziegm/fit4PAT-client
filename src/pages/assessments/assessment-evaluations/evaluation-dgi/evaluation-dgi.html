@@ -2,7 +2,9 @@
   <navbar title="Verlauf DGI" subTitle="Dynamic Gait Index"
           [workflowParameters]="workflowParameters"
           (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
-          [isSearchVisible]="false">
+          [isSearchVisible]="false"
+          [hideBackbutton]="true"
+          popoverType="MoreNavToPatientDetailPage">
   </navbar>
 </ion-header>
 

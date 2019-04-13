@@ -1,14 +1,17 @@
 <ion-header>
   <navbar title="Geriatrie"
           [workflowParameters]="workflowParameters"
-          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
+          popoverType="MoreAZPage"></navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen"
+                 (ionInput)="getAssessments($event)"></ion-searchbar>
   <ion-list>
     <ion-item (click)="navToDemmi()" class="listAssessmentsPatients">de Morton Mobility Index (DEMMI)</ion-item>
     <ion-item (click)="navToDgi()" class="listAssessmentsPatients">Dynamic Gait Index (DGI)</ion-item>
-    <ion-item (click)="navToWalkingtest()" class="listAssessmentsPatients">Timed Walking Test (10-Meter-Gehtest)</ion-item>
+    <ion-item (click)="navToWalkingtest()" class="listAssessmentsPatients">Timed Walking Test (10-Meter-Gehtest)
+    </ion-item>
   </ion-list>
 </ion-content>

@@ -2,7 +2,9 @@
   <navbar title="Verlauf 10-Meter-Gehtest" subTitle="Timed Walking Test"
           [workflowParameters]="workflowParameters"
           (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"
-          [isSearchVisible]="false">
+          [isSearchVisible]="false"
+          [hideBackbutton]="true"
+          popoverType="MoreNavToPatientDetailPage">
   </navbar>
 </ion-header>
 

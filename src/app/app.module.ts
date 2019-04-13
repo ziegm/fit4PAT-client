@@ -44,12 +44,18 @@ import 'chartjs-plugin-annotation';
 import {MenuNavigationProvider} from '../providers/menu-navigation/menu-navigation';
 import {SearchPopoverPage} from "../pages/popover/search-popover/search-popover";
 import {AssessmentSearchProvider} from '../providers/assessment-search/assessment-search';
-import {MorePopoverPage} from "../pages/popover/more-popover/more-popover";
-import {InstructionPage} from "../pages/popover/more-popover/instruction/instruction";
-import {SettingsPage} from "../pages/popover/more-popover/settings/settings";
-import {PrivacyPage} from "../pages/popover/more-popover/privacy/privacy";
-import {LicencesPage} from "../pages/popover/more-popover/licences/licences";
-import {ImpressumPage} from "../pages/popover/more-popover/impressum/impressum";
+import {MoreHomePage} from "../pages/popover/more-popover/more-home/more-home";
+import {InstructionPage} from "../pages/popover/more-popover/more-home/instruction/instruction";
+import {PrivacyPage} from "../pages/popover/more-popover/more-home/privacy/privacy";
+import {LicencesPage} from "../pages/popover/more-popover/more-home/licences/licences";
+import {ImpressumPage} from "../pages/popover/more-popover/more-home/impressum/impressum";
+import {NotImplementedYetComponent} from "../components/not-implemented-yet/not-implemented-yet";
+import {MoreAZPage} from "../pages/popover/more-popover/more-a-z/more-a-z";
+import {MoreNavToPatientDetailPage} from "../pages/popover/more-popover/more-nav-to-patient-detail/more-nav-to-patient-detail";
+import {MorePatientAmbulatoryPage} from "../pages/popover/more-popover/more-patient-ambulatory/more-patient-ambulatory";
+import {MorePatientDetailPage} from "../pages/popover/more-popover/more-patient-detail/more-patient-detail";
+import {MorePatientIpsPage} from "../pages/popover/more-popover/more-patient-ips/more-patient-ips";
+import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
 
 
 // @ts-ignore
@@ -85,12 +91,18 @@ import {ImpressumPage} from "../pages/popover/more-popover/impressum/impressum";
     PatientDetailPage,
     NavbarComponent,
     SearchPopoverPage,
-    MorePopoverPage,
+    MoreHomePage,
     InstructionPage,
-    SettingsPage,
     PrivacyPage,
     LicencesPage,
-    ImpressumPage
+    ImpressumPage,
+    NotImplementedYetComponent,
+    MoreAZPage,
+    MoreNavToPatientDetailPage,
+    MorePatientAmbulatoryPage,
+    MorePatientDetailPage,
+    MorePatientIpsPage,
+    MorePatientStationaryPage
   ],
   imports: [
     BrowserModule,
@@ -127,12 +139,17 @@ import {ImpressumPage} from "../pages/popover/more-popover/impressum/impressum";
     WardIpsPage,
     PatientDetailPage,
     SearchPopoverPage,
-    MorePopoverPage,
+    MoreHomePage,
     InstructionPage,
-    SettingsPage,
     PrivacyPage,
     LicencesPage,
-    ImpressumPage
+    ImpressumPage,
+    MoreAZPage,
+    MoreNavToPatientDetailPage,
+    MorePatientAmbulatoryPage,
+    MorePatientDetailPage,
+    MorePatientIpsPage,
+    MorePatientStationaryPage
   ],
   providers: [
     StatusBar,
