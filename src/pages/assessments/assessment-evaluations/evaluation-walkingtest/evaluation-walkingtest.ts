@@ -9,6 +9,9 @@ import {WalkingtestResponse} from "../../../../responses/assessment-type/walking
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import {AssessmentHelper} from "../../assessment-helper";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {WalkingtestResult} from "./walkingtest-result";
+import {GraphDataAssembler} from "../graph-data-assembler";
 import Patient = fhir.Patient;
 
 
@@ -21,14 +24,16 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   private patient: Patient;
   private responses: WalkingtestResponse[];
   private isSearchbarVisible = false;
-  @ViewChild('lineCanvas') lineCanvas;
-  lineChart: any;
+  @ViewChild('lineCanvas') private lineCanvas;
+  private lineChart: Chart;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data => {
       this.responses = (data as any).entry.map(entry => (entry.resource as WalkingtestResponse));
+      this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
+      this.lineChart.update();
     });
   }
 
@@ -36,28 +41,32 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
   }
 
+  private executeGraphDate(response: AssessmentResponse): Date {
+    return AssessmentHelper.dateTimeToDate(response.authored);
+  }
+
   private firstTry(): number {
-    return this.responses ? this.responses[0].item[0].answer[0].valueInteger : 0;
+    return this.responses ? WalkingtestResult.try(0, this.responses[0]) : 0;
   }
 
   private secondTry(): number {
-    return this.responses ? this.responses[0].item[1].answer[0].valueInteger : 0;
+    return this.responses ? WalkingtestResult.try(1, this.responses[0]) : 0;
   }
 
   private thirdTry(): number {
-    return this.responses ? this.responses[0].item[2].answer[0].valueInteger : 0;
-  }
-
-  private calcAverage(): number {
-    return (this.firstTry() + this.secondTry() + this.thirdTry()) / 3;
+    return this.responses ? WalkingtestResult.try(2, this.responses[0]) : 0;
   }
 
   private calcAverageRounded(): string {
-    return this.calcAverage().toFixed(0);
+    return this.responses ? WalkingtestResult.calcAverageRounded(this.responses[0]) : "";
   }
 
   private calcSpeed(): string {
-    return (1 / (this.calcAverage() / 6)).toFixed(2);
+    return this.responses ? WalkingtestResult.calcSpeed(this.responses[0]) : "";
+  }
+
+  public calcGraphValue(response: AssessmentResponse): number {
+    return +WalkingtestResult.calcSpeed(response);
   }
 
   private getAids(): string {
@@ -107,10 +116,8 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
 
   ionViewDidLoad() {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-
       type: 'line',
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"], //gemäss DB
         datasets: [
           {
             label: "10-Meter-Gehtest",
@@ -131,7 +138,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
             pointHoverBorderWidth: 2,
             pointRadius: 7,
             pointHitRadius: 10,
-            data: [1.3, 1.4, 1.5, 1.2, 1.4, 1.3, 1.5], //gemäss DB
+            data: [],
             spanGaps: false,
           }
         ]
@@ -143,6 +150,10 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            // Value transformation for the label of the displayed point
+            formatter: function(value, context) {
+              return value.y.toFixed(2);
+            }
           }
         },
         events: ['click'],
@@ -152,15 +163,9 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
             this.showDetails(item);
           }
         }.bind(this),
-        //showTooltips: false,
         tooltips: {
           display: false,
-          enabled: false,
-          custom: (tooltipModel) => {
-            //if (tooltipModel.opacity === 0) {
-            //this.hide();
-            //return;
-          }
+          enabled: false
         },
         legend: {
           display: false,
@@ -170,6 +175,18 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           }
         },
         scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'linear',
+            time : {
+              stepSize: 7,
+              unit: "day",
+              displayFormats: {
+                day: "DD.MM.YYYY"
+              },
+            },
+            bounds: "ticks"
+          }],
           yAxes: [{
             ticks: {
               fontColor: "black",
@@ -187,15 +204,15 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '1.37',
-            borderColor: '#9999ff',
-            borderWidth: 2,
+            borderColor: '#ffc04c',
+            borderWidth: 3,
           }, {
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '1.23',
-            borderColor: '#ff9999',
-            borderWidth: 2,
+            borderColor: '#ffc04c',
+            borderWidth: 3,
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
@@ -203,13 +220,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        },
-        onAnimationProgress: function () {
-          this.drawDatasetPointsLabels()
-        }.bind(this),
-        onAnimationComplete: function () {
-          this.drawDatasetPointsLabels()
-        }.bind(this)
+        }
       } as ChartOptions,
     });
   }

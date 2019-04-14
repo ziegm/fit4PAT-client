@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions} from 'chart.js';
-import {ChartComponent} from "angular2-chartjs";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
@@ -11,6 +10,9 @@ import {DemmiResponse} from "../../../../responses/assessment-type/demmi-respons
 import {DemmiResultTranslation} from "./demmi-result-translation";
 import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import {AssessmentHelper} from "../../assessment-helper";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {GraphDataAssembler} from "../graph-data-assembler";
+import {DemmiResult} from "./demmi-result";
 import Patient = fhir.Patient;
 
 @IonicPage()
@@ -22,15 +24,16 @@ export class EvaluationDemmiPage extends WorkflowPage {
   private patient: Patient;
   private responses: DemmiResponse[];
   private isSearchbarVisible = false;
-  @ViewChild(ChartComponent) chart: ChartComponent;
-  @ViewChild('lineCanvas') lineCanvas;
-  lineChart: any;
+  @ViewChild('lineCanvas') private lineCanvas;
+  private lineChart: Chart;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DemmiResponse));
+      this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
+      this.lineChart.update();
     });
   }
 
@@ -38,27 +41,23 @@ export class EvaluationDemmiPage extends WorkflowPage {
     return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
   }
 
+  private executeGraphDate(response: AssessmentResponse): Date {
+    return AssessmentHelper.dateTimeToDate(response.authored);
+  }
+
   private calcRawValue(): number {
     if (this.responses) {
-      return this.answers().reduce((accumulator, currentValue) => {
-        return accumulator + currentValue;
-      });
+      return DemmiResult.calcRawValue(this.responses[0]);
     }
     return 0;
   }
 
-  private answers(): number[] {
-    return this.responses[0].item.map((item, index) => {
-      if (index < 15 && item.answer[0].valueInteger !== undefined) {
-        return +item.answer[0].valueInteger.toFixed(0);
-      } else {
-        return 0;
-      }
-    });
+  private translateDemmiScore(): number {
+    return this.responses ? this.calcGraphValue(this.responses[0]) : 0;
   }
 
-  private translateDemmiScore(): number {
-    return new DemmiResultTranslation()[this.calcRawValue()];
+  public calcGraphValue(response: AssessmentResponse): number {
+    return new DemmiResultTranslation()[DemmiResult.calcRawValue(response)];
   }
 
   private getAids(): string {
@@ -164,7 +163,6 @@ export class EvaluationDemmiPage extends WorkflowPage {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"], //gemäss DB
         datasets: [{
             label: "DEMMI",
             fill: false,
@@ -184,7 +182,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             pointHoverBorderWidth: 2,
             pointRadius: 7,
             pointHitRadius: 10,
-            data: [90, 59, 80, 81, 56, 55, 20], //gemäss DB
+            data: [],
             spanGaps: false,
           }],
       },
@@ -195,6 +193,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            // Value transformation for the label of the displayed point
+            formatter: function(value, context) {
+              return value.y;
+            }
           }
         },
         events: ['click'],
@@ -203,15 +205,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
           if(element.length > 0){
             this.showDetails(item);
           }}.bind(this),
-        //showTooltips: false,
         tooltips: {
           display: false,
-          enabled: false,
-          custom: (tooltipModel) => {
-            //if (tooltipModel.opacity === 0) {
-              //this.hide();
-              //return;
-          }},
+          enabled: false
+        },
         legend: {
           display: false,
           labels: {
@@ -221,6 +218,18 @@ export class EvaluationDemmiPage extends WorkflowPage {
           usePointStyle: true,
         },
         scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'linear',
+            time : {
+              stepSize: 7,
+              unit: "day",
+              displayFormats: {
+                day: "DD.MM.YYYY"
+              },
+            },
+            bounds: "ticks"
+          }],
           yAxes: [{
             ticks: {
               fontColor: "black",
@@ -306,14 +315,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             scaleID: 'y-axis-0',
             value: '90',
             borderColor: '#bbdcbb',
-            borderWidth: 2,
-         /* }, {
-            type: 'line',
-            mode: 'vertical',
-            scaleID: 'x-axis-0',
-            value: 'February',
-            borderColor: '#b7b7b7',
-            borderWidth: 2,*/
+            borderWidth: 2
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
@@ -321,27 +323,8 @@ export class EvaluationDemmiPage extends WorkflowPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        },
-        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
-        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
-      } as ChartOptions,
-      //plugins: [ChartAnnotation]
-    });
-  }
-
-  public drawDatasetPointsLabels() {
-    this.lineCanvas.nativeElement.font = '.9rem sans-serif';
-    this.lineCanvas.nativeElement.fillStyle = '#AAA';
-    //this.lineCanvas.nativeElement.textAlign="center";
-    this.lineCanvas.nativeElement.offset="top";
-    (this.lineChart.datasets).each(function(idx,dataset){
-      (dataset.points).each(function(pdx,pointinfo){
-        // First dataset is shifted off the scale line.
-        // Don't write to the canvas for the null placeholder.
-        if ( pointinfo.value !== null ) {
-          this.lineCanvas.nativeElement.fillText(pointinfo.value,pointinfo.x,pointinfo.y - 15);
         }
-      });
+      } as ChartOptions
     });
   }
 }

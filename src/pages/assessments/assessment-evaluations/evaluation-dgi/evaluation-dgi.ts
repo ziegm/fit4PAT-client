@@ -8,6 +8,8 @@ import {RestProvider} from "../../../../providers/rest/rest";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import {AssessmentHelper} from "../../assessment-helper";
+import {AssessmentResponse} from "../../../../responses/assessment-response";
+import {GraphDataAssembler} from "../graph-data-assembler";
 import Patient = fhir.Patient;
 
 
@@ -20,14 +22,16 @@ export class EvaluationDgiPage extends WorkflowPage {
   private patient: Patient;
   private responses: DgiResponse[];
   private isSearchbarVisible = false;
-  @ViewChild('lineCanvas') lineCanvas;
-  lineChart: any;
+  @ViewChild('lineCanvas') private lineCanvas;
+  private lineChart: Chart;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
-    restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data  => {
+    restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DgiResponse));
+      this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
+      this.lineChart.update();
     });
   }
 
@@ -35,36 +39,45 @@ export class EvaluationDgiPage extends WorkflowPage {
     return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
   }
 
+  private executeGraphDate(response: AssessmentResponse): Date {
+    return AssessmentHelper.dateTimeToDate(response.authored);
+  }
+
   private calcValue(): number {
     if (this.responses) {
-      return this.answers().reduce((accumulator, currentValue) => {
-        return accumulator + currentValue;
-      });
+      return this.calcGraphValue(this.responses[0]);
     }
     return 0;
   }
 
-  private answers(): number[] {
-    return this.responses[0].item.map((item, index) => {
-      if (index < 8 && item.answer[0].valueInteger !== undefined) {
-        return +item.answer[0].valueInteger.toFixed(0);
-      } else {
-        return 0;
-      }
+  public calcGraphValue(response: AssessmentResponse): number {
+    let graphAnswers = function (response: AssessmentResponse): number[] {
+      return response.item.map((item, index) => {
+        if (index < 8 && item.answer[0].valueInteger !== undefined) {
+          return +item.answer[0].valueInteger.toFixed(0);
+        } else {
+          return 0;
+        }
+      });
+    };
+
+    return graphAnswers(response).reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
     });
   }
 
   private getAids(): string {
-    return this.responses && this.responses[0].item[8] ? this.responses[0].item[8].answer[0].valueString: "";
+    return this.responses && this.responses[0].item[8] ? this.responses[0].item[8].answer[0].valueString : "";
   }
 
   private getComments(): string {
-    return this.responses && this.responses[0].item[9] ? this.responses[0].item[9].answer[0].valueString: "";
+    return this.responses && this.responses[0].item[9] ? this.responses[0].item[9].answer[0].valueString : "";
   }
 
   private viewPatientName(patient: Patient) {
     return PatientHelper.viewPatientName(patient);
   }
+
   private viewPatientInfos(patient: Patient) {
     return PatientHelper.viewPatientInfos(patient);
   }
@@ -73,11 +86,11 @@ export class EvaluationDgiPage extends WorkflowPage {
     this.isSearchbarVisible = isVisible;
   }
 
-  openLink(){
+  openLink() {
     window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
   }
 
-  public showDetails(item){
+  public showDetails(item) {
     let alert = this.alertCtrl.create({
       title: 'DATUM',
       cssClass: 'detailsDgi',
@@ -111,7 +124,6 @@ export class EvaluationDgiPage extends WorkflowPage {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"], //gemäss DB
         datasets: [
           {
             label: "DGI",
@@ -132,8 +144,8 @@ export class EvaluationDgiPage extends WorkflowPage {
             pointHoverBorderWidth: 2,
             pointRadius: 7,
             pointHitRadius: 10,
-            data: [15, 19, 20, 21, 16, 15, 20], //gemäss DB
-            spanGaps: false,
+            data: [],
+            spanGaps: false
           }
         ]
       },
@@ -144,24 +156,22 @@ export class EvaluationDgiPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            // Value transformation for the label of the displayed point
+            formatter: function(value, context) {
+              return value.y;
+            }
           }
         },
         events: ['click'],
         'onClick': function (evt, item) {
           var element = this.lineChart.getElementAtEvent(evt);
-          if(element.length > 0){
+          if (element.length > 0) {
             this.showDetails(item);
           }
         }.bind(this),
-        //showTooltips: false,
         tooltips: {
           display: false,
-          enabled: false,
-          custom: (tooltipModel) => {
-            //if (tooltipModel.opacity === 0) {
-            //this.hide();
-            //return;
-          }
+          enabled: false
         },
         legend: {
           display: false,
@@ -171,6 +181,18 @@ export class EvaluationDgiPage extends WorkflowPage {
           }
         },
         scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'linear',
+            time : {
+              stepSize: 7,
+              unit: "day",
+              displayFormats: {
+                day: "DD.MM.YYYY"
+              },
+            },
+            bounds: "ticks"
+          }],
           yAxes: [{
             ticks: {
               fontColor: "black",
@@ -178,7 +200,7 @@ export class EvaluationDgiPage extends WorkflowPage {
               beginAtZero: true,
               stepSize: 2,
               max: 24,
-              min: 0,
+              min: 0
             },
           }],
         },
@@ -188,8 +210,8 @@ export class EvaluationDgiPage extends WorkflowPage {
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '19',
-            borderColor: '#ff9999',
-            borderWidth: 2,
+            borderColor: '#ffc04c',
+            borderWidth: 3
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
@@ -197,9 +219,7 @@ export class EvaluationDgiPage extends WorkflowPage {
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
-        },
-        onAnimationProgress: function() { this.drawDatasetPointsLabels() }.bind(this),
-        onAnimationComplete: function() { this.drawDatasetPointsLabels() }.bind(this)
+        }
       } as ChartOptions,
     });
   }

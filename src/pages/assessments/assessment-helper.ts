@@ -4,4 +4,8 @@ export class AssessmentHelper {
       dateTime.substr(5, 2) + "." +
       dateTime.substr(0, 4);
   }
+
+  public static dateTimeToDate(dateTime: string): Date {
+    return new Date(dateTime);
+  }
 }
