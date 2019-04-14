@@ -56,6 +56,7 @@ import {MorePatientAmbulatoryPage} from "../pages/popover/more-popover/more-pati
 import {MorePatientDetailPage} from "../pages/popover/more-popover/more-patient-detail/more-patient-detail";
 import {MorePatientIpsPage} from "../pages/popover/more-popover/more-patient-ips/more-patient-ips";
 import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
+import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-scan/more-patient-scan";
 
 
 // @ts-ignore
@@ -102,7 +103,8 @@ import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-pati
     MorePatientAmbulatoryPage,
     MorePatientDetailPage,
     MorePatientIpsPage,
-    MorePatientStationaryPage
+    MorePatientStationaryPage,
+    MorePatientScanPage
   ],
   imports: [
     BrowserModule,
@@ -149,7 +151,8 @@ import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-pati
     MorePatientAmbulatoryPage,
     MorePatientDetailPage,
     MorePatientIpsPage,
-    MorePatientStationaryPage
+    MorePatientStationaryPage,
+    MorePatientScanPage
   ],
   providers: [
     StatusBar,

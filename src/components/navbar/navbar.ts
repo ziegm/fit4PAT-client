@@ -9,6 +9,7 @@ import {MorePatientAmbulatoryPage} from "../../pages/popover/more-popover/more-p
 import {MorePatientDetailPage} from "../../pages/popover/more-popover/more-patient-detail/more-patient-detail";
 import {MorePatientIpsPage} from "../../pages/popover/more-popover/more-patient-ips/more-patient-ips";
 import {MorePatientStationaryPage} from "../../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
+import {MorePatientScanPage} from "../../pages/popover/more-popover/more-patient-scan/more-patient-scan";
 
 
 @Component({
@@ -63,6 +64,8 @@ export class NavbarComponent {
       return MorePatientIpsPage;
     } else if (this.popoverType === "MorePatientStationaryPage") {
       return MorePatientStationaryPage;
+    } else if (this.popoverType === "MorePatientScanPage") {
+      return MorePatientScanPage;
     } else if (this.popoverType === "MoreHomePage") {
       return MoreHomePage;
     }
