@@ -15,14 +15,14 @@
 
   <div class="col score">
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTopBottom infoTop">
         <ion-label>Datum der Durchführung:</ion-label>
         <ion-label>{{ executeDate() }}</ion-label>
       </ion-item>
     </div>
 
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTopBottom infoTop break">
         <ion-label class="bold">Erreichte Punkte:</ion-label>
         <ion-label class="bold">{{ calcValue() }}/24 Punkten</ion-label>
       </ion-item>
@@ -31,13 +31,13 @@
 
   <div class="col score">
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTopBottom infoTop break">
         <ion-label>Hilfsmittel:</ion-label>
         <ion-label>{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item>
+      <ion-item class="infosTopBottom infoTop beforeChart">
         <ion-label>Bemerkungen:</ion-label>
         <ion-label>{{ getComments() }}</ion-label>
       </ion-item>

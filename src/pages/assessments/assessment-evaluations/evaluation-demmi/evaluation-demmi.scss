@@ -1,4 +1,8 @@
 page-evaluation-demmi {
+  .toolbar-content-md{
+    padding-left: 20px;
+  }
+
   .patient {
     color: #888888;
     font-size: 24px;
@@ -19,11 +23,31 @@ page-evaluation-demmi {
     padding-right: 0;
   }
   .score {
-    max-width: 40%;
+    max-width: 25%;
   }
   .nr{
-    max-width: 15%;
+    max-width: 20%;
   }
+  .value{
+    max-width: 5%;
+  }
+  .infos{
+    max-width: 75%;
+  }
+  .infoTop{
+    min-height: 25px;
+  }
+  .break{
+    margin-top: 15px;
+  }
+  .beforeChart{
+    margin-bottom: 15px;
+  }
+  .wrapText{
+    min-height: 15px;
+    max-height: 45px;
+  }
+
   .rohwert {
     border-top: solid black;
     border-left: solid black;

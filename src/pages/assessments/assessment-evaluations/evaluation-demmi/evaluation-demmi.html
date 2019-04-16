@@ -19,39 +19,41 @@
     <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
 
-  <div class="col score">
+  <div class="col">
     <div class="row">
-      <ion-item class="infosTopBottom">
-        <ion-label>Datum der Durchführung:</ion-label>
-        <ion-label>{{ executeDate() }}</ion-label>
+      <ion-item class="infosTopBottom infoTop">
+        <ion-label class="score">Datum der Durchführung:</ion-label>
+        <ion-label class="nr">{{ executeDate() }}</ion-label>
       </ion-item>
     </div>
 
     <div class="row">
-      <ion-item class="infosTopBottom">
-        <ion-label class="bold">Rohwert:</ion-label>
-        <ion-label class="bold">{{ calcRawValue() }}/19 Punkten</ion-label>
+      <ion-item class="infosTopBottom infoTop break">
+        <ion-label class="bold score">Rohwert:</ion-label>
+        <ion-label class="bold value">{{ calcRawValue() }}</ion-label>
+        <ion-label class="bold nr">/19 Punkten</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTopBottom">
-        <ion-label class="bold">DEMMI Score:</ion-label>
-        <ion-label class="bold">{{ translateDemmiScore() }}/100 Punkten</ion-label>
+      <ion-item class="infosTopBottom infoTop">
+        <ion-label class="bold score">DEMMI Score:</ion-label>
+        <ion-label class="bold value">{{ translateDemmiScore() }}</ion-label>
+        <ion-label class="bold nr">/100 Punkten</ion-label>
       </ion-item>
     </div>
   </div>
 
-  <div class="col score">
+  <div class="col">
     <div class="row">
-      <ion-item class="infosTopBottom">
-        <ion-label>Hilfsmittel:</ion-label>
-        <ion-label>{{ getAids() }}</ion-label>
+      <ion-item class="infosTopBottom infoTop break item-text-wrap">
+        <ion-label class="score">Hilfsmittel:</ion-label>
+        <ion-label class="infos">{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTopBottom">
-        <ion-label>Bemerkungen:</ion-label>
-        <ion-label>{{ getComments() }}</ion-label>
+      <ion-item class="infosTopBottom infoTop beforeChart">
+        <ion-label class="score">Bemerkungen:</ion-label>
+        <ion-label class="infos wrapText">{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>

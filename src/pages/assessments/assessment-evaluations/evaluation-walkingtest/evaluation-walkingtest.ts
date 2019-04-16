@@ -186,7 +186,11 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
                 day: "DD.MM.YYYY"
               },
             },
-            bounds: "ticks"
+            bounds: "ticks",
+            scaleLabel: {
+              display: true,
+              labelString: 'Datum'
+            }
           }],
           yAxes: [{
             ticks: {
@@ -197,6 +201,10 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
               max: 3,
               min: 0,
             },
+            scaleLabel: {
+              display: true,
+              labelString: 'Ganggeschwindigkeit in Meter/Sekunde'
+            }
           }],
         },
         annotation: {

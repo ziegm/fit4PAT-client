@@ -192,7 +192,11 @@ export class EvaluationDgiPage extends WorkflowPage {
                 day: "DD.MM.YYYY"
               },
             },
-            bounds: "ticks"
+            bounds: "ticks",
+            scaleLabel: {
+              display: true,
+              labelString: 'Datum'
+            }
           }],
           yAxes: [{
             ticks: {
@@ -203,6 +207,10 @@ export class EvaluationDgiPage extends WorkflowPage {
               max: 24,
               min: 0
             },
+            scaleLabel: {
+              display: true,
+              labelString: 'Erreichte Punkte'
+            }
           }],
         },
         annotation: {

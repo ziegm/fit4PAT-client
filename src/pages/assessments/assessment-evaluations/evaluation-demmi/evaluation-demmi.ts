@@ -229,7 +229,11 @@ export class EvaluationDemmiPage extends WorkflowPage {
                 day: "DD.MM.YYYY"
               },
             },
-            bounds: "ticks"
+            bounds: "ticks",
+            scaleLabel: {
+              display: true,
+              labelString: 'Datum'
+            }
           }],
           yAxes: [{
             ticks: {
@@ -239,6 +243,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
               stepSize: 10,
               max: 100,
               min: 0,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'DEMMI Score'
             }
           }],
         },
