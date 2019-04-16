@@ -1,44 +1,41 @@
 import {Component} from '@angular/core';
-import {PopoverController} from 'ionic-angular';
+import {App, NavParams, PopoverController} from 'ionic-angular';
 import {InstructionPage} from "./instruction/instruction";
 import {PrivacyPage} from "./privacy/privacy";
 import {LicencesPage} from "./licences/licences";
 import {ImpressumPage} from "./impressum/impressum";
+import {MyApp} from "../../../../app/app.component";
+import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 @Component({
   selector: 'page-more-home',
   templateUrl: 'more-home.html',
 })
-export class MoreHomePage {
+export class MoreHomePage extends WorkflowPage {
+  private rootNav: any;
 
-  constructor(private popoverCtrl: PopoverController) {
+  constructor(private popoverCtrl: PopoverController, navParams: NavParams, app: App) {
+    super(navParams.data);
+    this.rootNav = app.getRootNav();
   }
 
-  private openInstruction(event): void {
-    let popover = this.popoverCtrl.create(InstructionPage, {});
-    popover.present({
-      ev: event
-    });
+  private openInstruction() {
+    //close popover
+    this.rootNav.push(InstructionPage, this.workflowParameters);
   }
 
-  private openPrivacy(event): void {
-    let popover = this.popoverCtrl.create(PrivacyPage, {});
-    popover.present({
-      ev: event
-    });
+  private openPrivacy() {
+    //close popover
+    this.rootNav.push(PrivacyPage, this.workflowParameters);
   }
 
-  private openLicences(event): void {
-    let popover = this.popoverCtrl.create(LicencesPage, {});
-    popover.present({
-      ev: event
-    });
+  private openLicences() {
+    //close popover
+    this.rootNav.push(LicencesPage, this.workflowParameters);
   }
 
-  private openImpressum(event): void {
-    let popover = this.popoverCtrl.create(ImpressumPage, {});
-    popover.present({
-      ev: event
-    });
+  private openImpressum() {
+    //close popover
+    this.rootNav.push(ImpressumPage, this.workflowParameters);
   }
 }

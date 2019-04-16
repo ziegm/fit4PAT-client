@@ -16,7 +16,7 @@ export class NotImplementedYetComponent {
   private presentAlert(): void {
     let alert = this.alertCtrl.create({
       title: 'Prototyp',
-      subTitle: 'Diese Funktion wurde leider noch nicht umgesetzt.',
+      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
       buttons: ['OK']
     });
     alert.present();

@@ -1,5 +1,5 @@
 //everything has the same text size
-ion-label, ion-item, span, button, ul, li, .item-md p {
+ion-label, ion-item, span, button, ul, li, .item-md p, div {
   font-size: 16px;
 }
 
@@ -16,14 +16,15 @@ ion-label, ion-item, span, button, ul, li, .item-md p {
   color: #888888;
 }
 
-.ion-md-man:before {
-  padding: 0;
+.bar-button-md[icon-only]{
+  text-align: left;
 }
 
-.ion-md-clipboard:before {
+.ion-md-man:before,
+.ion-md-clipboard:before{
   padding: 0;
 }
-
+//the logo in the navbar
 .imgTitle {
   width: 31px;
   height: 31px;
@@ -39,25 +40,30 @@ ion-label, ion-item, span, button, ul, li, .item-md p {
   height: 0;
 }
 
-.ion-md-menu:before {
-  width: 20px;
-  height: 20px;
-  padding: 0px 12px;
-  zoom: 1.5;
-}
-
-.ion-md-search:before {
-  width: 20px;
-  height: 20px;
-  padding: 0px 12px;
-  zoom: 1.5;
-}
-
+.ion-md-menu:before,
+.ion-md-search:before,
 .ion-md-more:before {
   width: 20px;
   height: 20px;
-  padding: 0px 12px 0px 0px;
+  padding: 0 12px;
   zoom: 1.5;
+}
+
+//layout of the menu
+.therapistMenu{
+  padding-left: 16px;
+}
+.itemMenu{
+  padding-left: 12px;
+}
+.itemMenuPatient{
+  padding-left: 15px;
+}
+.labelMenu{
+  padding-left: 12px;
+}
+.labelMenuPatient{
+  padding-left: 15px;
 }
 
 .item-md.item-block .item-inner {
@@ -175,9 +181,9 @@ ion-icon::before {
 //--DEMMI--
 //size of the alert message for the instruction - demmi
 .instructionDemmi .alert-wrapper {
-  min-height: 750px !important;
-  min-width: 1200px !important;
-  max-height: 100% !important;
+  min-height: 550px !important;
+  min-width: 1000px !important;
+  max-height: 95% !important;
 }
 
 .instructionDemmi .alert-message {
@@ -187,11 +193,12 @@ ion-icon::before {
 //size of the alert message for the normwerte - demmi
 .normwerteDemmi .alert-wrapper {
   min-height: 500px !important;
-  min-width: 800px !important;
+  min-width: 1000px !important;
+  max-height: 95%;
 }
 
 .normwerteDemmi .alert-message {
-  min-height: 350px !important;
+  min-height: 450px !important;
 }
 
 //size of the alert message for the material - demmi
@@ -216,12 +223,12 @@ ion-icon::before {
 
 //size of the alert message for the detail on evaluation page - demmi
 .detailsDemmi .alert-wrapper {
-  min-height: 800px !important;
+  min-height: 700px !important;
   min-width: 400px !important;
 }
 
 .detailsDemmi .alert-message {
-  min-height: 650px !important;
+  min-height: 550px !important;
 }
 
 //--DGI--
@@ -261,13 +268,15 @@ ion-icon::before {
 //--Timed Walking Test--
 //size of the alert message for the instruction - timed walking test
 .instructionTWT .alert-wrapper {
-  min-height: 800px !important;
+  min-height: 550px !important;
   min-width: 950px !important;
+  max-height: 95%;
 }
 
 .instructionTWT .alert-message {
-  min-height: 650px !important;
+  min-height: 550px !important;
   min-width: 250px !important;
+  max-height: 95%;
 }
 
 //size of the alert message for the normwerte - timed walking test

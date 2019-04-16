@@ -3,43 +3,75 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>David Scherzinger</ion-title>
+      <ion-title class="therapistMenu">David Scherzinger</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
       <not-implemented-yet label="Profil" icon="contact"></not-implemented-yet>
       <button ion-item (click)="menuNav.navToMusculoskeletal()">
-        <ion-icon slot="start" name="clipboard"></ion-icon>
-        Bewegungsapparat
+        <ion-item class="itemMenu">
+          <ion-row>
+            <ion-icon slot="start" name="clipboard"></ion-icon>
+            <p class="labelMenu">Bewegungsapparat</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToGeriatrics()">
-        <ion-icon slot="start" name="clipboard"></ion-icon>
-        Geriatrie
+        <ion-item class="itemMenu">
+          <ion-row>
+            <ion-icon slot="start" name="clipboard"></ion-icon>
+            <p class="labelMenu">Geriatrie</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToNeurology()">
-        <ion-icon slot="start" name="clipboard"></ion-icon>
-        Neurologie
+        <ion-item class="itemMenu">
+          <ion-row>
+            <ion-icon slot="start" name="clipboard"></ion-icon>
+            <p class="labelMenu">Neurologie</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToCardiology()">
-        <ion-icon slot="start" name="clipboard"></ion-icon>
-        Kardiologie/Pneumologie
+        <ion-item class="itemMenu">
+          <ion-row>
+            <ion-icon slot="start" name="clipboard"></ion-icon>
+            <p class="labelMenu">Kardiologie/Pneumologie</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToOthers()">
-        <ion-icon slot="start" name="clipboard"></ion-icon>
-        Weitere
+        <ion-item class="itemMenu">
+          <ion-row>
+            <ion-icon slot="start" name="clipboard"></ion-icon>
+            <p class="labelMenu">Weitere</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToPatientScan()">
-        <ion-icon slot="start" name="man"></ion-icon>
-        Patientenarmband scannen
+        <ion-item class="itemMenuPatient">
+          <ion-row>
+            <ion-icon slot="start" name="man"></ion-icon>
+            <p class="labelMenuPatient">Patientenarmband scannen</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToPatientStationary()">
-        <ion-icon slot="start" name="man"></ion-icon>
-        Stationäre Patienten
+        <ion-item class="itemMenuPatient">
+          <ion-row>
+            <ion-icon slot="start" name="man"></ion-icon>
+            <p class="labelMenuPatient">Stationäre Patienten</p>
+          </ion-row>
+        </ion-item>
       </button>
       <button ion-item (click)="menuNav.navToPatientAmbulatory()">
-        <ion-icon slot="start" name="man"></ion-icon>
-        Ambulante Patienten
+        <ion-item class="itemMenuPatient">
+          <ion-row>
+            <ion-icon slot="start" name="man"></ion-icon>
+            <p class="labelMenuPatient">Ambulante Patienten</p>
+          </ion-row>
+        </ion-item>
       </button>
       <not-implemented-yet label="Abmelden" icon="lock"></not-implemented-yet>
     </ion-list>

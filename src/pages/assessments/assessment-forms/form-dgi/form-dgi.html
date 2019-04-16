@@ -35,7 +35,7 @@
   </ion-row></ion-grid>
 
   <!-- Table header -->
-  <ion-item>
+  <ion-item class="paddingLeft">
     <div class="row header titleRow">
       <div class="col transparent"></div>
       <div class="col darkGrey option"><b>0</b><br>starke<br>Einschränkung</div>
@@ -46,11 +46,11 @@
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)" class="difference">
+  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)" class="difference paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
-      <div class="col transparent text">Gehen auf ebener Strecke 20 Meter
-        <ion-icon name="information-circle" (click)="showInfoOne()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoOne()">Gehen auf ebener Strecke 20 Meter
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -76,11 +76,11 @@
   </ion-list>
 
   <!-- Question 2 -->
-  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
-      <div class="col transparent text">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
-        <ion-icon name="information-circle" (click)="showInfoTwo()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoTwo()">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -106,11 +106,11 @@
   </ion-list>
 
   <!-- Question 3 -->
-  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
-      <div class="col transparent text">Gehen mit Kopfdrehung rechts und links
-        <ion-icon name="information-circle" (click)="showInfoThree()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoThree()">Gehen mit Kopfdrehung rechts und links
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -136,11 +136,11 @@
   </ion-list>
 
   <!-- Question 4 -->
-  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
-      <div class="col transparent">Gehen und nach oben und nach unten schauen
-        <ion-icon name="information-circle" (click)="showInfoFour()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoFour()">Gehen und nach oben und nach unten schauen
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -166,11 +166,11 @@
   </ion-list>
 
   <!-- Question 5 -->
-  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
-      <div class="col transparent">Gehen und Drehung um 180°
-        <ion-icon name="information-circle" (click)="showInfoFive()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoFive()">Gehen und Drehung um 180°
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -196,11 +196,11 @@
   </ion-list>
 
   <!-- Question 6 -->
-  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
-      <div class="col transparent">Gehen über Hindernisse
-        <ion-icon name="information-circle" (click)="showInfoSix()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoSix()">Gehen über Hindernisse
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -226,11 +226,11 @@
   </ion-list>
 
   <!-- Question 7 -->
-  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)" class="paddingLeft">
     <div class="row">
       <div class="col transparent number">7.</div>
-      <div class="col transparent">Gehen um Hindernisse links und rechts herum
-        <ion-icon name="information-circle" (click)="showInfoSeven()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoSeven()">Gehen um Hindernisse links und rechts herum
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
@@ -256,11 +256,11 @@
   </ion-list>
 
   <!-- Question 8 -->
-  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)">
+  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)" class="paddingLeft">
     <div class="row">
       <div class="col transparent number">8.</div>
-      <div class="col transparent">Treppensteigen
-        <ion-icon name="information-circle" (click)="showInfoEight()"></ion-icon>
+      <div class="col transparent text" (click)="showInfoEight()">Treppensteigen
+        <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
