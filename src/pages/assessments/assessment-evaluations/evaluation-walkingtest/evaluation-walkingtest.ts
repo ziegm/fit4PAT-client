@@ -91,16 +91,17 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
 
   public showDetails(item) {
     let alert = this.alertCtrl.create({
-      title: 'DATUM',
+      title: this.executeDate(),
       cssClass: 'detailsTWT',
       subTitle: 'Timed Walking Test',
-      message: '<ul><li><b>Ganggeschwindigkeit:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Durchschnittswert:</b> ' + item.toLocaleString() + '</li></br>' +
-        '<li><b>1. Durchführung:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>2. Durchführung:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>3. Durchführung:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Bemerkungen:</b> ' + item.toLocaleString() + '</li></ul>',
+      message:
+        '<ul><li><b>Durchschnittswert:</b> ' + this.calcAverageRounded() + " Sekunden" + '</li></br>' +
+        '<li><b>Ganggeschwindigkeit:</b> ' + this.calcSpeed() + " Meter/Sekunde" + '</li></br>' +
+        '<li>1. Durchführung: ' + this.firstTry() + " Sekunden" + '</li></br>' +
+        '<li>2. Durchführung: ' + this.secondTry() + " Sekunden" + '</li></br>' +
+        '<li>3. Durchführung: ' + this.thirdTry() + " Sekunden" + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + this.getAids() + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + this.getComments() + '</li></ul>',
       buttons: [
         {
           text: 'Ok',

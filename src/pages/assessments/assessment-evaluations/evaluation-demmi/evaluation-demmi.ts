@@ -123,28 +123,29 @@ export class EvaluationDemmiPage extends WorkflowPage {
 
   public showDetails(item){
     let alert = this.alertCtrl.create({
-      title: 'DATUM',
+      title: this.executeDate(),
       cssClass: 'detailsDemmi',
       subTitle: 'de Morton Mobility Index',
-      message: '<ul><li><b>Rohwert:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>DEMMI Score:</b> ' + item.toLocaleString() + '</li></br>' +
-        '<li><b>Aufgabe 1:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 2:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 3:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 4:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 5:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 6:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 7:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 8:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 9:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 10:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 11:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 12:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 13:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 14:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Aufgabe 15:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + item.toString() + '</li></br>' +
-        '<li><b>Bemerkungen:</b> ' + item.toLocaleString() + '</li></ul>',
+      message:
+        '<ul><li><b>Rohwert:</b> ' + this.calcRawValue() + "/19 Punkten" + '</li></br>' +
+        '<li><b>DEMMI Score:</b> ' + this.translateDemmiScore() + "/100 Punkten" + '</li></br>' +
+        '<li>1. Aufgabe: ' + this.responses[0].item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>2. Aufgabe: ' + this.responses[0].item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>3. Aufgabe: ' + this.responses[0].item[2].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>4. Aufgabe: ' + this.responses[0].item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>5. Aufgabe: ' + this.responses[0].item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>6. Aufgabe: ' + this.responses[0].item[5].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>7. Aufgabe: ' + this.responses[0].item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>8. Aufgabe: ' + this.responses[0].item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>9. Aufgabe: ' + this.responses[0].item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>10. Aufgabe: ' + this.responses[0].item[9].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>11. Aufgabe: ' + this.responses[0].item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>12. Aufgabe: ' + this.responses[0].item[11].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>13. Aufgabe: ' + this.responses[0].item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>14. Aufgabe: ' + this.responses[0].item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>15. Aufgabe: ' + this.responses[0].item[14].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + this.getAids() + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + this.getComments() + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
