@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
-import {Chart, ChartOptions} from "chart.js";
+import {Chart, ChartOptions, ChartPoint} from "chart.js";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
@@ -25,7 +25,7 @@ export class EvaluationDgiPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data => {
@@ -90,30 +90,35 @@ export class EvaluationDgiPage extends WorkflowPage {
     window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
   }
 
-  public showDetails(item) {
+  private showDetails(chartPoint: ChartPoint) {
+    this.restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index",
+      chartPoint.x as Date).then(data => {
+        let response = (data as any).entry[0].resource as AssessmentResponse;
+        this.viewDetailsPopup(response);
+    });
+  }
+
+  private viewDetailsPopup(response: AssessmentResponse): void {
     let alert = this.alertCtrl.create({
-      title: this.executeDate(),
+      title: AssessmentHelper.actualDate(response.authored),
       cssClass: 'detailsDgi',
       subTitle: 'Dynamic Gait Index',
       message:
-        '<ul><li><b>Erreichte Punkte:</b> ' + this.calcValue() + "/24 Punkten" + '</li></br>' +
-        '<li>1. Aufgabe: ' + this.responses[0].item[0].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>2. Aufgabe: ' + this.responses[0].item[1].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>3. Aufgabe: ' + this.responses[0].item[2].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>4. Aufgabe: ' + this.responses[0].item[3].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>5. Aufgabe: ' + this.responses[0].item[4].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>6. Aufgabe: ' + this.responses[0].item[5].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>7. Aufgabe: ' + this.responses[0].item[6].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>8. Aufgabe: ' + this.responses[0].item[7].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + this.getAids() + '</li></br>' +
-        '<li><b>Bemerkungen:</b> ' + this.getComments() + '</li></ul>',
+        '<ul><li><b>Erreichte Punkte:</b> ' + this.calcGraphValue(response) + "/24 Punkten" + '</li></br>' +
+        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>3. Aufgabe: ' + response.item[2].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>6. Aufgabe: ' + response.item[5].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>8. Aufgabe: ' + response.item[7].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + response.item[8].answer[0].valueString + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + response.item[9].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
-          role: 'ok',
-          handler: data => {
-            console.log('Ok clicked');
-          }
+          role: 'ok'
         },
       ]
     });
@@ -165,9 +170,10 @@ export class EvaluationDgiPage extends WorkflowPage {
         },
         events: ['click'],
         'onClick': function (evt, item) {
-          var element = this.lineChart.getElementAtEvent(evt);
+          let element = this.lineChart.getElementAtEvent(evt);
+          let selectedChartPoint = this.lineChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
           if (element.length > 0) {
-            this.showDetails(item);
+            this.showDetails(selectedChartPoint);
           }
         }.bind(this),
         tooltips: {
@@ -195,7 +201,7 @@ export class EvaluationDgiPage extends WorkflowPage {
             bounds: "ticks",
             scaleLabel: {
               display: true,
-              labelString: 'Datum'
+              labelString: 'Datum der Durchführung'
             }
           }],
           yAxes: [{

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
-import {Chart, ChartOptions} from 'chart.js';
+import {Chart, ChartOptions, ChartPoint} from 'chart.js';
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
@@ -27,7 +27,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, public navCtrl: NavController, restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
@@ -121,38 +121,43 @@ export class EvaluationDemmiPage extends WorkflowPage {
     this.isSearchbarVisible = isVisible;
   }
 
-  public showDetails(item){
+  private showDetails(chartPoint: ChartPoint) {
+    this.restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index",
+      chartPoint.x as Date).then(data => {
+      let response = (data as any).entry[0].resource as AssessmentResponse;
+      this.viewDetailsPopup(response);
+    });
+  }
+
+  private viewDetailsPopup(response: AssessmentResponse): void {
     let alert = this.alertCtrl.create({
-      title: this.executeDate(),
+      title: AssessmentHelper.actualDate(response.authored),
       cssClass: 'detailsDemmi',
       subTitle: 'de Morton Mobility Index',
       message:
-        '<ul><li><b>Rohwert:</b> ' + this.calcRawValue() + "/19 Punkten" + '</li></br>' +
-        '<li><b>DEMMI Score:</b> ' + this.translateDemmiScore() + "/100 Punkten" + '</li></br>' +
-        '<li>1. Aufgabe: ' + this.responses[0].item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>2. Aufgabe: ' + this.responses[0].item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>3. Aufgabe: ' + this.responses[0].item[2].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>4. Aufgabe: ' + this.responses[0].item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>5. Aufgabe: ' + this.responses[0].item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>6. Aufgabe: ' + this.responses[0].item[5].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>7. Aufgabe: ' + this.responses[0].item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>8. Aufgabe: ' + this.responses[0].item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>9. Aufgabe: ' + this.responses[0].item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>10. Aufgabe: ' + this.responses[0].item[9].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>11. Aufgabe: ' + this.responses[0].item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>12. Aufgabe: ' + this.responses[0].item[11].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>13. Aufgabe: ' + this.responses[0].item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>14. Aufgabe: ' + this.responses[0].item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>15. Aufgabe: ' + this.responses[0].item[14].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + this.getAids() + '</li></br>' +
-        '<li><b>Bemerkungen:</b> ' + this.getComments() + '</li></ul>',
+        '<ul><li><b>Rohwert:</b> ' + DemmiResult.calcRawValue(response) + "/19 Punkten" + '</li></br>' +
+        '<li><b>DEMMI Score:</b> ' + this.calcGraphValue(response) + "/100 Punkten" + '</li></br>' +
+        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>3. Aufgabe: ' + response.item[2].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>6. Aufgabe: ' + response.item[5].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>8. Aufgabe: ' + response.item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>9. Aufgabe: ' + response.item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>10. Aufgabe: ' + response.item[9].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>11. Aufgabe: ' + response.item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>12. Aufgabe: ' + response.item[11].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>13. Aufgabe: ' + response.item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>14. Aufgabe: ' + response.item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>15. Aufgabe: ' + response.item[14].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + response.item[15].answer[0].valueString + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + response.item[16].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
-          role: 'ok',
-          handler: data => {
-            console.log('Ok clicked');
-          }
+          role: 'ok'
         },
       ]
     });
@@ -202,9 +207,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
         },
         events: ['click'],
         'onClick': function (evt, item) {
-          var element = this.lineChart.getElementAtEvent(evt);
+          let element = this.lineChart.getElementAtEvent(evt);
+          let selectedChartPoint = this.lineChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
           if(element.length > 0){
-            this.showDetails(item);
+            this.showDetails(selectedChartPoint);
           }}.bind(this),
         tooltips: {
           display: false,
@@ -232,7 +238,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             bounds: "ticks",
             scaleLabel: {
               display: true,
-              labelString: 'Datum'
+              labelString: 'Datum der Durchführung'
             }
           }],
           yAxes: [{

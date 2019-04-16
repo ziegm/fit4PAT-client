@@ -51,11 +51,18 @@ export class RestProvider {
    *
    * @param patient         The patient the responses are from.
    * @param assessmentName  The name of the assessment as in the identifier of questionnaire response.
+   * @param authored        The date, when the assessment responses were created (optional)
    */
-  getQuestionnaireResponses(patient: Patient, assessmentName: string) {
+  getQuestionnaireResponses(patient: Patient, assessmentName: string, authored?: Date) {
+    let url = this.apiUrl + '/QuestionnaireResponse?source=' + patient.id
+      + '&identifier:text=' + assessmentName + '&_sort=-authored';
+
+    if (authored !== undefined) {
+      url = url + "&authored=" + authored.toJSON();
+    }
+
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/QuestionnaireResponse?source=' + patient.id
-        + '&identifier:text=' + assessmentName + '&_sort=-authored').subscribe(data => {
+      this.http.get(url).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

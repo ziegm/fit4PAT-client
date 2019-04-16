@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
-import {Chart, ChartOptions} from "chart.js";
+import {Chart, ChartOptions, ChartPoint} from "chart.js";
 import {ChartAnnotation} from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {RestProvider} from "../../../../providers/rest/rest";
@@ -27,7 +27,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data => {
@@ -89,26 +89,31 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     this.isSearchbarVisible = isVisible;
   }
 
-  public showDetails(item) {
+  private showDetails(chartPoint: ChartPoint) {
+    this.restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test",
+      chartPoint.x as Date).then(data => {
+      let response = (data as any).entry[0].resource as AssessmentResponse;
+      this.viewDetailsPopup(response);
+    });
+  }
+
+  private viewDetailsPopup(response: AssessmentResponse): void {
     let alert = this.alertCtrl.create({
-      title: this.executeDate(),
+      title: AssessmentHelper.actualDate(response.authored),
       cssClass: 'detailsTWT',
       subTitle: 'Timed Walking Test',
       message:
-        '<ul><li><b>Durchschnittswert:</b> ' + this.calcAverageRounded() + " Sekunden" + '</li></br>' +
-        '<li><b>Ganggeschwindigkeit:</b> ' + this.calcSpeed() + " Meter/Sekunde" + '</li></br>' +
-        '<li>1. Durchführung: ' + this.firstTry() + " Sekunden" + '</li></br>' +
-        '<li>2. Durchführung: ' + this.secondTry() + " Sekunden" + '</li></br>' +
-        '<li>3. Durchführung: ' + this.thirdTry() + " Sekunden" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + this.getAids() + '</li></br>' +
-        '<li><b>Bemerkungen:</b> ' + this.getComments() + '</li></ul>',
+        '<ul><li><b>Durchschnittswert:</b> ' + WalkingtestResult.calcAverageRounded(response) + " Sekunden" + '</li></br>' +
+        '<li><b>Ganggeschwindigkeit:</b> ' + WalkingtestResult.calcSpeed(response) + " Meter/Sekunde" + '</li></br>' +
+        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + " Sekunden" + '</li></br>' +
+        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + " Sekunden" + '</li></br>' +
+        '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + " Sekunden" + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + response.item[3].answer[0].valueString + '</li></br>' +
+        '<li><b>Bemerkungen:</b> ' + response.item[4].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
-          role: 'ok',
-          handler: data => {
-            console.log('Ok clicked');
-          }
+          role: 'ok'
         },
       ]
     });
@@ -159,9 +164,11 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
         },
         events: ['click'],
         'onClick': function (evt, item) {
-          var element = this.lineChart.getElementAtEvent(evt);
+          let element = this.lineChart.getElementAtEvent(evt);
+          let selectedChartPoint = this.lineChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
+
           if (element.length > 0) {
-            this.showDetails(item);
+            this.showDetails(selectedChartPoint);
           }
         }.bind(this),
         tooltips: {
@@ -189,7 +196,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
             bounds: "ticks",
             scaleLabel: {
               display: true,
-              labelString: 'Datum'
+              labelString: 'Datum der Durchführung'
             }
           }],
           yAxes: [{
