@@ -6,6 +6,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <search-assessment [workflowParameters]="workflowParameters" [assessments]="assessments" [isSearchbarVisible]="isSearchbarVisible"></search-assessment>
   <ion-label>Es wurden noch keine Assessment-Formulare für diesen Bereich erfasst.</ion-label>
 </ion-content>

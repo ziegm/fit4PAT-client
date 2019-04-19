@@ -70,10 +70,6 @@ export class FormDgiPage extends WorkflowPage {
     this.rootNav.push(EvaluationDgiPage, this.workflowParameters);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   private saveAndNavToEvaluationDgi() {
     this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
       this.assessmentResponse = (data as DgiResponse);

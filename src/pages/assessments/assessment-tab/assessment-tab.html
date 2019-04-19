@@ -1,13 +1,10 @@
 <ion-header>
   <navbar title="Assessmentauswahl"
           [workflowParameters]="workflowParameters"
-          (searchbarVisibilityChange)="onSearchbarVisibilityChange($event)"></navbar>
+          [isSearchVisible]="false"></navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar #search *ngIf="workflowParameters.isSearchVisible"
-                 placeholder="Assessment suchen" (ionInput)="getAssessments($event)"
-                 (click)="showPopover($event)"></ion-searchbar>
 
   <input type='radio' name='opt' id='geri' class='menuopt geri'>
   <input type='radio' name='opt' id='neuro' class='menuopt neuro'>

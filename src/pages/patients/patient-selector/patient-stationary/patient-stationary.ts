@@ -18,41 +18,53 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 export class PatientStationaryPage extends WorkflowPage {
   private rootNav: any;
   private isSearchbarVisible = false;
+  private wards: string[] = ['Station A1', 'Station A2', 'Station B1',
+    'Station B2', 'Station B3', 'Station C1', 'Station IPS'];
+  private results: string[] = this.wards;
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
   }
 
-  navToWardA1() {
-    this.rootNav.push(WardA1Page, this.workflowParameters);
-  }
-
-  navToWardA2() {
-    this.rootNav.push(WardA2Page, this.workflowParameters);
-  }
-
-  navToWardB1() {
-    this.rootNav.push(WardB1Page, this.workflowParameters);
-  }
-
-  navToWardB2() {
-    this.rootNav.push(WardB2Page, this.workflowParameters);
-  }
-
-  navToWardB3() {
-    this.rootNav.push(WardB3Page, this.workflowParameters);
-  }
-
-  navToWardC1() {
-    this.rootNav.push(WardC1Page, this.workflowParameters);
-  }
-
-  navToWardIps() {
-    this.rootNav.push(WardIpsPage, this.workflowParameters);
+  private navToWard(ward: string) {
+    switch (ward) {
+      case 'Station A1':
+        this.rootNav.push(WardA1Page, this.workflowParameters);
+        break;
+      case 'Station A2':
+        this.rootNav.push(WardA2Page, this.workflowParameters);
+        break;
+      case 'Station B1':
+        this.rootNav.push(WardB1Page, this.workflowParameters);
+        break;
+      case 'Station B2':
+        this.rootNav.push(WardB2Page, this.workflowParameters);
+        break;
+      case 'Station B3':
+        this.rootNav.push(WardB3Page, this.workflowParameters);
+        break;
+      case 'Station C1':
+        this.rootNav.push(WardC1Page, this.workflowParameters);
+        break;
+      case 'Station IPS':
+        this.rootNav.push(WardIpsPage, this.workflowParameters);
+        break;
+    }
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
+    this.results = this.wards;
+  }
+
+  private getStations(event): void {
+    if (event.target.value !== undefined) {
+      this.results = this.wards.filter(ward => {
+        return ward.toLowerCase().includes(event.target.value.toLowerCase());
+      });
+    } else {
+      this.results = this.wards;
+    }
   }
 }

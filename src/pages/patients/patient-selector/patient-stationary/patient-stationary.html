@@ -6,14 +6,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Station suchen" (ionInput)="getStations($event)"></ion-searchbar>
   <ion-list>
-    <ion-item (click)="navToWardA1()" class="listAssessmentsPatients">Station A1</ion-item>
-    <ion-item (click)="navToWardA2()" class="listAssessmentsPatients">Station A2</ion-item>
-    <ion-item (click)="navToWardB1()" class="listAssessmentsPatients">Station B1</ion-item>
-    <ion-item (click)="navToWardB2()" class="listAssessmentsPatients">Station B2</ion-item>
-    <ion-item (click)="navToWardB3()" class="listAssessmentsPatients">Station B3</ion-item>
-    <ion-item (click)="navToWardC1()" class="listAssessmentsPatients">Station C1</ion-item>
-    <ion-item (click)="navToWardIps()" class="listAssessmentsPatients">Station IPS</ion-item>
+    <ion-item *ngFor="let ward of results" (click)="navToWard(ward)" class="listAssessmentsPatients">{{ward}}</ion-item>
   </ion-list>
 </ion-content>

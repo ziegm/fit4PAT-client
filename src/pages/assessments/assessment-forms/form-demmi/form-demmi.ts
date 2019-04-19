@@ -69,10 +69,6 @@ export class FormDemmiPage extends WorkflowPage {
     this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   private saveAndNavToEvaluationDemmi() {
     this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
       this.assessmentResponse = (data as DemmiResponse);

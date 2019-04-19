@@ -59,10 +59,6 @@ export class PatientDetailPage extends WorkflowPage {
     this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   private loadAssessmentList(): void {
     this.addLatestResponse("de Morton Mobility Index");
     this.addLatestResponse("Dynamic Gait Index");

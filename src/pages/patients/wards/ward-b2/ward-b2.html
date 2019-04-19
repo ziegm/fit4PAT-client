@@ -6,6 +6,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
-  <patient-list [ward]="ward" [workflowParameters]="workflowParameters"></patient-list>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen (nach Nachname oder Vorname suchen)" (ionInput)="searchPatients($event)"></ion-searchbar>
+  <patient-list [ward]="ward" [workflowParameters]="workflowParameters" [search]="search"></patient-list>
 </ion-content>

@@ -117,10 +117,6 @@ export class EvaluationDemmiPage extends WorkflowPage {
     return PatientHelper.viewPatientInfos(patient);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   private showDetails(chartPoint: ChartPoint) {
     this.restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index",
       chartPoint.x as Date).then(data => {

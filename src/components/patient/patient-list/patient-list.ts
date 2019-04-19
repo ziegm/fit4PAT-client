@@ -19,21 +19,24 @@ import Bundle = fhir.Bundle;
 })
 export class PatientListComponent {
   private patients: Patient[] = [];
+
   @Input() private ward: string;
   private noPatientMessage = "";
   @Input() private workflowParameters: WorkflowParameters;
   private rootNav: any;
+  @Input() private search = "";
 
   constructor(private restProvider: RestProvider, private navCtrl: NavController, app: App) {
     this.rootNav = app.getRootNav();
   }
 
   private ngOnChanges(): void {
-    this.getPatients();
+    this.getPatients(this.search);
   }
 
-  private getPatients(): void {
-    this.restProvider.getPatients(this.ward)
+  private getPatients(searchParam?: string): void {
+    this.patients = [];
+    this.restProvider.getPatients(this.ward, searchParam)
       .then(data => {
         if((data as Bundle).entry !== undefined) {
           (data as Bundle).entry.forEach(entry =>{
@@ -82,6 +85,14 @@ export class PatientListComponent {
       this.rootNav.push(FormDemmiPage, this.workflowParameters);
     } else {
       this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
+    }
+  }
+
+  private filter(search: string): void {
+    if (search) {
+      this.patients = this.patients.filter(patient => {
+        return PatientHelper.viewPatientName(patient).toLowerCase().includes(search.toLowerCase());
+      });
     }
   }
 }

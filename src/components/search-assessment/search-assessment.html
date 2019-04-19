@@ -1,0 +1,6 @@
+<ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+<ion-list>
+  <ion-item>
+    <ion-item (click)="navToAssessment(assessment)" class="listAssessmentsPatients" *ngFor="let assessment of results">{{ assessment }}</ion-item>
+  </ion-item>
+</ion-list>

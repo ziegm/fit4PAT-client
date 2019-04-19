@@ -10,6 +10,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 export class PatientAmbulatoryPage extends WorkflowPage {
   private isSearchbarVisible = false;
   private readonly ward:string = "ambulatory";
+  private search = "";
 
   constructor(navParams: NavParams) {
     super(navParams.data);
@@ -17,5 +18,10 @@ export class PatientAmbulatoryPage extends WorkflowPage {
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
+    this.search = "";
+  }
+
+  private searchPatients(search: any): void {
+    this.search = search.target.value;
   }
 }

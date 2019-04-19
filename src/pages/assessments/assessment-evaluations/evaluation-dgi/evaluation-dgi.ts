@@ -82,10 +82,6 @@ export class EvaluationDgiPage extends WorkflowPage {
     return PatientHelper.viewPatientInfos(patient);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   openLink() {
     window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
   }

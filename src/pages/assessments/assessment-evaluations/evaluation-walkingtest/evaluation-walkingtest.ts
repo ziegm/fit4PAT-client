@@ -85,10 +85,6 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     return PatientHelper.viewPatientInfos(patient);
   }
 
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
-
   private showDetails(chartPoint: ChartPoint) {
     this.restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test",
       chartPoint.x as Date).then(data => {

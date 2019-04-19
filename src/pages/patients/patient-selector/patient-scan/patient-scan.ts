@@ -21,8 +21,4 @@ export class PatientScanPage extends WorkflowPage {
       console.log('Error', err);
     });
   }
-
-  private onSearchbarVisibilityChange(isVisible: boolean): void {
-    this.isSearchbarVisible = isVisible;
-  }
 }

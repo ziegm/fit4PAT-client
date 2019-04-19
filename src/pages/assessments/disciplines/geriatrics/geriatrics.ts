@@ -1,8 +1,5 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavParams} from 'ionic-angular';
-import {FormDemmiPage} from "../../assessment-forms/form-demmi/form-demmi";
-import {FormDgiPage} from "../../assessment-forms/form-dgi/form-dgi";
-import {FormWalkingtestPage} from "../../assessment-forms/form-walkingtest/form-walkingtest";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
 
@@ -14,6 +11,9 @@ import {MyApp} from "../../../../app/app.component";
 export class GeriatricsPage extends WorkflowPage {
   private rootNav:any;
   private isSearchbarVisible = false;
+  private readonly assessments: string[] = ['de Morton Mobility Index (DEMMI)',
+                                            'Dynamic Gait Index (DGI)',
+                                            'Timed Walking Test (10-Meter-Gehtest)'];
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
@@ -22,18 +22,6 @@ export class GeriatricsPage extends WorkflowPage {
 
   navToAssessmentTab(){
     this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
-  navToDemmi() {
-    this.rootNav.push(FormDemmiPage, this.workflowParameters);
-  }
-
-  navToDgi() {
-    this.rootNav.push(FormDgiPage, this.workflowParameters);
-  }
-
-  navToWalkingtest() {
-    this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
   }
 
   private onSearchbarVisibilityChange(isVisible: boolean): void {

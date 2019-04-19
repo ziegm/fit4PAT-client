@@ -11,6 +11,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 export class OthersPage extends WorkflowPage{
   private rootNav:any;
   private isSearchbarVisible = false;
+  private readonly assessments: string[] = [];
 
   constructor(public navCtrl: NavController, app: App, navParams: NavParams) {
     super(navParams.data);

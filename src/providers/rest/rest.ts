@@ -23,9 +23,11 @@ export class RestProvider {
    * For more information about asynchronous programming in JavaScript
    * see https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise
    */
-  getPatients(ward: string) {
+  getPatients(ward: string, search?: string) {
+    let url = search ? this.apiUrl + '/Patient?identifier=' + ward + '&name=' + search
+      : this.apiUrl + '/Patient?identifier=' + ward;
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/Patient?identifier=' + ward).subscribe(data => {
+      this.http.get(url).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);

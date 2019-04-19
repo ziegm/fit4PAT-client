@@ -57,6 +57,7 @@ import {MorePatientDetailPage} from "../pages/popover/more-popover/more-patient-
 import {MorePatientIpsPage} from "../pages/popover/more-popover/more-patient-ips/more-patient-ips";
 import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
 import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-scan/more-patient-scan";
+import {SearchAssessmentComponent} from "../components/search-assessment/search-assessment";
 
 
 // @ts-ignore
@@ -104,7 +105,8 @@ import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-sc
     MorePatientDetailPage,
     MorePatientIpsPage,
     MorePatientStationaryPage,
-    MorePatientScanPage
+    MorePatientScanPage,
+    SearchAssessmentComponent
   ],
   imports: [
     BrowserModule,
