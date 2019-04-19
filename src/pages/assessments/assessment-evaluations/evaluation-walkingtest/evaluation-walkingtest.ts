@@ -161,9 +161,8 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
         events: ['click'],
         'onClick': function (evt, item) {
           let element = this.lineChart.getElementAtEvent(evt);
-          let selectedChartPoint = this.lineChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
-
           if (element.length > 0) {
+            let selectedChartPoint = this.lineChart.config.data.datasets[element[0]._datasetIndex].data[element[0]._index];
             this.showDetails(selectedChartPoint);
           }
         }.bind(this),
