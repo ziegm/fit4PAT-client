@@ -174,7 +174,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           display: false,
           labels: {
             fontColor: "black",
-            fontSize: 18
+            fontSize: 16
           }
         },
         scales: {
@@ -210,20 +210,46 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           }],
         },
         annotation: {
-          annotations: [{
+          annotations: [ this.patient.gender === 'male' ? {
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '1.37',
             borderColor: '#ffc04c',
             borderWidth: 3,
-          }, {
+            label: {
+              backgroundColor: '#ffc04c',
+              fontStyle: "normal",
+              fontColor: "#000000",
+              xPadding: 6,
+              yPadding: 6,
+              cornerRadius: 6,
+              position: "right",
+              xAdjust: 0,
+              yAdjust: 0,
+              enabled: true,
+              content: "Durchschnittliche Ganggeschwindigkeit Männer"
+            }
+          } : {
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
             value: '1.23',
             borderColor: '#ffc04c',
             borderWidth: 3,
+            label: {
+              backgroundColor: '#ffc04c',
+              fontStyle: "normal",
+              fontColor: "#000000",
+              xPadding: 6,
+              yPadding: 6,
+              cornerRadius: 6,
+              position: "right",
+              xAdjust: 0,
+              yAdjust: 0,
+              enabled: true,
+              content: "Durchschnittliche Ganggeschwindigkeit Frauen"
+            }
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other

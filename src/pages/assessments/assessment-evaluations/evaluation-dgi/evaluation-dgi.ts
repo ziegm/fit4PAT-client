@@ -222,7 +222,20 @@ export class EvaluationDgiPage extends WorkflowPage {
             scaleID: 'y-axis-0',
             value: '19',
             borderColor: '#ffc04c',
-            borderWidth: 3
+            borderWidth: 3,
+            label: {
+              backgroundColor: '#ffc04c',
+              fontStyle: "normal",
+              fontColor: "#000000",
+              xPadding: 6,
+              yPadding: 6,
+              cornerRadius: 6,
+              position: "right",
+              xAdjust: 0,
+              yAdjust: 0,
+              enabled: true,
+              content: "Cut-off Point für Stürze"
+            }
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
