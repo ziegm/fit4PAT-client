@@ -18,23 +18,27 @@ export class MoreHomePage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private openInstruction() {
+  private closePopover(){
     this.viewCtrl.dismiss();
+  }
+
+  private openInstruction() {
+    this.closePopover();
     this.rootNav.push(InstructionPage, this.workflowParameters);
   }
 
   private openPrivacy() {
-    this.viewCtrl.dismiss();
+    this.closePopover();
     this.rootNav.push(PrivacyPage, this.workflowParameters);
   }
 
   private openLicences() {
-    this.viewCtrl.dismiss();
+    this.closePopover();
     this.rootNav.push(LicencesPage, this.workflowParameters);
   }
 
   private openImpressum() {
-    this.viewCtrl.dismiss();
+    this.closePopover();
     this.rootNav.push(ImpressumPage, this.workflowParameters);
   }
 }

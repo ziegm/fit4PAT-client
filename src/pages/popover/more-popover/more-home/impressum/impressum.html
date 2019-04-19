@@ -5,9 +5,40 @@
 </ion-header>
 
 <ion-content padding>
-  <div>
-    Hier folgt das Impressum.
-    Quellenangaben Assessments
-    keine Bildrechte
-  </div>
+  <h1>Projekt & Projektteam</h1>
+    <div class="text">
+      Die Assessment-App für die Physiotherapie fit4PAT wurde im Rahmen einer Bachelor-Thesis des Studiengangs Medizininformatik
+      der Berner Fachhochschule (BFH) entwickelt.</div>
+    <div class="text">Das Projektteam besteht aus folgenden Mitgliedern:
+      <ul><li>Mirjam Kaufmann, kaufm5@bfh.ch</li>
+      <li>Michaela Ziegler, ziegm1@bfh.ch</li></ul></div>
+
+  <h1>Projektpartner</h1>
+    <div>fit4PAT wird von folgenden Projektpartnern unterstützt:
+    <ul><li>Logicare AG, Dübendorf</li>
+    <li>Physiotherapie Spital Thun</li></ul></div>
+
+  <h1>Name & Logo</h1>
+    <div class="text">Der App-Name sowie das Logo wurden vom Projektteam selbst kreiert. Falls der Name sowie das Logo
+    marktfähig genützt werden möchten, müsste nochmals überprüft werden, ob diese nicht schon existieren.</div>
+
+  <h1>Assessment-Lizenzen</h1>
+    <div class="text">In der App fit4PAT sind drei Assessments enthalten. Die dazugehörigen Quellen sind:
+    <ul><li>de Morton Mobility Index (DEMMI):
+    <button (click)="openLinkDemmi()" class="link">https://www.thieme.de/statics/dokumente/thieme/final/de/dokumente/tw_physiotherapie/Assessment_DEMMI.pdf</button></li>
+    <li>Dynamic Gait Index (DGI):
+    <button (click)="openLinkDgi()" class="link">https://www.thieme-connect.de/products/ejournals/abstract/10.1055/s-0032-1307960</button></li>
+    <li>Timed Walking Test (10-Meter-Gehtest):
+    <button (click)="openLinkTWT()" class="link">https://www.thieme-connect.de/products/ejournals/abstract/10.1055/s-0032-1308003</button></li></ul>
+    Die detaillierten Informationen zu den Assessment-Lizenzen können den
+      <button (click)="navToLicenses()" class="linkWithinApp">Lizenzen</button>
+      entnommen werden.</div>
+
+  <h1>Bildrechte</h1>
+    <div class="text">Die Bildrechte wurden für den Prototyp fit4PAT nicht berücksichtigt. Falls die Applikation weiter entwickelt
+    werden sollte, müssten diese Rechte abgeklärt werden.</div>
+
+  <h1>Medizinprodukt</h1>
+    <div class="text">Die Applikation fit4PAT ist als Medizinprodukt der Klasse I vorgesehen. Die notwendigen Schritte die App
+    zu zertifizieren müssten noch durch den Hersteller eingeleitet werden.</div>
 </ion-content>
