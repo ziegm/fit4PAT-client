@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NavController, PopoverController} from "ionic-angular";
+import {NavController, Popover, PopoverController} from "ionic-angular";
 import {TabsPage} from "../../pages/tabs/tabs";
 import {WorkflowParameters} from "../../workflow/workflow-parameters";
 import {MoreHomePage} from "../../pages/popover/more-popover/more-home/more-home";
@@ -26,6 +26,7 @@ export class NavbarComponent {
   @Input() private subTitle: string;
   @Input() private workflowParameters: WorkflowParameters;
   @Input() private popoverType = "MoreHomePage";
+  public popover: Popover;
 
   constructor(private navController: NavController, private popoverCtrl: PopoverController) {
   }
@@ -45,8 +46,8 @@ export class NavbarComponent {
   }
 
   private openModal(event): void {
-    let popover = this.popoverCtrl.create(this.switchModal(), {});
-    popover.present({
+    this.popover = this.popoverCtrl.create(this.switchModal(), {});
+    this.popover.present({
       ev: event
     });
   }
