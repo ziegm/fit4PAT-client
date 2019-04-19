@@ -74,6 +74,9 @@ export class PatientDetailPage extends WorkflowPage {
       if (resp.length > 0) {
         this.responses.push(resp[0]);
       }
+      this.responses.sort((a, b) => {
+        return new Date(b.authored).getTime() - new Date(a.authored).getTime();
+      });
     });
   }
 
