@@ -46,7 +46,7 @@ export class NavbarComponent {
   }
 
   private openModal(event): void {
-    this.popover = this.popoverCtrl.create(this.switchModal(), {});
+    this.popover = this.popoverCtrl.create(this.switchModal(), this.workflowParameters);
     this.popover.present({
       ev: event
     });

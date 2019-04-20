@@ -13,7 +13,7 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
 export class MoreHomePage extends WorkflowPage {
   private rootNav: any;
 
-  constructor(navParams: NavParams, app: App, public viewCtrl: ViewController) {
+  constructor(navParams: NavParams, app: App, private viewCtrl: ViewController) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
   }
