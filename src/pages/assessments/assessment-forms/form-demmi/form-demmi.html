@@ -60,13 +60,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -83,13 +83,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="2" [checked]="noPatient.radios[2]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="3" [checked]="noPatient.radios[3]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -106,23 +106,23 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>geringe Unterstützung</ion-label>
-          <ion-radio slot="start" value="1.0"></ion-radio>
+          <ion-radio slot="start" value="1.0" id="5" [checked]="noPatient.radios[5]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>Supervision</ion-label>
-          <ion-radio slot="start" value="1.1"></ion-radio>
+          <ion-radio slot="start" value="1.1" id="6" [checked]="noPatient.radios[6]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
         <ion-item class="transparent">
           <ion-label>selbstständig</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" id="7" [checked]="noPatient.radios[7]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -145,13 +145,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 Sek.</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -168,23 +168,23 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="10" [checked]="noPatient.radios[10]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>geringe Unterstützung</ion-label>
-          <ion-radio slot="start" value="1.0"></ion-radio>
+          <ion-radio slot="start" value="1.0" id="11" [checked]="noPatient.radios[11]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>Supervision</ion-label>
-          <ion-radio slot="start" value="1.1"></ion-radio>
+          <ion-radio slot="start" value="1.1" id="12" [checked]="noPatient.radios[12]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
         <ion-item class="transparent">
           <ion-label>selbstständig</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" id="13" [checked]="noPatient.radios[13]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -200,13 +200,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="14" [checked]="noPatient.radios[14]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="15" [checked]="noPatient.radios[15]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -230,13 +230,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 Sek.</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -253,13 +253,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="18" [checked]="noPatient.radios[18]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 Sek.</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="19" [checked]="noPatient.radios[19]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -276,13 +276,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 Sek.</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -299,13 +299,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="22" [checked]="noPatient.radios[22]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 Sek.</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="23" [checked]="noPatient.radios[23]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -329,27 +329,27 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0.0"></ion-radio>
+          <ion-radio slot="start" value="0.0" id="24" [checked]="noPatient.radios[24]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>5 m</ion-label>
-          <ion-radio slot="start" value="0.1"></ion-radio>
+          <ion-radio slot="start" value="0.1" id="25" [checked]="noPatient.radios[25]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>10 m</ion-label>
-          <ion-radio slot="start" value="1.0"></ion-radio>
+          <ion-radio slot="start" value="1.0" id="26" [checked]="noPatient.radios[26]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>20 m</ion-label>
-          <ion-radio slot="start" value="1.1"></ion-radio>
+          <ion-radio slot="start" value="1.1" id="27" [checked]="noPatient.radios[27]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
         <ion-item class="transparent">
           <ion-label>50 m</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" id="28" [checked]="noPatient.radios[28]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -365,27 +365,27 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0.0"></ion-radio>
+          <ion-radio slot="start" value="0.0" id="29" [checked]="noPatient.radios[29]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>geringe Unterstützung</ion-label>
-          <ion-radio slot="start" value="0.1"></ion-radio>
+          <ion-radio slot="start" value="0.1" id="30" [checked]="noPatient.radios[30]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
         <ion-item class="transparent">
           <ion-label>Supervision</ion-label>
-          <ion-radio slot="start" value="0.2"></ion-radio>
+          <ion-radio slot="start" value="0.2" id="31" [checked]="noPatient.radios[31]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>selbstständig<br/>mit Gehhilfe</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="32" [checked]="noPatient.radios[32]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
         <ion-item class="transparent">
           <ion-label>selbstständig<br/>ohne Gehhilfe</ion-label>
-          <ion-radio slot="start" value="2"></ion-radio>
+          <ion-radio slot="start" value="2" id="33" [checked]="noPatient.radios[33]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -408,13 +408,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="34" [checked]="noPatient.radios[34]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="35" [checked]="noPatient.radios[35]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -431,13 +431,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="36" [checked]="noPatient.radios[36]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="37" [checked]="noPatient.radios[37]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -454,13 +454,13 @@
       <div class="col lightGrey option">
         <ion-item class="transparent">
           <ion-label>nicht möglich</ion-label>
-          <ion-radio slot="start" value="0"></ion-radio>
+          <ion-radio slot="start" value="0" id="38" [checked]="noPatient.radios[38]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
         <ion-item class="transparent">
           <ion-label>möglich</ion-label>
-          <ion-radio slot="start" value="1"></ion-radio>
+          <ion-radio slot="start" value="1" id="39" [checked]="noPatient.radios[39]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option"></div>
@@ -471,8 +471,8 @@
   <ion-list>
     <ion-item class="aid">
       <ion-label class="labelForInput">Hilfsmittel</ion-label>
-      <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (ionChange)="assessmentResponse.addOrChangeAnswer(15, $event)" [(ngModel)]="aid">
+      <ion-select #aidSelect value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
+                  (ionChange)="aidOnPatient(15, $event)" [(ngModel)]="aid">
         <ion-option value="keine" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
@@ -492,7 +492,7 @@
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label class="labelForInput">Bemerkungen</ion-label>
-    <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(16, $event.target.value)"></ion-input>
+    <ion-input type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(16, $event)" [(ngModel)]="comments"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->

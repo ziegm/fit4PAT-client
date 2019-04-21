@@ -1,11 +1,12 @@
-import {Component} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 import Practitioner = fhir.Practitioner;
@@ -32,8 +33,11 @@ export class FormWalkingtestPage extends WorkflowPage {
   private time3: number;
   private currentTime: Date;
   private aid = "keine";
+  @ViewChild('aidSelect') private aidSelect: Select;
+  private comments = "";
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -68,14 +72,18 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   navToEvaluationWalkingtest(){
-    this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters);
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters);
+    }
   }
 
   private saveAndNavToEvaluationWalkingtest() {
-    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
-      this.assessmentResponse = (data as WalkingtestResponse);
-      this.navToEvaluationWalkingtest();
-    });
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.assessmentResponse = (data as WalkingtestResponse);
+        this.navToEvaluationWalkingtest();
+      });
+    }
   }
 
   timeInInput1() {
@@ -112,7 +120,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   start() {
-    if (this.running) return;
+    if (this.running || !this.noPatient.hasPatient(this.patient)) return;
     if (this.timeBegan === null) {
       this.reset();
       this.timeBegan = new Date();
@@ -238,4 +246,25 @@ export class FormWalkingtestPage extends WorkflowPage {
     alert.present();
   }
 
+  private inputOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
+    } else if (event && id === 0) {
+      this.time1 = null;
+    } else if (event && id === 1) {
+      this.time2 = null;
+    } else if (event && id === 2) {
+      this.time3 = null;
+    } else {
+      this.comments = "";
+    }
+  }
+
+  private aidOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else {
+      this.aidSelect.selectedText = "keine";
+    }
+  }
 }

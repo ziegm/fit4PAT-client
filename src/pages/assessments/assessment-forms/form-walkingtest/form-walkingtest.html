@@ -43,7 +43,7 @@
               <ion-item>
                 <ion-label class="labelForInput">1. Durchführung</ion-label>
                 <ion-input type="number" placeholder="1. Zeit" class="secRight"
-                           (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event.value, true)" [value]="time1"></ion-input>
+                           (keyup)="inputOnPatient(0, $event)" [(ngModel)]="time1"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -64,7 +64,7 @@
               <ion-item>
                 <ion-label class="labelForInput">2. Durchführung</ion-label>
                 <ion-input type="number" placeholder="2. Zeit" class="secRight"
-                           (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event.value, true)" [value]="time2"></ion-input>
+                           (keyup)="inputOnPatient(1, $event)" [(ngModel)]="time2"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -85,7 +85,7 @@
               <ion-item>
                 <ion-label class="labelForInput">3. Durchführung</ion-label>
                 <ion-input type="number" placeholder="3. Zeit" class="secRight"
-                           (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event.value, true)" [value]="time3"></ion-input>
+                           (keyup)="inputOnPatient(2, $event)" [(ngModel)]="time3"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -136,8 +136,8 @@
   <ion-list>
     <ion-item class="aid">
       <ion-label class="labelForInput">Hilfsmittel</ion-label>
-      <ion-select value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
-                  (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event)" [(ngModel)]="aid">
+      <ion-select #aidSelect value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()"
+                  (ionChange)="aidOnPatient(3, $event)" [(ngModel)]="aid">
         <ion-option value="keine" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
         <ion-option value="2 Gehstöcke">2 Gehstöcke</ion-option>
@@ -157,7 +157,7 @@
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label class="labelForInput">Bemerkungen</ion-label>
-    <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(4, $event.target.value)"></ion-input>
+    <ion-input type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(4, $event)" [(ngModel)]="comments"></ion-input>
   </ion-item>
 
   <!-- Evaluation button -->

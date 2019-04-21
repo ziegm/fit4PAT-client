@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
 import {EvaluationDgiPage} from "../../assessment-evaluations/evaluation-dgi/evaluation-dgi";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
@@ -7,6 +7,7 @@ import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {MyApp} from "../../../../app/app.component";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
+import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
@@ -25,9 +26,12 @@ export class FormDgiPage extends WorkflowPage {
   private show: boolean = false;
   public discount: number = 0;
   private aid = "keine";
+  @ViewChild('aidSelect') private aidSelect: Select;
   public selectedIndex: number;
+  private comments = "";
 
-  constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams, private restProvider: RestProvider) {
+  constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams,
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -67,14 +71,18 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private navToEvaluationDgi() {
-    this.rootNav.push(EvaluationDgiPage, this.workflowParameters);
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.rootNav.push(EvaluationDgiPage, this.workflowParameters);
+    }
   }
 
   private saveAndNavToEvaluationDgi() {
-    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
-      this.assessmentResponse = (data as DgiResponse);
-      this.navToEvaluationDgi();
-    });
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.assessmentResponse = (data as DgiResponse);
+        this.navToEvaluationDgi();
+      });
+    }
   }
 
   popupInstruction() {
@@ -346,4 +354,19 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
+  private inputOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else {
+      this.comments = "";
+    }
+  }
+
+  private aidOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else {
+      this.aidSelect.selectedText = "keine";
+    }
+  }
 }

@@ -53,7 +53,7 @@ export class EvaluationDgiPage extends WorkflowPage {
   public calcGraphValue(response: AssessmentResponse): number {
     let graphAnswers = function (response: AssessmentResponse): number[] {
       return response.item.map((item, index) => {
-        if (index < 8 && item.answer[0].valueInteger !== undefined) {
+        if (index < 8 && item.answer !== undefined && item.answer[0].valueInteger !== undefined) {
           return +item.answer[0].valueInteger.toFixed(0);
         } else {
           return 0;

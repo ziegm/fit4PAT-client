@@ -58,6 +58,7 @@ import {MorePatientIpsPage} from "../pages/popover/more-popover/more-patient-ips
 import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
 import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-scan/more-patient-scan";
 import {SearchAssessmentComponent} from "../components/search-assessment/search-assessment";
+import { NoPatientErrorProvider } from '../providers/no-patient-error/no-patient-error';
 
 
 // @ts-ignore
@@ -164,7 +165,8 @@ import {SearchAssessmentComponent} from "../components/search-assessment/search-
     RestProvider,
     DocumentViewer,
     MenuNavigationProvider,
-    AssessmentSearchProvider
+    AssessmentSearchProvider,
+    NoPatientErrorProvider
   ]
 })
 

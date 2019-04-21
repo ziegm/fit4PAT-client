@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams} from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {RestProvider} from "../../../../providers/rest/rest";
@@ -8,6 +8,7 @@ import {AssessmentResponseItem} from "../../../../responses/assessment-response-
 import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
+import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
@@ -24,13 +25,15 @@ export class FormDemmiPage extends WorkflowPage {
   private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
   private aid = "keine";
+  @ViewChild('aidSelect') private aidSelect: Select;
   public alertAid;
+  private comments = "";
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App, private restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
-
 
     // Add the patient to the DemmiResponse-Object.
     if (this.patient !== undefined) {
@@ -66,14 +69,18 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private navToEvaluationDemmi() {
-    this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
+    }
   }
 
   private saveAndNavToEvaluationDemmi() {
-    this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
-      this.assessmentResponse = (data as DemmiResponse);
-      this.navToEvaluationDemmi();
-    });
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.assessmentResponse = (data as DemmiResponse);
+        this.navToEvaluationDemmi();
+      });
+    }
   }
 
   /**
@@ -98,7 +105,7 @@ export class FormDemmiPage extends WorkflowPage {
   /**
    * show the instruction for demmi
    */
-  popupInstruction() {
+  private popupInstruction(): void {
     const alert = this.alertCtrl.create({
       title: 'Instruktion',
       cssClass: 'instructionDemmi',
@@ -589,4 +596,19 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
+  private inputOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else {
+      this.comments = "";
+    }
+  }
+
+  private aidOnPatient(id: number, event: any): void {
+    if (this.noPatient.hasPatient(this.patient, event)) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else {
+      this.aidSelect.selectedText = "keine";
+    }
+  }
 }
