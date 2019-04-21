@@ -1,14 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {RestProvider} from "../../../providers/rest/rest";
-import {App, NavController, ViewController} from "ionic-angular";
-import {AssessmentFormList} from "../../../pages/assessments/assessment-forms/assessment-form-list";
+import {App, NavController} from "ionic-angular";
 import {PatientHelper} from "../patient-helper";
-import {FormDgiPage} from "../../../pages/assessments/assessment-forms/form-dgi/form-dgi";
-import {FormDemmiPage} from "../../../pages/assessments/assessment-forms/form-demmi/form-demmi";
-import {FormWalkingtestPage} from "../../../pages/assessments/assessment-forms/form-walkingtest/form-walkingtest";
 import {PatientDetailPage} from "../../../pages/patients/patient-detail/patient-detail";
 import {WorkflowParameters} from "../../../workflow/workflow-parameters";
 import {WorkflowSelector} from "../../../workflow/workflow-selector";
+import {PatientToAssessmentNavProvider} from "../../../providers/patient-to-assessment-nav/patient-to-assessment-nav";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 
@@ -26,7 +23,8 @@ export class PatientListComponent {
   private rootNav: any;
   @Input() private search = "";
 
-  constructor(private restProvider: RestProvider, private navCtrl: NavController, app: App) {
+  constructor(private restProvider: RestProvider, private navCtrl: NavController, app: App,
+              private toAssessment: PatientToAssessmentNavProvider) {
     this.rootNav = app.getRootNav();
   }
 
@@ -62,29 +60,13 @@ export class PatientListComponent {
   private takeOverPatient(patient: Patient) {
     switch (this.workflowParameters.workflowSelector) {
       case WorkflowSelector.FromAssessment:
-        this.patientToAssessment(patient);
+        this.workflowParameters.patient = patient;
+        this.toAssessment.navToAssessment(this.workflowParameters, this.navCtrl);
       break;
       case WorkflowSelector.FromPatient:
         this.workflowParameters.patient = patient;
         this.rootNav.push(PatientDetailPage, this.workflowParameters);
       break;
-    }
-  }
-
-  private patientToAssessment(patient: Patient) {
-    this.workflowParameters.patient = patient;
-    let viewController: ViewController = this.navCtrl.getViews().find((view) =>
-      AssessmentFormList.isAssessmentForm(view));
-    this.navToAssessmentForm(viewController);
-  }
-
-  private navToAssessmentForm(viewController: ViewController) {
-    if(viewController.component.name === "FormDgiPage") {
-      this.rootNav.push(FormDgiPage, this.workflowParameters);
-    } else if(viewController.component.name === "FormDemmiPage") {
-      this.rootNav.push(FormDemmiPage, this.workflowParameters);
-    } else {
-      this.rootNav.push(FormWalkingtestPage, this.workflowParameters);
     }
   }
 

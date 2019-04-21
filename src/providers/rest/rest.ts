@@ -26,6 +26,25 @@ export class RestProvider {
   getPatients(ward: string, search?: string) {
     let url = search ? this.apiUrl + '/Patient?identifier=' + ward + '&name=' + search
       : this.apiUrl + '/Patient?identifier=' + ward;
+
+    return new Promise(resolve => {
+      this.http.get(url).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  /**
+   * http.get() returns an Observable, which encapsulates the json response returned by the hapi-fhir server.
+   * getPatient() then returns a Promise, holding this Observable.
+   * For more information about asynchronous programming in JavaScript
+   * see https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise
+   */
+  getPatient(caseId: string) {
+    let url = this.apiUrl + '/Patient?identifier:case-id=' + caseId;
+
     return new Promise(resolve => {
       this.http.get(url).subscribe(data => {
         resolve(data);

@@ -59,6 +59,7 @@ import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-pati
 import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-scan/more-patient-scan";
 import {SearchAssessmentComponent} from "../components/search-assessment/search-assessment";
 import { NoPatientErrorProvider } from '../providers/no-patient-error/no-patient-error';
+import { PatientToAssessmentNavProvider } from '../providers/patient-to-assessment-nav/patient-to-assessment-nav';
 
 
 // @ts-ignore
@@ -166,7 +167,8 @@ import { NoPatientErrorProvider } from '../providers/no-patient-error/no-patient
     DocumentViewer,
     MenuNavigationProvider,
     AssessmentSearchProvider,
-    NoPatientErrorProvider
+    NoPatientErrorProvider,
+    PatientToAssessmentNavProvider
   ]
 })
 
