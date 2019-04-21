@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
+import {AlertController, App, IonicPage, Loading, LoadingController, NavParams, Select} from 'ionic-angular';
 import {EvaluationWalkingtestPage} from "../../assessment-evaluations/evaluation-walkingtest/evaluation-walkingtest";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {WalkingtestResponse} from "../../../../responses/assessment-type/walkingtest-response";
@@ -17,13 +17,13 @@ import Practitioner = fhir.Practitioner;
   templateUrl: 'form-walkingtest.html',
 })
 export class FormWalkingtestPage extends WorkflowPage {
-  private rootNav:any;
+  private rootNav: any;
   private patient: Patient;
   private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new WalkingtestResponse();
   private timeBegan = null;
-  private timeStopped:any = null;
-  private stoppedDuration:any = 0;
+  private timeStopped: any = null;
+  private stoppedDuration: any = 0;
   private started = null;
   private running = false;
   private blankTime = "00.000 Sekunden";
@@ -34,10 +34,13 @@ export class FormWalkingtestPage extends WorkflowPage {
   private currentTime: Date;
   private aid = "keine";
   @ViewChild('aidSelect') private aidSelect: Select;
+  private saveButtonDisabled = false;
   private comments = "";
+  private loading: Loading;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
-              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
+              private loadingCtrl: LoadingController) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -71,23 +74,39 @@ export class FormWalkingtestPage extends WorkflowPage {
     }
   }
 
-  navToEvaluationWalkingtest(){
+  navToEvaluationWalkingtest() {
     if (this.noPatient.hasPatient(this.patient)) {
       this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters);
     }
   }
 
   private saveAndNavToEvaluationWalkingtest() {
-    if (this.noPatient.hasPatient(this.patient)) {
+    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+      this.saveButtonDisabled = true;
+
+      this.loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Lädt, bitte warten...'
+      });
+      this.loading.present();
+
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.loading.dismiss();
         this.assessmentResponse = (data as WalkingtestResponse);
+        this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationWalkingtest();
       });
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        message: 'Alle Felder ausser Hilfsmittel/Bemerkungen müssen ausgefüllt werden.',
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }
 
   timeInInput1() {
-    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time1 = timeElapsed.getSeconds() + 1;
     } else {
@@ -98,7 +117,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   timeInInput2() {
-    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time2 = timeElapsed.getSeconds() + 1;
     } else {
@@ -109,7 +128,7 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   timeInInput3() {
-    let timeElapsed:Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time3 = timeElapsed.getSeconds() + 1;
     } else {
@@ -126,7 +145,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       this.timeBegan = new Date();
     }
     if (this.timeStopped !== null) {
-      let newStoppedDuration:any = (+new Date() - this.timeStopped);
+      let newStoppedDuration: any = (+new Date() - this.timeStopped);
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
     this.started = setInterval(this.clockRunning.bind(this), 10);
@@ -150,7 +169,7 @@ export class FormWalkingtestPage extends WorkflowPage {
 
   zeroPrefix(num, digit) {
     let zero = '';
-    for(let i = 0; i < digit; i++) {
+    for (let i = 0; i < digit; i++) {
       zero += '0';
     }
     return (zero + num).slice(-digit);
@@ -158,7 +177,7 @@ export class FormWalkingtestPage extends WorkflowPage {
 
   clockRunning() {
     this.currentTime = new Date();
-    let timeElapsed:any = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
+    let timeElapsed: any = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     let sec = timeElapsed.getSeconds();
     let ms = timeElapsed.getMilliseconds();
     this.time =
@@ -232,7 +251,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       cssClass: 'materialTWT',
       subTitle: 'Timed Walking Test',
       message: '<ul><li>Abgestreckte Strecke</li></ul>' +
-      '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/>',
+        '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/>',
       buttons: [
         {
           text: 'Ok',
@@ -247,8 +266,10 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 4) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
+    } else if (this.noPatient.hasPatient(this.patient, event) && id === 4) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else if (event && id === 0) {
       this.time1 = null;
     } else if (event && id === 1) {
@@ -261,10 +282,24 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {
+      this.assessmentResponse.addOrChangeAnswer(id, event);
     } else {
       this.aidSelect.selectedText = "keine";
     }
+  }
+
+  private missingFields(): boolean {
+    const required = [0, 1, 2];
+    for (let i = 0; i < this.assessmentResponse.item.length; i++){
+      let requiredIdx = required.find(idx => i === idx);
+      if (requiredIdx !== undefined && this.assessmentResponse.item[i].answer.length === 0) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

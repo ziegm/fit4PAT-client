@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
+import {AlertController, App, IonicPage, Loading, LoadingController, NavParams, Select} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {RestProvider} from "../../../../providers/rest/rest";
@@ -26,11 +26,14 @@ export class FormDemmiPage extends WorkflowPage {
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
   private aid = "keine";
   @ViewChild('aidSelect') private aidSelect: Select;
+  private saveButtonDisabled = false;
   public alertAid;
   private comments = "";
+  private loading: Loading;
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
-              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
+              private loadingCtrl: LoadingController) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -70,16 +73,32 @@ export class FormDemmiPage extends WorkflowPage {
 
   private navToEvaluationDemmi() {
     if (this.noPatient.hasPatient(this.patient)) {
+      this.workflowParameters.assessmentResponse = this.assessmentResponse;
       this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
     }
   }
 
   private saveAndNavToEvaluationDemmi() {
-    if (this.noPatient.hasPatient(this.patient)) {
+    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+      this.saveButtonDisabled = true;
+
+      this.loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Lädt, bitte warten...'
+      });
+      this.loading.present();
+
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.loading.dismiss();
         this.assessmentResponse = (data as DemmiResponse);
         this.navToEvaluationDemmi();
       });
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        message: 'Alle Felder ausser Hilfsmittel/Bemerkungen müssen ausgefüllt werden.',
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }
 
@@ -597,7 +616,9 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 16) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
+    } else if (this.noPatient.hasPatient(this.patient, event) && id === 16) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else {
       this.comments = "";
@@ -605,10 +626,24 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {
+      this.assessmentResponse.addOrChangeAnswer(id, event);
     } else {
       this.aidSelect.selectedText = "keine";
     }
+  }
+
+  private missingFields(): boolean {
+    const required = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    for (let i = 0; i < this.assessmentResponse.item.length; i++){
+      let requiredIdx = required.find(idx => i === idx);
+      if (requiredIdx !== undefined && isNaN(this.assessmentResponse.item[i].answer[0].valueInteger)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

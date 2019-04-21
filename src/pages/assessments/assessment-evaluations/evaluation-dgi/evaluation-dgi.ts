@@ -30,6 +30,17 @@ export class EvaluationDgiPage extends WorkflowPage {
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DgiResponse));
+
+      if (this.workflowParameters.assessmentResponse && !(this.responses.find((response: DgiResponse) => {
+        return response.id === this.workflowParameters.assessmentResponse.id;
+      }))) {
+        this.responses.push(this.workflowParameters.assessmentResponse as DgiResponse);
+        this.responses.sort((a, b) => {
+          return new Date(b.authored).getTime() - new Date(a.authored).getTime();
+        });
+      }
+      this.workflowParameters.assessmentResponse = undefined;
+
       this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
       this.lineChart.update();
     });

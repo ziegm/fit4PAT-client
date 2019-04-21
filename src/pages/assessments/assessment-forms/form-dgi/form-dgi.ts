@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, App, IonicPage, NavParams, Select} from 'ionic-angular';
+import {AlertController, App, IonicPage, Loading, LoadingController, NavParams, Select} from 'ionic-angular';
 import {EvaluationDgiPage} from "../../assessment-evaluations/evaluation-dgi/evaluation-dgi";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
@@ -27,11 +27,14 @@ export class FormDgiPage extends WorkflowPage {
   public discount: number = 0;
   private aid = "keine";
   @ViewChild('aidSelect') private aidSelect: Select;
+  private saveButtonDisabled = false;
   public selectedIndex: number;
   private comments = "";
+  private loading: Loading;
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams,
-              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider) {
+              private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
+              private loadingCtrl: LoadingController) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -77,11 +80,27 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private saveAndNavToEvaluationDgi() {
-    if (this.noPatient.hasPatient(this.patient)) {
+    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+      this.saveButtonDisabled = true;
+
+      this.loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Lädt, bitte warten...'
+      });
+
+      this.loading.present();
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        this.loading.dismiss();
         this.assessmentResponse = (data as DgiResponse);
+        this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDgi();
       });
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        message: 'Alle Felder ausser Hilfsmittel/Bemerkungen müssen ausgefüllt werden.',
+        buttons: ['OK']
+      });
+      alert.present();
     }
   }
 
@@ -355,7 +374,9 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 9) {
+      this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
+    } else if (this.noPatient.hasPatient(this.patient, event) && id === 9) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else {
       this.comments = "";
@@ -363,10 +384,24 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
-    if (this.noPatient.hasPatient(this.patient, event)) {
+    if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
+    } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {
+      this.assessmentResponse.addOrChangeAnswer(id, event);
     } else {
       this.aidSelect.selectedText = "keine";
     }
+  }
+
+  private missingFields(): boolean {
+    const required = [0, 1, 2, 3, 4, 5, 6, 7];
+    for (let i = 0; i < this.assessmentResponse.item.length; i++){
+      let requiredIdx = required.find(idx => i === idx);
+      if (requiredIdx !== undefined && isNaN(this.assessmentResponse.item[i].answer[0].valueInteger)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

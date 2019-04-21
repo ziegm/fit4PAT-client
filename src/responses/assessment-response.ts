@@ -2,6 +2,7 @@ import QuestionnaireResponse = fhir.QuestionnaireResponse;
 import dateTime = fhir.dateTime;
 import Patient = fhir.Patient;
 import code = fhir.code;
+import id = fhir.id;
 import {Fit4PATReference} from "./fit4pat-reference";
 import {AssessmentResponseItem} from "./assessment-response-item";
 
@@ -9,6 +10,7 @@ import {AssessmentResponseItem} from "./assessment-response-item";
  * Implementing the fhir type defnitition QuestionnaireResponse for usage as class in this project.
  */
 export abstract class AssessmentResponse implements QuestionnaireResponse {
+  id: id;
   resourceType: code = "QuestionnaireResponse";
   author: fhir.Reference;
   identifier: fhir.Identifier;

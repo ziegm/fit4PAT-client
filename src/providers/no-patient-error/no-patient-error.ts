@@ -15,7 +15,7 @@ export class NoPatientErrorProvider {
 
   public hasPatient(patient: Patient, event?): boolean {
     if (patient) {
-      if (event) {
+      if (event && event.currentTarget) {
         this._radios[event.currentTarget.id] = true;
       }
       return true;

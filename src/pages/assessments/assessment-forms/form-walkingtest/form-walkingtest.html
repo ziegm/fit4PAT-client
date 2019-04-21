@@ -64,7 +64,7 @@
               <ion-item>
                 <ion-label class="labelForInput">2. Durchführung</ion-label>
                 <ion-input type="number" placeholder="2. Zeit" class="secRight"
-                           (keyup)="inputOnPatient(1, $event)" [(ngModel)]="time2"></ion-input>
+                           (keyup)="inputOnPatient(1, $event)" [(ngModel)]="time2" required></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -85,7 +85,7 @@
               <ion-item>
                 <ion-label class="labelForInput">3. Durchführung</ion-label>
                 <ion-input type="number" placeholder="3. Zeit" class="secRight"
-                           (keyup)="inputOnPatient(2, $event)" [(ngModel)]="time3"></ion-input>
+                           (keyup)="inputOnPatient(2, $event)" [(ngModel)]="time3" required></ion-input>
               </ion-item>
             </ion-col>
             <ion-col col-2>
@@ -161,5 +161,5 @@
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button class="buttonAuswerten" (click)="saveAndNavToEvaluationWalkingtest()">Auswerten</button>
+  <button ion-button class="buttonAuswerten" [disabled]="saveButtonDisabled" (click)="saveAndNavToEvaluationWalkingtest()">Auswerten</button>
 </ion-content>

@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {RestProvider} from "../../../providers/rest/rest";
-import {App, NavController} from "ionic-angular";
+import {App, Loading, LoadingController, NavController} from "ionic-angular";
 import {PatientHelper} from "../patient-helper";
 import {PatientDetailPage} from "../../../pages/patients/patient-detail/patient-detail";
 import {WorkflowParameters} from "../../../workflow/workflow-parameters";
@@ -22,22 +22,31 @@ export class PatientListComponent {
   @Input() private workflowParameters: WorkflowParameters;
   private rootNav: any;
   @Input() private search = "";
+  private loading: Loading;
 
   constructor(private restProvider: RestProvider, private navCtrl: NavController, app: App,
-              private toAssessment: PatientToAssessmentNavProvider) {
+              private toAssessment: PatientToAssessmentNavProvider,
+              private loadingCtrl: LoadingController) {
     this.rootNav = app.getRootNav();
   }
 
   private ngOnChanges(): void {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Lädt, bitte warten...'
+    });
+    this.loading.present();
     this.getPatients(this.search);
   }
 
   private getPatients(searchParam?: string): void {
     this.patients = [];
+
     this.restProvider.getPatients(this.ward, searchParam)
       .then(data => {
-        if((data as Bundle).entry !== undefined) {
-          (data as Bundle).entry.forEach(entry =>{
+        this.loading.dismiss();
+        if ((data as Bundle).entry !== undefined) {
+          (data as Bundle).entry.forEach(entry => {
             this.patients.push(entry.resource as Patient);
           });
         } else {
@@ -50,10 +59,11 @@ export class PatientListComponent {
       });
   }
 
-  private viewPatientName(patient:Patient) {
+  private viewPatientName(patient: Patient) {
     return PatientHelper.viewPatientName(patient);
   }
-  private viewPatientInfos(patient:Patient) {
+
+  private viewPatientInfos(patient: Patient) {
     return PatientHelper.viewPatientInfos(patient);
   }
 
@@ -62,11 +72,11 @@ export class PatientListComponent {
       case WorkflowSelector.FromAssessment:
         this.workflowParameters.patient = patient;
         this.toAssessment.navToAssessment(this.workflowParameters, this.navCtrl);
-      break;
+        break;
       case WorkflowSelector.FromPatient:
         this.workflowParameters.patient = patient;
         this.rootNav.push(PatientDetailPage, this.workflowParameters);
-      break;
+        break;
     }
   }
 
