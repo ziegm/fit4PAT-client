@@ -9,7 +9,7 @@
 <ion-content padding>
  <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
   <ion-list>
-    <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients" (click)="navToEvaluation(assessment)">
+    <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients heightList" (click)="navToEvaluation(assessment)">
       <p class="bold">{{viewAssessmentName(assessment)}}</p>
       <p>{{viewAssessmentInfos(assessment)}}</p>
     </ion-item>
@@ -21,19 +21,19 @@
     <ion-fab-list side="top">
       <button ion-fab (click)="navToAssessmentTab()">
         <ion-icon name="add"></ion-icon>
-        <ion-label (click)="navToAssessmentTab()">Assessmentauswahl</ion-label>
+        <ion-label>Assessmentauswahl</ion-label>
       </button>
       <button ion-fab (click)="navToWalkingtest()">
         <ion-icon name="clipboard"></ion-icon>
-        <ion-label (click)="navToWalkingtest()">Timed Walking Test</ion-label>
+        <ion-label>Timed Walking Test</ion-label>
       </button>
       <button ion-fab (click)="navToDgi()">
         <ion-icon name="clipboard"></ion-icon>
-        <ion-label (click)="navToDgi()">Dynamic Gait Index</ion-label>
+        <ion-label>Dynamic Gait Index</ion-label>
       </button>
       <button ion-fab (click)="navToDemmi()">
         <ion-icon name="clipboard"></ion-icon>
-        <ion-label (click)="navToDemmi()">de Morton Mobility Index</ion-label>
+        <ion-label>de Morton Mobility Index</ion-label>
       </button>
     </ion-fab-list>
   </ion-fab>

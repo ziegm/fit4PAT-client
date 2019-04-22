@@ -14,6 +14,7 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {GraphDataAssembler} from "../graph-data-assembler";
 import {DemmiResult} from "./demmi-result";
 import Patient = fhir.Patient;
+import {NotImplementedYetComponent} from "../../../../components/not-implemented-yet/not-implemented-yet";
 
 @IonicPage()
 @Component({
@@ -46,6 +47,15 @@ export class EvaluationDemmiPage extends WorkflowPage {
       this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
       this.lineChart.update();
     });
+  }
+
+  private presentAlert(): void{
+      let alert = this.alertCtrl.create({
+      title: 'Prototyp',
+      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   private executeDate(): string {

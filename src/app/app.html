@@ -8,7 +8,14 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <not-implemented-yet label="Profil" icon="contact"></not-implemented-yet>
+      <button ion-item (click)="presentAlert()" class="itemMenuLogout">
+        <ion-item>
+          <ion-row>
+            <ion-icon slot="start" name="contact"></ion-icon>
+            <p class="labelMenuLogout">Profil</p>
+          </ion-row>
+        </ion-item>
+      </button>
       <button ion-item (click)="menuNav.navToMusculoskeletal()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -73,7 +80,14 @@
           </ion-row>
         </ion-item>
       </button>
-      <not-implemented-yet label="Abmelden" icon="lock"></not-implemented-yet>
+      <button ion-item (click)="presentAlert()" class="itemMenuLogout">
+        <ion-item>
+          <ion-row>
+            <ion-icon slot="start" name="lock"></ion-icon>
+            <p class="labelMenuLogout">Abmelden</p>
+          </ion-row>
+        </ion-item>
+      </button>
     </ion-list>
   </ion-content>
 </ion-menu>

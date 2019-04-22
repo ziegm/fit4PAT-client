@@ -3,6 +3,29 @@ page-evaluation-demmi {
     padding-left: 20px;
   }
 
+  .patInfos{
+    max-width: 85%;
+  }
+  .information{
+    max-width: 15%;
+  }
+
+  .iconButton{
+    zoom: 2;
+    padding: 0 0 0 45%;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+  }
+  .ion-md-download:before{
+    padding: 0;
+  }
+  .labelButton{
+    padding: 10px 0 0 0;
+    margin: 0;
+    text-align: center;
+  }
+
   .patient {
     color: #888888;
     font-size: 24px;

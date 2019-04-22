@@ -59,12 +59,24 @@ ion-label, ion-item, span, button, ul, li, .item-md p, div {
 .itemMenuPatient{
   padding-left: 15px;
 }
+.itemMenuLogout{
+  padding: 0;
+}
 .labelMenu{
   padding-left: 12px;
 }
 .labelMenuPatient{
   padding-left: 15px;
 }
+.labelMenuLogout{
+  padding-top: 12px;
+}
+
+//size of the more Popover
+.morePopover .popover-content {
+  width: 320px;
+}
+
 
 .item-md.item-block .item-inner {
   border-bottom: transparent;

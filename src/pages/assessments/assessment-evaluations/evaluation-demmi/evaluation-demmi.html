@@ -14,9 +14,16 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid><ion-row><ion-col class="patInfos">
   <ion-label class="patient">
     <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
+  </ion-col>
+    <ion-col class="information">
+      <ion-item><ion-icon class="iconButton" name="download" (click)="presentAlert()"></ion-icon>
+        <p class="labelButton" (click)="presentAlert()">PDF exportieren</p>
+      </ion-item>
+    </ion-col></ion-row></ion-grid>
 
   <div class="col">
     <div class="row">

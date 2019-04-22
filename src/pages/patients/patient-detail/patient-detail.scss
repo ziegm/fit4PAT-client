@@ -5,6 +5,10 @@ page-patient-detail {
     margin-bottom: 20px;
   }
 
+  .heightList{
+    height: 55px;
+  }
+
   button[ion-fab] {
     overflow: visible;
     position: relative;
@@ -13,6 +17,7 @@ page-patient-detail {
       position: absolute;
       top: -8px;
       right: 40px;
+      pointer-events:all!important;
 
       color: white;
       background-color: rgba(0,0,0,0.7);

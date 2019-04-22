@@ -46,6 +46,15 @@ export class EvaluationDgiPage extends WorkflowPage {
     });
   }
 
+  private presentAlert(): void{
+    let alert = this.alertCtrl.create({
+      title: 'Prototyp',
+      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
   private executeDate(): string {
     return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
   }
