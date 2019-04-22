@@ -1,4 +1,7 @@
 <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
 <ion-list>
-  <ion-item (click)="navToAssessment(assessment)" class="listAssessmentsPatients" *ngFor="let assessment of results">{{ assessment }}</ion-item>
+  <ion-item class="listAssessmentsPatients" *ngFor="let assessment of results">
+    <ion-grid><ion-row><p (click)="navToAssessment(assessment)" class="nameAssessment">{{ assessment }}</p>
+      <not-implemented-yet icon="document" class="iconDocument"></not-implemented-yet>
+    </ion-row></ion-grid></ion-item>
 </ion-list>
