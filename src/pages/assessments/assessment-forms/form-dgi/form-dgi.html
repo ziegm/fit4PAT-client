@@ -48,7 +48,7 @@
   <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)" class="difference paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
-      <div class="col transparent text" (click)="showInfoOne()">Gehen auf ebener Strecke 20 Meter
+      <div class="col transparent text" (click)="showInfoOne()">Gehen auf ebener Strecke (20 m)
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
@@ -78,7 +78,7 @@
   <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)" class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
-      <div class="col transparent text" (click)="showInfoTwo()">Gehen mit Tempowechsel 5m normal, 5m schnell, 5m langsam
+      <div class="col transparent text" (click)="showInfoTwo()">Gehen mit Tempowechsel 5 m normal, 5 m schnell, 5 m langsam
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">

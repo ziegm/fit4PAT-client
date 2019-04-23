@@ -54,17 +54,17 @@
   <ion-list radio-group class="paddingLeft" [(ngModel)]="Bridge" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
-      <div class="col transparent">Brücke
+      <div class="col transparent text">Brücke
         <ion-icon name="information-circle" (click)="showInfoOne()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -77,17 +77,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="rolOnSide" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
-      <div class="col transparent">Auf die Seite rollen
+      <div class="col transparent text">Auf die Seite rollen
         <ion-icon name="information-circle" (click)="showInfoTwo()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="2" [checked]="noPatient.radios[2]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="3" [checked]="noPatient.radios[3]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -100,27 +100,27 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="toSit" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
-      <div class="col transparent">Vom Liegen zum Sitzen
+      <div class="col transparent text">Vom Liegen zum Sitzen
         <ion-icon name="information-circle" (click)="showInfoThree()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>geringe Unterstützung</ion-label>
           <ion-radio slot="start" value="1.0" id="5" [checked]="noPatient.radios[5]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>Supervision</ion-label>
           <ion-radio slot="start" value="1.1" id="6" [checked]="noPatient.radios[6]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>selbstständig</ion-label>
           <ion-radio slot="start" value="2" id="7" [checked]="noPatient.radios[7]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -139,17 +139,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="sitInChair" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
-      <div class="col transparent">Sitzen im Stuhl ohne Unterstützung
+      <div class="col transparent text">Sitzen im Stuhl ohne Unterstützung
         <ion-icon name="information-circle" (click)="showInfoFour()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 Sek.</ion-label>
           <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -162,27 +162,27 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="standUp" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
-      <div class="col transparent">Aus dem Stuhl aufstehen
+      <div class="col transparent text">Aus dem Stuhl aufstehen
         <ion-icon name="information-circle" (click)="showInfoFive()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="10" [checked]="noPatient.radios[10]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>geringe Unterstützung</ion-label>
           <ion-radio slot="start" value="1.0" id="11" [checked]="noPatient.radios[11]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>Supervision</ion-label>
           <ion-radio slot="start" value="1.1" id="12" [checked]="noPatient.radios[12]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>selbstständig</ion-label>
           <ion-radio slot="start" value="2" id="13" [checked]="noPatient.radios[13]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -194,17 +194,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="standUpWithoutArms" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
-      <div class="col transparent">Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen
+      <div class="col transparent text">Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen
         <ion-icon name="information-circle" (click)="showInfoSix()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="14" [checked]="noPatient.radios[14]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="15" [checked]="noPatient.radios[15]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -224,17 +224,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="standWithoutAid" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">7.</div>
-      <div class="col transparent">Ohne Unterstützung stehen
+      <div class="col transparent text">Ohne Unterstützung stehen
         <ion-icon name="information-circle" (click)="showInfoSeven()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 Sek.</ion-label>
           <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -247,17 +247,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="standWithClosedFeet" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">8.</div>
-      <div class="col transparent">Stehen mit geschlossenen Füssen
+      <div class="col transparent text">Stehen mit geschlossenen Füssen
         <ion-icon name="information-circle" (click)="showInfoEight()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="18" [checked]="noPatient.radios[18]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 Sek.</ion-label>
           <ion-radio slot="start" value="1" id="19" [checked]="noPatient.radios[19]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -270,17 +270,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="standOnToe" (ionChange)="assessmentResponse.addOrChangeAnswer(8, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">9.</div>
-      <div class="col transparent">Auf den Fussspitzen stehen
+      <div class="col transparent text">Auf den Fussspitzen stehen
         <ion-icon name="information-circle" (click)="showInfoNine()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 Sek.</ion-label>
           <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -293,17 +293,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="tandemWithClosedEyes" (ionChange)="assessmentResponse.addOrChangeAnswer(9, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">10.</div>
-      <div class="col transparent">Im Tandemstand mit geschlossenen Augen stehen
+      <div class="col transparent text">Im Tandemstand mit geschlossenen Augen stehen
         <ion-icon name="information-circle" (click)="showInfoTen()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="22" [checked]="noPatient.radios[22]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 Sek.</ion-label>
           <ion-radio slot="start" value="1" id="23" [checked]="noPatient.radios[23]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -323,31 +323,31 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="walkway" (ionChange)="assessmentResponse.addOrChangeAnswer(10, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">11.</div>
-      <div class="col transparent">Wegstrecke +/- Gehhilfe
+      <div class="col transparent text">Wegstrecke +/- Gehhilfe
         <ion-icon name="information-circle" (click)="showInfoEleven()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0.0" id="24" [checked]="noPatient.radios[24]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>5 m</ion-label>
           <ion-radio slot="start" value="0.1" id="25" [checked]="noPatient.radios[25]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>10 m</ion-label>
           <ion-radio slot="start" value="1.0" id="26" [checked]="noPatient.radios[26]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>20 m</ion-label>
           <ion-radio slot="start" value="1.1" id="27" [checked]="noPatient.radios[27]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>50 m</ion-label>
           <ion-radio slot="start" value="2" id="28" [checked]="noPatient.radios[28]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -359,31 +359,31 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="walkAlone" (ionChange)="assessmentResponse.addOrChangeAnswer(11, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">12.</div>
-      <div class="col transparent">Selbstständiges Gehen
+      <div class="col transparent text">Selbstständiges Gehen
         <ion-icon name="information-circle" (click)="showInfoTwelve()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0.0" id="29" [checked]="noPatient.radios[29]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>geringe Unterstützung</ion-label>
           <ion-radio slot="start" value="0.1" id="30" [checked]="noPatient.radios[30]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>Supervision</ion-label>
           <ion-radio slot="start" value="0.2" id="31" [checked]="noPatient.radios[31]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>selbstständig<br/>mit Gehhilfe</ion-label>
           <ion-radio slot="start" value="1" id="32" [checked]="noPatient.radios[32]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col middleGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>selbstständig<br/>ohne Gehhilfe</ion-label>
           <ion-radio slot="start" value="2" id="33" [checked]="noPatient.radios[33]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -402,17 +402,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="penFromGround" (ionChange)="assessmentResponse.addOrChangeAnswer(12, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">13.</div>
-      <div class="col transparent">Stift vom Boden aufheben
+      <div class="col transparent text">Stift vom Boden aufheben
         <ion-icon name="information-circle" (click)="showInfoThirteen()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="34" [checked]="noPatient.radios[34]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="35" [checked]="noPatient.radios[35]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -425,17 +425,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="fourStepsBackward" (ionChange)="assessmentResponse.addOrChangeAnswer(13, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">14.</div>
-      <div class="col transparent">Vier Schritte rückwärts gehen
+      <div class="col transparent text">Vier Schritte rückwärts gehen
         <ion-icon name="information-circle" (click)="showInfoFourteen()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="36" [checked]="noPatient.radios[36]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="37" [checked]="noPatient.radios[37]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
@@ -448,17 +448,17 @@
   <ion-list class="paddingLeft" radio-group [(ngModel)]="jump" (ionChange)="assessmentResponse.addOrChangeAnswer(14, $event, true)">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">15.</div>
-      <div class="col transparent">Springen
+      <div class="col transparent text">Springen
         <ion-icon name="information-circle" (click)="showInfoFiveteen()"></ion-icon>
       </div>
       <div class="col lightGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>nicht möglich</ion-label>
           <ion-radio slot="start" value="0" id="38" [checked]="noPatient.radios[38]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col normalGrey option">
-        <ion-item class="transparent">
+        <ion-item class="transparent buttonInnerRight">
           <ion-label>möglich</ion-label>
           <ion-radio slot="start" value="1" id="39" [checked]="noPatient.radios[39]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
         </ion-item>

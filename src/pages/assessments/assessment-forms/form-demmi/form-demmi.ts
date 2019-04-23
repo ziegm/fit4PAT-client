@@ -139,7 +139,7 @@ export class FormDemmiPage extends WorkflowPage {
       'nicht erforderlich.</li></ul><br/>' +
       '<b>Hinweise zur Durchführung:</b><br/>' +
       '<ul><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
-        'seine Medikamente eingenommen hat, wie z.B. eine halbe Stunde nach ' +
+        'seine Medikamente eingenommen hat, wie z. B. eine halbe Stunde nach ' +
         'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
         'Parkinson-Medikamenten.</li><br/>' +
       '<li>Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
@@ -151,13 +151,13 @@ export class FormDemmiPage extends WorkflowPage {
       '<li>Die Bewertung findet anhand des ersten Testversuchs statt.</li><br/>' +
       '<li>Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
         'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.</li><br/>' +
-      '<li>Der Untersucher kümmert sich um medizinischen Apparaturen (wie z.B. ' +
+      '<li>Der Untersucher kümmert sich um medizinische Apparaturen (wie z. B. ' +
         'mobile Sauerstoffversorgung, Drainagen). Benötigt der Patient ' +
         'geringfügige Hilfestellung um die Aufgaben durchzuführen, ist eine weitere ' +
         'Person erforderlich, um bei den Apparaturen behilflich zu sein.</li><br/>' +
       '<li>Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
         'Aufgabenstellung benötigen, sollten nach der Hälfte der Aufgaben eine ' +
-        '10minütige Pause einlegen, d.h. nachdem sie den Transfer vom Stuhl ' +
+        '10-minütige Pause einlegen, d. h., nachdem sie den Transfer vom Stuhl ' +
         'abgeschlossen haben.</li><br/>' +
       '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
         'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
@@ -200,8 +200,8 @@ export class FormDemmiPage extends WorkflowPage {
       cssClass: 'materialDemmi',
       subTitle: 'de Morton Mobility Index',
       message: '<ul><li>Spitalbett/Liege</li><br/>' +
-      '<li>Stuhl mit Armlehnen (Sitzhöhe 45cm)</li><br/>' +
-        '<li>Abgemessene Gehstecke (50m)</li><br/>' +
+      '<li>Stuhl mit Armlehnen (Sitzhöhe 45 cm)</li><br/>' +
+        '<li>Abgemessene Gehstecke (50 m)</li><br/>' +
         '<li>Stift</li></ul>',
       buttons: [
         {
@@ -222,8 +222,8 @@ export class FormDemmiPage extends WorkflowPage {
       cssClass: 'infoIconDemmi',
       message: 'Die Höhe des Bettes sollte individuell auf den Patienten ' +
       'abgestimmt sein. Ein normiertes Spitalbett oder eine Liege sollte ' +
-      'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel, wie ' +
-      'z.B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
+      'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel wie ' +
+      'z. B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
       'Aufstehhilfe benutzen. Zusätzliche Kissen können für Patienten ' +
       'bereitgestellt werden, die nicht in der Lage sind, flach auf dem Rücken zu ' +
       'liegen.',
@@ -302,7 +302,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Transfer vom Stuhl',
       cssClass: 'infoIconDemmi',
       message: 'Es sollte ein standardisierter, stabiler Stuhl mit einer ' +
-      'Sitzhöhe von 45 cm und Armlehnen zum Einsatz kommen.',
+      'Sitzhöhe von 45 cm und Armlehnen verwendet werden.',
       buttons: [
         {
           text: 'Ok',
@@ -321,7 +321,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: '4. Sitzen im Stuhl ohne Unterstützung',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, auf einem Stuhl 10 Sekunden frei zu sitzen, '+
-      'ohne die Armlehnen und die Rückenlehne zu berühren, zusammen zu sacken oder zu '+
+      'ohne die Armlehnen und die Rückenlehne zu berühren, zusammenzusacken oder zu '+
       'schwanken. Füsse und Knie hält der Patient dabei geschlossen, die Füsse '+
       'berühren den Boden.',
       buttons: [
@@ -401,7 +401,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '7. Ohne Unterstützung stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
       'frei zu stehen.',
       buttons: [
         {
@@ -420,7 +420,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '8. Stehen mit geschlossenen Füssen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung '+
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung '+
       'und mit geschlossenen Füssen frei zu stehen.',
       buttons: [
         {
@@ -439,7 +439,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '9. Auf den Fussspitzen stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
       'auf den Zehenspitzen zu stehen.',
       buttons: [
         {
@@ -458,7 +458,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '10. Im Tandemstand mit geschlossenen Augen stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert die Ferse eines Fusses direkt vor den anderen ' +
+      message: 'Der Patient wird aufgefordert, die Ferse eines Fusses direkt vor den anderen ' +
       'Fuss zu stellen und mit geschlossenen Augen 10 Sekunden ohne jegliche ' +
       'Hilfestellung stehen zu bleiben.',
       buttons: [
@@ -496,14 +496,14 @@ export class FormDemmiPage extends WorkflowPage {
 
   showInfoEleven(){
     let alert = this.alertCtrl.create({
-      title: '11. Wegstrecke +/- Gehhilfe',
+      title: '11. Wegstrecke +/- Hilfsmittel',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert wenn nötig mit Gehhilfe so weit wie ' +
+      message: 'Der Patient wird aufgefordert, wenn nötig mit Hilfsmittel so weit wie ' +
       'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
-      'sich auszuruhen. Der Patient soll die Gehhilfe benutzen, die für ihn am ' +
-      'besten geeignet ist. Stehen zwei Gehhilfen zur Verfügung, sollte diejenige ' +
-      'Gehhilfe verwendet werden, die das höchste Mass an Selbstständigkeit ' +
-      'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 Meter zurückgelegt hat.',
+      'sich auszuruhen. Der Patient soll das Hilfsmittel benutzen, das für ihn am ' +
+      'besten geeignet ist. Stehen zwei Hilfsmittel zur Verfügung, sollte dasjenige ' +
+      'Hilfsmittel verwendet werden, das das höchste Mass an Selbstständigkeit ' +
+      'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 m zurückgelegt hat.',
       buttons: [
         {
           text: 'Ok',
@@ -582,7 +582,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '14. Vier Schritte rückwärts gehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 4 Schritte rückwärts gehen, ohne dabei das ' +
+      message: 'Der Patient wird aufgefordert, 4 Schritte rückwärtsgehen, ohne dabei das ' +
       'Gleichgewicht zu verlieren.',
       buttons: [
         {
