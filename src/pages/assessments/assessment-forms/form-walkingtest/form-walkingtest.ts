@@ -98,7 +98,7 @@ export class FormWalkingtestPage extends WorkflowPage {
       });
     } else if (this.missingFields()) {
       let alert = this.alertCtrl.create({
-        title: 'Hinweis1',
+        title: 'Hinweis',
         message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
         buttons: ['OK']
       });
