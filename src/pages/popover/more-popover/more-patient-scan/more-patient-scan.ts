@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {PopoverController} from 'ionic-angular';
+import {PopoverController, ViewController} from 'ionic-angular';
 
 @Component({
   selector: 'page-more-patient-scan',
@@ -7,6 +7,11 @@ import {PopoverController} from 'ionic-angular';
 })
 export class MorePatientScanPage {
 
-  constructor(private popoverCtrl: PopoverController) {
+  constructor(private popoverCtrl: PopoverController, private viewCtrl: ViewController) {
   }
+
+  private closePopover(){
+    this.viewCtrl.dismiss();
+  }
+
 }
