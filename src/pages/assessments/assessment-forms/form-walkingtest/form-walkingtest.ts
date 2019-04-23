@@ -232,7 +232,7 @@ export class FormWalkingtestPage extends WorkflowPage {
         '<li>Durchschnittswerte Männer: 1,37 m/s</li></ul></li></br>' +
         '<li>Hemiparese nach 6 Monaten: 0,25 m/s</li></br>' +
         '<li>Erforderlich für selbstständiges Gehen ausserhalb des Hauses: 0,8 m/s</li></br>' +
-        '<li>Mobilität in urbanen Umgebungen erfordert eine Geschwindigkeit > 0,79 m/s</li></ul>',
+        '<li>Erforderlich für Mobilität in urbaner Umgebung: > 0,79 m/s</li></ul>',
       buttons: [
         {
           text: 'Ok',

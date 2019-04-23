@@ -378,11 +378,11 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: 'Statisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient sollte, wenn möglich, keine Schuhe tragen und ' +
+      message: 'Der Patient sollte wenn möglich keine Schuhe tragen und ' +
       'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
       'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
-      'Seite der Patienten das erhöhte Bett und an der anderen Seite der ' +
-      'Untersucher steht. Sollte ein Patient während der Aufgabe wanken oder ' +
+      'Seite des Patienten das erhöhte Bett und an der anderen Seite der ' +
+      'Untersucher steht. Sollte der Patient während der Aufgabe wanken oder ' +
       'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
@@ -401,7 +401,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '7. Ohne Unterstützung stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung ' +
       'frei zu stehen.',
       buttons: [
         {
@@ -420,7 +420,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '8. Stehen mit geschlossenen Füssen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung '+
+      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung '+
       'und mit geschlossenen Füssen frei zu stehen.',
       buttons: [
         {
@@ -439,7 +439,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '9. Auf den Fussspitzen stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
+      message: 'Der Patient wird aufgefordert 10 Sekunden lang ohne jegliche Hilfestellung ' +
       'auf den Zehenspitzen zu stehen.',
       buttons: [
         {
@@ -458,7 +458,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '10. Im Tandemstand mit geschlossenen Augen stehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, die Ferse eines Fusses direkt vor den anderen ' +
+      message: 'Der Patient wird aufgefordert die Ferse eines Fusses direkt vor den anderen ' +
       'Fuss zu stellen und mit geschlossenen Augen 10 Sekunden ohne jegliche ' +
       'Hilfestellung stehen zu bleiben.',
       buttons: [
@@ -479,7 +479,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Gehen',
       cssClass: 'infoIconDemmi',
       message: 'Zur Testung des Gangbildes dürfen geeignete Schuhe getragen ' +
-      'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird.' +
+      'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird. ' +
       'Die Art des Schuhwerks kann in den Bemerkungen eingetragen werden.',
       buttons: [
         {
@@ -498,10 +498,10 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '11. Wegstrecke +/- Gehhilfe',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, wenn nötig mit der Gehhilfe, so weit wie ' +
+      message: 'Der Patient wird aufgefordert wenn nötig mit Gehhilfe so weit wie ' +
       'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
       'sich auszuruhen. Der Patient soll die Gehhilfe benutzen, die für ihn am ' +
-      'besten geeignet ist. Stehen zwei Gehhilfen zur Verfügung, sollte die ' +
+      'besten geeignet ist. Stehen zwei Gehhilfen zur Verfügung, sollte diejenige ' +
       'Gehhilfe verwendet werden, die das höchste Mass an Selbstständigkeit ' +
       'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 Meter zurückgelegt hat.',
       buttons: [
