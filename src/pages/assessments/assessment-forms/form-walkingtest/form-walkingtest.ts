@@ -228,8 +228,8 @@ export class FormWalkingtestPage extends WorkflowPage {
       cssClass: 'normwerteTWT',
       subTitle: 'Timed Walking Test',
       message: '<ul><li>Durchschnittliche Ganggeschwindigkeit gesunder Erwachsener: 1,3 m/s</br></br>' +
-        '<ul><li>Durchschnittswerte Frauen: 1,23 m/s</li></br>' +
-        '<li>Durchschnittswerte Männer: 1,37 m/s</li></ul></li></br>' +
+        '<ul><li>Durchschnittswert Frauen: 1,23 m/s</li></br>' +
+        '<li>Durchschnittswert Männer: 1,37 m/s</li></ul></li></br>' +
         '<li>Hemiparese nach 6 Monaten: 0,25 m/s</li></br>' +
         '<li>Erforderlich für selbstständiges Gehen ausserhalb des Hauses: 0,8 m/s</li></br>' +
         '<li>Erforderlich für Mobilität in urbaner Umgebung: > 0,79 m/s</li></ul>',
