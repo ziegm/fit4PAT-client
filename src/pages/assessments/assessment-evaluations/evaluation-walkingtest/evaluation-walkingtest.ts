@@ -121,8 +121,8 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
       message:
         '<ul><li><b>Durchschnittswert:</b> ' + WalkingtestResult.calcAverageRounded(response) + " Sekunden" + '</li></br>' +
         '<li><b>Ganggeschwindigkeit:</b> ' + WalkingtestResult.calcSpeed(response) + " Meter/Sekunde" + '</li></br>' +
-        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + " Sekunden" + '</li></br>' +
-        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + " Sekunden" + '</li></br>' +
+        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + " Sekunden" + '</li>' +
+        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + " Sekunden" + '</li>' +
         '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + " Sekunden" + '</li></br>' +
         '<li><b>Hilfsmittel:</b> ' + response.item[3].answer[0].valueString + '</li></br>' +
         '<li><b>Bemerkungen:</b> ' + response.item[4].answer[0].valueString + '</li></ul>',

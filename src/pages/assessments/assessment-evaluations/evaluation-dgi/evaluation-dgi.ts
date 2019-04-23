@@ -121,13 +121,13 @@ export class EvaluationDgiPage extends WorkflowPage {
       subTitle: 'Dynamic Gait Index',
       message:
         '<ul><li><b>Erreichte Punkte:</b> ' + this.calcGraphValue(response) + "/24 Punkten" + '</li></br>' +
-        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>3. Aufgabe: ' + response.item[2].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>6. Aufgabe: ' + response.item[5].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
+        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>3. Aufgabe: ' + response.item[2].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>6. Aufgabe: ' + response.item[5].answer[0].valueInteger + " Punkt(e)" + '</li>' +
+        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger + " Punkt(e)" + '</li>' +
         '<li>8. Aufgabe: ' + response.item[7].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
         '<li><b>Hilfsmittel:</b> ' + response.item[8].answer[0].valueString + '</li></br>' +
         '<li><b>Bemerkungen:</b> ' + response.item[9].answer[0].valueString + '</li></ul>',
