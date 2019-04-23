@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {AlertController} from "ionic-angular";
+import {Alert, AlertController} from "ionic-angular";
 import Patient = fhir.Patient;
 
 @Injectable()
 export class NoPatientErrorProvider {
   private _radios: boolean[] = [];
+  private alert: Alert;
 
   get radios(): boolean[] {
     return this._radios;
@@ -25,15 +26,22 @@ export class NoPatientErrorProvider {
       this._radios[event.currentTarget.id] = false;
     }
 
-    this.showPopup();
     return false;
   }
 
-  private showPopup(): void {
-    this.alertCtrl.create({
-      title: 'Hinweis',
-      message: 'Bitte zuerst einen Patienten hinzufügen.',
-      buttons: ['OK']
-    }).present();
+  public showPopup(): void {
+    if (!this.alert) {
+      this.alert = this.alertCtrl.create({
+        title: 'Hinweis',
+        message: 'Bitte zuerst einen Patienten hinzufügen.',
+        buttons: ['OK']
+      });
+    }
+
+    this.alert.onDidDismiss(() => {
+      this.alert = null;
+    });
+
+    this.alert.present();
   }
 }

@@ -80,7 +80,16 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private saveAndNavToEvaluationDgi() {
-    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+    if (!this.noPatient.hasPatient(this.patient)) {
+      this.noPatient.showPopup();
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        title: 'Hinweis',
+        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
+        buttons: ['OK']
+      });
+      alert.present();
+    } else {
       this.saveButtonDisabled = true;
 
       this.loading = this.loadingCtrl.create({
@@ -95,13 +104,6 @@ export class FormDgiPage extends WorkflowPage {
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDgi();
       });
-    } else if (this.missingFields()) {
-      let alert = this.alertCtrl.create({
-        title: 'Hinweis',
-        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
-        buttons: ['OK']
-      });
-      alert.present();
     }
   }
 

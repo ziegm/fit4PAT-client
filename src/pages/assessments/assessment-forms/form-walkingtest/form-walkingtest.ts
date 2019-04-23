@@ -81,7 +81,16 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   private saveAndNavToEvaluationWalkingtest() {
-    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+    if (!this.noPatient.hasPatient(this.patient)) {
+      this.noPatient.showPopup();
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        title: 'Hinweis',
+        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
+        buttons: ['OK']
+      });
+      alert.present();
+    } else {
       this.saveButtonDisabled = true;
 
       this.loading = this.loadingCtrl.create({
@@ -96,13 +105,6 @@ export class FormWalkingtestPage extends WorkflowPage {
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationWalkingtest();
       });
-    } else if (this.missingFields()) {
-      let alert = this.alertCtrl.create({
-        title: 'Hinweis',
-        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
-        buttons: ['OK']
-      });
-      alert.present();
     }
   }
 

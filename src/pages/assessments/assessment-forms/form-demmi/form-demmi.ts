@@ -20,7 +20,7 @@ import Bundle = fhir.Bundle;
   templateUrl: 'form-demmi.html',
 })
 export class FormDemmiPage extends WorkflowPage {
-  private rootNav:any;
+  private rootNav: any;
   private patient: Patient;
   private isSearchbarVisible = false;
   private assessmentResponse: AssessmentResponse = new DemmiResponse();
@@ -67,19 +67,27 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
-  private navToAssessmentTab(){
+  private navToAssessmentTab() {
     this.rootNav.push(MyApp, this.workflowParameters);
   }
 
   private navToEvaluationDemmi() {
     if (this.noPatient.hasPatient(this.patient)) {
-      this.workflowParameters.assessmentResponse = this.assessmentResponse;
       this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
     }
   }
 
   private saveAndNavToEvaluationDemmi() {
-    if (this.noPatient.hasPatient(this.patient) && !this.missingFields()) {
+    if (!this.noPatient.hasPatient(this.patient)) {
+      this.noPatient.showPopup();
+    } else if (this.missingFields()) {
+      let alert = this.alertCtrl.create({
+        title: 'Hinweis',
+        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
+        buttons: ['OK']
+      });
+      alert.present();
+    } else {
       this.saveButtonDisabled = true;
 
       this.loading = this.loadingCtrl.create({
@@ -91,15 +99,9 @@ export class FormDemmiPage extends WorkflowPage {
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
         this.loading.dismiss();
         this.assessmentResponse = (data as DemmiResponse);
+        this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDemmi();
       });
-    } else if (this.missingFields()) {
-      let alert = this.alertCtrl.create({
-        title: 'Hinweis',
-        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
-        buttons: ['OK']
-      });
-      alert.present();
     }
   }
 
@@ -111,7 +113,7 @@ export class FormDemmiPage extends WorkflowPage {
    * @param radio   True if the underlying control delivers numeric values.
    */
   private addOrChangeAnswer(index: number, event: any, numeric: boolean = false) {
-    if(this.assessmentResponse.item[index] === undefined) {
+    if (this.assessmentResponse.item[index] === undefined) {
       this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
     }
 
@@ -131,35 +133,35 @@ export class FormDemmiPage extends WorkflowPage {
       cssClass: 'instructionDemmi',
       subTitle: 'de Morton Mobility Index',
       message: '<b>Hinweise zur Hilfestellung:</b><br/>' +
-      '<ul><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
+        '<ul><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
         'in erster Linie, um Bewegungen zu führen.</li><br/>' +
-      '<li>Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
-      'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.</li><br/>' +
-      '<li>Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
-      'nicht erforderlich.</li></ul><br/>' +
-      '<b>Hinweise zur Durchführung:</b><br/>' +
-      '<ul><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
+        '<li>Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
+        'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.</li><br/>' +
+        '<li>Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
+        'nicht erforderlich.</li></ul><br/>' +
+        '<b>Hinweise zur Durchführung:</b><br/>' +
+        '<ul><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
         'seine Medikamente eingenommen hat, wie z. B. eine halbe Stunde nach ' +
         'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
         'Parkinson-Medikamenten.</li><br/>' +
-      '<li>Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
+        '<li>Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
         'Bei sehr belastbarkeitsgeminderten Patienten, die im Stuhl angetroffen werden, ' +
         'können die Tests aus dem Abschnitt „Stuhl“ vorgezogen werden.</li><br/>' +
-      '<li>Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.</li><br/>' +
-      '<li>Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
+        '<li>Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.</li><br/>' +
+        '<li>Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
         'bzgl. ihrer Leistung bekommen.</li><br/>' +
-      '<li>Die Bewertung findet anhand des ersten Testversuchs statt.</li><br/>' +
-      '<li>Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
+        '<li>Die Bewertung findet anhand des ersten Testversuchs statt.</li><br/>' +
+        '<li>Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
         'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.</li><br/>' +
-      '<li>Der Untersucher kümmert sich um medizinische Apparaturen (wie z. B. ' +
+        '<li>Der Untersucher kümmert sich um medizinische Apparaturen (wie z. B. ' +
         'mobile Sauerstoffversorgung, Drainagen). Benötigt der Patient ' +
         'geringfügige Hilfestellung um die Aufgaben durchzuführen, ist eine weitere ' +
         'Person erforderlich, um bei den Apparaturen behilflich zu sein.</li><br/>' +
-      '<li>Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
+        '<li>Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
         'Aufgabenstellung benötigen, sollten nach der Hälfte der Aufgaben eine ' +
         '10-minütige Pause einlegen, d. h., nachdem sie den Transfer vom Stuhl ' +
         'abgeschlossen haben.</li><br/>' +
-      '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
+        '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
         'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
         '„Stuhl“ vorgezogen werden.</li></ul>',
       buttons: [
@@ -180,7 +182,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Normwerte',
       cssClass: 'normwerteDemmi',
       subTitle: 'de Morton Mobility Index',
-      message:'<img src="./assets/imgs/demmi_normwerte_V2.png"/>',
+      message: '<img src="./assets/imgs/demmi_normwerte_V2.png"/>',
       buttons: [
         {
           text: 'Ok',
@@ -200,7 +202,7 @@ export class FormDemmiPage extends WorkflowPage {
       cssClass: 'materialDemmi',
       subTitle: 'de Morton Mobility Index',
       message: '<ul><li>Spitalbett/Liege</li><br/>' +
-      '<li>Stuhl mit Armlehnen (Sitzhöhe 45 cm)</li><br/>' +
+        '<li>Stuhl mit Armlehnen (Sitzhöhe 45 cm)</li><br/>' +
         '<li>Abgemessene Gehstecke (50 m)</li><br/>' +
         '<li>Stift</li></ul>',
       buttons: [
@@ -216,17 +218,17 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoBed(){
+  showInfoBed() {
     let alert = this.alertCtrl.create({
       title: 'Transfer im Bett',
       cssClass: 'infoIconDemmi',
       message: 'Die Höhe des Bettes sollte individuell auf den Patienten ' +
-      'abgestimmt sein. Ein normiertes Spitalbett oder eine Liege sollte ' +
-      'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel wie ' +
-      'z. B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
-      'Aufstehhilfe benutzen. Zusätzliche Kissen können für Patienten ' +
-      'bereitgestellt werden, die nicht in der Lage sind, flach auf dem Rücken zu ' +
-      'liegen.',
+        'abgestimmt sein. Ein normiertes Spitalbett oder eine Liege sollte ' +
+        'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel wie ' +
+        'z. B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
+        'Aufstehhilfe benutzen. Zusätzliche Kissen können für Patienten ' +
+        'bereitgestellt werden, die nicht in der Lage sind, flach auf dem Rücken zu ' +
+        'liegen.',
       buttons: [
         {
           text: 'Ok',
@@ -240,12 +242,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoOne(){
+  showInfoOne() {
     let alert = this.alertCtrl.create({
       title: '1. Brücke',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient liegt auf dem Rücken und wird '+
-      'aufgefordert, die Beine anzuwinkeln und das Gesäss vom Bett abzuheben.',
+      message: 'Der Patient liegt auf dem Rücken und wird ' +
+        'aufgefordert, die Beine anzuwinkeln und das Gesäss vom Bett abzuheben.',
       buttons: [
         {
           text: 'Ok',
@@ -259,12 +261,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTwo(){
+  showInfoTwo() {
     let alert = this.alertCtrl.create({
       title: '2. Auf die Seite rollen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich ohne '+
-      'Hilfestellung auf eine Seite zu rollen.',
+      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich ohne ' +
+        'Hilfestellung auf eine Seite zu rollen.',
       buttons: [
         {
           text: 'Ok',
@@ -278,12 +280,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoThree(){
+  showInfoThree() {
     let alert = this.alertCtrl.create({
       title: '3. Vom Liegen zum Sitzen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich auf die '+
-      'Bett-/Liegekante zu setzen.',
+      message: 'Der Patient liegt auf dem Rücken und wird aufgefordert, sich auf die ' +
+        'Bett-/Liegekante zu setzen.',
       buttons: [
         {
           text: 'Ok',
@@ -302,7 +304,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Transfer vom Stuhl',
       cssClass: 'infoIconDemmi',
       message: 'Es sollte ein standardisierter, stabiler Stuhl mit einer ' +
-      'Sitzhöhe von 45 cm und Armlehnen verwendet werden.',
+        'Sitzhöhe von 45 cm und Armlehnen verwendet werden.',
       buttons: [
         {
           text: 'Ok',
@@ -316,14 +318,14 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFour(){
+  showInfoFour() {
     let alert = this.alertCtrl.create({
       title: '4. Sitzen im Stuhl ohne Unterstützung',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, auf einem Stuhl 10 Sekunden frei zu sitzen, '+
-      'ohne die Armlehnen und die Rückenlehne zu berühren, zusammenzusacken oder zu '+
-      'schwanken. Füsse und Knie hält der Patient dabei geschlossen, die Füsse '+
-      'berühren den Boden.',
+      message: 'Der Patient wird aufgefordert, auf einem Stuhl 10 Sekunden frei zu sitzen, ' +
+        'ohne die Armlehnen und die Rückenlehne zu berühren, zusammenzusacken oder zu ' +
+        'schwanken. Füsse und Knie hält der Patient dabei geschlossen, die Füsse ' +
+        'berühren den Boden.',
       buttons: [
         {
           text: 'Ok',
@@ -337,7 +339,7 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFive(){
+  showInfoFive() {
     let alert = this.alertCtrl.create({
       title: '5. Aus dem Stuhl aufstehen',
       cssClass: 'infoIconDemmi',
@@ -355,12 +357,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSix(){
+  showInfoSix() {
     let alert = this.alertCtrl.create({
       title: '6. Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, mit vor der Brust verschränkten Armen vom ' +
-      'Stuhl aufzustehen.',
+        'Stuhl aufzustehen.',
       buttons: [
         {
           text: 'Ok',
@@ -374,16 +376,16 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoStatic(){
+  showInfoStatic() {
     let alert = this.alertCtrl.create({
       title: 'Statisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient sollte wenn möglich keine Schuhe tragen und ' +
-      'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
-      'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
-      'Seite des Patienten das erhöhte Bett und an der anderen Seite der ' +
-      'Untersucher steht. Sollte der Patient während der Aufgabe wanken oder ' +
-      'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
+        'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
+        'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
+        'Seite des Patienten das erhöhte Bett und an der anderen Seite der ' +
+        'Untersucher steht. Sollte der Patient während der Aufgabe wanken oder ' +
+        'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
           text: 'Ok',
@@ -397,12 +399,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSeven(){
+  showInfoSeven() {
     let alert = this.alertCtrl.create({
       title: '7. Ohne Unterstützung stehen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
-      'frei zu stehen.',
+        'frei zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -416,12 +418,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoEight(){
+  showInfoEight() {
     let alert = this.alertCtrl.create({
       title: '8. Stehen mit geschlossenen Füssen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung '+
-      'und mit geschlossenen Füssen frei zu stehen.',
+      message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
+        'und mit geschlossenen Füssen frei zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -435,12 +437,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoNine(){
+  showInfoNine() {
     let alert = this.alertCtrl.create({
       title: '9. Auf den Fussspitzen stehen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, 10 Sekunden lang ohne jegliche Hilfestellung ' +
-      'auf den Zehenspitzen zu stehen.',
+        'auf den Zehenspitzen zu stehen.',
       buttons: [
         {
           text: 'Ok',
@@ -454,13 +456,13 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTen(){
+  showInfoTen() {
     let alert = this.alertCtrl.create({
       title: '10. Im Tandemstand mit geschlossenen Augen stehen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, die Ferse eines Fusses direkt vor den anderen ' +
-      'Fuss zu stellen und mit geschlossenen Augen 10 Sekunden ohne jegliche ' +
-      'Hilfestellung stehen zu bleiben.',
+        'Fuss zu stellen und mit geschlossenen Augen 10 Sekunden ohne jegliche ' +
+        'Hilfestellung stehen zu bleiben.',
       buttons: [
         {
           text: 'Ok',
@@ -474,13 +476,13 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoWalk(){
+  showInfoWalk() {
     let alert = this.alertCtrl.create({
       title: 'Gehen',
       cssClass: 'infoIconDemmi',
       message: 'Zur Testung des Gangbildes dürfen geeignete Schuhe getragen ' +
-      'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird. ' +
-      'Die Art des Schuhwerks kann in den Bemerkungen eingetragen werden.',
+        'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird. ' +
+        'Die Art des Schuhwerks kann in den Bemerkungen eingetragen werden.',
       buttons: [
         {
           text: 'Ok',
@@ -494,16 +496,16 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoEleven(){
+  showInfoEleven() {
     let alert = this.alertCtrl.create({
       title: '11. Wegstrecke +/- Hilfsmittel',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, wenn nötig mit Hilfsmittel so weit wie ' +
-      'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
-      'sich auszuruhen. Der Patient soll das Hilfsmittel benutzen, das für ihn am ' +
-      'besten geeignet ist. Stehen zwei Hilfsmittel zur Verfügung, sollte dasjenige ' +
-      'Hilfsmittel verwendet werden, das das höchste Mass an Selbstständigkeit ' +
-      'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 m zurückgelegt hat.',
+        'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
+        'sich auszuruhen. Der Patient soll das Hilfsmittel benutzen, das für ihn am ' +
+        'besten geeignet ist. Stehen zwei Hilfsmittel zur Verfügung, sollte dasjenige ' +
+        'Hilfsmittel verwendet werden, das das höchste Mass an Selbstständigkeit ' +
+        'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 m zurückgelegt hat.',
       buttons: [
         {
           text: 'Ok',
@@ -517,12 +519,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTwelve(){
+  showInfoTwelve() {
     let alert = this.alertCtrl.create({
       title: '12. Selbstständiges Gehen',
       cssClass: 'infoIconDemmi',
       message: 'Die Selbstständigkeit des Patienten wird über die gesamte zurückgelegte ' +
-      'Gehstrecke aus Aufgabe 11 bewertet.',
+        'Gehstrecke aus Aufgabe 11 bewertet.',
       buttons: [
         {
           text: 'Ok',
@@ -536,7 +538,7 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoDynamic(){
+  showInfoDynamic() {
     let alert = this.alertCtrl.create({
       title: 'Dynamisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
@@ -559,12 +561,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoThirteen(){
+  showInfoThirteen() {
     let alert = this.alertCtrl.create({
       title: '13. Stift vom Boden aufheben',
       cssClass: 'infoIconDemmi',
       message: 'Ein Stift wird 5 cm vor die Füsse des stehenden Patienten gelegt. Der Patient ' +
-      'wird aufgefordert, den Stift aufzuheben.',
+        'wird aufgefordert, den Stift aufzuheben.',
       buttons: [
         {
           text: 'Ok',
@@ -578,12 +580,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFourteen(){
+  showInfoFourteen() {
     let alert = this.alertCtrl.create({
       title: '14. Vier Schritte rückwärts gehen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, 4 Schritte rückwärtsgehen, ohne dabei das ' +
-      'Gleichgewicht zu verlieren.',
+        'Gleichgewicht zu verlieren.',
       buttons: [
         {
           text: 'Ok',
@@ -597,12 +599,12 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFiveteen(){
+  showInfoFiveteen() {
     let alert = this.alertCtrl.create({
       title: '15. Springen',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, mit beiden Beinen hochzuspringen, wobei ' +
-      'beide Füsse deutlich vom Boden abheben, ohne dabei das Gleichgewicht zu verlieren.',
+        'beide Füsse deutlich vom Boden abheben, ohne dabei das Gleichgewicht zu verlieren.',
       buttons: [
         {
           text: 'Ok',
@@ -638,7 +640,7 @@ export class FormDemmiPage extends WorkflowPage {
 
   private missingFields(): boolean {
     const required = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    for (let i = 0; i < this.assessmentResponse.item.length; i++){
+    for (let i = 0; i < this.assessmentResponse.item.length; i++) {
       let requiredIdx = required.find(idx => i === idx);
       if (requiredIdx !== undefined && isNaN(this.assessmentResponse.item[i].answer[0].valueInteger)) {
         return true;
