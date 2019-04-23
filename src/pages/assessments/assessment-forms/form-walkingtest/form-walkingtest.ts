@@ -98,7 +98,8 @@ export class FormWalkingtestPage extends WorkflowPage {
       });
     } else if (this.missingFields()) {
       let alert = this.alertCtrl.create({
-        message: 'Alle Felder ausser Hilfsmittel/Bemerkungen müssen ausgefüllt werden.',
+        title: 'Hinweis',
+        message: 'Alle Felder müssen ausgefüllt werden (ausser Hilfsmittel und Bemerkungen).',
         buttons: ['OK']
       });
       alert.present();
