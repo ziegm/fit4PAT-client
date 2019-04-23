@@ -154,20 +154,20 @@ export class EvaluationDemmiPage extends WorkflowPage {
       message:
         '<ul><li><b>Rohwert:</b> ' + DemmiResult.calcRawValue(response) + "/19 Punkten" + '</li></br>' +
         '<li><b>DEMMI Score:</b> ' + this.calcGraphValue(response) + "/100 Punkten" + '</li></br>' +
-        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>1. Aufgabe: ' + response.item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
+        '<li>2. Aufgabe: ' + response.item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
         '<li>3. Aufgabe: ' + response.item[2].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>4. Aufgabe: ' + response.item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
+        '<li>5. Aufgabe: ' + response.item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
         '<li>6. Aufgabe: ' + response.item[5].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>8. Aufgabe: ' + response.item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>9. Aufgabe: ' + response.item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>7. Aufgabe: ' + response.item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
+        '<li>8. Aufgabe: ' + response.item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
+        '<li>9. Aufgabe: ' + response.item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
         '<li>10. Aufgabe: ' + response.item[9].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>11. Aufgabe: ' + response.item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>11. Aufgabe: ' + response.item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
         '<li>12. Aufgabe: ' + response.item[11].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>13. Aufgabe: ' + response.item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li>14. Aufgabe: ' + response.item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>13. Aufgabe: ' + response.item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
+        '<li>14. Aufgabe: ' + response.item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
         '<li>15. Aufgabe: ' + response.item[14].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
         '<li><b>Hilfsmittel:</b> ' + response.item[15].answer[0].valueString + '</li></br>' +
         '<li><b>Bemerkungen:</b> ' + response.item[16].answer[0].valueString + '</li></ul>',
