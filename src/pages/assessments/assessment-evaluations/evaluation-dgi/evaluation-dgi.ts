@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, NavParams} from 'ionic-angular';
+import {AlertController, NavParams} from 'ionic-angular';
 import {PatientHelper} from "../../../../components/patient/patient-helper";
 import {Chart, ChartOptions, ChartPoint} from "chart.js";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
@@ -10,10 +10,10 @@ import {WorkflowParameters} from "../../../../workflow/workflow-parameters";
 import {AssessmentHelper} from "../../assessment-helper";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {GraphDataAssembler} from "../graph-data-assembler";
+import moment from "moment";
 import Patient = fhir.Patient;
 
 
-@IonicPage()
 @Component({
   selector: 'page-evaluation-dgi',
   templateUrl: 'evaluation-dgi.html',
@@ -180,7 +180,7 @@ export class EvaluationDgiPage extends WorkflowPage {
             align: 'top',
             // Value transformation for the label of the displayed point
             formatter: function(value, context) {
-              return value.y;
+              return value.y + " (" + moment(new Date(value.x)).format("DD.MM.YYYY") + ")";
             }
           }
         },

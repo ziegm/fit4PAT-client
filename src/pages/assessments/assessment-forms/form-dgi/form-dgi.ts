@@ -8,6 +8,7 @@ import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {MyApp} from "../../../../app/app.component";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
+import {LoseDataIfContinueProvider} from "../../../../providers/lose-data-if-continue/lose-data-if-continue";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
@@ -34,7 +35,7 @@ export class FormDgiPage extends WorkflowPage {
 
   constructor(private app: App, private alertCtrl: AlertController, navParams: NavParams,
               private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController, private loseData: LoseDataIfContinueProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -104,6 +105,14 @@ export class FormDgiPage extends WorkflowPage {
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDgi();
       });
+    }
+  }
+
+  private navToVerlauf() {
+    this.noPatient.handleMissingPatient(this.patient);
+
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.loseData.showPopup(() => this.rootNav.push(EvaluationDgiPage, this.workflowParameters));
     }
   }
 
@@ -377,6 +386,8 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 9) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
     } else if (this.noPatient.hasPatient(this.patient, event) && id === 9) {
@@ -387,6 +398,8 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {

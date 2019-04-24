@@ -13,7 +13,7 @@
   <!-- Four icons for additional information -->
   <ion-col class="information">
   <ion-item class="ionTop">
-    <button (click)="navToEvaluationDgi()" class="additional-information">
+    <button (click)="navToVerlauf()" class="additional-information">
       <ion-icon name="trending-up"></ion-icon>
       <span><br>Verlauf</span>
     </button>
@@ -53,22 +53,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="2" [checked]="noPatient.radios[2]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="2" [checked]="noPatient.radios[2]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="3" [checked]="noPatient.radios[3]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="3" [checked]="noPatient.radios[3]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -83,22 +83,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="5" [checked]="noPatient.radios[5]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="5" [checked]="noPatient.radios[5]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="6" [checked]="noPatient.radios[6]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="6" [checked]="noPatient.radios[6]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="7" [checked]="noPatient.radios[7]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="7" [checked]="noPatient.radios[7]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -113,22 +113,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="10" [checked]="noPatient.radios[10]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="10" [checked]="noPatient.radios[10]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="11" [checked]="noPatient.radios[11]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="11" [checked]="noPatient.radios[11]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -143,22 +143,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="12" [checked]="noPatient.radios[12]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="12" [checked]="noPatient.radios[12]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="13" [checked]="noPatient.radios[13]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="13" [checked]="noPatient.radios[13]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="14" [checked]="noPatient.radios[14]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="14" [checked]="noPatient.radios[14]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="15" [checked]="noPatient.radios[15]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="15" [checked]="noPatient.radios[15]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -173,22 +173,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="18" [checked]="noPatient.radios[18]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="18" [checked]="noPatient.radios[18]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="19" [checked]="noPatient.radios[19]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="19" [checked]="noPatient.radios[19]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -203,22 +203,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="22" [checked]="noPatient.radios[22]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="22" [checked]="noPatient.radios[22]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="23" [checked]="noPatient.radios[23]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="23" [checked]="noPatient.radios[23]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -233,22 +233,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="24" [checked]="noPatient.radios[24]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="24" [checked]="noPatient.radios[24]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="25" [checked]="noPatient.radios[25]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="25" [checked]="noPatient.radios[25]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="26" [checked]="noPatient.radios[26]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="26" [checked]="noPatient.radios[26]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="27" [checked]="noPatient.radios[27]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="27" [checked]="noPatient.radios[27]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -263,22 +263,22 @@
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="28" [checked]="noPatient.radios[28]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="28" [checked]="noPatient.radios[28]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="29" [checked]="noPatient.radios[29]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="29" [checked]="noPatient.radios[29]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="30" [checked]="noPatient.radios[30]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="30" [checked]="noPatient.radios[30]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="31" [checked]="noPatient.radios[31]" (click)="noPatient.hasPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="31" [checked]="noPatient.radios[31]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>

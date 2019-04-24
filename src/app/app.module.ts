@@ -58,8 +58,10 @@ import {MorePatientIpsPage} from "../pages/popover/more-popover/more-patient-ips
 import {MorePatientStationaryPage} from "../pages/popover/more-popover/more-patient-stationary/more-patient-stationary";
 import {MorePatientScanPage} from "../pages/popover/more-popover/more-patient-scan/more-patient-scan";
 import {SearchAssessmentComponent} from "../components/search-assessment/search-assessment";
-import { NoPatientErrorProvider } from '../providers/no-patient-error/no-patient-error';
-import { PatientToAssessmentNavProvider } from '../providers/patient-to-assessment-nav/patient-to-assessment-nav';
+import {NoPatientErrorProvider} from '../providers/no-patient-error/no-patient-error';
+import {PatientToAssessmentNavProvider} from '../providers/patient-to-assessment-nav/patient-to-assessment-nav';
+import {LoseDataIfContinueProvider} from "../providers/lose-data-if-continue/lose-data-if-continue";
+import {FabNavigationComponent} from "../components/fab-navigation/fab-navigation";
 
 
 // @ts-ignore
@@ -108,7 +110,8 @@ import { PatientToAssessmentNavProvider } from '../providers/patient-to-assessme
     MorePatientIpsPage,
     MorePatientStationaryPage,
     MorePatientScanPage,
-    SearchAssessmentComponent
+    SearchAssessmentComponent,
+    FabNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -168,7 +171,8 @@ import { PatientToAssessmentNavProvider } from '../providers/patient-to-assessme
     MenuNavigationProvider,
     AssessmentSearchProvider,
     NoPatientErrorProvider,
-    PatientToAssessmentNavProvider
+    PatientToAssessmentNavProvider,
+    LoseDataIfContinueProvider
   ]
 })
 

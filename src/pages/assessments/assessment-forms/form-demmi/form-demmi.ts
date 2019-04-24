@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, App, IonicPage, Loading, LoadingController, NavParams, Select} from 'ionic-angular';
+import {AlertController, App, Loading, LoadingController, NavParams, Select} from 'ionic-angular';
 import {EvaluationDemmiPage} from "../../assessment-evaluations/evaluation-demmi/evaluation-demmi";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {RestProvider} from "../../../../providers/rest/rest";
@@ -9,12 +9,12 @@ import {DemmiResponse} from "../../../../responses/assessment-type/demmi-respons
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {MyApp} from "../../../../app/app.component";
 import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
+import {LoseDataIfContinueProvider} from "../../../../providers/lose-data-if-continue/lose-data-if-continue";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
 
 
-@IonicPage()
 @Component({
   selector: 'page-form-demmi',
   templateUrl: 'form-demmi.html',
@@ -33,7 +33,7 @@ export class FormDemmiPage extends WorkflowPage {
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
               private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController, private loseData: LoseDataIfContinueProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -121,6 +121,14 @@ export class FormDemmiPage extends WorkflowPage {
       this.assessmentResponse.item[index].addAnswer(+event);
     } else {
       this.assessmentResponse.item[index].addAnswer(event);
+    }
+  }
+
+  private navToVerlauf() {
+    this.noPatient.handleMissingPatient(this.patient);
+
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.loseData.showPopup(() => this.rootNav.push(EvaluationDemmiPage, this.workflowParameters));
     }
   }
 
@@ -619,6 +627,8 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 16) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
     } else if (this.noPatient.hasPatient(this.patient, event) && id === 16) {
@@ -629,6 +639,8 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {

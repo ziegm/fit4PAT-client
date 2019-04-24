@@ -7,6 +7,7 @@ import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
+import {LoseDataIfContinueProvider} from "../../../../providers/lose-data-if-continue/lose-data-if-continue";
 import Patient = fhir.Patient;
 import Bundle = fhir.Bundle;
 import Practitioner = fhir.Practitioner;
@@ -40,7 +41,7 @@ export class FormWalkingtestPage extends WorkflowPage {
 
   constructor(navParams: NavParams, private alertCtrl: AlertController, app: App,
               private restProvider: RestProvider, private noPatient: NoPatientErrorProvider,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController, private loseData: LoseDataIfContinueProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
@@ -105,6 +106,14 @@ export class FormWalkingtestPage extends WorkflowPage {
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationWalkingtest();
       });
+    }
+  }
+
+  private navToVerlauf() {
+    this.noPatient.handleMissingPatient(this.patient);
+
+    if (this.noPatient.hasPatient(this.patient)) {
+      this.loseData.showPopup(() => this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters));
     }
   }
 
@@ -269,6 +278,8 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   private inputOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target && id !== 4) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value, true);
     } else if (this.noPatient.hasPatient(this.patient, event) && id === 4) {
@@ -285,6 +296,8 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   private aidOnPatient(id: number, event: any): void {
+    this.noPatient.handleMissingPatient(this.patient, event);
+
     if (this.noPatient.hasPatient(this.patient, event) && event.target) {
       this.assessmentResponse.addOrChangeAnswer(id, event.target.value);
     } else if (this.noPatient.hasPatient(this.patient, event) && typeof event === "string") {

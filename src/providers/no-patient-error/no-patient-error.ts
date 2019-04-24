@@ -29,6 +29,12 @@ export class NoPatientErrorProvider {
     return false;
   }
 
+  public handleMissingPatient(patient: Patient, event?) {
+    if (!this.hasPatient(patient, event)) {
+      this.showPopup();
+    }
+  }
+
   public showPopup(): void {
     if (!this.alert) {
       this.alert = this.alertCtrl.create({
