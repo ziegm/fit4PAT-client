@@ -28,17 +28,13 @@ export class PatientHelper {
       const options = { day: "2-digit", month: "2-digit", year: "numeric"}
       const birthDate = new Date(patient.birthDate).toLocaleDateString("de-CH", options);
       const caseId = patient.identifier.filter(identifier => identifier.type.text === "case-id")[0];
-      return gender + ", " + birthDate + " (" + this.calcAge(patient.birthDate) + "), " + caseId.value + " (Fall-ID)";
+      return gender + ", " + birthDate + " (" + this.patientAge(patient) + " Jahre), " + caseId.value + " (Fall-ID)";
     }
     return "";
   }
 
   private static room(room: fhir.Identifier): string {
     return room.value === undefined ? "" : room.value +": ";
-  }
-
-  private static calcAge(birthDate: string): string {
-    return moment(new Date(birthDate)).locale('de-ch').fromNow(true);
   }
 
   public static patientAge(patient: Patient): number {
