@@ -19,11 +19,6 @@
     <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
   </ion-col>
-   <!-- <ion-col class="information">
-      <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
-        <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
-      </ion-item>
-    </ion-col>-->
   </ion-row></ion-grid>
 
   <ion-grid>
@@ -64,13 +59,13 @@
   <div class="col">
     <div class="row">
       <ion-item class="infosTopBottom infoTop break item-text-wrap">
-        <ion-label class="score">Hilfsmittel:</ion-label>
+        <ion-label class="topText">Hilfsmittel:</ion-label>
         <ion-label class="infos">{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item class="infosTopBottom infoTop beforeChart">
-        <ion-label class="score">Bemerkungen:</ion-label>
+        <ion-label class="topText">Bemerkungen:</ion-label>
         <ion-label text-wrap class="infos">{{ getComments() }}</ion-label>
       </ion-item>
     </div>
@@ -371,7 +366,7 @@
   </ion-list>
 
   <!-- reference to MDC and MCID -->
-  <ion-label class="difference textSize infosTopBottom"><b>Beachte:</b>
+  <ion-label class="difference textSize infosTopBottom"><b>Veränderungssensitivität:</b>
     <ul>
       <li>Minimal Detectable Change (MDC) = 9/100 Punkten</li>
       <li>Minimal Clinically Important Difference (MCID) = 10/100 Punkte</li>

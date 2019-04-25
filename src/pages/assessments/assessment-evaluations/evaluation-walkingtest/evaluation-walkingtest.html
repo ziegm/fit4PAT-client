@@ -12,70 +12,76 @@
   <ion-label class="patient">
     <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
-  </ion-col>
-    <ion-col class="information">
-      <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
-        <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
-      </ion-item>
     </ion-col></ion-row></ion-grid>
 
-  <div class="col score">
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label>Datum der Durchführung:</ion-label>
-        <ion-label>{{ executeDate() }}</ion-label>
-      </ion-item>
-    </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="col score">
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label>Datum der Durchführung:</ion-label>
+              <ion-label>{{ executeDate() }}</ion-label>
+            </ion-item>
+          </div>
 
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop break">
+              <ion-label>1. Durchführung:</ion-label>
+              <ion-label>{{ firstTry() }} Sekunden</ion-label>
+            </ion-item>
+          </div>
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label>2. Durchführung:</ion-label>
+              <ion-label>{{ secondTry() }} Sekunden</ion-label>
+            </ion-item>
+          </div>
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label>3. Durchführung:</ion-label>
+              <ion-label>{{ thirdTry() }} Sekunden</ion-label>
+            </ion-item>
+          </div>
+        </div>
+
+        <div class="col score">
+        <div class="row">
+          <ion-item class="infosTopBottom infoTop break">
+            <ion-label class="bold">Durchschnittswert: </ion-label>
+            <ion-label class="bold">{{ calcAverageRounded() }} Sekunden</ion-label>
+          </ion-item>
+        </div>
+        </div>
+
+        <div class="col score">
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label class="bold">Ganggeschwindigkeit:</ion-label>
+              <ion-label class="bold">{{ calcSpeed() }} Meter/Sekunde</ion-label>
+            </ion-item>
+          </div>
+        </div>
+            </ion-col>
+            <ion-col class="information">
+              <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
+                <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
+              </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="col">
     <div class="row">
       <ion-item class="infosTopBottom infoTop break">
-        <ion-label>1. Durchführung:</ion-label>
-        <ion-label>{{ firstTry() }} Sekunden</ion-label>
-      </ion-item>
-    </div>
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label>2. Durchführung:</ion-label>
-        <ion-label>{{ secondTry() }} Sekunden</ion-label>
-      </ion-item>
-    </div>
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label>3. Durchführung:</ion-label>
-        <ion-label>{{ thirdTry() }} Sekunden</ion-label>
-      </ion-item>
-    </div>
-  </div>
-
-  <div class="col score">
-  <div class="row">
-    <ion-item class="infosTopBottom infoTop break">
-      <ion-label class="bold">Durchschnittswert: </ion-label>
-      <ion-label class="bold">{{ calcAverageRounded() }} Sekunden</ion-label>
-    </ion-item>
-  </div>
-  </div>
-
-  <div class="col score">
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label class="bold">Ganggeschwindigkeit:</ion-label>
-        <ion-label class="bold">{{ calcSpeed() }} Meter/Sekunde</ion-label>
-      </ion-item>
-    </div>
-  </div>
-
-  <div class="col score">
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop break">
-        <ion-label>Hilfsmittel:</ion-label>
-        <ion-label>{{ getAids() }}</ion-label>
+        <ion-label class="topText">Hilfsmittel:</ion-label>
+        <ion-label class="infos">{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
       <ion-item class="infosTopBottom infoTop beforeChart">
-        <ion-label>Bemerkungen:</ion-label>
-        <ion-label text-wrap>{{ getComments() }}</ion-label>
+        <ion-label class="topText">Bemerkungen:</ion-label>
+        <ion-label text-wrap class="infos">{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>
@@ -160,10 +166,8 @@
     </ion-label>
   </ion-list>
 
-  <ion-label class="textSize"><b>Beachte:</b> Angaben zu
-    <ul><li>Minimal Detectable Change (MDC)</li>
-      <li>Minimal Clinically Important Difference (MCID)</li></ul>
-    unter:
+  <ion-label class="textSize"><b>Veränderungssensitivität:</b> Angaben zu Minimal Detectable Change (MDC)
+      Minimal Clinically Important Difference (MCID) sind unter folgendem Link ersichtlich:
   <button class="link" (click)="openLink()">https://www.sralab.org/rehabilitation-measures/10-meter-walk-test</button>
   </ion-label>
 
