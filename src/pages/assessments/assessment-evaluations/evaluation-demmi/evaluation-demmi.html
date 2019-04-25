@@ -19,35 +19,47 @@
     <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
   </ion-label>
   </ion-col>
-    <ion-col class="information">
-      <ion-item><ion-icon class="iconButton" name="download" (click)="presentAlert()"></ion-icon>
-        <p class="labelButton" (click)="presentAlert()">PDF exportieren</p>
+   <!-- <ion-col class="information">
+      <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
+        <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
       </ion-item>
-    </ion-col></ion-row></ion-grid>
+    </ion-col>-->
+  </ion-row></ion-grid>
 
-  <div class="col">
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label class="score">Datum der Durchführung:</ion-label>
-        <ion-label class="nr">{{ executeDate() }}</ion-label>
-      </ion-item>
-    </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="col">
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label class="score">Datum der Durchführung:</ion-label>
+              <ion-label class="nr">{{ executeDate() }}</ion-label>
+            </ion-item>
+          </div>
 
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop break">
-        <ion-label class="bold score">Rohwert:</ion-label>
-        <ion-label class="bold value">{{ calcRawValue() }}</ion-label>
-        <ion-label class="bold nr">/19 Punkten</ion-label>
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop break">
+              <ion-label class="bold score">Rohwert:</ion-label>
+              <ion-label class="bold value">{{ calcRawValue() }}</ion-label>
+              <ion-label class="bold nr">/19 Punkten</ion-label>
+            </ion-item>
+          </div>
+          <div class="row">
+            <ion-item class="infosTopBottom infoTop">
+              <ion-label class="bold score">DEMMI Score:</ion-label>
+              <ion-label class="bold value">{{ translateDemmiScore() }}</ion-label>
+              <ion-label class="bold nr">/100 Punkten</ion-label>
+            </ion-item>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col class="information">
+      <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
+        <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
       </ion-item>
-    </div>
-    <div class="row">
-      <ion-item class="infosTopBottom infoTop">
-        <ion-label class="bold score">DEMMI Score:</ion-label>
-        <ion-label class="bold value">{{ translateDemmiScore() }}</ion-label>
-        <ion-label class="bold nr">/100 Punkten</ion-label>
-      </ion-item>
-    </div>
-  </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <div class="col">
     <div class="row">

@@ -26,20 +26,7 @@ page-form-walkingtest {
   h1{
     letter-spacing: 0.035em
   }
- /**
-  .label{
-    max-width: 25%;
-  }
-  .input-cover{
-    max-width: 25%;
-  }
-  .text-input-md{
-    max-width: 25%;
-  }
-  .ion-input, ion-textarea{
-    max-width: 25%;
-  }
-  */
+
   .stopwatch{
     min-height: 10vh;
     max-width: 50%;
@@ -106,8 +93,15 @@ page-form-walkingtest {
     align-items: end;
   }
 
+  //Dropdown & Bemerkungen
   .aid{
-    max-width: 50%;
+    padding-top: 50px;
+  }
+  .InputBottom{
+    max-width: 15%;
+  }
+  .dropdownLabel{
+    max-width: 30%;
   }
 
   //text input without margin

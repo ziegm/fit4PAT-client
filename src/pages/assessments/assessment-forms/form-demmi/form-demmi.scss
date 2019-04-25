@@ -79,9 +79,16 @@ page-form-demmi {
     max-width: 22%;
     text-align: center;
   }
+
+  //Dropdown & Bemerkungen
   .aid{
-    max-width: 50%;
     padding-top: 50px;
+  }
+  .labelForInput{
+    max-width: 15%;
+  }
+  .dropdownLabel{
+    max-width: 30%;
   }
 
   //text input without margin

@@ -25,11 +25,6 @@ ion-label, ion-item, span, button, ul, li,
 .ion-md-clipboard:before{
   padding: 0;
 }
-//the logo in the navbar
-.imgTitle {
-  width: 31px;
-  height: 31px;
-}
 
 .labelTitle {
   padding-left: 0;
@@ -42,12 +37,18 @@ ion-label, ion-item, span, button, ul, li,
 }
 
 .ion-md-menu:before,
-.ion-md-search:before,
 .ion-md-more:before {
   width: 20px;
   height: 20px;
   padding: 0 12px;
   zoom: 1.5;
+}
+.ion-md-search:before,
+.ion-md-home:before{
+  width: 20px;
+  height: 20px;
+  padding: 0 12px;
+  zoom: 1.3;
 }
 
 //layout of the menu

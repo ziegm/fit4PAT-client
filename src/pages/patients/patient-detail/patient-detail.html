@@ -7,6 +7,8 @@
 </ion-header>
 
 <ion-content padding>
+  <fab-navigation [workflowParameters]="workflowParameters"></fab-navigation>
+
  <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
   <ion-list>
     <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients heightList" (click)="navToEvaluation(assessment)">
@@ -15,6 +17,4 @@
     </ion-item>
     <ion-item *ngIf="responses.length === 0">{{noAssessmentMessage}}</ion-item>
   </ion-list>
-
-  <fab-navigation [workflowParameters]="workflowParameters"></fab-navigation>
 </ion-content>
