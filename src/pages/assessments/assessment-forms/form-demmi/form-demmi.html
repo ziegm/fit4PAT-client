@@ -471,7 +471,7 @@
   <ion-list>
     <ion-item class="aid">
       <ion-label class="labelForInput">Hilfsmittel</ion-label>
-      <ion-select #aidSelect value="aid" okText="Okay" cancelText="Abbrechen" (cancel)="onCancel()" class="dropdownLabel"
+      <ion-select #aidSelect value="aid" okText="OK" cancelText="Abbrechen" (cancel)="onCancel()" class="dropdownLabel"
                   (ionChange)="aidOnPatient(15, $event)" [(ngModel)]="aid">
         <ion-option value="keine" [selected]="true">keine</ion-option>
         <ion-option value="1 Gehstock">1 Gehstock</ion-option>
