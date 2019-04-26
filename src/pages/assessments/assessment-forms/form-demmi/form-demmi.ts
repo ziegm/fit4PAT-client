@@ -143,34 +143,33 @@ export class FormDemmiPage extends WorkflowPage {
       message: '<b>Hinweise zur Hilfestellung:</b><br/>' +
         '<ul><li>Geringfügige Hilfestellung = leichte jedoch minimale Unterstützung, ' +
         'in erster Linie, um Bewegungen zu führen.</li><br/>' +
-        '<li>Supervision = Beobachtung der Übungen durch den Untersucher, ohne dabei ' +
+        '<li>Supervision = Beobachtung der Aufgaben durch den Therapeuten, ohne dabei ' +
         'praktische Hilfestellung zu leisten. Mündliche Anleitungen sind zulässig.</li><br/>' +
         '<li>Selbstständig = für eine sichere Bewegung ist die Anwesenheit einer weiteren Person ' +
         'nicht erforderlich.</li></ul><br/>' +
         '<b>Hinweise zur Durchführung:</b><br/>' +
-        '<ul><li>Die Untersuchung sollte nur durchgeführt werden, wenn der Patient bereits ' +
+        '<ul><li>Das Assessment sollte nur durchgeführt werden, wenn der Patient bereits ' +
         'seine Medikamente eingenommen hat, wie z. B. eine halbe Stunde nach ' +
-        'der Einnahme von Schmerzmitteln oder nach der Einnahme von ' +
-        'Parkinson-Medikamenten.</li><br/>' +
+        'der Einnahme von Schmerzmitteln oder Parkinson-Medikamenten.</li><br/>' +
         '<li>Die Aufgaben sollten in der beschriebenen Reihenfolge durchgeführt werden. ' +
         'Bei sehr belastbarkeitsgeminderten Patienten, die im Stuhl angetroffen werden, ' +
-        'können die Tests aus dem Abschnitt „Stuhl“ vorgezogen werden.</li><br/>' +
+        'können die Aufgaben aus dem Abschnitt „Stuhl“ vorgezogen werden.</li><br/>' +
         '<li>Alle Aufgaben sollten erklärt und, falls erforderlich, auch demonstriert werden.</li><br/>' +
         '<li>Patienten können ermutigt werden, sie sollten jedoch keine Rückmeldung ' +
         'bzgl. ihrer Leistung bekommen.</li><br/>' +
-        '<li>Die Bewertung findet anhand des ersten Testversuchs statt.</li><br/>' +
+        '<li>Die Bewertung findet anhand des ersten Versuchs statt.</li><br/>' +
         '<li>Sollte eine Aufgabenstellung aufgrund des Gesundheitszustandes des ' +
         'Patienten nicht möglich sein, kann dies bei den Bemerkungen dokumentiert werden.</li><br/>' +
-        '<li>Der Untersucher kümmert sich um medizinische Apparaturen (wie z. B. ' +
+        '<li>Der Therapeut kümmert sich um medizinische Apparaturen (wie z. B. ' +
         'mobile Sauerstoffversorgung, Drainagen). Benötigt der Patient ' +
         'geringfügige Hilfestellung um die Aufgaben durchzuführen, ist eine weitere ' +
         'Person erforderlich, um bei den Apparaturen behilflich zu sein.</li><br/>' +
         '<li>Patienten, die schnell ausser Atem sind und eine Pause nach jeder ' +
         'Aufgabenstellung benötigen, sollten nach der Hälfte der Aufgaben eine ' +
-        '10-minütige Pause einlegen, d. h., nachdem sie den Transfer vom Stuhl ' +
+        '10-minütige Pause einlegen, d. h. nachdem sie den Transfer vom Stuhl ' +
         'abgeschlossen haben.</li><br/>' +
         '<li>Bei Patienten mit einem geringen Grad an Mobilität, die einen Lift für den ' +
-        'Transfer ins/aus dem Bett benötigen, können die Tests aus dem Abschnitt ' +
+        'Transfer ins/aus dem Bett benötigen, können die Aufgaben aus dem Abschnitt ' +
         '„Stuhl“ vorgezogen werden.</li></ul>',
       buttons: [
         {
@@ -228,11 +227,11 @@ export class FormDemmiPage extends WorkflowPage {
 
   showInfoBed() {
     let alert = this.alertCtrl.create({
-      title: 'Transfer im Bett',
+      title: 'Bett',
       cssClass: 'infoIconDemmi',
       message: 'Die Höhe des Bettes sollte individuell auf den Patienten ' +
         'abgestimmt sein. Ein normiertes Spitalbett oder eine Liege sollte ' +
-        'zur Testung angewendet werden. Die Patienten sollen keine Hilfsmittel wie ' +
+        'verwendet werden. Die Patienten sollen keine Hilfsmittel wie ' +
         'z. B. einen Galgengriff, das Bettgeländer, die Bettkante oder eine ' +
         'Aufstehhilfe benutzen. Zusätzliche Kissen können für Patienten ' +
         'bereitgestellt werden, die nicht in der Lage sind, flach auf dem Rücken zu ' +
@@ -309,7 +308,7 @@ export class FormDemmiPage extends WorkflowPage {
 
   showInfoChair() {
     let alert = this.alertCtrl.create({
-      title: 'Transfer vom Stuhl',
+      title: 'Stuhl',
       cssClass: 'infoIconDemmi',
       message: 'Es sollte ein standardisierter, stabiler Stuhl mit einer ' +
         'Sitzhöhe von 45 cm und Armlehnen verwendet werden.',
@@ -389,10 +388,10 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Statisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient sollte wenn möglich keine Schuhe tragen und ' +
-        'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
-        'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
+        'darf keine Unterstützung in Anspruch nehmen, um die Aufgaben erfolgreich zu ' +
+        'absolvieren. Die Gleichgewichtsaufgaben im Stehen sollten so angeordnet sein, dass an einer ' +
         'Seite des Patienten das erhöhte Bett und an der anderen Seite der ' +
-        'Untersucher steht. Sollte der Patient während der Aufgabe wanken oder ' +
+        'Therapeut steht. Sollte der Patient während der Aufgabe wanken oder ' +
         'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
@@ -489,7 +488,7 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Gehen',
       cssClass: 'infoIconDemmi',
       message: 'Zur Testung des Gangbildes dürfen geeignete Schuhe getragen ' +
-        'werden. Dieselben Schuhe müssen getragen werden, wenn der Test wiederholt wird. ' +
+        'werden. Dieselben Schuhe müssen getragen werden, wenn das Assessment wiederholt wird. ' +
         'Die Art des Schuhwerks kann in den Bemerkungen eingetragen werden.',
       buttons: [
         {
@@ -506,14 +505,14 @@ export class FormDemmiPage extends WorkflowPage {
 
   showInfoEleven() {
     let alert = this.alertCtrl.create({
-      title: '11. Wegstrecke +/- Hilfsmittel',
+      title: '11. Wegstrecke mit/ohne Gehhilfe',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient wird aufgefordert, wenn nötig mit Hilfsmittel so weit wie ' +
         'möglich ohne Pause zu gehen. Der Test endet, wenn der Patient anhält, um ' +
         'sich auszuruhen. Der Patient soll das Hilfsmittel benutzen, das für ihn am ' +
         'besten geeignet ist. Stehen zwei Hilfsmittel zur Verfügung, sollte dasjenige ' +
         'Hilfsmittel verwendet werden, das das höchste Mass an Selbstständigkeit ' +
-        'ermöglicht. Die Aufgabe ist beendet, sobald der Patient 50 m zurückgelegt hat.',
+        'ermöglicht. Die Aufgabe endet, sobald der Patient 50 m zurückgelegt hat.',
       buttons: [
         {
           text: 'Ok',
@@ -551,10 +550,10 @@ export class FormDemmiPage extends WorkflowPage {
       title: 'Dynamisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
       message: 'Der Patient sollte, wenn möglich, keine Schuhe tragen und ' +
-        'darf keine Unterstützung in Anspruch nehmen, um die Tests erfolgreich zu ' +
-        'absolvieren. Die Gleichgewichtstests im Stehen sollten so angeordnet sein, dass an einer ' +
+        'darf keine Unterstützung in Anspruch nehmen, um die Aufgaben erfolgreich zu ' +
+        'absolvieren. Die Gleichgewichtsaufgaben im Stehen sollten so angeordnet sein, dass an einer ' +
         'Seite der Patienten das erhöhte Bett und an der anderen Seite der ' +
-        'Untersucher steht. Sollte ein Patient während der Aufgabe wanken oder ' +
+        'Therapeut steht. Sollte ein Patient während der Aufgabe wanken oder ' +
         'erheblich schwanken, sollte die Aufgabe abgebrochen werden.',
       buttons: [
         {
@@ -592,7 +591,7 @@ export class FormDemmiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '14. Vier Schritte rückwärts gehen',
       cssClass: 'infoIconDemmi',
-      message: 'Der Patient wird aufgefordert, 4 Schritte rückwärtsgehen, ohne dabei das ' +
+      message: 'Der Patient wird aufgefordert, vier Schritte rückwärtszugehen, ohne dabei das ' +
         'Gleichgewicht zu verlieren.',
       buttons: [
         {

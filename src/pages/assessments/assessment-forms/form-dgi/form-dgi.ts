@@ -122,7 +122,7 @@ export class FormDgiPage extends WorkflowPage {
       cssClass: 'instructionDgi',
       subTitle: 'Dynamic Gait Index',
       message: '<b>Bewertung:</b><br/>' +
-        '<ul><li>Die niedrigste zutreffende Kategorie ist auszuwählen.</li></ul>',
+        '<ul><li>Für die Bewertung der Aufgaben ist die niedrigste zutreffende Punktzahl zu vergeben.</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -180,7 +180,7 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '1. Gehen auf ebener Strecke (20 m)',
       cssClass: 'infoIconDgi',
-      message: 'Gehen Sie mit Ihrer normalen Geschwindigkeit von hier bis zur nächsten Markierung (20 m).<br/>' +
+      message: '"Gehen Sie mit Ihrer normalen Geschwindigkeit von hier bis zur nächsten Markierung (20 m)."<br/>' +
         '<ul><li><b>0:</b> Kann nicht 20 m ohne Hilfe gehen, ohne starke Gangabweichungen oder Ungleichgewicht.</li><br/>' +
         '<li><b>1:</b> 20 m Gehen, langsame Geschwindigkeit, abnormales Gangbild, Anzeichen für Ungleichgewicht.</li><br/>' +
         '<li><b>2:</b> 20 m Gehen, verwendet Hilfsmittel, langsamere Ganggeschwindigkeit, leichte Gangabweichungen.</li><br/>' +
@@ -202,13 +202,13 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '2. Gehen mit Tempowechsel 5 m normal, 5 m schnell, 5 m langsam',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie in Ihrem normalen Tempo zu gehen (5 m), wenn ich "los" sage, gehen Sie ' +
-        'so schnell Sie können (5 m). Wenn ich "langsam" sage, gehen Sie so langsam wie möglich (5 m). <br/>' +
+      message: '"Beginnen Sie in Ihrem normalen Tempo zu gehen (5 m), wenn ich sage: "Los", gehen Sie ' +
+        'so schnell Sie können (5 m). Wenn ich sage: "Langsam", gehen Sie so langsam wie möglich (5 m )."<br/>' +
         '<ul><li><b>0:</b> Kann die Geschwindigkeit nicht ändern oder verliert das Gleichgewicht und muss nach der ' +
         'Wand greifen oder gestützt werden.</li><br/>' +
         '<li><b>1:</b> Nimmt nur geringfügige Anpassungen der Gehgeschwindigkeit vor oder führt eine Geschwindigkeitsänderung ' +
-        'mit erheblichen Gangabweichungen durch, oder ändert die Geschwindigkeit, hat aber erhebliche ' +
-        'Gangabweichungen, oder ändert die Geschwindigkeit, verliert aber das Gleichgewicht, ' +
+        'mit erheblichen Gangabweichungen durch. Oder ändert die Geschwindigkeit, hat aber erhebliche ' +
+        'Gangabweichungen. Oder ändert die Geschwindigkeit, verliert aber das Gleichgewicht, ' +
         'kann sich aber erholen und weitergehen.</li><br/>' +
         '<li><b>2:</b> Kann die Geschwindigkeit ändern, weist aber leichte Gangabweichungen auf, oder keine ' +
         'Gangabweichungen aber kann keine signifikante Änderung der Geschwindigkeit erreichen, ' +
@@ -233,10 +233,10 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '3. Gehen mit Kopfdrehung rechts und links',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie im normalen Tempo zu gehen. Wenn ich sage: "Nach rechts schauen", gehen Sie geradeaus, ' +
+      message: '"Beginnen Sie im normalen Tempo zu gehen. Wenn ich sage: "Nach rechts schauen", gehen Sie geradeaus, ' +
         'aber drehen den Kopf nach rechts. Schauen Sie weiter nach rechts, bis ich sage: "Schauen Sie nach links", ' +
         'dann gehen Sie weiter geradeaus und drehen Ihren Kopf nach links. Halten Sie den Kopf nach links, ' +
-        'bis ich sage: "Geradeaus schauen", dann gehen Sie weiter geradeaus, aber bringen den Kopf in die Mitte.<br/>' +
+        'bis ich sage: "Geradeaus schauen", dann gehen Sie weiter geradeaus, aber bringen den Kopf in die Mitte."<br/>' +
         '<ul><li><b>0:</b> Führt die Aufgabe mit schwerer Gangstörung aus, d. h. schwankt ausserhalb der Spurbreite (15 cm), ' +
         'verliert das Gleichgewicht, hält an, greift nach der Wand.</li><br/>' +
         '<li><b>1:</b> Führt Kopfdrehungen mit moderater Änderung der Ganggeschwindigkeit durch, verlangsamt sich, schwankt, ' +
@@ -261,10 +261,10 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '4. Gehen und nach oben und nach unten schauen',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie im normalen Tempo zu laufen. Wenn ich sage: "Nach oben schauen", gehen Sie geradeaus, ' +
-        'aber kippen den Kopf nach oben. Schauen Sie weiter nach oben, bis ich sage: "Nach unten schauen", ' +
-        'dann gehen Sie geradeaus und kippen den Kopf nach unten. Halten Sie Ihren Kopf unten, bis ich sage: ' +
-        '"Gerade schauen", dann gehen Sie geradeaus, aber bringen den Kopf in die Mitte zurück.<br/>' +
+      message: '"Beginnen Sie im normalen Tempo zu laufen. Wenn ich sage: "Nach oben schauen", gehen Sie geradeaus, ' +
+        'aber bewegen den Kopf nach oben. Schauen Sie weiter nach oben, bis ich sage: "Nach unten schauen", ' +
+        'dann gehen Sie geradeaus und bewegen den Kopf nach unten. Halten Sie Ihren Kopf unten, bis ich sage: ' +
+        '"Gerade schauen", dann gehen Sie geradeaus, aber bewegen den Kopf in die Mitte zurück."<br/>' +
         '<ul><li><b>0:</b> Führt die Aufgabe mit schwerer Gangstörung aus, d. h. schwankt ausserhalb der Spurbreite (15 cm), ' +
         'verliert das Gleichgewicht, hält an, greift nach der Wand.</li><br/>' +
         '<li><b>1:</b> Führt Kopfdrehungen mit moderater Änderung der Ganggeschwindigkeit durch, verlangsamt sich, schwankt, ' +
@@ -289,8 +289,8 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '5. Gehen und Drehung um 180°',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie im normalen Tempo zu laufen.  Wenn ich sage: "Drehen und anhalten", ' +
-        'drehen Sie sich so schnell wie möglich, um in die entgegengesetzte Richtung zu schauen und zu stoppen.<br/>' +
+      message: '"Beginnen Sie im normalen Tempo zu laufen.  Wenn ich sage: "Drehen und anhalten", ' +
+        'drehen Sie sich so schnell wie möglich, um in die entgegengesetzte Richtung zu schauen und zu stoppen."<br/>' +
         '<ul><li><b>0:</b> Kann sich nicht sicher drehen, erfordert Hilfe beim Drehen und Stoppen.</li><br/>' +
         '<li><b>1:</b> Dreht sich langsam, erfordert verbale Hinweise, erfordert mehrere kleine Schritte, um das ' +
         'Gleichgewicht nach dem Drehen und Stoppen zu halten.</li><br/>' +
@@ -313,14 +313,14 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '6. Gehen über Hindernisse',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie mit Ihrer normalen Geschwindigkeit zu gehen.  Wenn Sie zur Schuhschachtel kommen, ' +
-        'steigen Sie über ihn, nicht um ihn herum, und gehen weiter.<br/>' +
+      message: '"Beginnen Sie mit Ihrer normalen Geschwindigkeit zu gehen.  Wenn Sie zur Schuhschachtel kommen, ' +
+        'steigen Sie darüber, nicht um sie herum, und gehen weiter."<br/>' +
         '<ul><li><b>0:</b> Kann nicht ohne Hilfe ausgeführt werden.</li><br/>' +
-        '<li><b>1:</b> Kann über die Schachtel gehen, muss aber anhalten und dann wieder zurücktreten. Benötigt allenfalls ' +
+        '<li><b>1:</b> Kann über die Schachtel steigen, muss aber anhalten und dann wieder zurücktreten. Benötigt allenfalls ' +
         'verbale Hinweise.</li><br/>' +
-        '<li><b>2:</b> Kann über die Schachtel gehen, muss aber langsamer werden und die Schritte anpassen, ' +
-        'um die Schachtel sicher zu überschreiten.</li><br/>' +
-        '<li><b>3:</b> Kann über die Schachtel treten, ohne die Gangart zu ändern, ohne Anzeichen von Ungleichgewicht.</li></ul>',
+        '<li><b>2:</b> Kann über die Schachtel steigen, muss aber langsamer werden und die Schritte anpassen, ' +
+        'um die Schachtel sicher zu übersteigen.</li><br/>' +
+        '<li><b>3:</b> Kann über die Schachtel steigen, ohne die Gangart zu ändern, ohne Anzeichen von Ungleichgewicht.</li></ul>',
       buttons: [
         {
           text: 'Ok',
@@ -338,16 +338,16 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '7. Gehen um Hindernisse links und rechts herum',
       cssClass: 'infoIconDgi',
-      message: 'Beginnen Sie mit normaler Geschwindigkeit zu gehen. Wenn Sie zur ersten Keule kommen ' +
+      message: '"Beginnen Sie mit normaler Geschwindigkeit zu gehen. Wenn Sie zur ersten Keule kommen ' +
         '(etwa 6 m entfernt), gehen Sie rechts herum. Wenn Sie zur zweiten Keule kommen (6 m nach der ' +
-        'ersten Keule), gehen Sie links herum.<br/>' +
+        'ersten Keule), gehen Sie links herum."<br/>' +
         '<ul><li><b>0:</b> Es ist nicht möglich die Keule zu umgehen, geht in eine oder beide Keulen hinein ' +
         'oder benötigt physische Hilfestellung.</li><br/>' +
         '<li><b>1:</b> Ist in der Lage, Keulen zu umgehen, muss aber die Geschwindigkeit deutlich verlangsamen, ' +
         'um die Aufgabe zu erfüllen, oder erfordert verbale Hinweise.</li><br/>' +
         '<li><b>2:</b> Kann um beide Keulen herum gehen, muss aber langsamer werden und die Schritte ' +
         'anpassen, um die Keulen zu umgehen.</li><br/>' +
-        '<li><b>3:</b> Ist in der Lage, sicher um die Keulen herum zu gehen, ohne die Gangart zu ändern; keine ' +
+        '<li><b>3:</b> Ist in der Lage, sicher um die Keulen herum zu gehen, ohne die Gangart zu ändern, keine ' +
         'Anzeichen von Ungleichgewicht.</ul>',
       buttons: [
         {
@@ -366,8 +366,8 @@ export class FormDgiPage extends WorkflowPage {
     let alert = this.alertCtrl.create({
       title: '8. Treppensteigen',
       cssClass: 'infoIconDgi',
-      message: 'Gehen Sie die Treppe hinauf, wie zu Hause, d. h., benutzen Sie bei Bedarf das Geländer. ' +
-        'Oben angekommen drehen Sie sich um und gehen nach unten.<br/>' +
+      message: '"Gehen Sie die Treppe hinauf, wie zu Hause, d. h. benutzen Sie bei Bedarf das Geländer. ' +
+        'Oben angekommen drehen Sie sich um und gehen nach unten."<br/>' +
         '<ul><li><b>0:</b> Kann nicht sicher durchgeführt werden.</li><br/>' +
         '<li><b>1:</b> Zwei Füsse auf einer Stufe, muss ein Geländer benutzen.</li><br/>' +
         '<li><b>2:</b> Alternierende Schritte, muss ein Geländer benutzen.</li><br/>' +

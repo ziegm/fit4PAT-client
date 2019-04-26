@@ -207,19 +207,19 @@ export class FormWalkingtestPage extends WorkflowPage {
         '<b>Situation:</b></br>' +
         '<ul><li>Auf ebenem Boden werden 4 Stellen markiert (0m, 2m, 8m, 10m).</li></br>' +
         '<li>Die erste Markierung ist der Startpunkt (0 m).</li></br>' +
-        '<li>Die zweite Markierung erfolgt bei 2 m, diese dient ausschliesslich dem Physiotherapeuten als Zeitmessungs-Startpunkt.</li></br>' +
+        '<li>Die zweite Markierung erfolgt bei 2 m, diese dient ausschliesslich dem Therapeuten als Zeitmessungs-Startpunkt.</li></br>' +
         '<li>Die dritte Markierung erfolgt bei 8 m. Hier endet die Zeitmessung.</li></br>' +
-        '<li>Die vierte Markierung ist sichtbar und dient als Endpunkt für die Testperson (10 m).</li></br>' +
+        '<li>Die vierte Markierung ist sichtbar und dient als Endpunkt für den Patienten (10 m).</li></br>' +
         '<li>Es wird also eine Strecke von 10 m markiert, jedoch lediglich die Zeit auf einer Strecke von 6 m gemessen.</li></ul>' +
         '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/></br>' +
         '</br><b>Beschreibung:</b></br>' +
         '<ul><li>Der Patient steht bei der 0 m-Markierung.</li></br>' +
-        '<li>„Gehen Sie so schnell wie Sie wollen, nach meinem Kommando. Stoppen Sie, wenn ich ‚Stopp‘ sage.“</li></br>' +
-        '<li>„Auf die Plätze, fertig, los!“ – bei der 10 m-Markierung „Stopp“.</li></br>' +
-        '<li>Sobald die Fussspitze die 2 m-Markierung überschreitet, startet die Zeitmessung, bei der 8 m-Markierung die Zeitmessung gestoppt.</li></br>' +
+        '<li>"Gehen Sie so schnell wie Sie wollen, nach meinem Kommando. Stoppen Sie, wenn ich "Stopp" sage."</li></br>' +
+        '<li>"Auf die Plätze, fertig, los!" – bei der 10 m-Markierung "Stopp".</li></br>' +
+        '<li>Sobald die Fussspitze die 2 m-Markierung überschreitet, startet die Zeitmessung, bei der 8 m-Markierung wird die Zeitmessung gestoppt.</li></br>' +
         '<li>Der Patient führt den Test 3 x durch, aus den 3 gemessenen Werten wird der Mittelwert ermittelt.</li></br>' +
-        '<li>Der Patient kann seine üblichen Gehhilfsmittel verwenden. Wichtig ist, dass die Verwendung von Hilfsmitteln dokumentiert wird.</li></br>' +
-        '<li>Lässt der Zustand des Patienten es zu, kann der 10 m-Gehtest zusätzlich auch mit hoher Geschwindigkeit durchgeführt werden.</li></ul>',
+        '<li>Der Patient kann seine üblichen Hilfsmittel verwenden. Wichtig ist, dass die Verwendung von Hilfsmitteln dokumentiert wird.</li></br>' +
+        '<li>Lässt der Zustand des Patienten es zu, kann der 10-Meter-Gehtest zusätzlich auch mit hoher Geschwindigkeit durchgeführt werden.</li></ul>',
       buttons: [
         {
           text: 'Ok',
