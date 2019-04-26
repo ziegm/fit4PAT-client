@@ -5,34 +5,81 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="text">fit4PAT ist eine Assessment-App für die Physiotherapie. Es werden drei Assessments in digitaler Form
-  angeboten. Ausserdem sind zusätzliche Informationen vorhanden wie beispielsweise eine Instruktion, die Normwerte sowie
-  das benötigte Material für die Durchführung des Assessments. Weiter gibt es integrierte Zusatzfunktionen wie beispielsweise
-  eine Stoppuhr. Nach der Durchführung des Assessments wird der erhaltene Score direkt ausgerechnet und in einem
-  grafischen Verlauf dargestellt. Falls bereits durchgeführte Assessments vorhanden sind, ist sofort ein Vergleich ersichtlich.
-  Bei der Auswertung wird ausserdem ein Vergleich zu den Normwerten aufgezeigt und Informationen zu dem Minimal Detectable
-    Change (MDC) und dem Minimal Clinically Important Difference (MCID) sind vorhanden.</div>
+  <div class="text">fit4PAT ist eine Assessment-App für die Physiotherapie. Im Prototyp werden drei Assessments in
+    digitaler Form angeboten. Zusätzliche Informationen wie die Instruktion, Normwerte oder das benötigte Material für
+    die Durchführung des Assessments sind vorhanden. Weiter gibt es integrierte Zusatzfunktionen, zum Beispiel eine
+    Stoppuhr. Nach der Durchführung des Assessments wird der erreichte Score berechnet und in einem grafischen Verlauf
+    dargestellt. Falls es bereits Durchführungen vom selben Assessment gibt, ist sofort ein Vergleich ersichtlich. Bei
+    der Auswertung wird ausserdem der Bezug zu den Normwerten aufgezeigt. Angaben zu der Veränderungssensitivität sind
+    aufgelistet oder über einen externen Link zugänglich.
+  </div>
 
-  <div class="text break">Die Applikation fit4PAT besteht aus den zwei Hauptreitern 'Assessment' und 'Patient'. Für die Benutzung
-    der App spielt es keine Rolle, ob der Physiotherapeut zuerst das Assessment oder den Patienten auswählt.</div>
+  <div class="text break">Die Navigation der Applikation fit4PAT geht von den zwei Tabs 'Assessment' und 'Patient' aus.
+    Für die Benutzung der App spielt es keine Rolle, ob der Physiotherapeut zuerst das Assessment oder den Patienten
+    auswählt. Über den Home-Button gelangt man von überall zurück zum Tab 'Assessment'.
+  </div>
 
   <h1>Assessment</h1>
-    <div class="text">In dem Reiter 'Assessment' ist ein Kreis ersichtlich, der in verschiedene Fachbereiche aufgeteilt ist.
-    Die drei enthaltenen Assessments
-    <ul><li>de Morton Mobility Index (DEMMI)</li>
-    <li>Dynamic Gait Index (DGI)</li>
-    <li>Timed Walking Test (10-Meter-Gehtest)</li></ul>
-    sind jeweils den zugehörigen Fachbereichen zugeteilt. Bei dem Klick auf ein Assessment erscheint dessen Formular sowie
-    die Instruktion, die Normwerte und das benötigte Material können abgerufen werden. Nach der Wahl eines Patienten kann, falls
-    dieses Assessment bereits durchgeführt wurde, der Verlauf angesehen sowie das Formular ausgefüllt werden. Danach wird
-    der Score berechnet und die Auswertung erscheint.</div>
+  <div class="text">Im Tab 'Assessment' wird ein Kreis angezeigt, der in die verschiedenen Fachgebiete aufgeteilt ist.
+    Die drei Assessments
+    <ul>
+      <li>de Morton Mobility Index (DEMMI)</li>
+      <li>Dynamic Gait Index (DGI)</li>
+      <li>Timed Walking Test (10-Meter-Gehtest)</li>
+    </ul>
+    sind jeweils den entsprechenden Fachgebieten zugeteilt. Bei der Auswahl eines Assessment erscheint dessen Formular.
+    Die Instruktion, Normwerte und das benötigte Material stehen zusätzlich zur Verfügung. Nach dem Hinzufügen eines
+    Patienten kann, falls dieses Assessment bereits durchgeführt wurde, sein Verlauf angesehen sowie das Formular
+    ausgefüllt werden. Bei den einzelnen Aufgaben gibt es weitere detaillierte Informationen. Unter Hilfsmittel kann die
+    eingesetzte Gehhilfe ausgewählt werden. Wenn nicht aufgelistete Hilfsmittel verwendet wurden, kann 'andere'
+    ausgewählt und anschliessend eingetragen werden, welche dies waren. Unter Bemerkungen können allfällige Notizen
+    gemacht werden. Wenn alle Aufgaben bewertet, beziehungsweise ausgefüllt sind, wird der Score berechnet und man wird
+    zur Verlaufsansicht weitergeleitet.
+  </div>
 
   <h1>Patient</h1>
-    <div class="text">Der Reiter 'Patient' enthält drei verschiedene Auswahlmöglichkeiten. Der Patient kann entweder mit
-    einem Patientenarmband eingescannt oder es kann ausgewählt werden, ob es sich um einen stationären oder einen
-    ambulanten Patienten handelt. Bei der Wahl 'Patientenarmband scannen' erscheinen nach dem Scan direkt die Detailinformationen
-    des Patienten. Bei der Wahl 'stationär' erscheinen alle Stationen des Spitals. Zuerst muss die Station ausgewählt werden,
-    auf der der Patient liegt und danach der Patient. Bei der Wahl 'ambulant' erscheinen alle ambulanten Patienten und es
-    kann der gewünschte Patient ausgewählt werden. Bei den Detailinformationen des Patienten sind die bereits durchgeführten
-    Assessments ersichtlich sowie ein Floating-Button, mit dem ein Assessment ausgewählt und durchgeführt werden kann.</div>
+  <div class="text">Im Tab 'Patient' stehen drei Möglichkeiten für die Patientenauswahl zur Verfügung. Der Patient kann
+    einerseits über das Einscannen seines Patientenarmbands gefunden werden. Anderenfalls kann ausgewählt werden, ob es
+    sich um einen stationären oder ambulanten Patienten handelt. Bei der Wahl 'Patientenarmband scannen' erscheinen nach
+    erfolgreichem Einscannen direkt die Informationen des Patienten. Bei der Wahl 'Stationäre Patienten' werden alle
+    Stationen des Spitals aufgelistet. Zuerst muss die Station ausgewählt werden, auf der der Patient liegt und
+    anschliessend der Patient. Bei der Wahl 'Ambulante Patienten' erscheinen alle Patienten aus dem ambulanten Bereich
+    und der gewünschte Patient kann ausgewählt werden. Bei den Informationen des Patienten sind die bereits
+    durchgeführten
+    Assessments aufgelistet. Über einen Plus-Button kann ein neues Assessment für die Durchführung ausgewählt werden.
+  </div>
+
+  <h1>Verlaufsansicht</h1>
+  <div class="text">In der Verlaufsansicht werden oberhalb der Grafik die Informationen der letzten Durchführung
+    angezeigt.In der Grafik werden alle Durchführungen angezeigt. Beim Punkt steht jeweils der erreichte Score und das
+    Durchführungsdatum. Beim Klicken auf einen Punkt werden alle Detailinformationen (Punkte der einzelnen Aufgaben,
+    Hilfsmittel und Bemerkungen) angezeigt. Inner- und unterhalb der Grafik wird der Score der letzten Durchführung mit
+    den Normwerten verglichen. Über eine farbliche Hervorhebung wird angezeigt, wo sich der Patient aktuell befindet. Ob
+    die Veränderungen sensitiv sind, kann anhand der abschliessenden Bemerkungen evaluiert werden.
+  </div>
+
+  <div class="text break">Über den Button 'Verlauf exportieren' kann die angezeigte Grafik exportiert werden. Auch in
+    dieser Ansicht steht ein Plus-Button für das Ergänzen eines Assessments zur Verfügung.
+  </div>
+
+  <h1>Navigationsbar</h1>
+  <div class="text">
+    <ul>
+      <li>Hamburger-Menü:<br/>
+        Bei den Tabs 'Assessment' und 'Patient' steht links oben ein Navigations-Menü zur Verfügung.
+        Oben wird der angemeldete Physiotherapeut angezeigt. Neben dem Aufruf von persönlichen Angaben zu seinem Profil
+        kann sich der Therapeut dort auch wieder abmelden. Ausserdem ist es möglich, direkt zu den einzelnen
+        Fachgebieten oder den verschiedenen Patientenauswahlen zu navigieren.
+      </li>
+      <li>3-Punkte-Menü:<br/>
+        Das 3-Punkte-Menü oben rechts bietet je nach Seite der App verschiedene Aktionen an. Auf den
+        Tab-Seiten 'Assessment' und 'Patient' können Anleitung, Einstellungen, Datenschutz, Lizenzen und Impressum
+        ausgewählt werden. Auf anderen Seiten sind beispielsweise Navigations- oder Sortierfunktionen vorhanden.
+      </li>
+      <li>Lupe:<br/>
+        Beim Anzeigen von Listen kann über die Lupe eine Suchfunktion aktiviert werden. Der Inhalt der
+        jeweiligen Liste kann somit schnell durchsucht werden.
+      </li>
+    </ul>
+  </div>
 </ion-content>
