@@ -64,8 +64,9 @@
         </div>
             </ion-col>
             <ion-col class="information">
-              <ion-item><ion-icon class="iconButton" name="open" (click)="presentAlert()"></ion-icon>
-                <p class="labelButton" (click)="presentAlert()">Verlauf exportieren</p>
+              <ion-item (click)="generateAndShowPdf()">
+                <ion-icon class="iconButton" name="open"></ion-icon>
+                <p class="labelButton">Verlauf exportieren</p>
               </ion-item>
       </ion-col>
     </ion-row>

@@ -11,8 +11,9 @@ import {AssessmentHelper} from "../../assessment-helper";
 import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {GraphDataAssembler} from "../graph-data-assembler";
 import moment from "moment";
+import {PdfPrinterProvider} from "../../../../providers/pdf-printer/pdf-printer";
+import {DgiPdfDefnition} from "./dgi-pdf-defnition";
 import Patient = fhir.Patient;
-
 
 @Component({
   selector: 'page-evaluation-dgi',
@@ -25,7 +26,8 @@ export class EvaluationDgiPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider,
+              private pdfPrinter: PdfPrinterProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data => {
@@ -268,4 +270,8 @@ export class EvaluationDgiPage extends WorkflowPage {
     });
   }
 
+  private generateAndShowPdf(): void {
+    this.pdfPrinter.createPdf(new DgiPdfDefnition(this.patient, this.lineChart));
+    this.pdfPrinter.downloadPdf("dgi.pdf");
+  }
 }

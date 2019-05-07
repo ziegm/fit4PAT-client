@@ -13,8 +13,9 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {WalkingtestResult} from "./walkingtest-result";
 import {GraphDataAssembler} from "../graph-data-assembler";
 import moment from "moment";
+import {PdfPrinterProvider} from "../../../../providers/pdf-printer/pdf-printer";
+import {WalkingtestPdfDefnition} from "./walkingtest-pdf-defnition";
 import Patient = fhir.Patient;
-
 
 @Component({
   selector: 'page-evaluation-walkingtest',
@@ -27,7 +28,8 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider,
+              private pdfPrinter: PdfPrinterProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "Timed Walking Test").then(data => {
@@ -326,5 +328,10 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     }
 
     return highlightStyle;
+  }
+
+  private generateAndShowPdf(): void {
+    this.pdfPrinter.createPdf(new WalkingtestPdfDefnition(this.patient, this.lineChart));
+    this.pdfPrinter.downloadPdf("walkingtest.pdf");
   }
 }

@@ -14,6 +14,8 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {GraphDataAssembler} from "../graph-data-assembler";
 import {DemmiResult} from "./demmi-result";
 import moment from "moment";
+import {PdfPrinterProvider} from "../../../../providers/pdf-printer/pdf-printer";
+import {DemmiPdfDefnition} from "./demmi-pdf-defnition";
 import Patient = fhir.Patient;
 
 @Component({
@@ -27,7 +29,8 @@ export class EvaluationDemmiPage extends WorkflowPage {
   @ViewChild('lineCanvas') private lineCanvas;
   private lineChart: Chart;
 
-  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider) {
+  constructor(navParams: NavParams, private alertCtrl: AlertController, private restProvider: RestProvider,
+              private pdfPrinter: PdfPrinterProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
     restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
@@ -358,5 +361,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
         }
       } as ChartOptions
     });
+  }
+
+  private generateAndShowPdf(): void {
+    this.pdfPrinter.createPdf(new DemmiPdfDefnition(this.patient, this.lineChart));
+    this.pdfPrinter.downloadPdf("demmi.pdf");
   }
 }

@@ -45,4 +45,8 @@
     <plugin name="cordova-plugin-document-viewer" spec="0.9.10" />
     <plugin name="com.wmjalak.cordova.fileopener" spec="~1.0.0" />
     <plugin name="com.cesidiodibenedetto.filechooser" spec="~1.0.4" />
+    <plugin name="cordova-plugin-file-opener2" spec="2.2.0">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-plugin-file" spec="6.0.1" />
 </widget>
