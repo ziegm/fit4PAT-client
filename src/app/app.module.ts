@@ -62,7 +62,9 @@ import {NoPatientErrorProvider} from '../providers/no-patient-error/no-patient-e
 import {PatientToAssessmentNavProvider} from '../providers/patient-to-assessment-nav/patient-to-assessment-nav';
 import {LoseDataIfContinueProvider} from "../providers/lose-data-if-continue/lose-data-if-continue";
 import {FabNavigationComponent} from "../components/fab-navigation/fab-navigation";
-
+import {File} from "@ionic-native/file";
+import {FileOpener} from "@ionic-native/file-opener";
+import {PdfPrinterProvider} from '../providers/pdf-printer/pdf-printer';
 
 // @ts-ignore
 @NgModule({
@@ -172,7 +174,10 @@ import {FabNavigationComponent} from "../components/fab-navigation/fab-navigatio
     AssessmentSearchProvider,
     NoPatientErrorProvider,
     PatientToAssessmentNavProvider,
-    LoseDataIfContinueProvider
+    LoseDataIfContinueProvider,
+    File,
+    FileOpener,
+    PdfPrinterProvider
   ]
 })
 
