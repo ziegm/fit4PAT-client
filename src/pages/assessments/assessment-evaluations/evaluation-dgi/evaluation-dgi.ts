@@ -131,7 +131,7 @@ export class EvaluationDgiPage extends WorkflowPage {
         '<li>6. Gehen über Hindernisse: ' + response.item[5].answer[0].valueInteger + " Punkt(e)" + '</li>' +
         '<li>7. Gehen um Hindernisse: ' + response.item[6].answer[0].valueInteger + " Punkt(e)" + '</li>' +
         '<li>8. Treppensteigen: ' + response.item[7].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + response.item[8].answer[0].valueString + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + response.item[8].answer[0].valueString + '</li>' +
         '<li><b>Bemerkungen:</b> ' + response.item[9].answer[0].valueString + '</li></ul>',
       buttons: [
         {
@@ -246,6 +246,69 @@ export class EvaluationDgiPage extends WorkflowPage {
             yMax: 19,
             backgroundColor: '#ffcccc',
             borderColor: '#ffb2b2',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '2',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '4',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '6',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '8',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '10',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '12',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '14',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '16',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '18',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
           },{
             type: 'line',
             mode: 'horizontal',
@@ -274,6 +337,20 @@ export class EvaluationDgiPage extends WorkflowPage {
             yMax: 24,
             backgroundColor: '#cce5cc',
             borderColor: '#bbdcbb',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '20',
+            borderColor: '#bbdcbb',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '22',
+            borderColor: '#bbdcbb',
+            borderWidth: 2,
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other

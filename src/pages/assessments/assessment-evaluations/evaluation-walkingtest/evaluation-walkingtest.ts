@@ -121,12 +121,12 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
       cssClass: 'detailsTWT',
       subTitle: 'Timed Walking Test',
       message:
-        '<ul><li><b>Durchschnittswert:</b> ' + WalkingtestResult.calcAverageRounded(response) + " Sekunden" + '</li></br>' +
+        '<ul><li><b>Durchschnittswert:</b> ' + WalkingtestResult.calcAverageRounded(response) + " Sekunden" + '</li>' +
         '<li><b>Ganggeschwindigkeit:</b> ' + WalkingtestResult.calcSpeed(response) + " Meter/Sekunde" + '</li></br>' +
         '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + " Sekunden" + '</li>' +
         '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + " Sekunden" + '</li>' +
         '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + " Sekunden" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + response.item[3].answer[0].valueString + '</li></br>' +
+        '<li><b>Hilfsmittel:</b> ' + response.item[3].answer[0].valueString + '</li>' +
         '<li><b>Bemerkungen:</b> ' + response.item[4].answer[0].valueString + '</li></ul>',
       buttons: [
         {
@@ -233,6 +233,22 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
         },
         annotation: {
           annotations: [ this.patient.gender === 'male' ? {
+            id: 'box1',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 0,
+            yMax: 1.37,
+            backgroundColor: '#ffcccc',
+            borderColor: '#ffb2b2',
+          } : {
+            id: 'box1',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 0,
+            yMax: 1.23,
+            backgroundColor: '#ffcccc',
+            borderColor: '#ffb2b2',
+          }, this.patient.gender === 'male' ? {
             type: 'line',
             mode: 'horizontal',
             scaleID: 'y-axis-0',
@@ -272,6 +288,71 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
               enabled: true,
               content: "Durchschnittliche Ganggeschwindigkeit Frauen"
             }
+          }, this.patient.gender === 'male' ? {
+            id: 'box4',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 1.37,
+            yMax: 3,
+            backgroundColor: '#cce5cc',
+            borderColor: '#bbdcbb',
+          } : {
+            id: 'box4',
+            type: 'box',
+            yScaleID: 'y-axis-0',
+            yMin: 1.23,
+            yMax: 3,
+            backgroundColor: '#cce5cc',
+            borderColor: '#bbdcbb',
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '0.4',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '0.8',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '1.2',
+            borderColor: '#ffb2b2',
+            borderWidth: 2,
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '1.6',
+            borderColor: '#bbdcbb',
+            borderWidth: 2
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '2',
+            borderColor: '#bbdcbb',
+            borderWidth: 2
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '2.4',
+            borderColor: '#bbdcbb',
+            borderWidth: 2
+          }, {
+            type: 'line',
+            mode: 'horizontal',
+            scaleID: 'y-axis-0',
+            value: '2.8',
+            borderColor: '#bbdcbb',
+            borderWidth: 2
           }],
           // Defines when the annotations are drawn.
           // This allows positioning of the annotation relative to the other
