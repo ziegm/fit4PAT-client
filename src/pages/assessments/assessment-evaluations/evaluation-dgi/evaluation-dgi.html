@@ -65,16 +65,39 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart">
-    <ion-label class="bar-stable bold">
-      Normwerte:
-    </ion-label>
-    <ul><li>
-      Cut-off Point des prädiktiven Werts für Stürze: 19
-    </li></ul>
+  <ion-list radio-group class="differenceUnderChart">
+  <ion-label class="bar-stable bold">
+    Normwerte:
+  </ion-label>
+  <div class="row">
+    <div class="col">
+      <ion-item class="topLeft">
+        <ion-label class="textLeft bold"></ion-label>
+      </ion-item>
+      <ion-item class="downLeft">
+        <ion-label class="textLeft bold">Punktzahl</ion-label>
+      </ion-item>
+    </div>
+    <div class="col">
+      <ion-item class="cell bold">
+        <ion-label>Sturzgefährdert</ion-label>
+      </ion-item>
+      <ion-item class="cell cellDown normColor1">
+        <ion-label>< 19</ion-label>
+      </ion-item>
+    </div>
+    <div class="col">
+      <ion-item class="cell lastCell bold">
+        <ion-label>Nicht Sturzgefährdert</ion-label>
+      </ion-item>
+      <ion-item class="cell lastCell cellDown normColor2">
+        <ion-label>>=19</ion-label>
+      </ion-item>
+    </div>
+  </div>
   </ion-list>
 
-  <!-- reference to MDC and MCID -->
+    <!-- reference to MDC and MCID -->
   <ion-label class="difference textSize"><b>Veränderungssensitivität:</b><br/><br/>
     Angaben zu Minimal Detectable Change (MDC) und Minimal Clinically Important Difference (MCID)
     sind unter folgendem Link ersichtlich:<br/>
