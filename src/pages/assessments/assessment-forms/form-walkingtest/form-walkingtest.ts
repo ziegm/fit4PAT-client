@@ -262,8 +262,8 @@ export class FormWalkingtestPage extends WorkflowPage {
       title: 'Material',
       cssClass: 'materialTWT',
       subTitle: 'Timed Walking Test',
-      message: '<ul><li>Abgestreckte Strecke</li></ul>' +
-        '<img src="./assets/imgs/Bild_TimedWalkingTest.png"/>',
+      message: '<ul><li>Messband</li>' +
+        '<li>Markierte Strecke</li></ul>',
       buttons: [
         {
           text: 'Ok',

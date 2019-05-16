@@ -163,12 +163,12 @@ export class EvaluationDemmiPage extends WorkflowPage {
         '<li><b>Stuhl</b></li>'+
         '<li>4. Sitzen im Stuhl: <b>' + response.item[3].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
         '<li>5. Aus dem Stuhl aufstehen: <b>' + response.item[4].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
-        '<li>6. Aufstehen ohne die Arme zu Hilfe zu nehmen: <b>' + response.item[5].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
+        '<li>6. Aufstehen ohne Arme: <b>' + response.item[5].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Statisches Gleichgewicht</b></li>'+
         '<li>7. Ohne Unterstützung stehen: <b>' + response.item[6].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
         '<li>8. Stehen mit geschlossenen Füssen: <b>' + response.item[7].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
         '<li>9. Auf den Fussspitzen stehen: <b>' + response.item[8].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
-        '<li>10. Im Tandemstand mit geschlossenen Augen stehen: <b>' + response.item[9].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
+        '<li>10. Tandemstand mit Augen zu: <b>' + response.item[9].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Gehen</b></li>'+
         '<li>11. Wegstrecke mit/ohne Gehhilfe: <b>' + response.item[10].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
         '<li>12. Sebstständiges Gehen: <b>' + response.item[11].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
@@ -223,9 +223,13 @@ export class EvaluationDemmiPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            font: {
+              size: 16,
+              weight: 'bold'
+            },
             // Value transformation for the label of the displayed point
             formatter: function(value, context) {
-              return value.y + " (" + moment(new Date(value.x)).format("DD.MM.YYYY") + ")";
+              return value.y + " (" + moment(new Date(value.x)).format("DD.MM.") + ")";
             }
           }
         },

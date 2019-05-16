@@ -123,9 +123,9 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
       message:
         '<ul><li><b>Durchschnittswert: </b> ' + WalkingtestResult.calcAverageRounded(response) + ' Sekunden</li>' +
         '<li><b>Ganggeschwindigkeit: </b> ' + WalkingtestResult.calcSpeed(response) + ' Meter/Sekunde</li></br>' +
-        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + ' Sekunden</li>' +
-        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + ' Sekunden</li>' +
-        '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + ' Sekunden</li></br>' +
+        '<li>1. Messung: <b>' + WalkingtestResult.try(0, response) + ' Sekunden</b></li>' +
+        '<li>2. Messung: <b>' + WalkingtestResult.try(1, response) + ' Sekunden</b></li>' +
+        '<li>3. Messung: <b>' + WalkingtestResult.try(2, response) + ' Sekunden</b></li></br>' +
         '<li><b>Hilfsmittel: </b> ' + response.item[3].answer[0].valueString + '</li>' +
         '<li><b>Bemerkungen: </b> ' + response.item[4].answer[0].valueString + '</li></ul>',
       buttons: [
@@ -174,9 +174,13 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            font: {
+              size: 16,
+              weight: 'bold'
+            },
             // Value transformation for the label of the displayed point
             formatter: function(value, context) {
-              return value.y.toFixed(2) + " (" + moment(new Date(value.x)).format("DD.MM.YYYY") + ")";
+              return value.y.toFixed(2) + " (" + moment(new Date(value.x)).format("DD.MM.") + ")";
             }
           }
         },

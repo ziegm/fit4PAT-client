@@ -126,8 +126,8 @@ export class EvaluationDgiPage extends WorkflowPage {
         '<li>1. Gehen auf ebener Strecke: <b>' + response.item[0].answer[0].valueInteger + ' Punkt(e)</b></li>' +
         '<li>2. Gehen mit Tempowechsel: <b>' + response.item[1].answer[0].valueInteger + ' Punkt(e)</b></li>' +
         '<li>3. Gehen mit Kopfdrehung: <b>' + response.item[2].answer[0].valueInteger + ' Punkt(e)</b></li>' +
-        '<li>4. Gehen und nach oben und nach unten schauen: <b>' + response.item[3].answer[0].valueInteger + ' Punkt(e)</b></li>' +
-        '<li>5. Gehen und Drehung um 180°: <b>' + response.item[4].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>4. Gehen mit Kopfneigung: <b>' + response.item[3].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>5. Gehen und Drehung: <b>' + response.item[4].answer[0].valueInteger + ' Punkt(e)</b></li>' +
         '<li>6. Gehen über Hindernisse: <b>' + response.item[5].answer[0].valueInteger + ' Punkt(e)</b></li>' +
         '<li>7. Gehen um Hindernisse: <b>' + response.item[6].answer[0].valueInteger + ' Punkt(e)</b></li>' +
         '<li>8. Treppensteigen: <b>' + response.item[7].answer[0].valueInteger + ' Punkt(e)</b></li></br>' +
@@ -180,9 +180,13 @@ export class EvaluationDgiPage extends WorkflowPage {
           datalabels: {
             color: '#888888',
             align: 'top',
+            font: {
+              size: 16,
+              weight: 'bold'
+            },
             // Value transformation for the label of the displayed point
             formatter: function(value, context) {
-              return value.y + " (" + moment(new Date(value.x)).format("DD.MM.YYYY") + ")";
+              return value.y + " (" + moment(new Date(value.x)).format("DD.MM.") + ")";
             }
           }
         },
