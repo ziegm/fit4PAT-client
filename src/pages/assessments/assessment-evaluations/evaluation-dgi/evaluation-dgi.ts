@@ -122,17 +122,17 @@ export class EvaluationDgiPage extends WorkflowPage {
       cssClass: 'detailsDgi',
       subTitle: 'Dynamic Gait Index',
       message:
-        '<ul><li><b>Erreichte Punkte:</b> ' + this.calcGraphValue(response) + "/24 Punkten" + '</li></br>' +
-        '<li>1. Gehen auf ebener Strecke: ' + response.item[0].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>2. Gehen mit Tempowechsel: ' + response.item[1].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>3. Gehen mit Kopfdrehung: ' + response.item[2].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>4. Gehen und nach oben und nach unten schauen: ' + response.item[3].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>5. Gehen und Drehung um 180°: ' + response.item[4].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>6. Gehen über Hindernisse: ' + response.item[5].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>7. Gehen um Hindernisse: ' + response.item[6].answer[0].valueInteger + " Punkt(e)" + '</li>' +
-        '<li>8. Treppensteigen: ' + response.item[7].answer[0].valueInteger + " Punkt(e)" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + response.item[8].answer[0].valueString + '</li>' +
-        '<li><b>Bemerkungen:</b> ' + response.item[9].answer[0].valueString + '</li></ul>',
+        '<ul><li><b>Erreichte Punkte: </b> ' + this.calcGraphValue(response) + '/24 Punkten</li></br>' +
+        '<li>1. Gehen auf ebener Strecke: <b>' + response.item[0].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>2. Gehen mit Tempowechsel: <b>' + response.item[1].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>3. Gehen mit Kopfdrehung: <b>' + response.item[2].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>4. Gehen und nach oben und nach unten schauen: <b>' + response.item[3].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>5. Gehen und Drehung um 180°: <b>' + response.item[4].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>6. Gehen über Hindernisse: <b>' + response.item[5].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>7. Gehen um Hindernisse: <b>' + response.item[6].answer[0].valueInteger + ' Punkt(e)</b></li>' +
+        '<li>8. Treppensteigen: <b>' + response.item[7].answer[0].valueInteger + ' Punkt(e)</b></li></br>' +
+        '<li><b>Hilfsmittel: </b> ' + response.item[8].answer[0].valueString + '</li>' +
+        '<li><b>Bemerkungen: </b> ' + response.item[9].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',

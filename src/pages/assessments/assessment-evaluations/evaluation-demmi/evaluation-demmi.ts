@@ -154,30 +154,30 @@ export class EvaluationDemmiPage extends WorkflowPage {
       cssClass: 'detailsDemmi',
       subTitle: 'de Morton Mobility Index',
       message:
-        '<ul><li><b>Rohwert:</b> ' + DemmiResult.calcRawValue(response) + "/19 Punkten" + '</li>' +
-        '<li><b>DEMMI Score:</b> ' + this.calcGraphValue(response) + "/100 Punkten" + '</li></br>' +
+        '<ul><li><b>Rohwert: </b> ' + DemmiResult.calcRawValue(response) + '/19 Punkten</li>' +
+        '<li><b>DEMMI Score: </b> ' + this.calcGraphValue(response) + '/100 Punkten</li></br>' +
         '<li><b>Bett</b></li>'+
-        '<li>1. Brücke: ' + response.item[0].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>2. Auf die Seite rollen: ' + response.item[1].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>3. Vom Liegen zum Sitzen: ' + response.item[2].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>1. Brücke: <b>' + response.item[0].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>2. Auf die Seite rollen: <b>' + response.item[1].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>3. Vom Liegen zum Sitzen: <b>' + response.item[2].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Stuhl</b></li>'+
-        '<li>4. Sitzen im Stuhl: ' + response.item[3].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>5. Aus dem Stuhl aufstehen: ' + response.item[4].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>6. Aufstehen ohne die Arme zu Hilfe zu nehmen: ' + response.item[5].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>4. Sitzen im Stuhl: <b>' + response.item[3].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>5. Aus dem Stuhl aufstehen: <b>' + response.item[4].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>6. Aufstehen ohne die Arme zu Hilfe zu nehmen: <b>' + response.item[5].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Statisches Gleichgewicht</b></li>'+
-        '<li>7. Ohne Unterstützung stehen: ' + response.item[6].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>8. Stehen mit geschlossenen Füssen: ' + response.item[7].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>9. Auf den Fussspitzen stehen: ' + response.item[8].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>10. Im Tandemstand mit geschlossenen Augen stehen: ' + response.item[9].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>7. Ohne Unterstützung stehen: <b>' + response.item[6].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>8. Stehen mit geschlossenen Füssen: <b>' + response.item[7].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>9. Auf den Fussspitzen stehen: <b>' + response.item[8].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>10. Im Tandemstand mit geschlossenen Augen stehen: <b>' + response.item[9].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Gehen</b></li>'+
-        '<li>11. Wegstrecke mit/ohne Gehilfe: ' + response.item[10].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>12. Sebstständiges Gehen: ' + response.item[11].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
+        '<li>11. Wegstrecke mit/ohne Gehhilfe: <b>' + response.item[10].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>12. Sebstständiges Gehen: <b>' + response.item[11].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
         '<li><b>Dynamisches Gleichgewicht</b></li>'+
-        '<li>13. Stift vom Boden aufheben: ' + response.item[12].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>14. Vier Schritte rückwärts gehen: ' + response.item[13].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li>' +
-        '<li>15. Springen: ' + response.item[14].answer[0].valueInteger.toFixed(0) + " Punkt(e)" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + response.item[15].answer[0].valueString + '</li>' +
-        '<li><b>Bemerkungen:</b> ' + response.item[16].answer[0].valueString + '</li></ul>',
+        '<li>13. Stift vom Boden aufheben: <b>' + response.item[12].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>14. Vier Schritte rückwärts gehen: <b>' + response.item[13].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li>' +
+        '<li>15. Springen: <b>' + response.item[14].answer[0].valueInteger.toFixed(0) + ' Punkt(e)</b></li></br>' +
+        '<li><b>Hilfsmittel: </b> ' + response.item[15].answer[0].valueString + '</li>' +
+        '<li><b>Bemerkungen: </b> ' + response.item[16].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',

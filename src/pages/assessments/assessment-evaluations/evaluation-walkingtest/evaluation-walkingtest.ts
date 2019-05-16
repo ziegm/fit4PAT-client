@@ -121,13 +121,13 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
       cssClass: 'detailsTWT',
       subTitle: 'Timed Walking Test',
       message:
-        '<ul><li><b>Durchschnittswert:</b> ' + WalkingtestResult.calcAverageRounded(response) + " Sekunden" + '</li>' +
-        '<li><b>Ganggeschwindigkeit:</b> ' + WalkingtestResult.calcSpeed(response) + " Meter/Sekunde" + '</li></br>' +
-        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + " Sekunden" + '</li>' +
-        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + " Sekunden" + '</li>' +
-        '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + " Sekunden" + '</li></br>' +
-        '<li><b>Hilfsmittel:</b> ' + response.item[3].answer[0].valueString + '</li>' +
-        '<li><b>Bemerkungen:</b> ' + response.item[4].answer[0].valueString + '</li></ul>',
+        '<ul><li><b>Durchschnittswert: </b> ' + WalkingtestResult.calcAverageRounded(response) + ' Sekunden</li>' +
+        '<li><b>Ganggeschwindigkeit: </b> ' + WalkingtestResult.calcSpeed(response) + ' Meter/Sekunde</li></br>' +
+        '<li>1. Durchführung: ' + WalkingtestResult.try(0, response) + ' Sekunden</li>' +
+        '<li>2. Durchführung: ' + WalkingtestResult.try(1, response) + ' Sekunden</li>' +
+        '<li>3. Durchführung: ' + WalkingtestResult.try(2, response) + ' Sekunden</li></br>' +
+        '<li><b>Hilfsmittel: </b> ' + response.item[3].answer[0].valueString + '</li>' +
+        '<li><b>Bemerkungen: </b> ' + response.item[4].answer[0].valueString + '</li></ul>',
       buttons: [
         {
           text: 'Ok',
