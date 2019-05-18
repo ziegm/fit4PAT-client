@@ -39,7 +39,7 @@ export class NoPatientErrorProvider {
     if (!this.alert) {
       this.alert = this.alertCtrl.create({
         title: 'Hinweis',
-        message: 'Bitte zuerst einen Patienten hinzufügen.',
+        message: 'Bitte zuerst einen Patienten auswählen.',
         buttons: ['OK']
       });
     }

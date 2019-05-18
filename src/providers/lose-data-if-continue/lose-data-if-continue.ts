@@ -14,7 +14,7 @@ export class LoseDataIfContinueProvider {
     if (!this.alert) {
       this.alert = this.alertCtrl.create({
         title: 'Hinweis',
-        message: 'Beim Wechsel zur nächsten Seite gehen nicht gespeicherte Informationen verloren (bitte zuerst AUSWERTEN).',
+        message: 'Beim Wechsel zur nächsten Seite gehen nicht gespeicherte Informationen verloren (bitte zuerst AUSWERTEN & SPEICHERN).',
         buttons: [{
             text: 'Zur nächsten Seite',
             handler: () => {
