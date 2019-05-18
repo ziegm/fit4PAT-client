@@ -270,7 +270,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
               xAdjust: 0,
               yAdjust: 0,
               enabled: true,
-              content: "Durchschnittliche Ganggeschwindigkeit Männer"
+              content: "Durchschnitt Männer"
             }
           } : {
             type: 'line',
@@ -290,7 +290,7 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
               xAdjust: 0,
               yAdjust: 0,
               enabled: true,
-              content: "Durchschnittliche Ganggeschwindigkeit Frauen"
+              content: "Durchschnitt Frauen"
             }
           }, this.patient.gender === 'male' ? {
             id: 'box4',
@@ -373,34 +373,58 @@ export class EvaluationWalkingtestPage extends WorkflowPage {
     window.open('https://www.sralab.org/rehabilitation-measures/10-meter-walk-test', '_system');
   }
 
-  private highlightResult(gender: string, speed: string, css: string[]): string[] {
+  private highlightResult(gender: string, css: string[]): string[] {
     let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
 
-    if (speed === this.calcSpeed() && this.patient.gender === gender) {
+    if (this.isFemaleAverage() && gender === 'female' || this.isMaleAverage() && gender === 'male') {
       return highlightStyle;
     }
 
     return css;
   }
 
-  private highlightFasterResult(gender: string, speed: string, css: string[]): string[] {
-    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
+  private isFemaleAverage(): boolean {
+    return this.calcSpeed() === '1.23' && this.patient.gender === 'female';
+  }
 
-    if (speed < this.calcSpeed() && this.patient.gender === gender) {
+  private isMaleAverage(): boolean {
+    return this.calcSpeed() === '1.37' && this.patient.gender === 'male';
+  }
+
+  private highlightFasterResult(gender: string, css: string[]): string[] {
+    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'greenActive'], css);
+
+    if (this.isFemaleFaster() && gender === 'female' || this.isMaleFaster() && gender === 'male') {
       return highlightStyle;
     }
 
     return css;
   }
 
-  private highlightSlowerResult(gender: string, speed: string, css: string[]): string[] {
-    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'orangeActive'], css);
+  private isFemaleFaster(): boolean {
+    return +this.calcSpeed() > 1.23 && this.patient.gender === 'female';
+  }
 
-    if (speed > this.calcSpeed() && this.patient.gender === gender) {
+  private isMaleFaster(): boolean {
+    return +this.calcSpeed() > 1.37 && this.patient.gender === 'male';
+  }
+
+  private highlightSlowerResult(gender: string, css: string[]): string[] {
+    let highlightStyle = this.takeOverStylesFromInputCss(['cell', 'redActive'], css);
+
+    if (this.isFemaleSlower() && gender === 'female' || this.isMaleSlower() && gender === 'male') {
       return highlightStyle;
     }
 
     return css;
+  }
+
+  private isFemaleSlower(): boolean {
+    return +this.calcSpeed() < 1.23 && this.patient.gender === 'female';
+  }
+
+  private isMaleSlower(): boolean {
+    return +this.calcSpeed() < 1.37 && this.patient.gender === 'male';
   }
 
   private takeOverStylesFromInputCss(highlightStyle: string[], css: string[]): string[] {

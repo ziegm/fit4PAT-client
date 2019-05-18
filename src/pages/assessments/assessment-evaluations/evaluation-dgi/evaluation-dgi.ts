@@ -371,4 +371,25 @@ export class EvaluationDgiPage extends WorkflowPage {
     this.pdfPrinter.createPdf(new DgiPdfDefnition(this.patient, this.lineChart));
     this.pdfPrinter.downloadPdf("dgi.pdf");
   }
+
+  private fallRisk(score: string, defaultStyle: string): string {
+    switch (score) {
+      case 'CUT_OFF_POINT':
+        if (19 === this.calcValue()) {
+          return 'orangeActive';
+        }
+        return defaultStyle;
+      case 'AT_RISK':
+        if (this.calcValue() < 19) {
+          return 'redActive';
+        }
+        return defaultStyle;
+      case 'NO_RISK':
+        if (this.calcValue() > 19) {
+          return 'greenActive';
+        }
+          default:
+        return defaultStyle;
+    }
+  }
 }

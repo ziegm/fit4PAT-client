@@ -76,4 +76,16 @@ page-evaluation-dgi {
   .value{
     max-width: 10%;
   }
+  .redActive {
+    background-color: #ff4c4c;
+    @extend %score-element;
+  }
+  .orangeActive {
+    background-color: #ffc04c;
+    @extend %score-element;
+  }
+  .greenActive {
+    background-color: #4ca64c;
+    @extend %score-element;
+  }
 }

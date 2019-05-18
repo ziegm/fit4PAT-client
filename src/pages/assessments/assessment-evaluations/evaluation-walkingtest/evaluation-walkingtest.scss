@@ -67,14 +67,16 @@ page-evaluation-walkingtest {
   .normColor3{
     background-color: #f3f3f3;
   }
-  .red{
-    background-color: #ff9999;
+  .redActive {
+    background-color: #ff4c4c;
+    @extend %score-element;
   }
-  .blue{
-    background-color: #9999ff;
-  }
-
   .orangeActive {
     background-color: #ffc04c;
+    @extend %score-element;
+  }
+  .greenActive {
+    background-color: #4ca64c;
+    @extend %score-element;
   }
 }

@@ -82,7 +82,7 @@
       <ion-item class="cell bold">
         <ion-label>Cut-off Point für Stürze</ion-label>
       </ion-item>
-      <ion-item class="cell cellDown normColor1">
+      <ion-item [ngClass]="['cell', 'cellDown', fallRisk('CUT_OFF_POINT', 'normColor1')]">
         <ion-label>19</ion-label>
       </ion-item>
     </div>
@@ -90,7 +90,7 @@
       <ion-item class="cell bold">
         <ion-label>Sturzgefährdert</ion-label>
       </ion-item>
-      <ion-item class="cell cellDown normColor2">
+      <ion-item [ngClass]="['cell', 'cellDown', fallRisk('AT_RISK', 'normColor2')]">
         <ion-label>< 19</ion-label>
       </ion-item>
     </div>
@@ -98,7 +98,7 @@
       <ion-item class="cell lastCell bold">
         <ion-label>Nicht sturzgefährdert</ion-label>
       </ion-item>
-      <ion-item class="cell lastCell cellDown normColor3">
+      <ion-item [ngClass]="['cell', 'lastCell', 'cellDown', fallRisk('NO_RISK', 'normColor3')]">
         <ion-label>> 19</ion-label>
       </ion-item>
     </div>
