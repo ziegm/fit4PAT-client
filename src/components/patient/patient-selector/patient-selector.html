@@ -1,5 +1,8 @@
+<!--if no patient is chosen, the button is shown-->
 <button ion-button (click)="navToPatientTab()" *ngIf="patient === undefined">Patient auswählen</button>
+<!--if a patient is chosen, the name and infos are shown-->
 <ion-item *ngIf="patient !== undefined">
+  <!--name and infos are seperated, so the name can be written in bold and in a own line-->
   <ion-label>
     <p class="bold">{{viewPatientName(patient)}}</p>
     <p>{{viewPatientInfos(patient)}}</p>
