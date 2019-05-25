@@ -10,8 +10,10 @@ import {App} from "ionic-angular";
   selector: 'fab-navigation',
   templateUrl: 'fab-navigation.html'
 })
+/**
+ * Navigation of the floating action button (fab).
+ */
 export class FabNavigationComponent {
-
   private rootNav: any;
   @Input() private workflowParameters;
 

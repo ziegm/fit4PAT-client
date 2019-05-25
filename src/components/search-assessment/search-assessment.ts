@@ -9,6 +9,9 @@ import {FormDgiPage} from "../../pages/assessments/assessment-forms/form-dgi/for
   selector: 'search-assessment',
   templateUrl: 'search-assessment.html'
 })
+/**
+ * Component for displaying a list of assessments.
+ */
 export class SearchAssessmentComponent {
   private rootNav: any;
   @Input() private workflowParameters: WorkflowParameters;
@@ -20,11 +23,18 @@ export class SearchAssessmentComponent {
     this.rootNav = app.getRootNav();
   }
 
+  /**
+   * Loads the assessment taken over from the surrounding components (discipline pages).
+   */
   private ngOnChanges(): void {
     this.results = this.assessments;
   }
 
-  private navToAssessment(name: string) {
+  /**
+   * Decides by name to which form page to navigate.
+   * @param name    The name of the form.
+   */
+  private navToAssessment(name: string): void {
     switch(name) {
       case 'de Morton Mobility Index (DEMMI)':
         this.rootNav.push(FormDemmiPage, this.workflowParameters);
@@ -38,11 +48,20 @@ export class SearchAssessmentComponent {
     }
   }
 
+  /**
+   * Toggles the visibility of the search bar.
+   * @param isVisible   true or false.
+   */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
     this.results = this.assessments;
   }
 
+  /**
+   * Searches inside the loaded assessment list for an assessment name and removes
+   * not fitting assessments.
+   * @param search    The search string.
+   */
   private getAssessments(event): void {
     if (event.target.value !== undefined) {
       this.results = this.assessments.filter(assessment => {

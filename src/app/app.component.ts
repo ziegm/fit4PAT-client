@@ -9,6 +9,9 @@ import {MenuNavigationProvider} from "../providers/menu-navigation/menu-navigati
 @Component({
   templateUrl: 'app.html'
 })
+/**
+ * Entry-Component of the ionic app.
+ */
 export class MyApp {
   private rootPage:any = TabsPage;
 
@@ -19,6 +22,9 @@ export class MyApp {
     });
   }
 
+  /**
+   * Loads a popup with the information, that a specific feature is not yet implemented in this prototype.
+   */
   private presentAlert(): void{
     let alert = this.alertCtrl.create({
       title: 'Prototyp',
@@ -27,5 +33,4 @@ export class MyApp {
     });
     alert.present();
   }
-
 }

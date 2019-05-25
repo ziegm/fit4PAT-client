@@ -9,6 +9,9 @@ import Patient = fhir.Patient;
   selector: 'patient-selector',
   templateUrl: 'patient-selector.html'
 })
+/**
+ * Displays a button for choosing a patient or a patient if already selected in each assessment form.
+ */
 export class PatientSelectorComponent extends WorkflowPage {
   private rootNav: any;
   @Input() private patient: Patient;
@@ -18,10 +21,23 @@ export class PatientSelectorComponent extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private viewPatientName(patient: Patient) {
+  /**
+   *  View representation of a patient in the format:
+   *  [Room:] Family name, given name
+   *  If no patient is selected an empty string is returned.
+   * @param patient   The patient to be represented.
+   */
+  private viewPatientName(patient: Patient): string {
     return patient !== undefined ? PatientHelper.viewPatientName(patient) : "";
   }
-  private viewPatientInfos(patient: Patient) {
+
+  /**
+   * View representation of a patients additional information in the format:
+   * Gender, birthdate (age), case id (Fall-ID)
+   * If no patient is selected an empty string is returned.
+   * @param patient   The patient to be represented.
+   */
+  private viewPatientInfos(patient: Patient): string {
     return patient !== undefined ? PatientHelper.viewPatientInfos(patient) : "";
   }
 

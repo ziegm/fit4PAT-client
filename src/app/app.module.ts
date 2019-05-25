@@ -66,6 +66,9 @@ import {File} from "@ionic-native/file";
 import {FileOpener} from "@ionic-native/file-opener";
 import {PdfPrinterProvider} from '../providers/pdf-printer/pdf-printer';
 
+/**
+ * Class from the ionic framework for declaration of modules, providers etc.
+ */
 // @ts-ignore
 @NgModule({
   declarations: [

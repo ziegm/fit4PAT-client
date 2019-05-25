@@ -16,6 +16,10 @@ import {MorePatientScanPage} from "../../pages/popover/more-popover/more-patient
   selector: 'navbar',
   templateUrl: 'navbar.html'
 })
+/**
+ * Top navigation containing title, subtitle, and buttons for navigating home, opening
+ * sliding sidebar (hamburger), the overflow menu (3 dots) and search.
+ */
 export class NavbarComponent {
   @Output() private searchbarVisibilityChange = new EventEmitter();
   private isSearchbarVisible = false;
@@ -31,27 +35,52 @@ export class NavbarComponent {
   constructor(private navController: NavController, private popoverCtrl: PopoverController) {
   }
 
+  /**
+   * Turning the search bar on and off.
+   */
   private toggleSearchbarVisibility(): void {
     this.isSearchbarVisible = this.isSearchbarVisible !== true;
     this.searchbarVisibilityChange.emit(this.isSearchbarVisible);
   }
 
+  /**
+   * Takes the user back to the home page (assessment tab) by popping all other pages on top of it from
+   * the navigation stack.
+   */
   private navToHome() {
+    // Gets the TabsPage view.
     let home = this.navController.getViews().find((view) => view.component.name === "TabsPage");
+
+    // Removes the current patient from the workflow parameters.
     if (this.workflowParameters.patient !== undefined) {
       this.workflowParameters.patient = undefined;
     }
+
+    // Sets the tab reference to the assessment page, so that it is loaded, even
+    // if the user was on the patient page before.
     (home.instance as TabsPage).tabRef.select(0);
+
     this.navController.popTo(home);
   }
 
+  /**
+   * Opens the overflow menu (3 dots)
+   * @param event   Click event provided by the click handler of the button used to call this method.
+   */
   private openModal(event): void {
+    // Creates the specific popover. switchModal() tells, which Page has to be displayed inside the popover.
     this.popover = this.popoverCtrl.create(this.switchModal(), this.workflowParameters, {cssClass: 'morePopover'});
+
+    // Displays the popover.
     this.popover.present({
       ev: event
     });
   }
 
+  /**
+   * Decides which page has to be displayed inside a popover. The popoverType is set as component parameter
+   * by the surrounding component.
+   */
   private switchModal(): any {
     if (this.popoverType === "MoreAZPage") {
       return MoreAZPage;
