@@ -1,3 +1,4 @@
+<!--navbar of this page-->
 <ion-header>
   <navbar [title]="viewPatientName(patient)"[subTitle]="viewPatientInfos(patient)"
           [workflowParameters]="workflowParameters"
@@ -7,14 +8,16 @@
 </ion-header>
 
 <ion-content padding>
+  <!--floating action button for new assessments-->
   <fab-navigation [workflowParameters]="workflowParameters"></fab-navigation>
 
- <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
-  <ion-list>
-    <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients heightList" (click)="navToEvaluation(assessment)">
-      <p class="bold">{{viewAssessmentName(assessment)}}</p>
-      <p>{{viewAssessmentInfos(assessment)}}</p>
-    </ion-item>
-    <ion-item *ngIf="responses.length === 0">{{noAssessmentMessage}}</ion-item>
-  </ion-list>
+  <!--shows a list of all existing assessments for this patient-->
+   <ion-label class="text bold">Bereits durchgeführte Assessments:</ion-label>
+    <ion-list>
+      <ion-item *ngFor="let assessment of responses" class="listAssessmentsPatients heightList" (click)="navToEvaluation(assessment)">
+        <p class="bold">{{viewAssessmentName(assessment)}}</p>
+        <p>{{viewAssessmentInfos(assessment)}}</p>
+      </ion-item>
+      <ion-item *ngIf="responses.length === 0">{{noAssessmentMessage}}</ion-item>
+    </ion-list>
 </ion-content>

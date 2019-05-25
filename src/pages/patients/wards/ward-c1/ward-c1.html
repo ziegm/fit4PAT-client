@@ -1,3 +1,4 @@
+<!--navbar of this page-->
 <ion-header>
   <navbar title="Station C1"
           [workflowParameters]="workflowParameters"
@@ -6,6 +7,8 @@
 </ion-header>
 
 <ion-content padding>
+  <!--only shown when the user wants to search a patient - this field for searching is shown-->
   <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Patient suchen (nach Nachname oder Vorname suchen)" (ionInput)="searchPatients($event)"></ion-searchbar>
+  <!--shows the list of the patients of this ward-->
   <patient-list [ward]="ward" [workflowParameters]="workflowParameters" [search]="search"></patient-list>
 </ion-content>

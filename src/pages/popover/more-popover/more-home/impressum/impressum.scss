@@ -1,29 +1,24 @@
 page-impressum {
+  //everywhere there is a left padding
   h1, h2, div{
     padding-left: 16px;
   }
 
+  //size of the font from the topic titles
   h1{
     font-size: 24px;
   }
-  h2{
-    font-size: 16px;
-    font-weight: bold;
-  }
+
+  //how the text is shown
   .text{
     display: inline-block;
-    //word-break: break-all;
-    //word-wrap: break-word;
-    //overflow-wrap: break-word;
     font-size: 16px;
   }
-  .break{
-    padding-top: 10px;
-  }
+
+  //how the link within the app is shown
   .linkWithinApp{
     text-decoration: underline;
     background-color: transparent;
     padding: 0;
   }
-
 }

@@ -1,3 +1,4 @@
+<!--shows the navbar for this page-->
 <ion-header>
   <navbar title="Patientenauswahl"
           [workflowParameters]="workflowParameters"
@@ -5,15 +6,39 @@
 </ion-header>
 
 <ion-content padding>
+  <!--only shown when the user wants to search a patient - this field for searching is shown-->
   <ion-searchbar *ngIf="workflowParameters.isSearchVisible" placeholder="Patient suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+
+  <!--shows the table with all three possible items to search a patient-->
   <ion-item>
     <div class="row">
-      <div class="col"><ion-item class="labelTable"><img class="image" src="./assets/imgs/Datamatrix.jpg" (click)="navToPatientScan()"/></ion-item>
-        <ion-item class="labelTable"><button (click)="navToPatientScan()">Patientenarmband scannen</button></ion-item></div>
-      <div class="col"><ion-item class="labelTable"><img class="image" src="./assets/imgs/hospital.jpg"(click)="navToPatientStationary()"></ion-item>
-        <ion-item class="labelTable"><button (click)="navToPatientStationary()">Stationäre Patienten</button></ion-item></div>
-      <div class="col"><ion-item class="labelTable"><img class="image" src="./assets/imgs/medkit.jpg"(click)="navToPatientAmbulatory()"></ion-item>
-        <ion-item class="labelTable"><button (click)="navToPatientAmbulatory()">Ambulante Patienten</button></ion-item></div>
+      <!--image and text for "Patientenarmband scannen"-->
+      <div class="col">
+        <ion-item class="labelTable">
+          <img class="image" src="./assets/imgs/Datamatrix.jpg" (click)="navToPatientScan()"/>
+        </ion-item>
+        <ion-item class="labelTable">
+          <button (click)="navToPatientScan()">Patientenarmband scannen</button>
+        </ion-item>
+      </div>
+      <!--image and text for "Stationäre Patienten"-->
+      <div class="col">
+        <ion-item class="labelTable">
+          <img class="image" src="./assets/imgs/hospital.jpg"(click)="navToPatientStationary()">
+        </ion-item>
+        <ion-item class="labelTable">
+          <button (click)="navToPatientStationary()">Stationäre Patienten</button>
+        </ion-item>
+      </div>
+      <!--image and text for "Ambulante Patienten"-->
+      <div class="col">
+        <ion-item class="labelTable">
+          <img class="image" src="./assets/imgs/medkit.jpg"(click)="navToPatientAmbulatory()">
+        </ion-item>
+        <ion-item class="labelTable">
+          <button (click)="navToPatientAmbulatory()">Ambulante Patienten</button>
+        </ion-item>
+      </div>
     </div>
   </ion-item>
 </ion-content>

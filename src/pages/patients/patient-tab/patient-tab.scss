@@ -1,21 +1,19 @@
 page-patient {
+  //how the position of the items is inside the table
   .labelTable{
     padding-top: 20px;
     text-align: center;
   }
+
+  //size and position of all three images
   .image{
     height: 200px;
     width: 200px;
     margin-top: 60px;
     margin-bottom: 23px;
   }
-  .iconAandS{
-    color: #888888;
-    zoom: 15;
-  }
-  ion-icon::before{
-    padding: 0;
-  }
+
+  //the text is shown without background, the position of the text
   button{
     background-color: transparent;
     padding-top: 10px;
