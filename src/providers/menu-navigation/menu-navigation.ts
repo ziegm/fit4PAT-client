@@ -10,6 +10,9 @@ import {PatientScanPage} from "../../pages/patients/patient-selector/patient-sca
 import {PatientStationaryPage} from "../../pages/patients/patient-selector/patient-stationary/patient-stationary";
 import {PatientAmbulatoryPage} from "../../pages/patients/patient-selector/patient-ambulatory/patient-ambulatory";
 
+/**
+ * Provides the navigation functions to the disciplines or patient selections for menus.
+ */
 @Injectable()
 export class MenuNavigationProvider {
   private _navCtrl: NavController;
@@ -21,42 +24,42 @@ export class MenuNavigationProvider {
     this._navCtrl = value;
   }
 
-  navToMusculoskeletal() {
+  navToMusculoskeletal(): void {
     this._navCtrl.push(MusculoskeletalPage, { workflowSelector: WorkflowSelector.FromAssessment });
     this.menuCtrl.close();
   }
 
-  navToGeriatrics() {
+  navToGeriatrics(): void {
     this._navCtrl.push(GeriatricsPage, { workflowSelector: WorkflowSelector.FromAssessment });
     this.menuCtrl.close();
   }
 
-  navToNeurology() {
+  navToNeurology(): void {
     this._navCtrl.push(NeurologyPage, { workflowSelector: WorkflowSelector.FromAssessment });
     this.menuCtrl.close();
   }
 
-  navToCardiology() {
+  navToCardiology(): void {
     this._navCtrl.push(CardiologyPage, { workflowSelector: WorkflowSelector.FromAssessment });
     this.menuCtrl.close();
   }
 
-  navToOthers() {
+  navToOthers(): void {
     this._navCtrl.push(OthersPage, { workflowSelector: WorkflowSelector.FromAssessment });
     this.menuCtrl.close();
   }
 
-  navToPatientScan() {
+  navToPatientScan(): void {
     this._navCtrl.push(PatientScanPage, { workflowSelector: WorkflowSelector.FromPatient });
     this.menuCtrl.close();
   }
 
-  navToPatientStationary() {
+  navToPatientStationary(): void {
     this._navCtrl.push(PatientStationaryPage, { workflowSelector: WorkflowSelector.FromPatient });
     this.menuCtrl.close();
   }
 
-  navToPatientAmbulatory() {
+  navToPatientAmbulatory(): void {
     this._navCtrl.push(PatientAmbulatoryPage, { workflowSelector: WorkflowSelector.FromPatient });
     this.menuCtrl.close();
   }

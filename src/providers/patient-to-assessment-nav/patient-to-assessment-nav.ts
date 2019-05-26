@@ -6,6 +6,9 @@ import {FormDemmiPage} from "../../pages/assessments/assessment-forms/form-demmi
 import {FormWalkingtestPage} from "../../pages/assessments/assessment-forms/form-walkingtest/form-walkingtest";
 import {WorkflowParameters} from "../../workflow/workflow-parameters";
 
+/**
+ *
+ */
 @Injectable()
 export class PatientToAssessmentNavProvider {
   private rootNav: any;
@@ -14,13 +17,13 @@ export class PatientToAssessmentNavProvider {
     this.rootNav = app.getRootNav();
   }
 
-  public navToAssessment(workflowParameters: WorkflowParameters, navCtrl: NavController) {
+  public navToAssessment(workflowParameters: WorkflowParameters, navCtrl: NavController): void {
     let viewController: ViewController = navCtrl.getViews().find((view) =>
       AssessmentFormList.isAssessmentForm(view));
     this.navToAssessmentForm(viewController, workflowParameters);
   }
 
-  private navToAssessmentForm(viewController: ViewController, workflowParameters: WorkflowParameters) {
+  private navToAssessmentForm(viewController: ViewController, workflowParameters: WorkflowParameters): void {
     if(viewController.component.name === "FormDgiPage") {
       this.rootNav.push(FormDgiPage, workflowParameters);
     } else if(viewController.component.name === "FormDemmiPage") {
