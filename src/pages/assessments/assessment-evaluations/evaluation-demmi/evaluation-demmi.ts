@@ -133,9 +133,20 @@ export class EvaluationDemmiPage extends WorkflowPage {
     }
   }
 
+  /**
+   *  View representation of a patient in the format:
+   *  [Room:] Family name, given name
+   * @param patient   The patient to be represented.
+   */
   private viewPatientName(patient: Patient) {
     return PatientHelper.viewPatientName(patient);
   }
+
+  /**
+   * View representation of a patients additional information in the format:
+   * Gender, birthdate (age), case id (Fall-ID)
+   * @param patient   The patient to be represented.
+   */
   private viewPatientInfos(patient: Patient) {
     return PatientHelper.viewPatientInfos(patient);
   }

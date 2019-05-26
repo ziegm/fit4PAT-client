@@ -49,8 +49,8 @@ export class SearchAssessmentComponent {
   }
 
   /**
-   * Toggles the visibility of the search bar.
-   * @param isVisible   true or false.
+   * Event handler for the searchbarVisibiltyChange event of the navbar.
+   * @param isVisible   The current value of the searchbar visibility.
    */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;

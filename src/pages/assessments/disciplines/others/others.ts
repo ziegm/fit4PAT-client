@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {MyApp} from "../../../../app/app.component";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 
 @IonicPage()
@@ -8,6 +7,9 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   selector: 'page-others',
   templateUrl: 'others.html',
 })
+/**
+ * Page for the displaying of other assessments.
+ */
 export class OthersPage extends WorkflowPage{
   private rootNav:any;
   private isSearchbarVisible = false;
@@ -18,10 +20,10 @@ export class OthersPage extends WorkflowPage{
     this.rootNav = app.getRootNav();
   }
 
-  navToAssessmentTab(){
-    this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
+  /**
+   * Event handler for the searchbarVisibiltyChange event of the navbar.
+   * @param isVisible   The current value of the searchbar visibility.
+   */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }

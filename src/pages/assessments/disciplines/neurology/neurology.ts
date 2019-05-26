@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavParams} from 'ionic-angular';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {MyApp} from "../../../../app/app.component";
 import {DocumentViewer} from '@ionic-native/document-viewer';
-
 
 @IonicPage()
 @Component({
   selector: 'page-neurology',
   templateUrl: 'neurology.html',
 })
+/**
+ * Page for the displaying of neurologic assessments.
+ */
 export class NeurologyPage extends WorkflowPage {
   private rootNav:any;
   private isSearchbarVisible = false;
@@ -23,20 +24,10 @@ export class NeurologyPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  navToAssessmentTab(){
-    this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
-  showPdfDemmi(){
-    /*this.fileOpener.open('/assets/Assessment_DGI.pdf', 'application/pdf')
-      .then(()=>console.log('File is opend'))
-      .catch(e=>console.log('Error opening file', e));*/
-    /*const options: DocumentViewerOptions = {
-      title: 'My PDF'
-    }
-    this.document.viewDocument('/assets/Assessment_DGI.pdf', 'application/pdf', options)*/
-  }
-
+  /**
+   * Event handler for the searchbarVisibiltyChange event of the navbar.
+   * @param isVisible   The current value of the searchbar visibility.
+   */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }

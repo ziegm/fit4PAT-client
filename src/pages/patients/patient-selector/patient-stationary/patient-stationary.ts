@@ -53,6 +53,10 @@ export class PatientStationaryPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Event handler for the searchbarVisibiltyChange event of the navbar.
+   * @param isVisible   The current value of the searchbar visibility.
+   */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
     this.results = this.wards;

@@ -1,13 +1,15 @@
 import {Component} from '@angular/core';
 import {App, IonicPage, NavParams} from 'ionic-angular';
 import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {MyApp} from "../../../../app/app.component";
 
 @IonicPage()
 @Component({
   selector: 'page-geriatrics',
   templateUrl: 'geriatrics.html',
 })
+/**
+ * Page for the displaying of geriatric assessments.
+ */
 export class GeriatricsPage extends WorkflowPage {
   private rootNav:any;
   private isSearchbarVisible = false;
@@ -20,10 +22,10 @@ export class GeriatricsPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  navToAssessmentTab(){
-    this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
+  /**
+   * Event handler for the searchbarVisibiltyChange event of the navbar.
+   * @param isVisible   The current value of the searchbar visibility.
+   */
   private onSearchbarVisibilityChange(isVisible: boolean): void {
     this.isSearchbarVisible = isVisible;
   }
