@@ -7,7 +7,6 @@ import {MusculoskeletalPage} from "../disciplines/musculoskeletal/musculoskeleta
 import {OthersPage} from "../disciplines/others/others";
 import {WorkflowPage} from "../../../workflow/workflow-page";
 import {MenuNavigationProvider} from "../../../providers/menu-navigation/menu-navigation";
-import {SearchPopoverPage} from "../../popover/search-popover/search-popover";
 import {AssessmentSearchProvider} from "../../../providers/assessment-search/assessment-search";
 
 @Component({
@@ -48,13 +47,6 @@ export class AssessmentTabPage extends WorkflowPage {
 
   private navToOthers() {
     this.rootNav.push(OthersPage, this.workflowParameters);
-  }
-
-  private showPopover(event): void {
-    let popover = this.popoverCtrl.create(SearchPopoverPage, this.searchResults, {cssClass: 'distanceToInput'});
-    popover.present({
-      ev: event
-    });
   }
 
   private getAssessments(event) :void {

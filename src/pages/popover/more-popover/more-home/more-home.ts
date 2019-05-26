@@ -10,6 +10,9 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   selector: 'page-more-home',
   templateUrl: 'more-home.html',
 })
+/**
+ * The popover for displaying information like impressum, licenses etc.
+ */
 export class MoreHomePage extends WorkflowPage {
   private rootNav: any;
 
@@ -18,26 +21,26 @@ export class MoreHomePage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private closePopover(){
+  private closePopover(): void {
     this.viewCtrl.dismiss();
   }
 
-  private openInstruction() {
+  private openInstruction(): void {
     this.closePopover();
     this.rootNav.push(InstructionPage, this.workflowParameters);
   }
 
-  private openPrivacy() {
+  private openPrivacy(): void {
     this.closePopover();
     this.rootNav.push(PrivacyPage, this.workflowParameters);
   }
 
-  private openLicences() {
+  private openLicences(): void {
     this.closePopover();
     this.rootNav.push(LicencesPage, this.workflowParameters);
   }
 
-  private openImpressum() {
+  private openImpressum(): void {
     this.closePopover();
     this.rootNav.push(ImpressumPage, this.workflowParameters);
   }

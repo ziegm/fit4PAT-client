@@ -5,13 +5,15 @@ import {PopoverController, ViewController} from 'ionic-angular';
   selector: 'page-more-patient-scan',
   templateUrl: 'more-patient-scan.html',
 })
+/**
+ * Popover for starting the patient scan.
+ */
 export class MorePatientScanPage {
 
   constructor(private popoverCtrl: PopoverController, private viewCtrl: ViewController) {
   }
 
-  private closePopover(){
+  private closePopover(): void {
     this.viewCtrl.dismiss();
   }
-
 }

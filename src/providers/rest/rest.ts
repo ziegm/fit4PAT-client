@@ -69,7 +69,6 @@ export class RestProvider {
 
   /**
    * Get a list of the last ten (per default) questionnaire responses by patient.
-   *
    * @param patient         The patient the responses are from.
    * @param assessmentName  The name of the assessment as in the identifier of questionnaire response.
    * @param authored        The date, when the assessment responses were created (optional)
@@ -93,7 +92,6 @@ export class RestProvider {
 
   /**
    * Post a assessment response object to the hapi-fhir server.
-   *
    * @param assessmentResponse    The AssessmentResponse object to transfer to the server
    */
   postAssessmentResponse(assessmentResponse: AssessmentResponse) {
@@ -111,7 +109,6 @@ export class RestProvider {
 
   /**
    * Post a practitioner object to the hapi-fhir server.
-   *
    * @param practitioner      The practitioner object to transfer to the server
    */
   postPractitioner(practitioner: Practitioner) {
@@ -129,7 +126,6 @@ export class RestProvider {
 
   /**
    * Post a patient object to the hapi-fhir server.
-   *
    * @param patient     The patient object to transfer to the server
    */
   postPatient(patient: Patient) {

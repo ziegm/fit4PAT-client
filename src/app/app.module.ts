@@ -42,7 +42,6 @@ import {NavbarComponent} from "../components/navbar/navbar";
 import {ChartModule} from 'angular2-chartjs';
 import 'chartjs-plugin-annotation';
 import {MenuNavigationProvider} from '../providers/menu-navigation/menu-navigation';
-import {SearchPopoverPage} from "../pages/popover/search-popover/search-popover";
 import {AssessmentSearchProvider} from '../providers/assessment-search/assessment-search';
 import {MoreHomePage} from "../pages/popover/more-popover/more-home/more-home";
 import {InstructionPage} from "../pages/popover/more-popover/more-home/instruction/instruction";
@@ -101,7 +100,6 @@ import {PdfPrinterProvider} from '../providers/pdf-printer/pdf-printer';
     PatientSelectorComponent,
     PatientDetailPage,
     NavbarComponent,
-    SearchPopoverPage,
     MoreHomePage,
     InstructionPage,
     PrivacyPage,
@@ -152,7 +150,6 @@ import {PdfPrinterProvider} from '../providers/pdf-printer/pdf-printer';
     WardC1Page,
     WardIpsPage,
     PatientDetailPage,
-    SearchPopoverPage,
     MoreHomePage,
     InstructionPage,
     PrivacyPage,

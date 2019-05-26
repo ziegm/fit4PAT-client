@@ -8,6 +8,9 @@ import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-
   selector: 'page-more-nav-to-patient-detail',
   templateUrl: 'more-nav-to-patient-detail.html',
 })
+/**
+ * Popover with link to the already filled out assessments of a patient.
+ */
 export class MoreNavToPatientDetailPage extends WorkflowPage {
   private rootNav:any;
 

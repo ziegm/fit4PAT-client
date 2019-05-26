@@ -5,6 +5,9 @@ import {NavController, NavParams} from 'ionic-angular';
   selector: 'page-licences',
   templateUrl: 'licences.html',
 })
+/**
+ * The license page.
+ */
 export class LicencesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -25,5 +28,4 @@ export class LicencesPage {
   private openLinkPostgreSQL(){
     window.open('https://www.postgresql.org/about/licence/', '_system');
   }
-
 }

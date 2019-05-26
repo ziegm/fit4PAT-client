@@ -7,6 +7,9 @@ import {WorkflowPage} from "../../../../../workflow/workflow-page";
   selector: 'page-impressum',
   templateUrl: 'impressum.html',
 })
+/**
+ * The impressum page.
+ */
 export class ImpressumPage extends WorkflowPage {
   private rootNav: any;
 
@@ -15,18 +18,19 @@ export class ImpressumPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private openLinkDemmi(){
+  private openLinkDemmi(): void {
     window.open('https://www.thieme.de/statics/dokumente/thieme/final/de/dokumente/tw_physiotherapie/Assessment_DEMMI.pdf', '_system');
   }
-  private openLinkDgi(){
+
+  private openLinkDgi(): void {
     window.open('https://www.thieme-connect.de/products/ejournals/abstract/10.1055/s-0032-1307960', '_system');
   }
-  private openLinkTWT(){
+
+  private openLinkTWT(): void {
     window.open('https://www.thieme-connect.de/products/ejournals/abstract/10.1055/s-0032-1308003', '_system');
   }
 
-  private navToLicenses(){
+  private navToLicenses(): void {
     this.rootNav.push(LicencesPage, this.workflowParameters);
   }
-
 }

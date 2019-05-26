@@ -27,6 +27,9 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
     this.defaultAnswers();
   }
 
+  /**
+   * Sets the specific type of this assessment.
+   */
   protected abstract setAssessmentType();
 
   protected createResponseItems(): void {
@@ -35,12 +38,14 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
     }
   };
 
+  /**
+   * Default answers of this assessment.
+   */
   protected defaultAnswers(): void {};
 
   /**
    * Add the patients id as a reference.
-   *
-   * @param patient     A selected patient
+   * @param patient     A selected patient.
    */
   addPatient(patient: Patient): void {
     this.source = new Fit4PATReference("Patient/" + patient.id);
@@ -58,7 +63,6 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
 
   /**
    * Pad part of the date (day, month) with a leading zero, if it has only one digit.
-   *
    * @param datePart  The day or month that should be padded.
    */
   private zeroPadded(datePart: number): string {
@@ -70,8 +74,7 @@ export abstract class AssessmentResponse implements QuestionnaireResponse {
 
   /**
    * Add an answer to the assessment response or change the existing one.
-   *
-   * @param index   The index of the answer on the assessment response
+   * @param index   The index of the answer on the assessment response.
    * @param event   The event that delivers the answer of a question.
    * @param radio   True if the underlying control delivers numeric values.
    */
