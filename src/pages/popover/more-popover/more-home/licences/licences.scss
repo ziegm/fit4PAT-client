@@ -1,23 +1,23 @@
 page-licences {
+  //there is a left padding
   h1, h2, div{
-  padding-left: 16px;
+    padding-left: 16px;
   }
 
+  //how the title is shown
   h1{
     font-size: 24px;
   }
+
+  //how the subtitle is shown
   h2{
     font-size: 16px;
     font-weight: bold;
   }
+
+  //how the text is written
   .text{
     display: inline-block;
-    //word-break: break-all;
-    //word-wrap: break-word;
-    //overflow-wrap: break-word;
     font-size: 16px;
-  }
-  .break{
-    padding-top: 10px;
   }
 }

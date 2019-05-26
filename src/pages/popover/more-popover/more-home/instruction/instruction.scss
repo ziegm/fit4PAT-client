@@ -1,24 +1,22 @@
 page-instruction {
+  //there is a left padding
   h1, h2, div{
   padding-left: 16px;
-}
+  }
 
+  //how the title is shown
   h1{
     font-size: 24px;
   }
-  h2{
-    font-size: 16px;
-    font-weight: bold;
-  }
+
+  //how the text is written
   .text{
     display: inline-block;
     font-size: 16px;
   }
+
+  //there is a padding on top of this text
   .break{
     padding-top: 10px;
-  }
-  .linkWithinApp{
-    text-decoration: underline;
-    background-color: transparent;
   }
 }
