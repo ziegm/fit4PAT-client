@@ -1,16 +1,25 @@
+<!--how the navbar is shown - back button-->
 <ion-navbar [hideBackButton]="hideBackbutton">
+  <!--menu-->
   <button *ngIf="isMenuVisible" ion-button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
+  <!--title-->
   <ion-title>{{ title }}</ion-title>
+  <!--subtitle-->
   <ion-label class="subtitle">{{ subTitle}}</ion-label>
+
+  <!--three icons on the right end-->
   <ion-buttons end>
+    <!--search-->
     <button ion-button icon-only (click)="toggleSearchbarVisibility()" *ngIf="isSearchVisible === true">
       <ion-icon name="search"></ion-icon>
     </button>
+    <!--home-->
     <button ion-button icon-only (click)="navToHome()">
       <ion-icon name="home"></ion-icon>
     </button>
+    <!--more-->
     <button ion-button icon-only (click)="openModal($event)">
       <ion-icon name="more"></ion-icon>
     </button>

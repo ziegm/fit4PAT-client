@@ -1,6 +1,12 @@
+<!--list of patients-->
 <ion-list>
+  <!--patients from a ward or ambulatory are shown in a list-->
   <ion-item *ngFor="let patient of patients" (click)="takeOverPatient(patient)" class="listAssessmentsPatients">
+    <!--name (and room) are shown bold and in first line-->
     <p class="bold">{{viewPatientName(patient)}}</p>
+    <!--other information is shown on second line-->
     <p>{{viewPatientInfos(patient)}}</p></ion-item>
+
+  <!--if there is no patient, then a message is shown-->
   <ion-item *ngIf="patients.length === 0">{{noPatientMessage}}</ion-item>
 </ion-list>

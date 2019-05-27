@@ -1,3 +1,4 @@
+<!--navbar of this page-->
 <ion-header>
   <navbar title="Assessmentauswahl"
           [workflowParameters]="workflowParameters"
@@ -5,30 +6,38 @@
 </ion-header>
 
 <ion-content padding>
-
+  <!--initiate the six elements of the circle (five fields and middle with logo)-->
   <input type='radio' name='opt' id='geri' class='menuopt geri'>
   <input type='radio' name='opt' id='neuro' class='menuopt neuro'>
   <input type='radio' name='opt' id='cardio' class='menuopt cardio'>
   <input type='radio' name='opt' id='ot' class='menuopt ot'>
   <input type='radio' name='opt' id='musco' class='menuopt musco'>
   <input type='radio' name='opt' id='unsel' class='menuopt' checked>
+
+  <!--circle with actions-->
   <nav>
     <ul class='circle'>
-      <li class='geriatry light slice' (click)="navToGeriatrics()">
-        <label for='geri' class='circle'><button type="button" class="buttonGeriatry bold">Geriatrie</button></label>
+      <!--Geriatry-->
+      <li class='geriatry slice' (click)="navToGeriatrics()">
+        <label for='geri' class='circle'><button type="button" class="buttonColor bold">Geriatrie</button></label>
       </li>
-      <li class='neurology light slice' (click)="navToNeurology()">
-        <label for='neuro' class='circle'><button type="button" class="buttonNeurology bold">Neurologie</button></label>
+      <!--Neurology-->
+      <li class='neurology slice' (click)="navToNeurology()">
+        <label for='neuro' class='circle'><button type="button" class="buttonColor bold">Neurologie</button></label>
       </li>
-      <li class='cardiology light slice' (click)="navToCardiology()">
-        <label for='cardio' class='circle'><button type="button" class="buttonCardiology bold">Kardiologie/Pneumologie</button></label>
+      <!--Cardiology-->
+      <li class='cardiology slice' (click)="navToCardiology()">
+        <label for='cardio' class='circle'><button type="button" class="buttonColor bold">Kardiologie/Pneumologie</button></label>
       </li>
-      <li class='others light slice' (click)="navToOthers()">
-        <label for='ot' class='circle'><button type="button" class="buttonOthers bold">Weitere</button></label>
+      <!--Others-->
+      <li class='others slice' (click)="navToOthers()">
+        <label for='ot' class='circle'><button type="button" class="buttonColor bold">Weitere</button></label>
       </li>
-      <li class='muscolosceletal light slice' (click)="navToMusculoskeletal()">
-        <label for='musco' class='circle'><button type="button" class="buttonMuscolosceletal bold">Bewegungsapparat</button></label>
+      <!--Muscolosceletal-->
+      <li class='muscolosceletal slice' (click)="navToMusculoskeletal()">
+        <label for='musco' class='circle'><button type="button" class="buttonColor bold">Bewegungsapparat</button></label>
       </li>
+      <!--Logo-->
       <li class='unsel circle'><label for='unsel'><img src="./assets/imgs/Logo_fit4PAT_man.svg"/></label></li>
     </ul>
   </nav>

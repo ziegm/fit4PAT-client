@@ -1,13 +1,16 @@
+<!--navbar on assessment & patient tab page-->
 <ion-header>
   <navbar [isMenuVisible]="true" title="fit4PAT"
           [workflowParameters]="fromPatient"
           [isSearchVisible]="false"></navbar>
 </ion-header>
 
-
+<!--the two tabs of the app-->
 <ion-tabs tabsPlacement="top" #tabs>
+  <!--tab assessment-->
   <ion-tab [root]="tab1Root" [rootParams]="fromAssessment"
            tabTitle="Assessment" tabIcon="clipboard"></ion-tab>
+  <!--tab patient-->
   <ion-tab [root]="tab2Root" [rootParams]="fromPatient"
            tabTitle="Patient" tabIcon="man"></ion-tab>
 </ion-tabs>

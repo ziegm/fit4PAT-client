@@ -1,13 +1,14 @@
+//the buttons when the user clicks on the floating action button
 button[ion-fab] {
   overflow: visible;
   position: relative;
 
+  //how the labels for the icons are shown
   ion-label {
     position: absolute;
     top: -8px;
     right: 40px;
     pointer-events:all!important;
-
     color: white;
     background-color: rgba(0,0,0,0.7);
     line-height: 24px;
@@ -16,6 +17,7 @@ button[ion-fab] {
   }
 }
 
+//how the floating action button is shown
 .fab{
   contain: layout;
 }

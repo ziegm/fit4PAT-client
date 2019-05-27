@@ -1,18 +1,28 @@
+<!--floating action button (top right)-->
 <ion-fab top right>
-  <button ion-fab><ion-icon name="add"></ion-icon></button>
+  <!--the floating action button is shown with an add-icon-->
+  <button ion-fab>
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+  <!--the list when the user clicks on the floating action button-->
   <ion-fab-list side="down">
+    <!--add new assessment-->
     <button ion-fab (click)="navToAssessmentTab()">
       <ion-icon name="add"></ion-icon>
       <ion-label>Assessmentauswahl</ion-label>
     </button>
+    <!--demmi-->
     <button ion-fab (click)="navToDemmi()">
       <ion-icon name="clipboard"></ion-icon>
       <ion-label>de Morton Mobility Index</ion-label>
     </button>
+    <!--dgi-->
     <button ion-fab (click)="navToDgi()">
       <ion-icon name="clipboard"></ion-icon>
       <ion-label>Dynamic Gait Index</ion-label>
     </button>
+    <!--10m-->
     <button ion-fab (click)="navToWalkingtest()">
       <ion-icon name="clipboard"></ion-icon>
       <ion-label>Timed Walking Test</ion-label>

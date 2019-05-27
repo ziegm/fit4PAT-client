@@ -1,7 +1,16 @@
+<!--if the user clicks on the search-icon in the navbar, a searchbar is shown for searching an assessment-->
 <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Assessment suchen" (ionInput)="getAssessments($event)"></ion-searchbar>
+
+<!--list of assessments in a field-->
 <ion-list>
   <ion-item class="listAssessmentsPatients" *ngFor="let assessment of results">
-    <ion-grid><ion-row><p (click)="navToAssessment(assessment)" class="nameAssessment">{{ assessment }}</p>
-      <not-implemented-yet icon="document" class="iconDocument"></not-implemented-yet>
-    </ion-row></ion-grid></ion-item>
+    <ion-grid>
+      <ion-row>
+        <!--the name of the assessment is shown-->
+        <p (click)="navToAssessment(assessment)" class="nameAssessment">{{ assessment }}</p>
+        <!--document-icon, function is not yet implemented. Should open a pdf for this assessment-->
+        <not-implemented-yet icon="document" class="iconDocument"></not-implemented-yet>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
 </ion-list>

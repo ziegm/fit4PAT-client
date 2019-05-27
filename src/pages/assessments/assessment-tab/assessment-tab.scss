@@ -3,6 +3,7 @@ page-home {
   .scroll-content {
     overflow-y: hidden;
   }
+
   //the buttons are on the right place in the circle
   button {
     background-color: transparent;
@@ -14,6 +15,7 @@ page-home {
     padding-top: 7%;
     font-size: 16px;
   }
+
   //the image in the middle has the right size and position
   img {
     max-width: 70%;
@@ -21,18 +23,27 @@ page-home {
     margin-left: 15%;
     margin-top: 10%;
   }
+
   /**
  * Circular menu v2
  */
-  * { margin: 0; padding: 0; }
-  html { font: 100%/1.3 Century Gothic, Verdana, sans-serif; }
-  body { overflow: hidden; min-width: 20em; }
-  .menuopt { display: none; }
-  .circle, .circle:before, .circle:after { border-radius: 50%; }
+  //that no menu is shown
+  .menuopt {
+    display: none;
+  }
+
+  //that the circle and every sclice is round
+  .circle, .circle:before, .circle:after {
+    border-radius: 50%;
+  }
+
+  //size of the circle
   nav {
     margin: 2em auto;
     min-width: 16em; width: 55%; max-width: 60em;
   }
+
+  //how the slices are shown
   nav ul {
     position: relative;
     padding: 50%;
@@ -41,10 +52,14 @@ page-home {
     list-style: none;
     background: white;
   }
+
+  //position of the white circle
   nav li {
     position: absolute;
     transition: 2s;
   }
+
+  //size and position of the slice
   .slice {
     overflow: hidden;
     position: absolute;
@@ -52,19 +67,37 @@ page-home {
     width: 50%; height: 50%;
     transform-origin: 100% 100%;
   }
+
+  //size and position of the logo within the white circle
   .unsel {
     top: 34%; left: 34%;
     width: 32%; height: 32%;
     box-shadow: 0 0 .75em;
     background-color: white;
   }
-  .geriatry { transform: rotate(341deg)skewX(17deg); }
-  .neurology { transform: rotate(53deg) skewX(17deg); }
-  .cardiology { transform: rotate(125deg) skewX(17deg); }
-  .others { transform: rotate(197deg) skewX(17deg); }
-  .muscolosceletal { transform: rotate(269deg) skewX(17deg); }
-  .magnifiable { height: 100%; }
-  nav label { cursor: pointer; }
+
+  //position with rotation of the geriatry slice
+  .geriatry {
+    transform: rotate(341deg)skewX(17deg);
+  }
+  //position with rotation of the neurology slice
+  .neurology {
+    transform: rotate(53deg) skewX(17deg);
+  }
+  //position with rotation of the cardiology slice
+  .cardiology {
+    transform: rotate(125deg) skewX(17deg);
+  }
+  //position with rotation of the others slice
+  .others {
+    transform: rotate(197deg) skewX(17deg);
+  }
+  //position with rotation of the muscolosceletal slice
+  .muscolosceletal {
+    transform: rotate(269deg) skewX(17deg);
+  }
+
+  //size and position of the labels
   .slice label {
     display: block;
     width: 200%; height: 200%;
@@ -78,6 +111,8 @@ page-home {
     text-decoration: none;
     transition: 1s;
   }
+
+  //size and position of the pictures
   .slice label:before {
     position: absolute;
     top: 10%; left: 10%;
@@ -86,44 +121,48 @@ page-home {
     box-shadow: 0 0 1em rgba(0,0,0,.5);
     background-position: 80% 0;
     background-repeat: no-repeat;
-    background-size: 60% 60%; //35% 35%
+    background-size: 60% 60%;
     content: '';
   }
-  .slice label:hover { opacity: 1; }
-  .dark label:hover { color: white; }
-  .light label:hover { color: black; }
-  .unsel label {
-    display: block;
-    height: 100%;
+
+  //background color of the geriatry and others label
+  .geriatry label, .geri:checked ~ nav .unsel,
+  .others label, .ot:checked ~ nav .unsel{
+    background: #a7d375;
   }
-  .geriatry label, .geri:checked ~ nav .unsel { background: #a7d375; }
-  .neurology label, .neuro:checked ~ nav .unsel { background: #9ECF66; }
-  .cardiology label, .cardio:checked ~ nav .unsel { background: #b1d884; }
-  .others label, .ot:checked ~ nav .unsel { background: #a7d375; }
-  .muscolosceletal label, .musco:checked ~ nav .unsel { background: #b1d884; }
-  .geriatry label:before { background-image: url(../../../assets/imgs/Geriatrics.jpg);}
-  .neurology label:before { background-image: url(../../../assets/imgs/Neurology.jpg);}
-  .cardiology label:before { background-image: url(../../../assets/imgs/Cardiology.jpg); }
-  .others label:before { background-image: url(../../../assets/imgs/Others.jpg); }
-  .muscolosceletal label:before { background-image: url(../../../assets/imgs/Muscolosceletal.jpg); }
-  .slice label:hover:after { opacity: 0; }
+  //background color of the neurology label
+  .neurology label, .neuro:checked ~ nav .unsel {
+    background: #9ECF66;
+  }
+  //background color of the cardiology and muscolosceletal label
+  .cardiology label, .cardio:checked ~ nav .unsel,
+  .muscolosceletal label, .musco:checked ~ nav .unsel{
+    background: #b1d884;
+  }
 
-  @media (min-width: 25em) { .slice label { font-size: 1em; line-height: 2.3; } }
-  @media (min-width: 35em) { .slice label { font-weight: 700; line-height: 2.7; } }
+  //picture of the geriatry label
+  .geriatry label:before {
+    background-image: url(../../../assets/imgs/Geriatrics.jpg);
+  }
+  //picture of the neurology label
+  .neurology label:before {
+    background-image: url(../../../assets/imgs/Neurology.jpg);
+  }
+  //picture of the cardiology label
+  .cardiology label:before {
+    background-image: url(../../../assets/imgs/Cardiology.jpg);
+  }
+  //picture of the others label
+  .others label:before {
+    background-image: url(../../../assets/imgs/Others.jpg);
+  }
+  //picture of the muscolosceletal label
+  .muscolosceletal label:before {
+    background-image: url(../../../assets/imgs/Muscolosceletal.jpg);
+  }
 
-  .buttonGeriatry{
+  //the font color for the fields is written in grey
+  .buttonColor{
    color: #7a7a7a;
-  }
-  .buttonNeurology{
-    color: #7a7a7a;
-  }
-  .buttonCardiology{
-    color: #7a7a7a;
-  }
-  .buttonOthers{
-    color: #7a7a7a;
-  }
-  .buttonMuscolosceletal{
-    color: #7a7a7a;
   }
 }
