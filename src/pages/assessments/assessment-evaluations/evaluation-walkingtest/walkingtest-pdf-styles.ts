@@ -1,5 +1,8 @@
 import {Style} from "pdfmake/build/pdfmake";
 
+/**
+ * The style definition of the Walkingtest report as required by makePDF.
+ */
 export class WalkingtestPdfStyles implements Style {
   header = {
     fontSize: 18,

@@ -5,7 +5,6 @@ import {AssessmentResponse} from "../../../../responses/assessment-response";
 import {DgiResponse} from "../../../../responses/assessment-type/dgi-response";
 import {RestProvider} from "../../../../providers/rest/rest";
 import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
-import {MyApp} from "../../../../app/app.component";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
 import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
 import {LoseDataIfContinueProvider} from "../../../../providers/lose-data-if-continue/lose-data-if-continue";
@@ -13,12 +12,14 @@ import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
 
-
 @IonicPage()
 @Component({
   selector: 'page-form-dgi',
   templateUrl: 'form-dgi.html',
 })
+/**
+ * The assessment form page of the dgi.
+ */
 export class FormDgiPage extends WorkflowPage {
   private rootNav: any;
   private patient: Patient;
@@ -39,9 +40,8 @@ export class FormDgiPage extends WorkflowPage {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
-    //this.selectedIndex = localStorage.getItem('1');
 
-    // Add the patient to the DgiResponse-Object.
+    // Adds the patient to the DgiResponse-Object.
     if (this.patient !== undefined) {
       this.assessmentResponse.addPatient(this.patient);
 
@@ -59,10 +59,9 @@ export class FormDgiPage extends WorkflowPage {
   }
 
   /**
-   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * Extracts the practitioner from bundle. Since at this point of time, we only have one default partitioner,
    * we always load the first one.
-   *
-   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server.
    */
   private firstPractitioner(bundle: Bundle): Practitioner {
     if (bundle.entry !== undefined) {
@@ -70,19 +69,26 @@ export class FormDgiPage extends WorkflowPage {
     }
   }
 
-  navToAssessmentTab(){
-    this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
-  private navToEvaluationDgi() {
+  /**
+   * Navigates to the evaluation page, if there is a patient selected.
+   */
+  private navToEvaluationDgi(): void {
     if (this.noPatient.hasPatient(this.patient)) {
       this.rootNav.push(EvaluationDgiPage, this.workflowParameters);
     }
   }
 
-  private saveAndNavToEvaluationDgi() {
+  /**
+   * Saves the assessment and navigates to the evaluation, if
+   * 1. A patient was selected,
+   * 2. All required items are filled out.
+   * Otherwise specific error messages are displayed in a popup.
+   */
+  private saveAndNavToEvaluationDgi(): void {
+    // Checks, if a patient was selected.
     if (!this.noPatient.hasPatient(this.patient)) {
       this.noPatient.showPopup();
+    // Checks, if all required fields are filled out.
     } else if (this.missingFields()) {
       let alert = this.alertCtrl.create({
         title: 'Hinweis',
@@ -90,25 +96,35 @@ export class FormDgiPage extends WorkflowPage {
         buttons: ['OK']
       });
       alert.present();
+    // All conditions are fullfilled, proceed with saving the response...
     } else {
       this.saveButtonDisabled = true;
 
+      // Loads and displays a loading spinner, in case the loading takes a while.
       this.loading = this.loadingCtrl.create({
         spinner: 'bubbles',
         content: 'Lädt, bitte warten...'
       });
-
       this.loading.present();
+
+      // Saves the assessment response and navigates to the evaluation page.
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        // Dismiss the loading spinner on success.
         this.loading.dismiss();
         this.assessmentResponse = (data as DgiResponse);
+        // Store the assessment response to the workflow parameters, in case
+        // the POST request is not finished before the GET request of the evaluation is started.
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDgi();
       });
     }
   }
 
-  private navToVerlauf() {
+  /**
+   * Navigates to evaluation without filling out the assessment form. Checks, if there is a patient
+   * selected, otherwise shows an error popup.
+   */
+  private navToVerlauf(): void {
     this.noPatient.handleMissingPatient(this.patient);
 
     if (this.noPatient.hasPatient(this.patient)) {
@@ -116,7 +132,10 @@ export class FormDgiPage extends WorkflowPage {
     }
   }
 
-  popupInstruction() {
+  /**
+   * Shows the instruction of the dgi in a popup.
+   */
+  private popupInstruction(): void {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       cssClass: 'instructionDgi',
@@ -136,7 +155,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  popupNormwerte() {
+  /**
+   * Shows the norm values of the dgi in a popup.
+   */
+  private popupNormwerte(): void {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       cssClass: 'normwerteDgi',
@@ -155,7 +177,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  popupMaterial() {
+  /**
+   * Shows the material required to perform the dgi.
+   */
+  private popupMaterial(): void {
     let alert = this.alertCtrl.create({
       title: 'Material',
       subTitle: 'Dynamic Gait Index',
@@ -176,7 +201,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoOne(){
+  /**
+   * Shows the information about the item 1.
+   */
+  private showInfoOne(): void {
     let alert = this.alertCtrl.create({
       title: '1. Gehen auf ebener Strecke (20 m)',
       cssClass: 'infoIconDgi',
@@ -198,7 +226,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTwo(){
+  /**
+   * Shows the information about the item 2.
+   */
+  private showInfoTwo(): void {
     let alert = this.alertCtrl.create({
       title: '2. Gehen mit Tempowechsel 5 m normal, 5 m schnell, 5 m langsam',
       cssClass: 'infoIconDgi',
@@ -229,7 +260,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoThree(){
+  /**
+   * Shows the information about the item 3.
+   */
+  private showInfoThree(): void {
     let alert = this.alertCtrl.create({
       title: '3. Gehen mit Kopfdrehung rechts und links',
       cssClass: 'infoIconDgi',
@@ -257,7 +291,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFour(){
+  /**
+   * Shows the information about the item 4.
+   */
+  private showInfoFour(): void {
     let alert = this.alertCtrl.create({
       title: '4. Gehen und nach oben und nach unten schauen',
       cssClass: 'infoIconDgi',
@@ -285,7 +322,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFive(){
+  /**
+   * Shows the information about the item 5.
+   */
+  private showInfoFive(): void {
     let alert = this.alertCtrl.create({
       title: '5. Gehen und Drehung um 180°',
       cssClass: 'infoIconDgi',
@@ -309,7 +349,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSix(){
+  /**
+   * Shows the information about the item 6.
+   */
+  private showInfoSix(): void {
     let alert = this.alertCtrl.create({
       title: '6. Gehen über Hindernisse',
       cssClass: 'infoIconDgi',
@@ -334,7 +377,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSeven(){
+  /**
+   * Shows the information about the item 7.
+   */
+  private showInfoSeven(): void {
     let alert = this.alertCtrl.create({
       title: '7. Gehen um Hindernisse links und rechts herum',
       cssClass: 'infoIconDgi',
@@ -362,7 +408,10 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoEight(){
+  /**
+   * Shows the information about the item 8.
+   */
+  private showInfoEight(): void {
     let alert = this.alertCtrl.create({
       title: '8. Treppensteigen',
       cssClass: 'infoIconDgi',
@@ -385,6 +434,11 @@ export class FormDgiPage extends WorkflowPage {
     alert.present();
   }
 
+  /**
+   * Add the users input to a response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private inputOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -397,6 +451,11 @@ export class FormDgiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Adds aids to assessment response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private aidOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -409,6 +468,10 @@ export class FormDgiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Checks the assessment form for required fields that are not filled out.
+   * Returns true if fields are missing, otherwise false.
+   */
   private missingFields(): boolean {
     const required = [0, 1, 2, 3, 4, 5, 6, 7];
     for (let i = 0; i < this.assessmentResponse.item.length; i++){

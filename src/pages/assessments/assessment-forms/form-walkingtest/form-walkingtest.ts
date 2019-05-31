@@ -17,6 +17,9 @@ import Practitioner = fhir.Practitioner;
   selector: 'page-form-walkingtest',
   templateUrl: 'form-walkingtest.html',
 })
+/**
+ * The assessment form page of the walking test.
+ */
 export class FormWalkingtestPage extends WorkflowPage {
   private rootNav: any;
   private patient: Patient;
@@ -46,7 +49,7 @@ export class FormWalkingtestPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
 
-    // Add the patient to the WalkingtestResponse-Object.
+    // Adds the patient to the WalkingtestResponse-Object.
     if (this.patient !== undefined) {
       this.assessmentResponse.addPatient(this.patient);
 
@@ -64,10 +67,9 @@ export class FormWalkingtestPage extends WorkflowPage {
   }
 
   /**
-   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * Extracts the practitioner from bundle. Since at this point of time, we only have one default partitioner,
    * we always load the first one.
-   *
-   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server.
    */
   private firstPractitioner(bundle: Bundle): Practitioner {
     if (bundle.entry !== undefined) {
@@ -75,15 +77,26 @@ export class FormWalkingtestPage extends WorkflowPage {
     }
   }
 
-  navToEvaluationWalkingtest() {
+  /**
+   * Navigates to the evaluation page, if there is a patient selected.
+   */
+  private navToEvaluationWalkingtest(): void {
     if (this.noPatient.hasPatient(this.patient)) {
       this.rootNav.push(EvaluationWalkingtestPage, this.workflowParameters);
     }
   }
 
-  private saveAndNavToEvaluationWalkingtest() {
+  /**
+   * Saves the assessment and navigates to the evaluation, if
+   * 1. A patient was selected,
+   * 2. All required items are filled out.
+   * Otherwise specific error messages are displayed in a popup.
+   */
+  private saveAndNavToEvaluationWalkingtest(): void {
+    // Checks, if a patient was selected.
     if (!this.noPatient.hasPatient(this.patient)) {
       this.noPatient.showPopup();
+    // Checks, if all required fields are filled out.
     } else if (this.missingFields()) {
       let alert = this.alertCtrl.create({
         title: 'Hinweis',
@@ -91,25 +104,35 @@ export class FormWalkingtestPage extends WorkflowPage {
         buttons: ['OK']
       });
       alert.present();
+    // All conditions are fullfilled, proceed with saving the response...
     } else {
       this.saveButtonDisabled = true;
 
+      // Loads and displays a loading spinner, in case the loading takes a while.
       this.loading = this.loadingCtrl.create({
         spinner: 'bubbles',
         content: 'Lädt, bitte warten...'
       });
       this.loading.present();
 
+      // Saves the assessment response and navigates to the evaluation page.
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        // Dismiss the loading spinner on success.
         this.loading.dismiss();
         this.assessmentResponse = (data as WalkingtestResponse);
+        // Store the assessment response to the workflow parameters, in case
+        // the POST request is not finished before the GET request of the evaluation is started.
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationWalkingtest();
       });
     }
   }
 
-  private navToVerlauf() {
+  /**
+   * Navigates to evaluation without filling out the assessment form. Checks, if there is a patient
+   * selected, otherwise shows an error popup.
+   */
+  private navToVerlauf(): void {
     this.noPatient.handleMissingPatient(this.patient);
 
     if (this.noPatient.hasPatient(this.patient)) {
@@ -117,7 +140,11 @@ export class FormWalkingtestPage extends WorkflowPage {
     }
   }
 
-  timeInInput1() {
+  /**
+   * Calculates the duration for the first try, rounds it to a whole second, resets the stop watch
+   * and adds the value to the assessment response.
+   */
+  private timeInInput1(): void {
     let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time1 = timeElapsed.getSeconds() + 1;
@@ -128,7 +155,11 @@ export class FormWalkingtestPage extends WorkflowPage {
     this.assessmentResponse.addOrChangeAnswer(0, this.time1, true);
   }
 
-  timeInInput2() {
+  /**
+   * Calculates the duration for the second try, rounds it to a whole second, resets the stop watch
+   * and adds the value to the assessment response.
+   */
+  private timeInInput2(): void {
     let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time2 = timeElapsed.getSeconds() + 1;
@@ -139,7 +170,11 @@ export class FormWalkingtestPage extends WorkflowPage {
     this.assessmentResponse.addOrChangeAnswer(1, this.time2, true);
   }
 
-  timeInInput3() {
+  /**
+   * Calculates the duration for the third try, rounds it to a whole second, resets the stop watch
+   * and adds the value to the assessment response.
+   */
+  private timeInInput3(): void {
     let timeElapsed: Date = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     if (timeElapsed.getMilliseconds() >= 500) {
       this.time3 = timeElapsed.getSeconds() + 1;
@@ -150,27 +185,43 @@ export class FormWalkingtestPage extends WorkflowPage {
     this.assessmentResponse.addOrChangeAnswer(2, this.time3, true);
   }
 
-  start() {
+  /**
+   * Starts the stop watch, if a patient was selected.
+   */
+  private start(): void {
+    // Checks if the patient was selected, otherwise do nothing...
     if (this.running || !this.noPatient.hasPatient(this.patient)) return;
+
+    // Set a new beginning time, if not yet done.
     if (this.timeBegan === null) {
       this.reset();
       this.timeBegan = new Date();
     }
+
+    // Stops the time, if the stop watch has already been running.
     if (this.timeStopped !== null) {
       let newStoppedDuration: any = (+new Date() - this.timeStopped);
       this.stoppedDuration = this.stoppedDuration + newStoppedDuration;
     }
+
+    // Otherwise start...
     this.started = setInterval(this.clockRunning.bind(this), 10);
     this.running = true;
   }
 
-  stop() {
+  /**
+   * Stops the stop watch and sets the stopped time.
+   */
+  private stop(): void {
     this.running = false;
     this.timeStopped = new Date();
     clearInterval(this.started);
   }
 
-  reset() {
+  /**
+   * Resets the stop watch.
+   */
+  private reset(): void {
     this.running = false;
     clearInterval(this.started);
     this.stoppedDuration = 0;
@@ -179,7 +230,12 @@ export class FormWalkingtestPage extends WorkflowPage {
     this.time = this.blankTime;
   }
 
-  zeroPrefix(num, digit) {
+  /**
+   * Left-pads a number by zero to a specific length.
+   * @param num     The number to be padded.
+   * @param digit   The length of the number string.
+   */
+  private zeroPrefix(num, digit): string {
     let zero = '';
     for (let i = 0; i < digit; i++) {
       zero += '0';
@@ -187,7 +243,10 @@ export class FormWalkingtestPage extends WorkflowPage {
     return (zero + num).slice(-digit);
   }
 
-  clockRunning() {
+  /**
+   * The display of the running clock.
+   */
+  private clockRunning(): void {
     this.currentTime = new Date();
     let timeElapsed: any = new Date(+this.currentTime - this.timeBegan - this.stoppedDuration);
     let sec = timeElapsed.getSeconds();
@@ -197,7 +256,10 @@ export class FormWalkingtestPage extends WorkflowPage {
       this.zeroPrefix(ms, 3) + " Sekunden";
   };
 
-  popupInstruction() {
+  /**
+   * Shows the instruction of the walking test in a popup.
+   */
+  private popupInstruction(): void {
     let alert = this.alertCtrl.create({
       title: 'Instruktion',
       cssClass: 'instructionTWT',
@@ -233,7 +295,10 @@ export class FormWalkingtestPage extends WorkflowPage {
     alert.present();
   }
 
-  popupNormwerte() {
+  /**
+   * Shows the norm values of the walking test in a popup.
+   */
+  private popupNormwerte(): void {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       cssClass: 'normwerteTWT',
@@ -257,7 +322,10 @@ export class FormWalkingtestPage extends WorkflowPage {
     alert.present();
   }
 
-  popupMaterial() {
+  /**
+   * Shows the material required to perform the walking test.
+   */
+  private popupMaterial(): void {
     let alert = this.alertCtrl.create({
       title: 'Material',
       cssClass: 'materialTWT',
@@ -277,6 +345,11 @@ export class FormWalkingtestPage extends WorkflowPage {
     alert.present();
   }
 
+  /**
+   * Add the users input to a response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private inputOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -295,6 +368,11 @@ export class FormWalkingtestPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Adds aids to assessment response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private aidOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -307,6 +385,10 @@ export class FormWalkingtestPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Checks the assessment form for required fields that are not filled out.
+   * Returns true if fields are missing, otherwise false.
+   */
   private missingFields(): boolean {
     const required = [0, 1, 2];
     for (let i = 0; i < this.assessmentResponse.item.length; i++){

@@ -13,43 +13,39 @@ import {AssessmentSearchProvider} from "../../../providers/assessment-search/ass
   selector: 'page-home',
   templateUrl: 'assessment-tab.html'
 })
+/**
+ * Page lets the user choose an assessment discipline.
+ */
 export class AssessmentTabPage extends WorkflowPage {
   private rootNav:any;
-  private isSearchbarVisible = false;
-  private searchResults: string [] = [];
   @ViewChild('search') search;
 
   constructor(app: App, navParams: NavParams,
               menuNav: MenuNavigationProvider,
               private popoverCtrl: PopoverController,
-              private assessmentSearch: AssessmentSearchProvider
-  ) {
+              private assessmentSearch: AssessmentSearchProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
     menuNav.navCtrl = this.rootNav;
   }
 
-  private navToGeriatrics() {
+  private navToGeriatrics(): void {
     this.rootNav.push(GeriatricsPage, this.workflowParameters);
   }
 
-  private navToNeurology() {
+  private navToNeurology(): void {
     this.rootNav.push(NeurologyPage, this.workflowParameters);
   }
 
-  private navToCardiology() {
+  private navToCardiology(): void {
     this.rootNav.push(CardiologyPage, this.workflowParameters);
   }
 
-  private navToMusculoskeletal() {
+  private navToMusculoskeletal(): void {
     this.rootNav.push(MusculoskeletalPage, this.workflowParameters);
   }
 
-  private navToOthers() {
+  private navToOthers(): void {
     this.rootNav.push(OthersPage, this.workflowParameters);
-  }
-
-  private getAssessments(event) :void {
-    this.searchResults = this.assessmentSearch.result(event.data);
   }
 }

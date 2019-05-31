@@ -15,13 +15,16 @@ import {GraphDataAssembler} from "../graph-data-assembler";
 import {DemmiResult} from "./demmi-result";
 import moment from "moment";
 import {PdfPrinterProvider} from "../../../../providers/pdf-printer/pdf-printer";
-import {DemmiPdfDefnition} from "./demmi-pdf-defnition";
+import {DemmiPdfDefinition} from "./demmi-pdf-definition";
 import Patient = fhir.Patient;
 
 @Component({
   selector: 'page-evaluation-demmi',
   templateUrl: 'evaluation-demmi.html',
 })
+/**
+ * The evaluation of the Demmi.
+ */
 export class EvaluationDemmiPage extends WorkflowPage {
   private patient: Patient;
   private responses: DemmiResponse[];
@@ -33,41 +36,59 @@ export class EvaluationDemmiPage extends WorkflowPage {
               private pdfPrinter: PdfPrinterProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
+
+    // Loads the responses of a patient sorted by date.
     restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index").then(data  => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DemmiResponse));
 
+      // Adds the latest response, if it has not been transfered by the fhir server.
+      // This is because of the asynchronous loading, since it is possible, that the POST request is not
+      // yet saved, before the GET request tries to load the response list.
       if (this.workflowParameters.assessmentResponse && !(this.responses.find((response: DemmiResponse) => {
         return response.id === this.workflowParameters.assessmentResponse.id;
       }))) {
         this.responses.push(this.workflowParameters.assessmentResponse as DemmiResponse);
+        // Sorts the list again after the latest response was added.
         this.responses.sort((a, b) => {
           return new Date(b.authored).getTime() - new Date(a.authored).getTime();
         });
       }
+      // Removes the latest assessment response from the workflow parameters.
       this.workflowParameters.assessmentResponse = undefined;
 
+      // Converts the assessment response to chart data and adds it to the chart.
       this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
+      // Updates the chart with the freshly added data.
       this.lineChart.update();
     });
   }
 
-  private presentAlert(): void{
-      let alert = this.alertCtrl.create({
-      title: 'Prototyp',
-      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-  private executeDate(): string {
-    return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
-  }
-
+  /**
+   * Retrieves the execution date of this assessment result for the data point.
+   * @param response    The assessment response.
+   */
   private executeGraphDate(response: AssessmentResponse): Date {
     return AssessmentHelper.dateTimeToDate(response.authored);
   }
 
+  /**
+   * Retrieves the value of this assessment execution for the data point.
+   * @param response    The assessment response.
+   */
+  public calcGraphValue(response: AssessmentResponse): number {
+    return new DemmiResultTranslation()[DemmiResult.calcRawValue(response)];
+  }
+
+  /**
+   * Retrieves the execution date of this assessment result for displaying on the page.
+   */
+  private executeDate(): string {
+    return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
+  }
+
+  /**
+   * Retrieves the raw value of this assessment result for displaying on the page.
+   */
   private calcRawValue(): number {
     if (this.responses) {
       return DemmiResult.calcRawValue(this.responses[0]);
@@ -75,22 +96,50 @@ export class EvaluationDemmiPage extends WorkflowPage {
     return 0;
   }
 
+  /**
+   * Retrieves the demmi score of this assessment result for displaying on the page.
+   */
   private translateDemmiScore(): number {
     return this.responses ? this.calcGraphValue(this.responses[0]) : 0;
   }
 
-  public calcGraphValue(response: AssessmentResponse): number {
-    return new DemmiResultTranslation()[DemmiResult.calcRawValue(response)];
-  }
-
+  /**
+   * Retrieves the aids of the patient.
+   */
   private getAids(): string {
     return this.responses && this.responses[0].item[15] ? this.responses[0].item[15].answer[0].valueString: "";
   }
 
+  /**
+   * Retrieves the comments from the therapist.
+   */
   private getComments(): string {
     return this.responses && this.responses[0].item[16] ? this.responses[0].item[16].answer[0].valueString: "";
   }
 
+  /**
+   *  View representation of a patient in the format:
+   *  [Room:] Family name, given name
+   * @param patient   The patient to be represented.
+   */
+  private viewPatientName(patient: Patient): string {
+    return PatientHelper.viewPatientName(patient);
+  }
+
+  /**
+   * View representation of a patients additional information in the format:
+   * Gender, birthdate (age), case id (Fall-ID)
+   * @param patient   The patient to be represented.
+   */
+  private viewPatientInfos(patient: Patient): string {
+    return PatientHelper.viewPatientInfos(patient);
+  }
+
+  /**
+   * Calculates by his/her age age, if a patient can live independent.
+   * The age range is used for highlighting fields in norm value tables.
+   * @param range   The age range identifier.
+   */
   private isIndependend(range: string): boolean {
     let age = PatientHelper.patientAge(this.patient);
     switch(range) {
@@ -114,6 +163,11 @@ export class EvaluationDemmiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Returns the css class name for highlighting the exit destination table fields.
+   * @param destination     The destination represented by the field.
+   * @param defaultStyle    The style of the table field, if not highlighted.
+   */
   private exitDestination(destination: string, defaultStyle: string): string {
     switch (destination) {
       case 'OTHER_INSTITUTION':
@@ -134,24 +188,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
   }
 
   /**
-   *  View representation of a patient in the format:
-   *  [Room:] Family name, given name
-   * @param patient   The patient to be represented.
+   * Loads the specific assessment response for a chart point and displays its details in a popup.
+   * @param chartPoint    The chart point representing the assessment response.
    */
-  private viewPatientName(patient: Patient) {
-    return PatientHelper.viewPatientName(patient);
-  }
-
-  /**
-   * View representation of a patients additional information in the format:
-   * Gender, birthdate (age), case id (Fall-ID)
-   * @param patient   The patient to be represented.
-   */
-  private viewPatientInfos(patient: Patient) {
-    return PatientHelper.viewPatientInfos(patient);
-  }
-
-  private showDetails(chartPoint: ChartPoint) {
+  private showDetails(chartPoint: ChartPoint): void {
     this.restProvider.getQuestionnaireResponses(this.patient, "de Morton Mobility Index",
       chartPoint.x as Date).then(data => {
       let response = (data as any).entry[0].resource as AssessmentResponse;
@@ -159,6 +199,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
     });
   }
 
+  /**
+   * Display a demmis details in a popup.
+   * @param response    The assessment response.
+   */
   private viewDetailsPopup(response: AssessmentResponse): void {
     let alert = this.alertCtrl.create({
       title: AssessmentHelper.actualDate(response.authored),
@@ -199,7 +243,10 @@ export class EvaluationDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  ionViewDidLoad() {
+  /**
+   * Creates a new chart after the view did load.
+   */
+  private ionViewDidLoad(): void {
     Chart.plugins.unregister(ChartDataLabels);
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
@@ -373,8 +420,7 @@ export class EvaluationDemmiPage extends WorkflowPage {
             borderWidth: 2
           }],
           // Defines when the annotations are drawn.
-          // This allows positioning of the annotation relative to the other
-          // elements of the graph.
+          // This allows positioning of the annotation relative to the other elements of the graph.
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
@@ -383,8 +429,23 @@ export class EvaluationDemmiPage extends WorkflowPage {
     });
   }
 
+  /**
+   * Displays a message, when a feature is clicked on, that has not been implemented yet.
+   */
+  private presentAlert(): void{
+    let alert = this.alertCtrl.create({
+      title: 'Prototyp',
+      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  /**
+   * Generates and shows a PDF with some information about the patient and the chart.
+   */
   private generateAndShowPdf(): void {
-    this.pdfPrinter.createPdf(new DemmiPdfDefnition(this.patient, this.lineChart));
+    this.pdfPrinter.createPdf(new DemmiPdfDefinition(this.patient, this.lineChart));
     this.pdfPrinter.downloadPdf("demmi.pdf");
   }
 }

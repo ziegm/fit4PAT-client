@@ -19,6 +19,9 @@ import Patient = fhir.Patient;
   selector: 'page-evaluation-dgi',
   templateUrl: 'evaluation-dgi.html',
 })
+/**
+ * The evaluation of the Dgi.
+ */
 export class EvaluationDgiPage extends WorkflowPage {
   private patient: Patient;
   private responses: DgiResponse[];
@@ -30,50 +33,52 @@ export class EvaluationDgiPage extends WorkflowPage {
               private pdfPrinter: PdfPrinterProvider) {
     super(navParams.data);
     this.patient = (navParams.data as WorkflowParameters).patient;
+
+    // Loads the responses of a patient sorted by date.
     restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index").then(data => {
       this.responses = (data as any).entry.map(entry => (entry.resource as DgiResponse));
 
+      // Adds the latest response, if it has not been transfered by the fhir server.
+      // This is because of the asynchronous loading, since it is possible, that the POST request is not
+      // yet saved, before the GET request tries to load the response list.
       if (this.workflowParameters.assessmentResponse && !(this.responses.find((response: DgiResponse) => {
         return response.id === this.workflowParameters.assessmentResponse.id;
       }))) {
         this.responses.push(this.workflowParameters.assessmentResponse as DgiResponse);
+        // Sorts the list again after the latest response was added.
         this.responses.sort((a, b) => {
           return new Date(b.authored).getTime() - new Date(a.authored).getTime();
         });
       }
+      // Removes the latest assessment response from the workflow parameters.
       this.workflowParameters.assessmentResponse = undefined;
 
+      // Converts the assessment response to chart data and adds it to the chart.
       this.lineChart.data.datasets[0].data = GraphDataAssembler.assemble(this.responses, this.executeGraphDate, this.calcGraphValue);
+      // Updates the chart with the freshly added data.
       this.lineChart.update();
     });
   }
 
-  private presentAlert(): void{
-    let alert = this.alertCtrl.create({
-      title: 'Prototyp',
-      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-  private executeDate(): string {
-    return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
-  }
-
+  /**
+   * Retrieves the execution date of this assessment result for the data point.
+   * @param response    The assessment response.
+   */
   private executeGraphDate(response: AssessmentResponse): Date {
     return AssessmentHelper.dateTimeToDate(response.authored);
   }
 
-  private calcValue(): number {
-    if (this.responses) {
-      return this.calcGraphValue(this.responses[0]);
-    }
-    return 0;
-  }
-
+  /**
+   * Extracts the numeric values of the assessment response and calculates their sum.
+   * @param response    The assessment response.
+   */
   public calcGraphValue(response: AssessmentResponse): number {
-    let graphAnswers = function (response: AssessmentResponse): number[] {
+    /**
+     * Writes all numeric values required for the result calculation to an numeric array.
+     * If an answer contains no answer, it is set to 0.
+     * @param response    The assessment response.
+     */
+    let graphAnswers = function(response: AssessmentResponse): number[] {
       return response.item.map((item, index) => {
         if (index < 8 && item.answer !== undefined && item.answer[0].valueInteger !== undefined) {
           return +item.answer[0].valueInteger.toFixed(0);
@@ -83,15 +88,39 @@ export class EvaluationDgiPage extends WorkflowPage {
       });
     };
 
+    // Calculates and returns the sum of all single values.
     return graphAnswers(response).reduce((accumulator, currentValue) => {
       return accumulator + currentValue;
     });
   }
 
+  /**
+   * Returns the result of the latest filled out assessment response of this patient.
+   */
+  private calcValue(): number {
+    if (this.responses) {
+      return this.calcGraphValue(this.responses[0]);
+    }
+    return 0;
+  }
+
+  /**
+   * Retrieves the execution date of this assessment result for displaying on the page.
+   */
+  private executeDate(): string {
+    return this.responses ? AssessmentHelper.actualDate(this.responses[0].authored) : "";
+  }
+
+  /**
+   * Retrieves the aids of the patient.
+   */
   private getAids(): string {
     return this.responses && this.responses[0].item[8] ? this.responses[0].item[8].answer[0].valueString : "";
   }
 
+  /**
+   * Retrieves the comments from the therapist.
+   */
   private getComments(): string {
     return this.responses && this.responses[0].item[9] ? this.responses[0].item[9].answer[0].valueString : "";
   }
@@ -101,7 +130,7 @@ export class EvaluationDgiPage extends WorkflowPage {
    *  [Room:] Family name, given name
    * @param patient   The patient to be represented.
    */
-  private viewPatientName(patient: Patient) {
+  private viewPatientName(patient: Patient): string {
     return PatientHelper.viewPatientName(patient);
   }
 
@@ -110,15 +139,22 @@ export class EvaluationDgiPage extends WorkflowPage {
    * Gender, birthdate (age), case id (Fall-ID)
    * @param patient   The patient to be represented.
    */
-  private viewPatientInfos(patient: Patient) {
+  private viewPatientInfos(patient: Patient): string {
     return PatientHelper.viewPatientInfos(patient);
   }
 
-  openLink() {
+  /**
+   * Displays information about the dgi in a browser window.
+   */
+  private openLink(): void {
     window.open('https://www.sralab.org/rehabilitation-measures/dynamic-gait-index', '_system');
   }
 
-  private showDetails(chartPoint: ChartPoint) {
+  /**
+   * Loads the specific assessment response for a chart point and displays its details in a popup.
+   * @param chartPoint    The chart point representing the assessment response.
+   */
+  private showDetails(chartPoint: ChartPoint): void {
     this.restProvider.getQuestionnaireResponses(this.patient, "Dynamic Gait Index",
       chartPoint.x as Date).then(data => {
         let response = (data as any).entry[0].resource as AssessmentResponse;
@@ -126,6 +162,10 @@ export class EvaluationDgiPage extends WorkflowPage {
     });
   }
 
+  /**
+   * Display a dgi details in a popup.
+   * @param response    The assessment response.
+   */
   private viewDetailsPopup(response: AssessmentResponse): void {
     let alert = this.alertCtrl.create({
       title: AssessmentHelper.actualDate(response.authored),
@@ -153,7 +193,10 @@ export class EvaluationDgiPage extends WorkflowPage {
     alert.present();
   }
 
-  ionViewDidLoad() {
+  /**
+   * Creates a new chart after the view did load.
+   */
+  private ionViewDidLoad(): void {
     Chart.plugins.unregister(ChartDataLabels);
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
@@ -367,8 +410,7 @@ export class EvaluationDgiPage extends WorkflowPage {
             borderWidth: 2,
           }],
           // Defines when the annotations are drawn.
-          // This allows positioning of the annotation relative to the other
-          // elements of the graph.
+          // This allows positioning of the annotation relative to the other elements of the graph.
           // Should be one of: afterDraw, afterDatasetsDraw, beforeDatasetsDraw
           // See http://www.chartjs.org/docs/#advanced-usage-creating-plugins
           drawTime: "beforeDatasetsDraw" // (default)
@@ -377,11 +419,11 @@ export class EvaluationDgiPage extends WorkflowPage {
     });
   }
 
-  private generateAndShowPdf(): void {
-    this.pdfPrinter.createPdf(new DgiPdfDefnition(this.patient, this.lineChart));
-    this.pdfPrinter.downloadPdf("dgi.pdf");
-  }
-
+  /**
+   * Returns the css class name for highlighting the fall risk table fields.
+   * @param score           The fall risk level represented by the field.
+   * @param defaultStyle    The style of the table field, if not highlighted.
+   */
   private fallRisk(score: string, defaultStyle: string): string {
     switch (score) {
       case 'CUT_OFF_POINT':
@@ -401,5 +443,25 @@ export class EvaluationDgiPage extends WorkflowPage {
           default:
         return defaultStyle;
     }
+  }
+
+  /**
+   * Displays a message, when a feature is clicked on, that has not been implemented yet.
+   */
+  private presentAlert(): void{
+    let alert = this.alertCtrl.create({
+      title: 'Prototyp',
+      message: 'Diese Funktion wurde leider noch nicht umgesetzt.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  /**
+   * Generates and shows a PDF with some information about the patient and the chart.
+   */
+  private generateAndShowPdf(): void {
+    this.pdfPrinter.createPdf(new DgiPdfDefnition(this.patient, this.lineChart));
+    this.pdfPrinter.downloadPdf("dgi.pdf");
   }
 }

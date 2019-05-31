@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <!--only shown when the user wants to search a patient - this field for searching is shown-->
-  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Station suchen" (ionInput)="getStations($event)"></ion-searchbar>
+  <ion-searchbar *ngIf="isSearchbarVisible" placeholder="Station suchen" (ionInput)="getWards($event)"></ion-searchbar>
   <!--shows the list of the patients from the specific ward-->
   <ion-list>
     <ion-item *ngFor="let ward of results" (click)="navToWard(ward)" class="listAssessmentsPatients">{{ward}}</ion-item>

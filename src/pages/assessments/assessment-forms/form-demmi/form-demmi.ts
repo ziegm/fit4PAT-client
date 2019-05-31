@@ -7,18 +7,19 @@ import {Fit4PATReference} from "../../../../responses/fit4pat-reference";
 import {AssessmentResponseItem} from "../../../../responses/assessment-response-item";
 import {DemmiResponse} from "../../../../responses/assessment-type/demmi-response";
 import {WorkflowPage} from "../../../../workflow/workflow-page";
-import {MyApp} from "../../../../app/app.component";
 import {NoPatientErrorProvider} from "../../../../providers/no-patient-error/no-patient-error";
 import {LoseDataIfContinueProvider} from "../../../../providers/lose-data-if-continue/lose-data-if-continue";
 import Patient = fhir.Patient;
 import Practitioner = fhir.Practitioner;
 import Bundle = fhir.Bundle;
 
-
 @Component({
   selector: 'page-form-demmi',
   templateUrl: 'form-demmi.html',
 })
+/**
+ * The assessment form page of the demmi.
+ */
 export class FormDemmiPage extends WorkflowPage {
   private rootNav: any;
   private patient: Patient;
@@ -27,7 +28,6 @@ export class FormDemmiPage extends WorkflowPage {
   private aid = "keine";
   @ViewChild('aidSelect') private aidSelect: Select;
   private saveButtonDisabled = false;
-  public alertAid;
   private comments = "";
   private loading: Loading;
 
@@ -38,7 +38,7 @@ export class FormDemmiPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
     this.patient = navParams.data.patient;
 
-    // Add the patient to the DemmiResponse-Object.
+    // Adds the patient to the DemmiResponse-Object.
     if (this.patient !== undefined) {
       this.assessmentResponse.addPatient(this.patient);
 
@@ -56,10 +56,9 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   /**
-   * Extract the practitioner from bundle. Since at this point of time, we only have one default partitioner,
+   * Extracts the practitioner from bundle. Since at this point of time, we only have one default partitioner,
    * we always load the first one.
-   *
-   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server
+   * @param bundle      The data bundle returned by the rest response of the hapi-fhir server.
    */
   private firstPractitioner(bundle: Bundle): Practitioner {
     if (bundle.entry !== undefined) {
@@ -67,19 +66,26 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
-  private navToAssessmentTab() {
-    this.rootNav.push(MyApp, this.workflowParameters);
-  }
-
-  private navToEvaluationDemmi() {
+  /**
+   * Navigates to the evaluation page, if there is a patient selected.
+   */
+  private navToEvaluationDemmi(): void {
     if (this.noPatient.hasPatient(this.patient)) {
       this.rootNav.push(EvaluationDemmiPage, this.workflowParameters);
     }
   }
 
-  private saveAndNavToEvaluationDemmi() {
+  /**
+   * Saves the assessment and navigates to the evaluation, if
+   * 1. A patient was selected,
+   * 2. All required items are filled out.
+   * Otherwise specific error messages are displayed in a popup.
+   */
+  private saveAndNavToEvaluationDemmi(): void {
+    // Checks, if a patient was selected.
     if (!this.noPatient.hasPatient(this.patient)) {
       this.noPatient.showPopup();
+    // Checks, if all required fields are filled out.
     } else if (this.missingFields()) {
       let alert = this.alertCtrl.create({
         title: 'Hinweis',
@@ -87,18 +93,24 @@ export class FormDemmiPage extends WorkflowPage {
         buttons: ['OK']
       });
       alert.present();
+    // All conditions are fullfilled, proceed with saving the response...
     } else {
       this.saveButtonDisabled = true;
 
+      // Loads and displays a loading spinner, in case the loading takes a while.
       this.loading = this.loadingCtrl.create({
         spinner: 'bubbles',
         content: 'Lädt, bitte warten...'
       });
       this.loading.present();
 
+      // Saves the assessment response and navigates to the evaluation page.
       this.restProvider.postAssessmentResponse(this.assessmentResponse).then(data => {
+        // Dismiss the loading spinner on success.
         this.loading.dismiss();
         this.assessmentResponse = (data as DemmiResponse);
+        // Store the assessment response to the workflow parameters, in case
+        // the POST request is not finished before the GET request of the evaluation is started.
         this.workflowParameters.assessmentResponse = this.assessmentResponse;
         this.navToEvaluationDemmi();
       });
@@ -106,13 +118,13 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   /**
-   * Add an answer to the assessment response or change the existing one.
+   * Adds an answer to the assessment response or change the existing one.
    *
-   * @param index   The index of the answer on the assessment response
+   * @param index   The index of the answer on the assessment response.
    * @param event   The event that delivers the answer of a question.
    * @param radio   True if the underlying control delivers numeric values.
    */
-  private addOrChangeAnswer(index: number, event: any, numeric: boolean = false) {
+  private addOrChangeAnswer(index: number, event: any, numeric: boolean = false): void {
     if (this.assessmentResponse.item[index] === undefined) {
       this.assessmentResponse.item[index] = new AssessmentResponseItem("item" + (+index + 1));
     }
@@ -124,7 +136,11 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
-  private navToVerlauf() {
+  /**
+   * Navigates to evaluation without filling out the assessment form. Checks, if there is a patient
+   * selected, otherwise shows an error popup.
+   */
+  private navToVerlauf(): void {
     this.noPatient.handleMissingPatient(this.patient);
 
     if (this.noPatient.hasPatient(this.patient)) {
@@ -133,7 +149,7 @@ export class FormDemmiPage extends WorkflowPage {
   }
 
   /**
-   * show the instruction for demmi
+   * Shows the instruction of the demmi in a popup.
    */
   private popupInstruction(): void {
     const alert = this.alertCtrl.create({
@@ -184,7 +200,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  popupNormwerte() {
+  /**
+   * Shows the norm values of the demmi in a popup.
+   */
+  private popupNormwerte(): void {
     let alert = this.alertCtrl.create({
       title: 'Normwerte',
       cssClass: 'normwerteDemmi',
@@ -203,7 +222,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  popupMaterial() {
+  /**
+   * Shows the material required to perform the demmi.
+   */
+  private popupMaterial(): void {
     let alert = this.alertCtrl.create({
       title: 'Material',
       cssClass: 'materialDemmi',
@@ -225,7 +247,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoBed() {
+  /**
+   * Shows the information about the bed category.
+   */
+  private showInfoBed(): void {
     let alert = this.alertCtrl.create({
       title: 'Bett',
       cssClass: 'infoIconDemmi',
@@ -249,7 +274,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoOne() {
+  /**
+   * Shows the information about the item 1.
+   */
+  private showInfoOne(): void {
     let alert = this.alertCtrl.create({
       title: '1. Brücke',
       cssClass: 'infoIconDemmi',
@@ -268,7 +296,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTwo() {
+  /**
+   * Shows the information about the item 2.
+   */
+  private showInfoTwo(): void {
     let alert = this.alertCtrl.create({
       title: '2. Auf die Seite rollen',
       cssClass: 'infoIconDemmi',
@@ -287,7 +318,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoThree() {
+  /**
+   * Shows the information about the item 3.
+   */
+  private showInfoThree(): void {
     let alert = this.alertCtrl.create({
       title: '3. Vom Liegen zum Sitzen',
       cssClass: 'infoIconDemmi',
@@ -306,7 +340,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoChair() {
+  /**
+   * Shows the information about the chair category.
+   */
+  private showInfoChair(): void {
     let alert = this.alertCtrl.create({
       title: 'Stuhl',
       cssClass: 'infoIconDemmi',
@@ -325,7 +362,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFour() {
+  /**
+   * Shows the information about the item 4.
+   */
+  private showInfoFour(): void {
     let alert = this.alertCtrl.create({
       title: '4. Sitzen im Stuhl ohne Unterstützung',
       cssClass: 'infoIconDemmi',
@@ -346,7 +386,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFive() {
+  /**
+   * Shows the information about the item 5.
+   */
+  private showInfoFive(): void {
     let alert = this.alertCtrl.create({
       title: '5. Aus dem Stuhl aufstehen',
       cssClass: 'infoIconDemmi',
@@ -364,7 +407,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSix() {
+  /**
+   * Shows the information about the item 6.
+   */
+  private showInfoSix(): void {
     let alert = this.alertCtrl.create({
       title: '6. Aus dem Stuhl aufstehen, ohne die Arme zu Hilfe zu nehmen',
       cssClass: 'infoIconDemmi',
@@ -383,7 +429,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoStatic() {
+  /**
+   * Shows the information for the static equilibrium category.
+   */
+  private showInfoStatic(): void {
     let alert = this.alertCtrl.create({
       title: 'Statisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
@@ -406,7 +455,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoSeven() {
+  /**
+   * Shows the information about the item 7.
+   */
+  private showInfoSeven(): void {
     let alert = this.alertCtrl.create({
       title: '7. Ohne Unterstützung stehen',
       cssClass: 'infoIconDemmi',
@@ -425,7 +477,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoEight() {
+  /**
+   * Shows the information about the item 8.
+   */
+  private showInfoEight(): void {
     let alert = this.alertCtrl.create({
       title: '8. Stehen mit geschlossenen Füssen',
       cssClass: 'infoIconDemmi',
@@ -444,7 +499,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoNine() {
+  /**
+   * Shows the information about the item 9.
+   */
+  private showInfoNine(): void {
     let alert = this.alertCtrl.create({
       title: '9. Auf den Fussspitzen stehen',
       cssClass: 'infoIconDemmi',
@@ -463,7 +521,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTen() {
+  /**
+   * Shows the information about the item 10.
+   */
+  private showInfoTen(): void {
     let alert = this.alertCtrl.create({
       title: '10. Im Tandemstand mit geschlossenen Augen stehen',
       cssClass: 'infoIconDemmi',
@@ -483,7 +544,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoWalk() {
+  /**
+   * Shows the information for the gait category.
+   */
+  private showInfoWalk(): void {
     let alert = this.alertCtrl.create({
       title: 'Gehen',
       cssClass: 'infoIconDemmi',
@@ -503,7 +567,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoEleven() {
+  /**
+   * Shows the information about the item 11.
+   */
+  private showInfoEleven(): void {
     let alert = this.alertCtrl.create({
       title: '11. Wegstrecke mit/ohne Gehhilfe',
       cssClass: 'infoIconDemmi',
@@ -526,7 +593,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoTwelve() {
+  /**
+   * Shows the information about the item 12.
+   */
+  private showInfoTwelve(): void {
     let alert = this.alertCtrl.create({
       title: '12. Selbstständiges Gehen',
       cssClass: 'infoIconDemmi',
@@ -545,7 +615,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoDynamic() {
+  /**
+   * Shows the information for the dynamic equilibrium category.
+   */
+  private showInfoDynamic(): void {
     let alert = this.alertCtrl.create({
       title: 'Dynamisches Gleichgewicht',
       cssClass: 'infoIconDemmi',
@@ -568,7 +641,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoThirteen() {
+  /**
+   * Shows the information about the item 13.
+   */
+  private showInfoThirteen(): void {
     let alert = this.alertCtrl.create({
       title: '13. Stift vom Boden aufheben',
       cssClass: 'infoIconDemmi',
@@ -587,7 +663,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFourteen() {
+  /**
+   * Shows the information about the item 14.
+   */
+  private showInfoFourteen(): void {
     let alert = this.alertCtrl.create({
       title: '14. Vier Schritte rückwärts gehen',
       cssClass: 'infoIconDemmi',
@@ -606,7 +685,10 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
-  showInfoFiveteen() {
+  /**
+   * Shows the information about the item 15.
+   */
+  private showInfoFiveteen(): void {
     let alert = this.alertCtrl.create({
       title: '15. Springen',
       cssClass: 'infoIconDemmi',
@@ -625,6 +707,11 @@ export class FormDemmiPage extends WorkflowPage {
     alert.present();
   }
 
+  /**
+   * Add the users input to a response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private inputOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -637,6 +724,11 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Adds aids to assessment response item identified by its id.
+   * @param id      The id of the response item.
+   * @param event   The key-up event of the users input.
+   */
   private aidOnPatient(id: number, event: any): void {
     this.noPatient.handleMissingPatient(this.patient, event);
 
@@ -649,6 +741,10 @@ export class FormDemmiPage extends WorkflowPage {
     }
   }
 
+  /**
+   * Checks the assessment form for required fields that are not filled out.
+   * Returns true if fields are missing, otherwise false.
+   */
   private missingFields(): boolean {
     const required = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     for (let i = 0; i < this.assessmentResponse.item.length; i++) {

@@ -1,5 +1,8 @@
 import {Style} from "pdfmake/build/pdfmake";
 
+/**
+ * The style definition of the Dgi report as required by makePDF.
+ */
 export class DgiPdfStyles implements Style {
   header = {
     fontSize: 18,

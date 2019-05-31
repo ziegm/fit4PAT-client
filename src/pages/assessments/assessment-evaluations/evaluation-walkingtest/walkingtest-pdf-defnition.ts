@@ -5,6 +5,9 @@ import Chart from "chart.js";
 import {WalkingtestPdfStyles} from "./walkingtest-pdf-styles";
 import Patient = fhir.Patient;
 
+/**
+ * The page definition of the Walkingtest report as required by makePDF.
+ */
 export class WalkingtestPdfDefnition implements TDocumentDefinitions {
   content: Content = [];
   footer: TDocumentHeaderFooterFunction;
@@ -19,6 +22,11 @@ export class WalkingtestPdfDefnition implements TDocumentDefinitions {
     this.addContent(patient, chart);
   }
 
+  /**
+   * Adds the contents of the report to the PDF.
+   * @param patient   The patient, the report is for.
+   * @param chart     The chart with the evaluation graph.
+   */
   private addContent(patient: Patient, chart: Chart): void {
     this.content.push({text: "Timed Walking Test (10-Meter-Gehtest)", style: 'header'});
     this.content.push({text: PatientHelper.viewPatientName(patient), style: 'subheader'});
@@ -26,6 +34,5 @@ export class WalkingtestPdfDefnition implements TDocumentDefinitions {
     this.content.push({image: chart.toBase64Image(), width: 481.89, margin: [0, 20]});
     this.content.push({text: "Physiotherapeut: David Scherzinger" });
     this.content.push({text: "PDF erstellt am: " + moment(new Date()).format("DD.MM.YYYY") });
-
   }
 }

@@ -15,6 +15,9 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   selector: 'page-patient-stationary',
   templateUrl: 'patient-stationary.html',
 })
+/**
+ * Page for displaying a list of wards.
+ */
 export class PatientStationaryPage extends WorkflowPage {
   private rootNav: any;
   private isSearchbarVisible = false;
@@ -27,7 +30,11 @@ export class PatientStationaryPage extends WorkflowPage {
     this.rootNav = app.getRootNav();
   }
 
-  private navToWard(ward: string) {
+  /**
+   * Navigates to a wards patient list page, based on the wards name.
+   * @param ward    The wards name.
+   */
+  private navToWard(ward: string): void {
     switch (ward) {
       case 'Station A1':
         this.rootNav.push(WardA1Page, this.workflowParameters);
@@ -62,7 +69,12 @@ export class PatientStationaryPage extends WorkflowPage {
     this.results = this.wards;
   }
 
-  private getStations(event): void {
+  /**
+   * Searches inside the loaded ward list for a wards name and removes
+   * not fitting wards.
+   * @param search    The search string.
+   */
+  private getWards(event): void {
     if (event.target.value !== undefined) {
       this.results = this.wards.filter(ward => {
         return ward.toLowerCase().includes(event.target.value.toLowerCase());

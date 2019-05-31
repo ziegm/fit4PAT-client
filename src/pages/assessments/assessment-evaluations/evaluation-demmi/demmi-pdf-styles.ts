@@ -1,5 +1,8 @@
 import {Style} from "pdfmake/build/pdfmake";
 
+/**
+ * The style definition of the Demmi report as required by makePDF.
+ */
 export class DemmiPdfStyles implements Style {
   header = {
     fontSize: 18,

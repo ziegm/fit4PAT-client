@@ -1,3 +1,6 @@
+/**
+ * Holds the mapping from the calculated raw value to the Demmi result.
+ */
 export class DemmiResultTranslation {
   0 = 0;
   1 = 8;

@@ -7,6 +7,9 @@ import {WorkflowPage} from "../../../../workflow/workflow-page";
   selector: 'page-patient-ambulatory',
   templateUrl: 'patient-ambulatory.html',
 })
+/**
+ * Page for displaying a list of ambulatory patients.
+ */
 export class PatientAmbulatoryPage extends WorkflowPage {
   private isSearchbarVisible = false;
   private readonly ward:string = "ambulatory";
@@ -25,6 +28,10 @@ export class PatientAmbulatoryPage extends WorkflowPage {
     this.search = "";
   }
 
+  /**
+   * Retrieves the search string from an ionInput event.
+   * @param search    The ionInput event.
+   */
   private searchPatients(search: any): void {
     this.search = search.target.value;
   }

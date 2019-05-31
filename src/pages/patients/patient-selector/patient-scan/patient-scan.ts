@@ -10,12 +10,14 @@ import {PatientToAssessmentNavProvider} from "../../../../providers/patient-to-a
 import Bundle = fhir.Bundle;
 import Patient = fhir.Patient;
 
-
 @IonicPage()
 @Component({
   selector: 'page-patient-scan',
   templateUrl: 'patient-scan.html',
 })
+/**
+ * Page for the patients wristband scanner.
+ */
 export class PatientScanPage extends WorkflowPage {
   private rootNav: any;
 
@@ -25,19 +27,30 @@ export class PatientScanPage extends WorkflowPage {
               private toAssessment: PatientToAssessmentNavProvider) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
+
+    // Starts the scanner on load of the page and handles the promise
+    // of a loaded patient.
     this.barcodeScanner.scan().then(barcodeData => {
       this.patient(barcodeData.text);
     }).catch(err => {
     });
   }
 
-  private patient(barcode: string): void {
-    this.rest.getPatient(BarcodeConverter.toCaseId(barcode)).then(data => {
+  /**
+   * Loads the patient from a wristband code, stores it to the workflow parameters
+   * and triggers the loading of the next page of the current workflow.
+   * @param code   The barcode/data matrix of a scan.
+   */
+  private patient(code: string): void {
+    this.rest.getPatient(BarcodeConverter.toCaseId(code)).then(data => {
       this.workflowParameters.patient = (data as Bundle).entry[0].resource as Patient;
       this.navToNextWorkflowStep();
     });
   }
 
+  /**
+   * Navigates to the next page of the chosen workflow.
+   */
   private navToNextWorkflowStep(): void {
     if (this.workflowParameters.workflowSelector === WorkflowSelector.FromPatient) {
       this.rootNav.push(PatientDetailPage, this.workflowParameters);

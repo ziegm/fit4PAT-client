@@ -9,24 +9,27 @@ import {WorkflowPage} from "../../../workflow/workflow-page";
   selector: 'page-patient',
   templateUrl: 'patient-tab.html'
 })
+/**
+ * Page lets the user select a way to choose a patient.
+ */
 export class PatientTabPage extends WorkflowPage {
   private rootNav: any;
-  public isSearchbarVisible = false;
+  private isSearchbarVisible = false;
 
   constructor(navParams: NavParams, app: App) {
     super(navParams.data);
     this.rootNav = app.getRootNav();
   }
 
-  navToPatientScan() {
+  private navToPatientScan(): void {
     this.rootNav.push(PatientScanPage, this.workflowParameters);
   }
 
-  navToPatientStationary() {
+  private navToPatientStationary(): void {
     this.rootNav.push(PatientStationaryPage, this.workflowParameters);
   }
 
-  navToPatientAmbulatory() {
+  private navToPatientAmbulatory(): void {
     this.rootNav.push(PatientAmbulatoryPage, this.workflowParameters);
   }
 }
