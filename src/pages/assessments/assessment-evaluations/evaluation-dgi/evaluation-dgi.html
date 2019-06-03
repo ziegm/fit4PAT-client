@@ -1,3 +1,4 @@
+<!--navbar of the dgi evaluation page-->
 <ion-header>
   <navbar title="Verlauf DGI" subTitle="Dynamic Gait Index"
           [workflowParameters]="workflowParameters"
@@ -8,109 +9,116 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid><ion-row><ion-col class="patInfos">
-  <ion-label class="patient">
-    <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
-  </ion-label>
-  </ion-col>
-    </ion-row></ion-grid>
+  <!--shows the name of the patient on top of the page-->
+  <ion-grid>
+    <ion-row>
+      <ion-col class="patInfos">
+        <ion-label class="patientName">
+          <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <!--shows the date, every single score and the aid and information from the last dgi from this patient-->
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div class="col score">
-          <div class="row">
-            <ion-item class="infosTopBottom infoTop">
-              <ion-label>Datum der Durchführung:</ion-label>
+        <div class="col">
+          <div class="row widthTop">
+            <ion-item class="paddingLeft infoTop">
+              <ion-label class="date">Datum der Durchführung:</ion-label>
               <ion-label>{{ executeDate() }}</ion-label>
             </ion-item>
           </div>
-
-          <div class="row">
-            <ion-item class="infosTopBottom infoTop break">
-              <ion-label class="bold scoreText">Erreichte Punkte:</ion-label>
+          <div class="row widthTop">
+            <ion-item class="paddingLeft infoTop break">
+              <ion-label class="bold">Erreichte Punkte:</ion-label>
               <ion-label class="bold value">{{ calcValue() }}</ion-label>
-              <ion-label class="bold points">/24 Punkten</ion-label>
+              <ion-label class="bold">/24 Punkten</ion-label>
             </ion-item>
           </div>
         </div>
       </ion-col>
+      <!--Verlauf exportieren-->
       <ion-col class="information">
         <ion-item (click)="generateAndShowPdf()">
-          <ion-icon class="iconButton" name="open"></ion-icon>
+          <ion-icon class="iconOpenButton" name="open"></ion-icon>
           <p class="labelButton">Verlauf exportieren</p>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
-
   <div class="col">
     <div class="row">
-      <ion-item class="infosTopBottom infoTop break">
+      <ion-item class="paddingLeft infoTop break">
         <ion-label class="topText">Hilfsmittel:</ion-label>
         <ion-label class="infos">{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTopBottom infoTop beforeChart">
+      <ion-item class="paddingLeft infoTop beforeChart">
         <ion-label class="topText">Bemerkungen:</ion-label>
         <ion-label text-wrap class="infos">{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>
 
+  <!--shows the line chart-->
   <ion-card>
     <ion-card-content>
       <canvas #lineCanvas></canvas>
     </ion-card-content>
   </ion-card>
 
-  <ion-list radio-group class="differenceUnderChart">
-  <ion-label class="bar-stable bold">
-    Normwerte:
-  </ion-label>
-  <div class="row">
-    <div class="col">
-      <ion-item class="topLeft">
-        <ion-label class="textLeft bold"></ion-label>
-      </ion-item>
-      <ion-item class="downLeft">
-        <ion-label class="textLeft bold">Punktzahl</ion-label>
-      </ion-item>
+  <!--table for cut-off point-->
+  <ion-list radio-group class="differenceUnderChart paddingLeft">
+    <ion-label class="bar-stable bold">
+      Normwerte:
+    </ion-label>
+    <div class="row">
+      <div class="col">
+        <ion-item class="topLeft">
+          <ion-label class="textLeft bold"></ion-label>
+        </ion-item>
+        <ion-item class="downLeft">
+          <ion-label class="textLeft bold">Punktzahl</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell bold">
+          <ion-label>Cut-off Point für Stürze</ion-label>
+        </ion-item>
+        <ion-item [ngClass]="['cell', 'cellDown', fallRisk('CUT_OFF_POINT', 'normColor1')]">
+          <ion-label>19</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell bold">
+          <ion-label>Sturzgefährdert</ion-label>
+        </ion-item>
+        <ion-item [ngClass]="['cell', 'cellDown', fallRisk('AT_RISK', 'normColor2')]">
+          <ion-label>< 19</ion-label>
+        </ion-item>
+      </div>
+      <div class="col">
+        <ion-item class="cell lastCell bold">
+          <ion-label>Nicht sturzgefährdert</ion-label>
+        </ion-item>
+        <ion-item [ngClass]="['cell', 'lastCell', 'cellDown', fallRisk('NO_RISK', 'normColor3')]">
+          <ion-label>> 19</ion-label>
+        </ion-item>
+      </div>
     </div>
-    <div class="col">
-      <ion-item class="cell bold">
-        <ion-label>Cut-off Point für Stürze</ion-label>
-      </ion-item>
-      <ion-item [ngClass]="['cell', 'cellDown', fallRisk('CUT_OFF_POINT', 'normColor1')]">
-        <ion-label>19</ion-label>
-      </ion-item>
-    </div>
-    <div class="col">
-      <ion-item class="cell bold">
-        <ion-label>Sturzgefährdert</ion-label>
-      </ion-item>
-      <ion-item [ngClass]="['cell', 'cellDown', fallRisk('AT_RISK', 'normColor2')]">
-        <ion-label>< 19</ion-label>
-      </ion-item>
-    </div>
-    <div class="col">
-      <ion-item class="cell lastCell bold">
-        <ion-label>Nicht sturzgefährdert</ion-label>
-      </ion-item>
-      <ion-item [ngClass]="['cell', 'lastCell', 'cellDown', fallRisk('NO_RISK', 'normColor3')]">
-        <ion-label>> 19</ion-label>
-      </ion-item>
-    </div>
-  </div>
   </ion-list>
 
     <!-- reference to MDC and MCID -->
-  <ion-label class="difference textSize"><b>Veränderungssensitivität:</b><br/><br/>
+  <ion-label class="difference textSize paddingLeft"><b>Veränderungssensitivität:</b><br/><br/>
     Angaben zu Minimal Detectable Change (MDC) und Minimal Clinically Important Difference (MCID)
     sind unter folgendem Link ersichtlich:<br/>
     <button class="link" (click)="openLink()">https://www.sralab.org/rehabilitation-measures/dynamic-gait-index</button>
   </ion-label>
 
+  <!--floating action button for a new assessment-->
   <fab-navigation [workflowParameters]="workflowParameters"></fab-navigation>
 </ion-content>

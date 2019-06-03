@@ -1,79 +1,69 @@
 page-evaluation-demmi {
-  .toolbar-content-md{
-    padding-left: 20px;
-  }
-
-  .patInfos{
-    max-width: 85%;
-  }
-  .information{
-    max-width: 15%;
-  }
-
-  .iconButton{
-    zoom: 2;
-    padding: 0 0 0 45%;
-    margin: 0;
-    align-items: center;
-    text-align: center;
-  }
+  //no padding fo icon "Verlauf exportieren"
   .ion-md-open:before{
     padding: 0;
   }
+  //how the label "Verlauf exportieren" is shown
   .labelButton{
     padding: 10px 0 0 0;
     margin: 0;
     text-align: center;
   }
 
-  .patient {
-    color: #888888;
-    font-size: 24px;
-    padding: 12px 0 24px 16px;
-  }
+  //paragraphs (patient name & infos) without margin
   p{
     margin: 0;
   }
 
-  .infosTopBottom{
-    padding-left: 16px !important;
+  //width of the row on top of the page, only aid and comments
+  //text
+  .topText{
+    max-width: 19.7%;
+  }
+  //information from performance
+  .infos{
+    max-width: 80.3%;
   }
 
+  //width of the row on top of the page
+  .widthTop{
+    width: 80%;
+  }
+
+  //all information on the same line
+  //Datum der Durchführung
+  .date{
+    max-width: 45.7%;
+  }
+  //points
+  .value{
+    max-width: 9%;
+  }
+
+  //text in table without padding
+  //without left padding
   .item-md {
     padding-left: 0;
   }
+  //without right padding
   .item-md.item-block .item-inner{
     padding-right: 0;
   }
-  .score {
-    max-width: 25%;
-  }
-  .topText{
-    max-width: 21.5%;
-  }
-  .nr{
-    max-width: 20%;
-  }
-  .value{
-    max-width: 4%;
-  }
-  .infos{
-    max-width: 78.5%;
-  }
+
+  //height of text on top
   .infoTop{
     min-height: 25px;
   }
+  //if there is an empty line before this text
   .break{
     margin-top: 15px;
   }
+  //space before chart
   .beforeChart{
     margin-bottom: 15px;
   }
-  .wrapText{
-    min-height: 15px;
-    max-height: 45px;
-  }
 
+  //border for table
   .rohwert {
     border-top: solid black;
     border-left: solid black;
@@ -83,103 +73,82 @@ page-evaluation-demmi {
     border-left: solid black;
     border-bottom: solid black;
   }
-
   %score-element {
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
-  .red {
-    background-color: #ffcccc;
-    @extend %score-element;
-  }
-  .redActive {
-    background-color: #ff4c4c;
-    @extend %score-element;
-  }
-
-  .orange {
-    background-color: #ffedcc;
-    @extend %score-element;
-  }
-  .orangeActive {
-    background-color: #ffc04c;
-    @extend %score-element;
-  }
-
-  .yellow {
-    background-color: #ffffcc;
-    @extend %score-element;
-  }
-  .yellowActive {
-    background-color: #ffff4c;
-    @extend %score-element;
-  }
-
-  .green {
-    background-color: #cce5cc;
-    @extend %score-element;
-  }
-  .greenActive {
-    background-color: #4ca64c;
-    @extend %score-element;
-  }
-
   .down {
     border-bottom: solid black;
   }
   .last {
     border-right: solid black;
   }
+
+  //light red in table
+  .red {
+    background-color: #ffcccc;
+    @extend %score-element;
+  }
+
+  //light orange in table
+  .orange {
+    background-color: #ffedcc;
+    @extend %score-element;
+  }
+
+  //light yellow in table
+  .yellow {
+    background-color: #ffffcc;
+    @extend %score-element;
+  }
+
+  //light green in table
+  .green {
+    background-color: #cce5cc;
+    @extend %score-element;
+  }
+
+  //title for table
   .bar-stable {
     padding-bottom: 10px;
     font-size: 16px;
   }
+
+  //borders for normwerte table
   .bordr {
     border-top: solid black;
     border-left: solid black;
     text-align: center;
   }
 
+  //width for alter & demmi score in normwerte table
   .normNr {
     max-width: 15%;
   }
 
+  //width for in andere Institution & nach Hause - table
   .normNrV2 {
     max-width: 30%;
   }
 
+  //text written on left side in table has a padding
   .textLeft {
   padding-left: 10px;
   }
 
+  //width of numbers in Umrechnungstabelle
   .demmiAmpel {
     max-width: 4%;
   }
 
-  .normColor1 {
-    background-color: #dbdbdb;
-  }
-  .normColor2 {
-    background-color: #e7e7e7;
-  }
-  .normColor3 {
-    background-color: #f3f3f3;
-  }
+  //background in green
   .activeNormColor {
     background-color: #4ca64c;
   }
 
+  //Veränderungssensitivität in correct font size
   .textSize {
     font-size: 16px;
-  }
-
-  .chart-wrapper {
-    width: 25%;
-    display: inline-block;
-    margin: 1em 2em;
-  }
-  canvas {
-    height: 500px;
   }
 }

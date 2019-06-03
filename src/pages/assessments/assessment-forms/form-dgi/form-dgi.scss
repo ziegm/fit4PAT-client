@@ -1,91 +1,62 @@
 page-form-dgi {
-  //patient and icons for additional information in the same row
-  .patient{
-    max-width: 55%;
-  }
-  .information{
-    max-width: 45%;
-  }
-  //icons for additional information in the assessments-forms
-  .additional-information{
-    background-color: transparent;
-  }
-  .ion-md-trending-up:before,
-  .ion-md-document:before,
-  .ion-md-pie:before,
-  .ion-md-briefcase:before{
-    zoom: 2;
-    padding-bottom: 5px;
-  }
-  .ionTop{
-    text-align: right;
-  }
-  //title row of the table
-  .titleRow{
-    margin-top: 50px;
-    height: 70px;
-  }
-
+  //there is a left padding
   .paddingLeft{
     padding-left: 16px;
   }
 
-  .number{
-    max-width: 2%;
-    padding-top: 15px
+  //-------TABLE--------
+  //table header of the table
+  .titleRow{
+    margin-top: 50px;
+    height: 70px;
   }
-  .text{
-    max-width: 70%;
-    padding-top: 8px;
-  }
-  .option{
-    max-width: 12%;
-    text-align: center;
-    padding-top: 3px;
-  }
-  .rad{
-    position: center;
-  }
-
-  .row{
-    border-bottom: black;
-  }
+  //table header in dark grey
   .darkGrey{
     color: white;
     background-color: #9f9f9f;
     text-align: -webkit-center;
     font-size: medium;
   }
+  //number of the task in table
+  .number{
+    max-width: 2%;
+    padding-top: 15px
+  }
+  //text of the task in table
+  .text{
+    max-width: 50%;
+    padding-top: 8px;
+  }
+  //field of radio button in table
+  .option{
+    max-width: 12%;
+    text-align: center;
+    padding-top: 3px;
+  }
+  //for zero points
   .greyZero{
-    //color: black;
     background-color: #f3f3f3;
     padding-right: 20px;
   }
+  //for one point
   .greyOne{
     color: black;
     background-color: #e7e7e7;
     padding-right: 20px;
   }
+  //for two points
   .greyTwo{
     color: black;
     background-color: #dbdbdb;
     padding-right: 20px;
   }
+  //for three points
   .greyThree{
     color: black;
     background-color: #cfcfcf;
     padding-right: 20px;
   }
-  .ion-label{
-    background-color: transparent;
-  }
-  .icon-inner, svg {
-    display: block;
-    fill: currentColor;
-    stroke: currentColor;
-    height: 100%;
-    width: 100%;
-  }
+
   //size and position of the information icon
   .ion-md-information-circle:before {
     zoom: 1;
@@ -99,15 +70,6 @@ page-form-dgi {
     right: 15px;
     position: absolute;
     margin: auto;
-  }
-  .container-side-menu .button {
-    font-size: 10px;
-    line-height: 10px; // Add
-  }
-  .container-side-menu .button-icon .icon {
-    display: block;
-    font-size: 30px;
-    margin-bottom: 3px !important;
   }
 
 //Dropdown & Bemerkungen
@@ -126,8 +88,8 @@ page-form-dgi {
     margin: 0;
   }
 
+  //table cells without padding
   .item-md.item-block .item-inner{
     padding-right: 0;
   }
-
 }

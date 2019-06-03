@@ -1,41 +1,21 @@
 page-form-walkingtest {
-  //patient and icons for additional information in the same row
-  .patient{
-    max-width: 55%;
-  }
-  .information{
-    max-width: 45%;
-  }
-  //icons for additional information in the assessments-forms
-  .additional-information{
-    background-color: transparent;
-  }
-  .ion-md-trending-up:before,
-  .ion-md-document:before,
-  .ion-md-pie:before,
-  .ion-md-briefcase:before{
-    zoom: 2;
-    padding-bottom: 5px;
-  }
-  .ionTop{
-    text-align: right;
-    margin-bottom: 50px;
-    margin-top: 0;
-  }
-
+  //-----------STOPWATCH------------
+  //letter spacing from seconds (stopwatch)
   h1{
     letter-spacing: 0.035em
   }
-
+  //size of whole stopwatch
   .stopwatch{
     min-height: 10vh;
     max-width: 50%;
   }
+  //how the result (stopwatch) is shown
   .result{
     color: black;
     height: 50vh;
     overflow-y: scroll;
   }
+  //how the button of the stopwatch is shown
   .circle-button{
     border-radius: 70%;
     height: 150px;
@@ -43,57 +23,25 @@ page-form-walkingtest {
     background-color: #e7e7e7;
     border: 1px #888888;
     box-shadow: inset 0 0 0 7px #9ECF66;
-    color:black;
+    color: black;
   }
+  //when the stopwatch is running (to click stop)
   .circle-button-red{
     box-shadow: inset 0 0 0 7px #FF6666;
   }
+  //size of stopwatch - circle
   .circle-button-bg{
     height: 175px;
     width: 175px;
   }
-  .circle-button-md{
-    height: 105px;
-    width: 105px;
-  }
-  .bg-none{
-    background:none;
-    color:black;
-  }
-  .color-white{
-    color:black;
-  }
-  .bg-green{
-    background-color: #00b8a4;
-  }
-  .bg-pink{
-    background-color: #FF655B;
-  }
-  .bg-white{
-    background-color:black;
-  }
-  .bg-whitesmoke{
-    background-color:green;
-  }
-  .text-light{
-    color: #675d5d;
-  }
-  .text-lighter{
-    color: #c2afaf;
-  }
-  .border-bottom{
-    border-bottom: 1px solid #7CCBE9;
-  }
-  .border-bottom-light{
-    border-bottom: 1px solid #D3D3D3 !important;
-  }
 
+  //input label for time
   .secRight{
     text-align: end;
     align-items: end;
   }
 
-  //Dropdown & Bemerkungen
+  //Dropdown & Comments
   .aid{
     padding-top: 50px;
   }

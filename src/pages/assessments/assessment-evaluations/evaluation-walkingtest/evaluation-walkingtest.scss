@@ -1,82 +1,47 @@
 page-evaluation-walkingtest {
-  .patInfos{
-    max-width: 100%;
-  }
-  .information{
-    max-width: 17%;
-  }
-
-  .iconButton{
-    zoom: 2;
-    padding: 0 0 0 40%;
-    margin: 0;
-    align-items: center;
-    text-align: center;
-  }
+  //no padding fo icon "Verlauf exportieren"
   .ion-md-open:before{
     padding: 0;
   }
+  //how the label "Verlauf exportieren" is shown
   .labelButton{
     padding: 10px 0 0 0;
     margin: 0;
     text-align: center;
   }
 
-  .patient {
-    color: #888888;
-    font-size: 24px;
-    padding: 12px 0 24px 16px;
-  }
+  //paragraphs (patient name & infos) without margin
   p{
     margin: 0;
   }
 
+  //width of the row on top of the page
+  .widthTop{
+    width: 80%;
+  }
 
-  .score{
-    max-width: 50%;
-  }
+  //width of the row on top of the page, only aid and comments
+  //text
   .topText{
-    max-width: 20.5%;
+    max-width: 19.7%;
   }
+  //information from performance
   .infos{
-    max-width: 79.5%;
+    max-width: 80.3%;
   }
-  .infosTopBottom{
-    padding-left: 16px !important;
-  }
+
+  //height of text on top
   .infoTop{
     min-height: 25px;
   }
+
+  //if there is an empty line before this text
   .break{
     margin-top: 15px;
   }
+
+  //space before chart
   .beforeChart{
     margin-bottom: 15px;
-  }
-
-  .transparent{
-    background-color: transparent;
-    font-size: 16px;
-  }
-  .normColor1{
-    background-color: #dbdbdb;
-  }
-  .normColor2{
-    background-color: #e7e7e7;
-  }
-  .normColor3{
-    background-color: #f3f3f3;
-  }
-  .redActive {
-    background-color: #ff4c4c;
-    @extend %score-element;
-  }
-  .orangeActive {
-    background-color: #ffc04c;
-    @extend %score-element;
-  }
-  .greenActive {
-    background-color: #4ca64c;
-    @extend %score-element;
   }
 }

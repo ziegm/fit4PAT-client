@@ -1,9 +1,4 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
-
-
+<!--navbar of the demmi evaluation page-->
 <ion-header>
   <navbar title="Verlauf DEMMI" subTitle="de Morton Mobility Index"
           [workflowParameters]="workflowParameters"
@@ -14,33 +9,37 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid><ion-row><ion-col class="patInfos">
-  <ion-label class="patient">
-    <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
-  </ion-label>
-  </ion-col>
-  </ion-row></ion-grid>
+  <!--shows the name of the patient on top of the page-->
+  <ion-grid>
+    <ion-row>
+      <ion-col class="patInfos">
+        <ion-label class="patientName">
+          <p class="bold">{{viewPatientName(patient)}}</p><p>{{viewPatientInfos(patient)}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <!--shows the date, every single score and the aid and information from the last demmi from this patient-->
   <ion-grid>
     <ion-row>
       <ion-col>
         <div class="col">
-          <div class="row">
-            <ion-item class="infosTopBottom infoTop">
-              <ion-label class="score">Datum der Durchführung:</ion-label>
-              <ion-label class="nr">{{ executeDate() }}</ion-label>
+          <div class="row widthTop">
+            <ion-item class="paddingLeft infoTop">
+              <ion-label class="date">Datum der Durchführung:</ion-label>
+              <ion-label>{{ executeDate() }}</ion-label>
             </ion-item>
           </div>
-
-          <div class="row">
-            <ion-item class="infosTopBottom infoTop break">
-              <ion-label class="bold score">Rohwert:</ion-label>
+          <div class="row widthTop">
+            <ion-item class="paddingLeft infoTop break">
+              <ion-label class="bold">Rohwert:</ion-label>
               <ion-label class="bold value">{{ calcRawValue() }}</ion-label>
-              <ion-label class="bold nr">/19 Punkten</ion-label>
+              <ion-label class="bold">/19 Punkten</ion-label>
             </ion-item>
           </div>
-          <div class="row">
-            <ion-item class="infosTopBottom infoTop">
+          <div class="row widthTop">
+            <ion-item class="paddingLeft infoTop">
               <ion-label class="bold score">DEMMI Score:</ion-label>
               <ion-label class="bold value">{{ translateDemmiScore() }}</ion-label>
               <ion-label class="bold nr">/100 Punkten</ion-label>
@@ -48,30 +47,31 @@
           </div>
         </div>
       </ion-col>
+      <!--Verlauf exportieren-->
       <ion-col class="information">
       <ion-item (click)="generateAndShowPdf()">
-        <ion-icon class="iconButton" name="open"></ion-icon>
+        <ion-icon class="iconOpenButton" name="open"></ion-icon>
         <p class="labelButton">Verlauf exportieren</p>
       </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
-
   <div class="col">
     <div class="row">
-      <ion-item class="infosTopBottom infoTop break item-text-wrap">
+      <ion-item class="paddingLeft infoTop break item-text-wrap">
         <ion-label class="topText">Hilfsmittel:</ion-label>
         <ion-label class="infos">{{ getAids() }}</ion-label>
       </ion-item>
     </div>
     <div class="row">
-      <ion-item class="infosTopBottom infoTop beforeChart">
+      <ion-item class="paddingLeft infoTop beforeChart">
         <ion-label class="topText">Bemerkungen:</ion-label>
         <ion-label text-wrap class="infos">{{ getComments() }}</ion-label>
       </ion-item>
     </div>
   </div>
 
+  <!--shows the line chart-->
   <ion-card>
     <ion-card-content>
       <canvas id="lineChart" #lineCanvas></canvas>
@@ -79,7 +79,7 @@
   </ion-card>
 
   <!-- DEMMI raw value conversion table -->
-  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart infosTopBottom">
+  <ion-list radio-group [(ngModel)]="scoreToDemmiScore" class="differenceUnderChart paddingLeft">
     <ion-label class="bar-stable bold">
       DEMMI Rohwert Umrechnungstabelle:
     </ion-label>
@@ -92,7 +92,6 @@
           <ion-label class="textLeft bold">DEMMI Score</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 0 ? 'redActive' : 'red'">
           <ion-label>0</ion-label>
@@ -101,7 +100,6 @@
           <ion-label>0</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 1 ? 'redActive' : 'red'">
           <ion-label>1</ion-label>
@@ -110,7 +108,6 @@
           <ion-label>8</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 2 ? 'redActive' : 'red'">
           <ion-label>2</ion-label>
@@ -119,7 +116,6 @@
           <ion-label>15</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 3 ? 'redActive' : 'red'">
           <ion-label>3</ion-label>
@@ -128,7 +124,6 @@
           <ion-label>20</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 4 ? 'redActive' : 'red'">
           <ion-label>4</ion-label>
@@ -137,7 +132,6 @@
           <ion-label>24</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 5 ? 'redActive' : 'red'">
           <ion-label>5</ion-label>
@@ -146,7 +140,6 @@
           <ion-label>27</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 6 ? 'redActive' : 'red'">
           <ion-label>6</ion-label>
@@ -155,7 +148,6 @@
           <ion-label>30</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 7 ? 'redActive' : 'red'">
           <ion-label>7</ion-label>
@@ -164,7 +156,6 @@
           <ion-label>33</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 8 ? 'redActive' : 'red'">
           <ion-label>8</ion-label>
@@ -173,7 +164,6 @@
           <ion-label>36</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 9 ? 'redActive' : 'red'">
           <ion-label>9</ion-label>
@@ -182,7 +172,6 @@
           <ion-label>39</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 10 ? 'orangeActive' : 'orange'">
           <ion-label>10</ion-label>
@@ -191,7 +180,6 @@
           <ion-label>41</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 11 ? 'orangeActive' : 'orange'">
           <ion-label>11</ion-label>
@@ -200,7 +188,6 @@
           <ion-label>44</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 12 ? 'orangeActive' : 'orange'">
           <ion-label>12</ion-label>
@@ -209,7 +196,6 @@
           <ion-label>48</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 13 ? 'orangeActive' : 'orange'">
           <ion-label>13</ion-label>
@@ -218,7 +204,6 @@
           <ion-label>53</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 14 ? 'orangeActive' : 'orange'">
           <ion-label>14</ion-label>
@@ -227,7 +212,6 @@
           <ion-label>57</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 15 ? 'yellowActive' : 'yellow'">
           <ion-label>15</ion-label>
@@ -236,7 +220,6 @@
           <ion-label>62</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 16 ? 'yellowActive' : 'yellow'">
           <ion-label>16</ion-label>
@@ -245,7 +228,6 @@
           <ion-label>67</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 17 ? 'greenActive' : 'green'">
           <ion-label>17</ion-label>
@@ -254,7 +236,6 @@
           <ion-label>74</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 18 ? 'greenActive' : 'green'">
           <ion-label>18</ion-label>
@@ -263,7 +244,6 @@
           <ion-label>85</ion-label>
         </ion-item>
       </div>
-
       <div class="col demmiAmpel">
         <ion-item [ngClass]="calcRawValue() == 19 ? ['greenActive', 'last'] : ['green', 'last']">
           <ion-label>19</ion-label>
@@ -276,7 +256,7 @@
   </ion-list>
 
   <!-- table independent or assisted living -->
-  <ion-list radio-group [(ngModel)]="normwerte" class="difference infosTopBottom">
+  <ion-list radio-group [(ngModel)]="normwerte" class="difference paddingLeft">
     <ion-label class="bar-stable bold">
       Normwerte:
     </ion-label>
@@ -289,7 +269,6 @@
           <ion-label></ion-label>
         </ion-item>
       </div>
-
       <div class="col normNr">
         <ion-item class="bordr">
           <ion-label class="bold">Alter</ion-label>
@@ -298,7 +277,6 @@
           <ion-label class="bold">DEMMI Score</ion-label>
         </ion-item>
       </div>
-
       <div class="col normNr">
         <ion-item
           [ngClass]="isIndependend('BETWEEN_60_AND_69') ? ['bordr', 'activeNormColor'] : ['bordr', 'normColor1']">
@@ -309,7 +287,6 @@
           <ion-label>85</ion-label>
         </ion-item>
       </div>
-
       <div class="col normNr">
         <ion-item
           [ngClass]="isIndependend('BETWEEN_70_AND_79') ? ['bordr', 'activeNormColor'] : ['bordr', 'normColor2']">
@@ -320,7 +297,6 @@
           <ion-label>85</ion-label>
         </ion-item>
       </div>
-
       <div class="col normNr">
         <ion-item
           [ngClass]="isIndependend('BETWEEN_80_AND_89') ? ['bordr', 'last', 'activeNormColor'] : ['bordr', 'last', 'normColor3']">
@@ -335,7 +311,7 @@
   </ion-list>
 
   <!-- table of exit to home or other institution -->
-  <ion-list radio-group [(ngModel)]="austritt" class="difference infosTopBottom">
+  <ion-list radio-group [(ngModel)]="austritt" class="difference paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col">
         <ion-item class="rohwert">
@@ -345,7 +321,6 @@
           <ion-label class="textLeft bold">DEMMI Score</ion-label>
         </ion-item>
       </div>
-
       <div class="col normNrV2">
         <ion-item [ngClass]="['bordr', exitDestination('OTHER_INSTITUTION', 'normColor1')]">
           <ion-label class="bold">in andere Institution</ion-label>
@@ -354,7 +329,6 @@
           <ion-label>40-50</ion-label>
         </ion-item>
       </div>
-
       <div class="col normNrV2">
         <ion-item [ngClass]="['bordr', 'last', exitDestination('HOME', 'normColor2')]">
           <ion-label class="bold">nach Hause</ion-label>
@@ -367,12 +341,13 @@
   </ion-list>
 
   <!-- reference to MDC and MCID -->
-  <ion-label class="difference textSize infosTopBottom"><b>Veränderungssensitivität:</b>
+  <ion-label class="difference textSize paddingLeft"><b>Veränderungssensitivität:</b>
     <ul>
       <li>Minimal Detectable Change (MDC) = 9/100 Punkten</li>
       <li>Minimal Clinically Important Difference (MCID) = 10/100 Punkte</li>
     </ul>
   </ion-label>
 
+  <!--floating action button for a new assessment-->
   <fab-navigation [workflowParameters]="workflowParameters"></fab-navigation>
 </ion-content>

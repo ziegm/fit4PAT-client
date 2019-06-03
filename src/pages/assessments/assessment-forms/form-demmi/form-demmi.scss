@@ -1,80 +1,59 @@
 page-form-demmi {
-  //patient and icons for additional information in the same row
-  .patient{
-    max-width: 55%;
-  }
-  .information{
-    max-width: 45%;
-  }
-  //icons for additional information in the assessments-forms
-  .additional-information{
-    background-color: transparent;
-  }
-  .ion-md-trending-up:before,
-  .ion-md-document:before,
-  .ion-md-pie:before,
-  .ion-md-briefcase:before{
-    zoom: 2;
-    padding-bottom: 5px;
-  }
-  .ionTop{
-    text-align: right;
-    margin-bottom: 30px;
-  }
-  //title row of the table
-  .titleRow{
-    height: 30px;
-    padding-top: 3px;
-  }
-
+  //there is a left padding
   .paddingLeft{
     padding-left: 16px;
   }
 
+  //how the category is shown
   .category{
     font-weight: bold;
     font-size: large;
   }
-  .transparent{
-    background-color: transparent;
-    color: black;
-    font-size: medium;
+  //text of the category
+  .text{
+    padding-top: 10px;
   }
-  .ion-item{
-    background-color: transparent;
+
+  //-------TABLE-------
+  //table header of the table
+  .titleRow{
+    height: 30px;
+    padding-top: 3px;
   }
-  img{
-    height: 30%;
-    width: 30%;
-  }
+  //table header in dark grey
   .darkGrey{
     color: white;
     background-color: #9f9f9f;
     text-align: -webkit-center;
     font-size: medium;
   }
+  //for zero points
   .lightGrey{
-  color: black;
-  background-color: #f3f3f3;
+    color: black;
+    background-color: #f3f3f3;
   }
+  //for one point
   .normalGrey{
-  color: black;
-  background-color: #e7e7e7;
+    color: black;
+    background-color: #e7e7e7;
   }
+  //for two points
   .middleGrey{
-  color: black;
-  background-color: #dbdbdb;
+    color: black;
+    background-color: #dbdbdb;
   }
-  .ion-label{
-  background-color: transparent;
+  //this cell is shown with a transparent background
+  .transparent{
+    background-color: transparent;
+    color: black;
+    font-size: medium;
   }
-  .button-inner{
-  background-color: transparent;
-  }
+  //number of task in table
   .number{
     max-width: 3%;
     padding-top: 12px
   }
+  //cell of radio button in table
   .option{
     max-width: 22%;
     text-align: center;
@@ -96,18 +75,17 @@ page-form-demmi {
     margin: 0;
   }
 
+  //how the information circle is placed
   .ion-md-information-circle:before{
     padding: 0 0 0 12px;
   }
 
-  .text{
-    padding-top: 10px;
-  }
-
+  //table without padding
   .item-md.item-block .item-inner{
     padding-right: 0;
   }
 
+  //radio button with right padding
   .buttonInnerRight{
     padding-right: 8px;
   }

@@ -1,13 +1,17 @@
+<!--menu is only shown on root page-->
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
 
+<!--Menu-->
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
+      <!--logged in - therapist-->
       <ion-title class="therapistMenu">David Scherzinger</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
+      <!--profil from therapist-->
       <button ion-item (click)="presentAlert()" class="itemMenuLogout">
         <ion-item>
           <ion-row>
@@ -16,6 +20,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to field musculosceletal-->
       <button ion-item (click)="menuNav.navToMusculoskeletal()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -24,6 +29,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to field geriatrics-->
       <button ion-item (click)="menuNav.navToGeriatrics()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -32,6 +38,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to field neurology-->
       <button ion-item (click)="menuNav.navToNeurology()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -40,6 +47,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to field cardiology-->
       <button ion-item (click)="menuNav.navToCardiology()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -48,6 +56,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to field others-->
       <button ion-item (click)="menuNav.navToOthers()">
         <ion-item class="itemMenu">
           <ion-row>
@@ -56,6 +65,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to patient - scan-->
       <button ion-item (click)="menuNav.navToPatientScan()">
         <ion-item class="itemMenuPatient">
           <ion-row>
@@ -64,6 +74,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to patient - stationary-->
       <button ion-item (click)="menuNav.navToPatientStationary()">
         <ion-item class="itemMenuPatient">
           <ion-row>
@@ -72,6 +83,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--navigate to patient - ambulatory-->
       <button ion-item (click)="menuNav.navToPatientAmbulatory()">
         <ion-item class="itemMenuPatient">
           <ion-row>
@@ -80,6 +92,7 @@
           </ion-row>
         </ion-item>
       </button>
+      <!--log out-->
       <button ion-item (click)="presentAlert()" class="itemMenuLogout">
         <ion-item>
           <ion-row>

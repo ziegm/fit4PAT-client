@@ -4,12 +4,22 @@ ion-label, ion-item, span, button, ul, li,
   font-size: 16px;
 }
 
-//the text is written bold
+//the text is written in bold
 .bold {
   font-weight: bold;
 }
 
-//in the top bar the label is written smaller than the title
+//background-color is shown transparent
+.transparent{
+  background-color: transparent;
+}
+
+//padding on the left side
+.paddingLeft{
+  padding-left: 16px !important;
+}
+
+//in the navbar the subtitle-label is written smaller than the title
 .subtitle {
   padding: 0 0;
   font-size: 1.5rem;
@@ -17,25 +27,30 @@ ion-label, ion-item, span, button, ul, li,
   color: #888888;
 }
 
+//three points icon on left side
 .bar-button-md[icon-only]{
   text-align: left;
 }
 
+//the icons in the navbar have no padding
 .ion-md-man:before,
 .ion-md-clipboard:before{
   padding: 0;
 }
 
+//how the title is shown
 .labelTitle {
   padding-left: 0;
   background-color: #9ECF66;
   color: #888888;
 }
 
+//without height on header
 .header-md::after {
   height: 0;
 }
 
+//size and padding from those icons in the navbar
 .ion-md-menu:before,
 .ion-md-more:before {
   width: 20px;
@@ -43,6 +58,8 @@ ion-label, ion-item, span, button, ul, li,
   padding: 0 12px;
   zoom: 1.5;
 }
+
+//size and padding from those icons in the navbara
 .ion-md-search:before,
 .ion-md-home:before{
   width: 20px;
@@ -79,40 +96,55 @@ ion-label, ion-item, span, button, ul, li,
   width: 340px;
 }
 
-
+//border is transparent
 .item-md.item-block .item-inner {
   border-bottom: transparent;
 }
 
+//toolbar has no padding
 .toolbar-md {
   padding: 0;
 }
 
+//the text is shown on the right side
 .rightSide {
   text-align: right;
 }
 
+//how the patient name is shown on the assessments
+.patientName {
+  color: #888888;
+  font-size: 24px;
+  padding: 12px 0 24px 16px;
+}
+
+//label has no margin
 .label-md {
   margin: 0 0 0 0;
 }
 
+//col has no padding
 .col {
   padding: 0;
 }
 
+//position of the item bar
 .itemBar {
   position: absolute;
 }
 
+//icon has a padding and is shown in grey
 ion-icon::before {
   padding: 12px;
   color: #888888;
 }
 
+//toolbar has no left margin
 .toolbar-title-md {
   margin-left: 0;
 }
 
+//content is shown on left side
 .ion-grid {
   justify-content: left;
 }
@@ -133,10 +165,12 @@ ion-icon::before {
   transform: rotate(0deg);
 }
 
+//buttons in navbar aren't shown with rotation
 .bar-button::after {
   transform: rotate(0deg);
 }
 
+//back button isn't shown with rotation
 .back-button.show-back-button {
   transform: rotate(0deg);
 }
@@ -146,48 +180,58 @@ ion-icon::before {
   font-size: 16px;
 }
 
+//text in table on left side has a padding
 .textLeft {
   padding-left: 10px;
 }
 
+//border on cell in table on top and left
 .topLeft {
   border-top: solid black;
   border-left: solid black;
 }
 
+//border on cell in table on top, left and bottom
 .downLeft {
   border-top: solid black;
   border-left: solid black;
   border-bottom: solid black;
 }
 
+//border on cell in table on top and left with text in center
 .cell {
   border-top: solid black;
   border-left: solid black;
   text-align: center;
 }
 
+//border on cell down in table
 .cellDown {
   border-bottom: solid black;
 }
 
+//border on cell right in table
 .lastCell {
   border-right: solid black;
 }
 
+//difference between items on evaluation page
 .difference {
   padding-top: 20px;
 }
 
+//difference under chart on evaluation page
 .differenceUnderChart {
   padding-top: 50px;
 }
 
+//title from tables on evaluation page
 .bar-stable {
   padding-bottom: 10px;
   font-size: 16px;
 }
 
+//text is aligned in center
 .center {
   text-align: center;
 }
@@ -199,48 +243,39 @@ ion-icon::before {
   min-width: 1000px !important;
   max-height: 95% !important;
 }
-
 .instructionDemmi .alert-message {
   min-height: 550px !important;
 }
-
 //size of the alert message for the normwerte - demmi
 .normwerteDemmi .alert-wrapper {
   min-height: 500px !important;
   min-width: 1000px !important;
   max-height: 95%;
 }
-
 .normwerteDemmi .alert-message {
   min-height: 450px !important;
 }
-
 //size of the alert message for the material - demmi
 .materialDemmi .alert-wrapper {
   min-height: 230px !important;
   min-width: 400px !important;
 }
-
 .materialDemmi .alert-message {
   min-height: 130px !important;
 }
-
 //size of the alert message for the info icons - demmi
 .infoIconDemmi .alert-wrapper {
   min-height: 150px !important;
   min-width: 500px !important;
 }
-
 .infoIconDemmi .alert-message {
   min-height: 120px !important;
 }
-
 //size of the alert message for the detail on evaluation page - demmi
 .detailsDemmi .alert-wrapper {
   min-height: 750px !important;
   min-width: 500px !important;
 }
-
 .detailsDemmi .alert-message {
   min-height: 600px !important;
 }
@@ -250,30 +285,25 @@ ion-icon::before {
 .instructionDgi .alert-wrapper {
   min-width: 450px !important;
 }
-
 //size of the alert message for the normwerte - dgi
 .normwerteDgi .alert-wrapper {
   min-height: 250px !important;
   min-width: 500px !important;
 }
-
 //size of the alert message for the info icons - dgi
 .infoIconDgi .alert-wrapper {
   min-height: 470px !important;
   min-width: 900px !important;
 }
-
 .infoIconDgi .alert-message {
   min-height: 320px !important;
   min-width: 250px !important;
 }
-
 //size of the alert message for the detail on evaluation page - demmi
 .detailsDgi .alert-wrapper {
   min-height: 400px !important;
   min-width: 400px !important;
 }
-
 .detailsDgi .alert-message {
   min-height: 300px !important;
   min-width: 250px !important;
@@ -286,47 +316,40 @@ ion-icon::before {
   min-width: 950px !important;
   max-height: 95%;
 }
-
 .instructionTWT .alert-message {
   min-height: 550px !important;
   min-width: 250px !important;
   max-height: 95%;
 }
-
 //size of the alert message for the normwerte - timed walking test
 .normwerteTWT .alert-wrapper {
   min-height: 400px !important;
   min-width: 700px !important;
 }
-
 .normwerteTWT .alert-message {
   min-height: 270px !important;
   min-width: 250px !important;
 }
-
 //size of the alert message for the material - timed walking test
 .materialTWT .alert-wrapper {
   min-height: 200px !important;
   min-width: 350px !important;
 }
-
 .materialTWT .alert-message {
   min-height: 100px !important;
   min-width: 250px !important;
 }
-
 //size of the alert message for the detail on evaluation page - timed walking test
 .detailsTWT .alert-wrapper {
   min-height: 300px !important;
   min-width: 500px !important;
 }
-
 .detailsTWT .alert-message {
   min-height: 220px !important;
   min-width: 250px !important;
 }
 
-//--Hilfsmittel Dropdown
+//aids Dropdown
 .alert-radio-group {
   min-height: 370px;
   min-width: 400px;
@@ -338,7 +361,7 @@ ion-icon::before {
   padding-right: 30px;
 }
 
-//position of the 'Auswerten'-Button
+//position of the 'Auswerten & Speichern'-Button
 .buttonAuswerten {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -355,4 +378,72 @@ ion-icon::before {
 // distance from search input to popover
 .distanceToInput {
   top: 45px;
+}
+
+//--width of the patientName-label and the four icons in the assessment-forms
+//patient and icons for additional information in the same row
+.patient{
+  max-width: 55%;
+}
+.information{
+  max-width: 45%;
+}
+
+//-----assessment-form - four icons on top-----
+//icons for additional information in the assessments-forms
+ .additional-information{
+   background-color: transparent;
+ }
+.trendingUpIcon:before, .documentIcon:before,
+.pieIcon:before, .briefcaseIcon:before{
+  zoom: 2;
+  padding-bottom: 5px;
+}
+.allFourIconsOnTop{
+  text-align: right;
+  margin-bottom: 50px;
+  margin-top: 0;
+}
+
+//how the open icon is shown on the evaluation page
+.iconOpenButton{
+  zoom: 2;
+  padding: 0 0 0 47%;
+  margin: 0;
+  align-items: center;
+  text-align: center;
+}
+
+//-----colors in table on evaluation page---------
+//color grey 1 in tables on evaluation pages
+.normColor1 {
+  background-color: #dbdbdb;
+}
+//color grey 2 in tables on evaluation pages
+.normColor2 {
+  background-color: #e7e7e7;
+}
+//color grey 3 in tables on evaluation pages
+.normColor3 {
+  background-color: #f3f3f3;
+}
+//if patient is in the red part of the norm values
+.redActive {
+  background-color: #ff4c4c;
+  @extend %score-element;
+}
+//if patient is in the orange part of the norm values
+.orangeActive {
+  background-color: #ffc04c;
+  @extend %score-element;
+}
+//if patient is in the yellow part of the norm values
+.yellowActive {
+  background-color: #ffff4c;
+  @extend %score-element;
+}
+//if patient is in the green part of the norm values
+.greenActive {
+  background-color: #4ca64c;
+  @extend %score-element;
 }

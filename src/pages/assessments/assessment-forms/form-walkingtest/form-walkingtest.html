@@ -1,3 +1,4 @@
+<!--navbar of this page-->
 <ion-header>
   <navbar title="Formular 10-Meter-Gehtest" subTitle="Timed Walking Test"
           [workflowParameters]="workflowParameters"
@@ -7,31 +8,39 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid><ion-row><ion-col class="patient">
-  <patient-selector [patient]="patient"></patient-selector>
-  </ion-col>
-  <!-- Four icons for additional information -->
-  <ion-col class="information">
-  <ion-item class="ionTop">
-    <button (click)="navToVerlauf()" class="additional-information">
-      <ion-icon name="trending-up"></ion-icon>
-      <span><br>Verlauf</span>
-    </button>
-    <button (click)="popupInstruction()" class="additional-information">
-      <ion-icon name="document"></ion-icon>
-      <span><br>Instruktion</span>
-    </button>
-    <button (click)="popupNormwerte()" class="additional-information">
-      <ion-icon name="pie"></ion-icon>
-      <span><br>Normwerte</span>
-    </button>
-    <button (click)="popupMaterial()" class="additional-information">
-      <ion-icon name="briefcase"></ion-icon>
-      <span><br>Material</span>
-    </button>
-  </ion-item>
-  </ion-col>
-  </ion-row></ion-grid>
+  <ion-grid>
+    <ion-row>
+      <!--patient-->
+      <ion-col class="patient">
+        <patient-selector [patient]="patient"></patient-selector>
+      </ion-col>
+      <!-- Four icons for additional information -->
+      <ion-col class="information">
+        <ion-item class="allFourIconsOnTop">
+          <!--Progress-->
+          <button (click)="navToVerlauf()" class="additional-information">
+            <ion-icon name="trending-up" class="trendingUpIcon"></ion-icon>
+            <span><br>Verlauf</span>
+          </button>
+          <!--Instruction-->
+          <button (click)="popupInstruction()" class="additional-information">
+            <ion-icon name="document" class="documentIcon"></ion-icon>
+            <span><br>Instruktion</span>
+          </button>
+          <!--Standard Values-->
+          <button (click)="popupNormwerte()" class="additional-information">
+            <ion-icon name="pie" class="pieIcon"></ion-icon>
+            <span><br>Normwerte</span>
+          </button>
+          <!--Material-->
+          <button (click)="popupMaterial()" class="additional-information">
+            <ion-icon name="briefcase" class="briefcaseIcon"></ion-icon>
+            <span><br>Material</span>
+          </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-grid>
     <ion-row>
@@ -105,7 +114,7 @@
 
         <!-- Stopwatch -->
         <div class="stopwatch pt-3">
-          <h1 text-center class="color-white font-lg">
+          <h1 text-center class="font-lg">
             {{time}}
           </h1>
           <ion-grid>
@@ -151,16 +160,19 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='andere Hilfsmittel'">
       <ion-label class="labelForInput InputBottom">Welche?</ion-label>
-      <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(3, $event.target.value)"></ion-input>
+      <ion-input type="text" placeholder="Hier eintragen"
+                 (keyup)="assessmentResponse.addOrChangeAnswer(3, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label class="labelForInput InputBottom">Bemerkungen</ion-label>
-    <ion-textarea type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(4, $event)" [(ngModel)]="comments"></ion-textarea>
+    <ion-textarea type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(4, $event)"
+                  [(ngModel)]="comments"></ion-textarea>
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button class="buttonAuswerten" [disabled]="saveButtonDisabled" (click)="saveAndNavToEvaluationWalkingtest()">Auswerten & Speichern</button>
+  <button ion-button class="buttonAuswerten" [disabled]="saveButtonDisabled"
+          (click)="saveAndNavToEvaluationWalkingtest()">Auswerten & Speichern</button>
 </ion-content>

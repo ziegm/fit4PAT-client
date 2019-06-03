@@ -1,3 +1,4 @@
+<!--navbar of this page-->
 <ion-header>
   <navbar title="Formular DGI" subTitle="Dynamic Gait Index"
           [workflowParameters]="workflowParameters"
@@ -7,31 +8,39 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid><ion-row><ion-col class="patient">
-  <patient-selector [patient]="patient"></patient-selector>
-  </ion-col>
-  <!-- Four icons for additional information -->
-  <ion-col class="information">
-  <ion-item class="ionTop">
-    <button (click)="navToVerlauf()" class="additional-information">
-      <ion-icon name="trending-up"></ion-icon>
-      <span><br>Verlauf</span>
-    </button>
-    <button (click)="popupInstruction()" class="additional-information">
-      <ion-icon name="document"></ion-icon>
-      <span><br>Instruktion</span>
-    </button>
-    <button (click)="popupNormwerte()" class="additional-information">
-      <ion-icon name="pie"></ion-icon>
-      <span><br>Normwerte</span>
-    </button>
-    <button (click)="popupMaterial()" class="additional-information">
-      <ion-icon name="briefcase"></ion-icon>
-      <span><br>Material</span>
-    </button>
-  </ion-item>
-  </ion-col>
-  </ion-row></ion-grid>
+  <ion-grid>
+    <ion-row>
+      <!--patient-->
+      <ion-col class="patient">
+        <patient-selector [patient]="patient"></patient-selector>
+      </ion-col>
+      <!-- Four icons for additional information -->
+      <ion-col class="information">
+        <ion-item class="allFourIconsOnTop">
+          <!--Progress-->
+          <button (click)="navToVerlauf()" class="additional-information">
+            <ion-icon name="trending-up" class="trendingUpIcon"></ion-icon>
+            <span><br>Verlauf</span>
+          </button>
+          <!--Instruction-->
+          <button (click)="popupInstruction()" class="additional-information">
+            <ion-icon name="document" class="documentIcon"></ion-icon>
+            <span><br>Instruktion</span>
+          </button>
+          <!--Standard Values-->
+          <button (click)="popupNormwerte()" class="additional-information">
+            <ion-icon name="pie" class="pieIcon"></ion-icon>
+            <span><br>Normwerte</span>
+          </button>
+          <!--Material-->
+          <button (click)="popupMaterial()" class="additional-information">
+            <ion-icon name="briefcase" class="briefcaseIcon"></ion-icon>
+            <span><br>Material</span>
+          </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- Table header -->
   <ion-item class="paddingLeft">
@@ -45,240 +54,288 @@
   </ion-item>
 
   <!-- Question 1 -->
-  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)" class="difference paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrOne" (ionChange)="assessmentResponse.addOrChangeAnswer(0, $event, true)"
+            class="difference paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">1.</div>
-      <div class="col transparent text" (click)="showInfoOne()">Gehen auf ebener Strecke (20 m)
+      <div class="col transparent text" (click)="showInfoOne()">
+        Gehen auf ebener Strecke (20 m)
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="0" [checked]="noPatient.radios[0]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="1" [checked]="noPatient.radios[1]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="2" [checked]="noPatient.radios[2]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="2" [checked]="noPatient.radios[2]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="3" [checked]="noPatient.radios[3]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="3" [checked]="noPatient.radios[3]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 2 -->
-  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrTwo" (ionChange)="assessmentResponse.addOrChangeAnswer(1, $event, true)"
+            class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">2.</div>
-      <div class="col transparent text" (click)="showInfoTwo()">Gehen mit Tempowechsel 5 m normal, 5 m schnell, 5 m langsam
+      <div class="col transparent text" (click)="showInfoTwo()">
+        Gehen mit Tempowechsel 5 m normal, 5 m schnell, 5 m langsam
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="4" [checked]="noPatient.radios[4]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="5" [checked]="noPatient.radios[5]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="5" [checked]="noPatient.radios[5]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="6" [checked]="noPatient.radios[6]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="6" [checked]="noPatient.radios[6]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="7" [checked]="noPatient.radios[7]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="7" [checked]="noPatient.radios[7]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 3 -->
-  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrThree" (ionChange)="assessmentResponse.addOrChangeAnswer(2, $event, true)"
+            class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">3.</div>
-      <div class="col transparent text" (click)="showInfoThree()">Gehen mit Kopfdrehung rechts und links
+      <div class="col transparent text" (click)="showInfoThree()">
+        Gehen mit Kopfdrehung rechts und links
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="8" [checked]="noPatient.radios[8]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="9" [checked]="noPatient.radios[9]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="10" [checked]="noPatient.radios[10]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="10" [checked]="noPatient.radios[10]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="11" [checked]="noPatient.radios[11]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="11" [checked]="noPatient.radios[11]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 4 -->
-  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrFour" (ionChange)="assessmentResponse.addOrChangeAnswer(3, $event, true)"
+            class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">4.</div>
-      <div class="col transparent text" (click)="showInfoFour()">Gehen und nach oben und nach unten schauen
+      <div class="col transparent text" (click)="showInfoFour()">
+        Gehen und nach oben und nach unten schauen
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="12" [checked]="noPatient.radios[12]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="12" [checked]="noPatient.radios[12]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="13" [checked]="noPatient.radios[13]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="13" [checked]="noPatient.radios[13]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="14" [checked]="noPatient.radios[14]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="14" [checked]="noPatient.radios[14]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="15" [checked]="noPatient.radios[15]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="15" [checked]="noPatient.radios[15]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 5 -->
-  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrFive" (ionChange)="assessmentResponse.addOrChangeAnswer(4, $event, true)"
+            class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">5.</div>
-      <div class="col transparent text" (click)="showInfoFive()">Gehen und Drehung um 180°
+      <div class="col transparent text" (click)="showInfoFive()">
+        Gehen und Drehung um 180°
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="16" [checked]="noPatient.radios[16]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="17" [checked]="noPatient.radios[17]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="18" [checked]="noPatient.radios[18]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="18" [checked]="noPatient.radios[18]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="19" [checked]="noPatient.radios[19]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="19" [checked]="noPatient.radios[19]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 6 -->
-  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrSix" (ionChange)="assessmentResponse.addOrChangeAnswer(5, $event, true)"
+            class="paddingLeft">
     <div class="row" ng-repeat="data in ctrl.data">
       <div class="col transparent number">6.</div>
-      <div class="col transparent text" (click)="showInfoSix()">Gehen über Hindernisse
+      <div class="col transparent text" (click)="showInfoSix()">
+        Gehen über Hindernisse
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="20" [checked]="noPatient.radios[20]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="21" [checked]="noPatient.radios[21]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="22" [checked]="noPatient.radios[22]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="22" [checked]="noPatient.radios[22]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="23" [checked]="noPatient.radios[23]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="23" [checked]="noPatient.radios[23]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 7 -->
-  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrSeven" (ionChange)="assessmentResponse.addOrChangeAnswer(6, $event, true)"
+            class="paddingLeft">
     <div class="row">
       <div class="col transparent number">7.</div>
-      <div class="col transparent text" (click)="showInfoSeven()">Gehen um Hindernisse links und rechts herum
+      <div class="col transparent text" (click)="showInfoSeven()">
+        Gehen um Hindernisse links und rechts herum
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="24" [checked]="noPatient.radios[24]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="24" [checked]="noPatient.radios[24]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="25" [checked]="noPatient.radios[25]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="25" [checked]="noPatient.radios[25]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="26" [checked]="noPatient.radios[26]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="26" [checked]="noPatient.radios[26]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="27" [checked]="noPatient.radios[27]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="27" [checked]="noPatient.radios[27]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
   </ion-list>
 
   <!-- Question 8 -->
-  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)" class="paddingLeft">
+  <ion-list radio-group [(ngModel)]="nrEight" (ionChange)="assessmentResponse.addOrChangeAnswer(7, $event, true)"
+            class="paddingLeft">
     <div class="row">
       <div class="col transparent number">8.</div>
-      <div class="col transparent text" (click)="showInfoEight()">Treppensteigen
+      <div class="col transparent text" (click)="showInfoEight()">
+        Treppensteigen
         <ion-icon name="information-circle"></ion-icon>
       </div>
       <div class="col greyZero option">
         <ion-item class="greyZero">
-          <ion-radio slot="start" value="0" id="28" [checked]="noPatient.radios[28]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="0" id="28" [checked]="noPatient.radios[28]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyOne option">
         <ion-item class="greyOne">
-          <ion-radio slot="start" value="1" id="29" [checked]="noPatient.radios[29]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="1" id="29" [checked]="noPatient.radios[29]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyTwo option">
         <ion-item class="greyTwo">
-          <ion-radio slot="start" value="2" id="30" [checked]="noPatient.radios[30]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="2" id="30" [checked]="noPatient.radios[30]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
       <div class="col greyThree option">
         <ion-item class="greyThree">
-          <ion-radio slot="start" value="3" id="31" [checked]="noPatient.radios[31]" (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
+          <ion-radio slot="start" value="3" id="31" [checked]="noPatient.radios[31]"
+                     (click)="noPatient.handleMissingPatient(patient, $event)"></ion-radio>
         </ion-item>
       </div>
     </div>
@@ -302,16 +359,19 @@
     </ion-item>
     <ion-item id="extension" *ngIf="aid=='andere Hilfsmittel'">
       <ion-label class="labelForInput">Welche?</ion-label>
-      <ion-input type="text" placeholder="Hier eintragen" (keyup)="assessmentResponse.addOrChangeAnswer(8, $event.target.value)"></ion-input>
+      <ion-input type="text" placeholder="Hier eintragen"
+                 (keyup)="assessmentResponse.addOrChangeAnswer(8, $event.target.value)"></ion-input>
     </ion-item>
   </ion-list>
 
   <!-- Textfield for comments -->
   <ion-item>
     <ion-label class="labelForInput">Bemerkungen</ion-label>
-    <ion-textarea type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(9, $event)" [(ngModel)]="comments"></ion-textarea>
+    <ion-textarea type="text" placeholder="Hier eintragen" (keyup)="inputOnPatient(9, $event)"
+                  [(ngModel)]="comments"></ion-textarea>
   </ion-item>
 
   <!-- Evaluation button -->
-  <button ion-button class="buttonAuswerten" [disabled]="saveButtonDisabled" (click)="saveAndNavToEvaluationDgi()">Auswerten & Speichern</button>
+  <button ion-button class="buttonAuswerten" [disabled]="saveButtonDisabled"
+          (click)="saveAndNavToEvaluationDgi()">Auswerten & Speichern</button>
 </ion-content>
